@@ -1,0 +1,28 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+use_frameworks!
+
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+workspace 'Productivity.xcworkspace'
+project 'Productivity.xcodeproj'
+
+def shared_pods
+    pod 'GoogleMaps', '2.7.0'
+    pod 'lottie-ios'
+    pod 'SDWebImage', '3.8.2'    
+    pod 'ParallaxHeader', :git => 'https://github.com/ryanphillipthomas/ParallaxHeader', :commit => 'a75c875ac61c32edb00e5d14bb6828679c0e617a', :inhibit_warnings => true 
+    pod 'SkeletonView' 
+    pod 'Crashlytics'
+    pod 'Fabric'
+    pod 'Firebase/Core', '4.3.0'
+    pod 'NSLogger/Swift'
+end
+
+
+target 'Productivity' do
+    shared_pods
+    project 'Productivity.xcodeproj'
+end

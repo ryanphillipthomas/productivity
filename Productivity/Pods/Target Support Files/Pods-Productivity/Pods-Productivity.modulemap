@@ -1,0 +1,6 @@
+framework module Pods_Productivity {
+  umbrella header "Pods-Productivity-umbrella.h"
+
+  export *
+  module * { export * }
+}

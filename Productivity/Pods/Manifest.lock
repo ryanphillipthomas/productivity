@@ -1,0 +1,96 @@
+PODS:
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - Firebase/Core (4.3.0):
+    - FirebaseAnalytics (= 4.0.4)
+    - FirebaseCore (= 4.0.8)
+  - FirebaseAnalytics (4.0.4):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.8):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.10):
+    - FirebaseCore (~> 4.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GoogleToolboxForMac/Defines (2.2.2)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.2)":
+    - GoogleToolboxForMac/Defines (= 2.2.2)
+  - lottie-ios (3.1.5)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - NSLogger/ObjC (1.9.7)
+  - NSLogger/Swift (1.9.7):
+    - NSLogger/ObjC
+  - ParallaxHeader (2.0.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SkeletonView (1.8.2)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - Firebase/Core (= 4.3.0)
+  - GoogleMaps (= 2.7.0)
+  - lottie-ios
+  - NSLogger/Swift
+  - ParallaxHeader (from `https://github.com/ryanphillipthomas/ParallaxHeader`, commit `a75c875ac61c32edb00e5d14bb6828679c0e617a`)
+  - SDWebImage (= 3.8.2)
+  - SkeletonView
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Crashlytics
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleMaps
+    - GoogleToolboxForMac
+    - lottie-ios
+    - nanopb
+    - NSLogger
+    - SDWebImage
+    - SkeletonView
+
+EXTERNAL SOURCES:
+  ParallaxHeader:
+    :commit: a75c875ac61c32edb00e5d14bb6828679c0e617a
+    :git: https://github.com/ryanphillipthomas/ParallaxHeader
+
+CHECKOUT OPTIONS:
+  ParallaxHeader:
+    :commit: a75c875ac61c32edb00e5d14bb6828679c0e617a
+    :git: https://github.com/ryanphillipthomas/ParallaxHeader
+
+SPEC CHECKSUMS:
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
+  FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
+  FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GoogleToolboxForMac: 800648f8b3127618c1b59c7f97684427630c5ea3
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NSLogger: cf3013a4fba189f631f07e6c3d5b8ce2b209654b
+  ParallaxHeader: 06a25d4063ea007c03f0e4e3901827f665877c5f
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
+
+PODFILE CHECKSUM: 215126ea7bb9d67c2a1babb2035604aa94e03dff
+
+COCOAPODS: 1.8.4
