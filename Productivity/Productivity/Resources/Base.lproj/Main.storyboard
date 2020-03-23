@@ -95,10 +95,58 @@
                     <navigationItem key="navigationItem" title="Create" id="7dg-rS-bCS">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="HZW-na-uHZ"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="8yc-GO-Fis" kind="show" identifier="EditRoutineTableViewController" id="y0b-25-1cY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USq-mk-LKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828.985507246377" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="2454" y="-320"/>
+        </scene>
+        <!--Edit Routine Table View Controller-->
+        <scene sceneID="Zfx-oh-rJN">
+            <objects>
+                <tableViewController id="8yc-GO-Fis" customClass="EditRoutineTableViewController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Aca-MY-7PR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditNameTableViewCell" id="x5t-AP-xES" customClass="EditNameTableViewCell" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x5t-AP-xES" id="kyd-19-6yp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditHeaderFooterHeaderFooterView" id="W7l-OF-PCT" customClass="EditHeaderFooterHeaderFooterView" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W7l-OF-PCT" id="ZCV-hi-gJu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditIconColorTableViewCell" id="L4v-yp-sy8" customClass="EditIconColorTableViewCell" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L4v-yp-sy8" id="5O9-jn-V6V">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8yc-GO-Fis" id="8nj-uu-Glf"/>
+                            <outlet property="delegate" destination="8yc-GO-Fis" id="SL8-fB-fIu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Bbr-U1-C2P"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oM9-hg-sn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3288" y="-320"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wg7-f3-ORb">
@@ -183,7 +231,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kr-xx-yfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="-320"/>
+            <point key="canvasLocation" x="1614" y="-320"/>
         </scene>
     </scenes>
     <resources>

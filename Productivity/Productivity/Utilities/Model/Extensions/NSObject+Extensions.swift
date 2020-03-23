@@ -18,4 +18,10 @@ public extension NSObject {
     return NSStringFromClass(type(of: self)).components(separatedBy: ".").last ?? "unknown_class"
   }
     
+    #warning("move this")
+    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
 }

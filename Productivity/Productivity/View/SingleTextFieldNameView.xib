@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SingleTextFieldNameView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="innerView" destination="nDt-a5-0Gq" id="NoN-J3-KJT"/>
+                <outlet property="textField" destination="0zT-MI-exH" id="V8b-hA-3kE"/>
+                <outlet property="view" destination="PWT-Yb-bVm" id="bjB-bu-GXO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PWT-Yb-bVm">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDt-a5-0Gq">
+                    <rect key="frame" x="9" y="8" width="409" height="58"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zT-MI-exH">
+                            <rect key="frame" x="10" y="10" width="389" height="38"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="0zT-MI-exH" firstAttribute="top" secondItem="nDt-a5-0Gq" secondAttribute="top" constant="10" id="ld3-Ss-09K"/>
+                        <constraint firstItem="0zT-MI-exH" firstAttribute="leading" secondItem="nDt-a5-0Gq" secondAttribute="leading" constant="10" id="lph-ks-wiE"/>
+                        <constraint firstAttribute="bottom" secondItem="0zT-MI-exH" secondAttribute="bottom" constant="10" id="nbt-gs-2cx"/>
+                        <constraint firstAttribute="trailing" secondItem="0zT-MI-exH" secondAttribute="trailing" constant="10" id="zl0-Oa-R6z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="nDt-a5-0Gq" secondAttribute="bottom" constant="8" id="2Ro-kZ-3ZP"/>
+                <constraint firstItem="nDt-a5-0Gq" firstAttribute="leading" secondItem="PWT-Yb-bVm" secondAttribute="leading" constant="9" id="kbp-PQ-e45"/>
+                <constraint firstAttribute="trailing" secondItem="nDt-a5-0Gq" secondAttribute="trailing" constant="9" id="nV5-7S-q7P"/>
+                <constraint firstItem="nDt-a5-0Gq" firstAttribute="top" secondItem="PWT-Yb-bVm" secondAttribute="top" constant="8" id="o4U-KR-1Tk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Kgc-UG-sNf"/>
+            <point key="canvasLocation" x="-397.82608695652175" y="-158.37053571428569"/>
+        </view>
+    </objects>
+</document>

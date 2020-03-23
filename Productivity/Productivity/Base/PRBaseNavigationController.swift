@@ -37,7 +37,10 @@ class PRBaseNavigationController: UINavigationController {
     public func configureNavBar(title: String,
                                 subtitle: String? = nil,
                                 leftImage: UIImage? = nil,
-                                rightImage: UIImage? = nil) {
+                                rightImage: UIImage? = nil,
+                                letfButtonText: String? = nil,
+                                rightButtonText: String? = nil,
+                                buttonColorOverride: UIColor? = nil) {
 
         if let currentNavigationItem = viewControllers.last?.navigationItem {
             
@@ -50,11 +53,33 @@ class PRBaseNavigationController: UINavigationController {
                 currentNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
             }
             
+            if let letfButtonText = letfButtonText {
+                let leftButton = UIButton(type: .custom)
+                leftButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+                leftButton.setTitle(letfButtonText, for: .normal)
+                if let buttonColorOverride = buttonColorOverride {
+                    leftButton.setTitleColor(buttonColorOverride, for: .normal)
+                }
+                leftButton.addTarget(self, action: #selector(didPressLeftBarButtonItem), for: .touchUpInside)
+                currentNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
+            }
+            
             if let rightImage = rightImage {
                 let rightButton = UIButton(type: .custom)
                 rightButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
                 rightButton.setImage(rightImage, for: .normal)
                 rightButton.imageView?.contentMode = .scaleAspectFill
+                rightButton.addTarget(self, action: #selector(didPressRightBarButtonItem), for: .touchUpInside)
+                currentNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+            }
+            
+            if let rightButtonText = rightButtonText {
+                let rightButton = UIButton(type: .custom)
+                rightButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+                rightButton.setTitle(rightButtonText, for: .normal)
+                if let buttonColorOverride = buttonColorOverride {
+                    rightButton.setTitleColor(buttonColorOverride, for: .normal)
+                }
                 rightButton.addTarget(self, action: #selector(didPressRightBarButtonItem), for: .touchUpInside)
                 currentNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
             }

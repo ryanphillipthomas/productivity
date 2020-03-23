@@ -45,6 +45,7 @@ public var isSimulator: Bool {
 
 public struct Constants {
     static let SERVICES_VERSION = "1.0"
+    static let navigationTransitionTime = 0.5
     static let networkTimeout = 60.0
     
     struct Storyboards {

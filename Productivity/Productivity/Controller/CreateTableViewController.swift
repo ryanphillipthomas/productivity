@@ -76,9 +76,8 @@ public enum TemplateOptions: CaseIterable {
     }
 }
 
-//MARK: HeaderFooterOptions
-
-public enum HeaderFooterOptions: CaseIterable {
+//MARK: CreateHeaderFooterOptions
+public enum CreateHeaderFooterOptions: CaseIterable {
     case CreateOption
     case TemplateOption
     
@@ -89,6 +88,7 @@ public enum HeaderFooterOptions: CaseIterable {
         }
     }
 }
+
 //MARK: TableViewController
 class CreateTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
@@ -146,9 +146,10 @@ class CreateTemplateTableViewCell: PRBaseTableViewCell<UIView> {
         super.init(coder: aDecoder)
     }
     
-    func configureText(text: String) {
+    func configureText(text: String, subText: String) {
         if let view = cellView as? TwoLabelImageView {
             view.label.text = text
+            view.subLabel.text = subText
         }
     }
     
@@ -183,7 +184,7 @@ extension CreateTableViewController {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTemplateTableViewCell.classForCoder()), for: indexPath) as! CreateTemplateTableViewCell
             let option = TemplateOptions.allCases[indexPath.row]
-            cell.configureText(text: option.text())
+            cell.configureText(text: option.text(), subText: option.subText())
             cell.configureImage(image: option.image())
             return cell
         }
@@ -197,7 +198,7 @@ extension CreateTableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
-        let option = HeaderFooterOptions.allCases[section]
+        let option = CreateHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
         return cell
     }
@@ -218,6 +219,7 @@ extension CreateTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: String(describing: EditRoutineTableViewController.classForCoder()), sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

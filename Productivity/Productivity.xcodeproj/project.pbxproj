@@ -14,6 +14,11 @@
 		B82E556D242663C70040A04E /* LineSingleLabelHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E556C242663C70040A04E /* LineSingleLabelHeaderFooterView.xib */; };
 		B82E556F242670820040A04E /* LineSingleLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E556E242670820040A04E /* LineSingleLabelHeaderFooterView.swift */; };
 		B82E55722426759B0040A04E /* CreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E55712426759B0040A04E /* CreateTableViewController.swift */; };
+		B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E55742427B9010040A04E /* SingleTextFieldNameView.xib */; };
+		B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E55762427BA980040A04E /* SingleTextFieldNameView.swift */; };
+		B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */; };
+		B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E557A24283E860040A04E /* IconColorButtonView.xib */; };
+		B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E557C242841BA0040A04E /* IconColorButtonView.swift */; };
 		B876787C2424602A0009EFE4 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B876785B2424602A0009EFE4 /* Log.storyboard */; };
 		B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */; };
 		B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678602424602A0009EFE4 /* LoggerViewController.swift */; };
@@ -88,6 +93,11 @@
 		B82E556C242663C70040A04E /* LineSingleLabelHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineSingleLabelHeaderFooterView.xib; sourceTree = "<group>"; };
 		B82E556E242670820040A04E /* LineSingleLabelHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSingleLabelHeaderFooterView.swift; sourceTree = "<group>"; };
 		B82E55712426759B0040A04E /* CreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewController.swift; sourceTree = "<group>"; };
+		B82E55742427B9010040A04E /* SingleTextFieldNameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleTextFieldNameView.xib; sourceTree = "<group>"; };
+		B82E55762427BA980040A04E /* SingleTextFieldNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextFieldNameView.swift; sourceTree = "<group>"; };
+		B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineTableViewController.swift; sourceTree = "<group>"; };
+		B82E557A24283E860040A04E /* IconColorButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconColorButtonView.xib; sourceTree = "<group>"; };
+		B82E557C242841BA0040A04E /* IconColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconColorButtonView.swift; sourceTree = "<group>"; };
 		B876785B2424602A0009EFE4 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		B876785C2424602A0009EFE4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B876785D2424602A0009EFE4 /* WheelsUpUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelsUpUtilities.h; sourceTree = "<group>"; };
@@ -186,6 +196,10 @@
 				B82E556A242660C00040A04E /* TwoLabelImageView.xib */,
 				B82E556C242663C70040A04E /* LineSingleLabelHeaderFooterView.xib */,
 				B82E556E242670820040A04E /* LineSingleLabelHeaderFooterView.swift */,
+				B82E55742427B9010040A04E /* SingleTextFieldNameView.xib */,
+				B82E55762427BA980040A04E /* SingleTextFieldNameView.swift */,
+				B82E557A24283E860040A04E /* IconColorButtonView.xib */,
+				B82E557C242841BA0040A04E /* IconColorButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +210,7 @@
 				B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */,
 				B8FA79C32421C0FB007E7706 /* SettingsTabViewController.swift */,
 				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
+				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -532,6 +547,8 @@
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
+				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
+				B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +632,7 @@
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
+				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
 				B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */,
 				B87678882424602A0009EFE4 /* UINavigationController+Extensions.swift in Sources */,
 				B882714324246CEE004F5718 /* PRBaseTableViewController.swift in Sources */,
@@ -629,6 +647,7 @@
 				B882714224246CEE004F5718 /* PRBaseNavigationController.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
+				B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */,
 				B87678892424602A0009EFE4 /* String+Extension.swift in Sources */,
 				B882715B24257FC3004F5718 /* User.swift in Sources */,
 				B87678812424602A0009EFE4 /* ReachabilityManager.swift in Sources */,
@@ -653,6 +672,7 @@
 				B87678932424602A0009EFE4 /* BELogCell.swift in Sources */,
 				B882715D24257FC3004F5718 /* GenericCodableManagedObject.swift in Sources */,
 				B876788A2424602A0009EFE4 /* NSObject+Extensions.swift in Sources */,
+				B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */,
 				B882716224257FC3004F5718 /* SettingsManager.swift in Sources */,
 				B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */,
 				B882714024246CEE004F5718 /* PRBaseViewController.swift in Sources */,

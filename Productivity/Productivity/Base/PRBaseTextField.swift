@@ -17,7 +17,6 @@ class PRBaseTextField: UITextField {
     
     //MARK: Styles
     func setStyles() {
-        //TODO::
-    }
 
+    }
 }
