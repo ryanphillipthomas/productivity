@@ -36,7 +36,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         super.viewDidLoad()
         setTableView()
         setNavigationBar()
-        performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
     }
     
     func setNavigationBar() {
@@ -51,6 +50,16 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         tableView.contentInset.top = 20
         tableView.backgroundColor = UIColor(red: 0.157, green: 0.161, blue: 0.165, alpha: 1.00)
         tableView.separatorColor = .clear
+    }
+    
+    func setTarget(cell: EditIconColorTableViewCell) {
+        if let view = cell.cellView as? IconColorButtonView {
+            view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton), for: .touchUpInside)
+        }
+    }
+    
+    @objc func didSelectIconButton(sender:UIButton) {
+        performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
     }
 }
 
@@ -122,6 +131,7 @@ extension EditRoutineTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
+            setTarget(cell: cell)
             return cell
         }
         
