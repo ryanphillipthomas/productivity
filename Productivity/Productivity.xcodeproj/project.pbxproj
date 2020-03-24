@@ -62,6 +62,10 @@
 		B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715524257FC3004F5718 /* PRManagedObject.swift */; };
 		B882715F24257FC3004F5718 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715724257FC3004F5718 /* LoginManager.swift */; };
 		B882716224257FC3004F5718 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715A24257FC3004F5718 /* SettingsManager.swift */; };
+		B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */; };
+		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
+		B8D56B482429899500FEF929 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B472429899500FEF929 /* IconView.swift */; };
+		B8D56B4A24298B6200FEF929 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B4924298B6200FEF929 /* icons.json */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -100,7 +104,6 @@
 		B82E557C242841BA0040A04E /* IconColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconColorButtonView.swift; sourceTree = "<group>"; };
 		B876785B2424602A0009EFE4 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		B876785C2424602A0009EFE4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B876785D2424602A0009EFE4 /* WheelsUpUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelsUpUtilities.h; sourceTree = "<group>"; };
 		B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerDetailsViewController.swift; sourceTree = "<group>"; };
 		B87678602424602A0009EFE4 /* LoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
 		B87678642424602A0009EFE4 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
@@ -144,6 +147,10 @@
 		B882715724257FC3004F5718 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		B882715A24257FC3004F5718 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B882716424258A1A004F5718 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewController.swift; sourceTree = "<group>"; };
+		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
+		B8D56B472429899500FEF929 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		B8D56B4924298B6200FEF929 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +207,8 @@
 				B82E55762427BA980040A04E /* SingleTextFieldNameView.swift */,
 				B82E557A24283E860040A04E /* IconColorButtonView.xib */,
 				B82E557C242841BA0040A04E /* IconColorButtonView.swift */,
+				B8D56B452429888000FEF929 /* IconView.xib */,
+				B8D56B472429899500FEF929 /* IconView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +220,8 @@
 				B8FA79C32421C0FB007E7706 /* SettingsTabViewController.swift */,
 				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
 				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
+				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
+				B8D56B4924298B6200FEF929 /* icons.json */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,7 +261,6 @@
 			children = (
 				B876785A2424602A0009EFE4 /* Storyboards */,
 				B876785C2424602A0009EFE4 /* Info.plist */,
-				B876785D2424602A0009EFE4 /* WheelsUpUtilities.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -543,7 +553,9 @@
 				B82E556D242663C70040A04E /* LineSingleLabelHeaderFooterView.xib in Resources */,
 				B8FA79C92421C0FD007E7706 /* Assets.xcassets in Resources */,
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
+				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
+				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
@@ -638,6 +650,7 @@
 				B882714324246CEE004F5718 /* PRBaseTableViewController.swift in Sources */,
 				B87678842424602A0009EFE4 /* UIViewController+Extensions.swift in Sources */,
 				B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */,
+				B8D56B482429899500FEF929 /* IconView.swift in Sources */,
 				B8FA79C42421C0FB007E7706 /* SettingsTabViewController.swift in Sources */,
 				B82E556F242670820040A04E /* LineSingleLabelHeaderFooterView.swift in Sources */,
 				B82E556624265FD70040A04E /* IconImageSingleLabelDisclosureView.swift in Sources */,
@@ -645,6 +658,7 @@
 				B87678912424602A0009EFE4 /* UICollectionView+Extensions.swift in Sources */,
 				B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */,
 				B882714224246CEE004F5718 /* PRBaseNavigationController.swift in Sources */,
+				B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */,

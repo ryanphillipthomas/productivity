@@ -101,8 +101,6 @@ public class LoginManager: NSObject {
         defaults.removeObject(forKey: "WUAuth")
         defaults.set("LoggedOut", forKey: "LoggedOut") //depricate?
         
-        defaults.removeObject(forKey: "wheelsup.com.experiences.savedCities")
-        defaults.removeObject(forKey: "wheelsup.com.experiences.savedCategories")
         defaults.synchronize()
         
         //Remove all managedObjects
@@ -147,7 +145,6 @@ public class LoginManager: NSObject {
                                "Authorization" : authString,
                                "WU-Authorization" : auth,
                                "WU-Client-Type" : "MOBILE_IOS",
-                               "WU-App-Type" : "WHEELSUP",
                                "WU-App-Version" : internalVersion]
         
         // (Re-)create the authorized session if we current have none

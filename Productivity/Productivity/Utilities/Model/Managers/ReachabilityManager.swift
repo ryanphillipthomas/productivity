@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import SystemConfiguration
-//import WheelsUpAPI
-//import WheelsUpTheme
 //import SwiftMessages
 
 struct ReachabilityConstants {
@@ -77,7 +75,7 @@ struct ReachabilityConstants {
 //
 //    private var noInternetView: MessageView {
 //        let error = MessageView.viewFromNib(layout: .cardView)
-//        //error.configureTheme(backgroundColor: UIColor.wheelsUpBlue, foregroundColor: UIColor.white, iconImage: UIImage(imageLiteralResourceName: "wuFlightTrackerDestinationError"), iconText: nil)
+//        //error.configureTheme(backgroundColor: UIColor.blue, foregroundColor: UIColor.white, iconImage: UIImage(imageLiteralResourceName: "wuFlightTrackerDestinationError"), iconText: nil)
 //        error.configureContent(title: " Lorem ipsum", body: " Lorem ipsum medok")
 //        error.button?.setImage(UIImage.init(imageLiteralResourceName: "small-button-close"), for: .normal)
 //        error.button?.backgroundColor = UIColor.clear

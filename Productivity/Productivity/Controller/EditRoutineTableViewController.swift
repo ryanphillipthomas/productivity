@@ -36,6 +36,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         super.viewDidLoad()
         setTableView()
         setNavigationBar()
+        performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
     }
     
     func setNavigationBar() {

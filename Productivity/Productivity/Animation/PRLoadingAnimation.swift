@@ -89,7 +89,6 @@ class PRLoadingAnimation: UIView {
     
     private func setLoaderBackgroundColor(loaderBackgroundColor: LoaderBackground) {
         switch(loaderBackgroundColor) {
-            #warning("WheelsUpTheme")
         case .WhiteSolid:           loaderBackground?.backgroundColor = UIColor.white
         case .BlueTranslucent:      loaderBackground?.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         case .BlueSolid:            loaderBackground?.backgroundColor = UIColor.blue.withAlphaComponent(1.0)
@@ -100,12 +99,10 @@ class PRLoadingAnimation: UIView {
     private func setTailColor(tailColor: TailColor) {
         var color: UIColor!
         switch(tailColor) {
-             #warning("WheelsUpTheme")
         case .BlueTail:     color = UIColor.blue
         case .PinkTail:     color = UIColor.purple
         }
         
-         #warning("WheelsUpTheme")
         let colorProvider = ColorValueProvider(Color(r: Double(color.redValue), g: Double(color.greenValue), b: Double(color.blueValue), a: Double(color.alphaValue)))
         animation?.setValueProvider(colorProvider, keypath: AnimationKeypath(keypath: "WU_TailLogo3.Tail.Group 3.Fill 1.Color"))   //Tail #1
         animation?.setValueProvider(colorProvider, keypath: AnimationKeypath(keypath: "WU_TailLogo3.Tail 2.Group 3.Fill 1.Color"))   //Tail #2

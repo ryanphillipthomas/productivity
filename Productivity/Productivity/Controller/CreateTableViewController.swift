@@ -94,6 +94,10 @@ class CreateTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setNavigationBar()
     }
     

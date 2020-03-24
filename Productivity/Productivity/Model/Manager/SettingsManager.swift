@@ -29,7 +29,7 @@ class SettingsManager: NSObject {
     
     //MARK: Class
     /*
-        Base URL is now controlled by only WheelsUpSupportCode or ProcessInfo (Beta Target)
+        Base URL is now controlled by only SupportCode or ProcessInfo (Beta Target)
         If neither SupportCode or ProcessInfo exists, we can assume app should be using Prod URL
      */
     static func recreateBaseURL() {
