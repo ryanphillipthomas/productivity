@@ -224,14 +224,8 @@
 		B87677FB2422E2D70009EFE4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */,
-				B8FA79C32421C0FB007E7706 /* SettingsTabViewController.swift */,
-				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
-				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
-				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
-				B8D56B4924298B6200FEF929 /* icons.json */,
-				B8F19AF62442815400F8915F /* SettingsTableViewController.swift */,
-				B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */,
+				B8F19AFB24428AE500F8915F /* TabViewControllers */,
+				B8F19AFA24428AC900F8915F /* TableViewControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -369,6 +363,7 @@
 		B882714B242471A9004F5718 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B8D56B4924298B6200FEF929 /* icons.json */,
 				B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */,
 				B882714924246FC8004F5718 /* Constants.swift */,
 				B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */,
@@ -414,6 +409,27 @@
 				B882715A24257FC3004F5718 /* SettingsManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		B8F19AFA24428AC900F8915F /* TableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
+				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
+				B8F19AF62442815400F8915F /* SettingsTableViewController.swift */,
+				B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */,
+				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
+			);
+			path = TableViewControllers;
+			sourceTree = "<group>";
+		};
+		B8F19AFB24428AE500F8915F /* TabViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */,
+				B8FA79C32421C0FB007E7706 /* SettingsTabViewController.swift */,
+			);
+			path = TabViewControllers;
 			sourceTree = "<group>";
 		};
 		B8FA79B12421C0FB007E7706 = {
