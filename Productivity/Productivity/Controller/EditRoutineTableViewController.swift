@@ -34,7 +34,6 @@ public enum EditHeaderFooterOptions: CaseIterable {
 class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableView()
         setNavigationBar()
     }
     
@@ -45,11 +44,9 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         }
     }
     
-    func setTableView() {
+    override func setTableView() {
+        super.setTableView()
         tableView.allowsSelection = false
-        tableView.contentInset.top = 20
-        tableView.backgroundColor = UIColor(red: 0.157, green: 0.161, blue: 0.165, alpha: 1.00)
-        tableView.separatorColor = .clear
     }
     
     func setTarget(cell: EditIconColorTableViewCell) {

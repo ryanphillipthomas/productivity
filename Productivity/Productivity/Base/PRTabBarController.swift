@@ -10,9 +10,8 @@ import UIKit
 import CoreData
 
 class PRTabBarController: UITabBarController {
-    
     var managedObjectContext: NSManagedObjectContext!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

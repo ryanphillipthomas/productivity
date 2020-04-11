@@ -66,6 +66,10 @@
 		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
 		B8D56B482429899500FEF929 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B472429899500FEF929 /* IconView.swift */; };
 		B8D56B4A24298B6200FEF929 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B4924298B6200FEF929 /* icons.json */; };
+		B8F19AF12442752B00F8915F /* External.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F19AF02442752B00F8915F /* External.storyboard */; };
+		B8F19AF52442770800F8915F /* ExternalSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF42442770800F8915F /* ExternalSceneDelegate.swift */; };
+		B8F19AF72442815400F8915F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF62442815400F8915F /* SettingsTableViewController.swift */; };
+		B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -151,6 +155,10 @@
 		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
 		B8D56B472429899500FEF929 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		B8D56B4924298B6200FEF929 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icons.json; sourceTree = "<group>"; };
+		B8F19AF02442752B00F8915F /* External.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = External.storyboard; sourceTree = "<group>"; };
+		B8F19AF42442770800F8915F /* ExternalSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalSceneDelegate.swift; sourceTree = "<group>"; };
+		B8F19AF62442815400F8915F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +230,8 @@
 				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
 				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
 				B8D56B4924298B6200FEF929 /* icons.json */,
+				B8F19AF62442815400F8915F /* SettingsTableViewController.swift */,
+				B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -362,10 +372,12 @@
 				B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */,
 				B882714924246FC8004F5718 /* Constants.swift */,
 				B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */,
+				B8F19AF42442770800F8915F /* ExternalSceneDelegate.swift */,
 				B8FA79C52421C0FB007E7706 /* Main.storyboard */,
 				B8FA79C82421C0FD007E7706 /* Assets.xcassets */,
 				B8FA79CA2421C0FD007E7706 /* LaunchScreen.storyboard */,
 				B882714C24247216004F5718 /* CoreData.xcdatamodeld */,
+				B8F19AF02442752B00F8915F /* External.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -555,6 +567,7 @@
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
+				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
@@ -657,16 +670,19 @@
 				B87678902424602A0009EFE4 /* Data+Extensions.swift in Sources */,
 				B87678912424602A0009EFE4 /* UICollectionView+Extensions.swift in Sources */,
 				B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */,
+				B8F19AF72442815400F8915F /* SettingsTableViewController.swift in Sources */,
 				B882714224246CEE004F5718 /* PRBaseNavigationController.swift in Sources */,
 				B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
+				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
 				B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */,
 				B87678892424602A0009EFE4 /* String+Extension.swift in Sources */,
 				B882715B24257FC3004F5718 /* User.swift in Sources */,
 				B87678812424602A0009EFE4 /* ReachabilityManager.swift in Sources */,
 				B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */,
 				B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */,
+				B8F19AF52442770800F8915F /* ExternalSceneDelegate.swift in Sources */,
 				B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */,
 				B876788C2424602A0009EFE4 /* UILayoutGuide+Extensions.swift in Sources */,
 				B876788F2424602A0009EFE4 /* Date+Extensions.swift in Sources */,

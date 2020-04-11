@@ -37,6 +37,17 @@
 					<string>Main</string>
 				</dict>
 			</array>
+			<key>UIWindowSceneSessionRoleExternalDisplay</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>External Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).ExternalSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>External</string>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>

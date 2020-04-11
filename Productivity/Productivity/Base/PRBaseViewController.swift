@@ -15,12 +15,13 @@ protocol KeyboardDelegate: NSObjectProtocol {
 }
 
 open class PRBaseViewController: UIViewController {
-
     var managedObjectContext: NSManagedObjectContext!
     var wuLoading: PRLoadingAnimation?
     var tapAwayGestureRecognizer: UITapGestureRecognizer?
     
     weak var keyboardDelegate: KeyboardDelegate?
+    
+    @IBOutlet var screenLabel: UILabel!
 
     //MARK: View Lifecycle
     override open func viewDidLoad() {

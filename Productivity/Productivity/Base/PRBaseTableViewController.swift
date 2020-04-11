@@ -13,6 +13,13 @@ open class PRBaseTableViewController: UITableViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.configureAccessibilityIdentifiers()
+        setTableView()
+    }
+    
+    func setTableView() {
+        tableView.contentInset.top = 20
+        tableView.backgroundColor = UIColor(red: 0.157, green: 0.161, blue: 0.165, alpha: 1.00)
+        tableView.separatorColor = .clear
     }
     
     // MARK: - Table view data source

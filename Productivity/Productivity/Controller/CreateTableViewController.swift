@@ -104,14 +104,8 @@ class CreateTableViewController: PRBaseTableViewController {
     func setNavigationBar() {
         if let nav = self.navigationController as? PRBaseNavigationController {
             nav.wuDelegate = self
-            nav.configureNavBar(title: "Create", leftImage: UIImage(named: "close"))
+            nav.configureNavBar(title: "Create", leftImage: UIImage(systemName: "xmark"))
         }
-    }
-    
-    func setTableView() {
-        tableView.contentInset.top = 20
-        tableView.backgroundColor = UIColor(red: 0.157, green: 0.161, blue: 0.165, alpha: 1.00)
-        tableView.separatorColor = .clear
     }
 }
 
