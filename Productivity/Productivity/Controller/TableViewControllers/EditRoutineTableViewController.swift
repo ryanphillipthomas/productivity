@@ -32,9 +32,20 @@ public enum EditHeaderFooterOptions: CaseIterable {
 
 //MARK: EditRoutineTableViewController
 class EditRoutineTableViewController: PRBaseTableViewController {
+    var routineID: Int64?
+    var workingObject = PRBaseWorkingObject()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setupWorkingObject()
+    }
+    
+    func setupWorkingObject() {
+        if let routineID = routineID {
+            let routine = Routine.find(moc: managedObjectContext, id: routineID)
+            workingObject.configureFrom(routine: routine)
+        }
     }
     
     func setNavigationBar() {
@@ -57,6 +68,13 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     
     @objc func didSelectIconButton(sender:UIButton) {
         performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == String(describing: IconsCollectionViewController.classForCoder()), let iconsCollectionViewController =
+            segue.destination as? IconsCollectionViewController {
+            iconsCollectionViewController.delegate = self
+        }
     }
 }
 
@@ -95,6 +113,18 @@ class EditIconColorTableViewCell: PRBaseTableViewCell<UIView> {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    func configureIconButton(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? IconColorButtonView, let iconName = workingObject.iconName {
+            view.iconButton.setImage(UIImage(systemName: iconName), for: .normal)
+        }
+    }
+    
+    func configureColorButton(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? IconColorButtonView, let iconName = workingObject.iconName {
+            view.colorButton.setImage(UIImage(systemName: iconName), for: .normal)
+        }
+    }
 }
 
 //MARK: EditHeaderFooterHeaderFooterView
@@ -129,6 +159,8 @@ extension EditRoutineTableViewController {
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
             setTarget(cell: cell)
+            cell.configureIconButton(workingObject: workingObject)
+            cell.configureColorButton(workingObject: workingObject)
             return cell
         }
         
@@ -162,8 +194,15 @@ extension EditRoutineTableViewController {
 
 extension EditRoutineTableViewController: PRBaseNavigationControllerDelegate {
     func didPressRightBarButtonItem() {
-        let _ = Routine.insertIntoContext(moc: managedObjectContext, dictionary:["id":2,"name":"Ryan Test"])
+        Routine.update(moc: managedObjectContext, workingObject: workingObject)
         dismiss(animated: true, completion: nil)
     }
     func didPressLeftBarButtonItem() {}
+}
+
+extension EditRoutineTableViewController: IconsCollectionViewControllerDelegate {
+    func didSelectIcon(iconName: String) {
+        workingObject.iconName = iconName
+        tableView.reloadData()
+    }
 }

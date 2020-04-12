@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Routine" representedClassName=".Routine" syncable="YES">
+        <attribute name="colorValue" optional="YES" attributeType="String"/>
+        <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
+        <attribute name="colorValue" optional="YES" attributeType="String"/>
+        <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
@@ -15,8 +19,8 @@
         <attribute name="lastName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Routine" positionX="-63" positionY="63" width="128" height="73"/>
-        <element name="Task" positionX="-54" positionY="72" width="128" height="73"/>
+        <element name="Routine" positionX="-63" positionY="63" width="128" height="103"/>
+        <element name="Task" positionX="-54" positionY="72" width="128" height="103"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

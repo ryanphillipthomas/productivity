@@ -43,6 +43,7 @@
 		B87678932424602A0009EFE4 /* BELogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876787A2424602A0009EFE4 /* BELogCell.swift */; };
 		B87678942424602A0009EFE4 /* BELogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B876787B2424602A0009EFE4 /* BELogCell.xib */; };
 		B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */; };
+		B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */; };
 		B882713324246B90004F5718 /* PRXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712C24246B8F004F5718 /* PRXibView.swift */; };
 		B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */; };
 		B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */; };
@@ -135,6 +136,7 @@
 		B876787A2424602A0009EFE4 /* BELogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BELogCell.swift; sourceTree = "<group>"; };
 		B876787B2424602A0009EFE4 /* BELogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BELogCell.xib; sourceTree = "<group>"; };
 		B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
+		B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseWorkingObject.swift; sourceTree = "<group>"; };
 		B882712C24246B8F004F5718 /* PRXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRXibView.swift; sourceTree = "<group>"; };
 		B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTableViewCell.swift; sourceTree = "<group>"; };
 		B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				B882715624257FC3004F5718 /* Manager */,
 				B882714F24257FC2004F5718 /* NSManagedObjects */,
 				B882715324257FC3004F5718 /* PR */,
+				B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
+				B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */,
 				B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */,
 				B87678892424602A0009EFE4 /* String+Extension.swift in Sources */,
 				B882715B24257FC3004F5718 /* User.swift in Sources */,

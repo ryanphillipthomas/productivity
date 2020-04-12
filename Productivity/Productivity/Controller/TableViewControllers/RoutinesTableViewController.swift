@@ -32,6 +32,10 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
             segue.destination as? PRBaseNavigationController, let createTableViewController = nav.viewControllers.first as? CreateTableViewController  {
             nav.managedObjectContext = managedObjectContext
             createTableViewController.managedObjectContext = managedObjectContext
+        } else if segue.identifier == String(describing: EditRoutineTableViewController.classForCoder()), let nav =
+        segue.destination as? PRBaseNavigationController, let editRoutineTableViewController = nav.viewControllers.first as? EditRoutineTableViewController {
+            editRoutineTableViewController.managedObjectContext = managedObjectContext
+            editRoutineTableViewController.routineID = sender as? Int64
         }
     }
 
@@ -48,6 +52,8 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     //MARK: PRFetchedResultController Overrides
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let routine = fetchedResultsController.object(at: indexPath) as! Routine
+        performSegue(withIdentifier: String(describing: EditRoutineTableViewController.classForCoder()), sender: routine.id)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

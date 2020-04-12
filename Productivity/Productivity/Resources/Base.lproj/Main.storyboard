@@ -71,6 +71,7 @@
                     </tableView>
                     <connections>
                         <segue destination="CUG-Qy-i9x" kind="presentation" identifier="CreateTableViewController" id="MhI-qM-bwl"/>
+                        <segue destination="nk2-sb-T5T" kind="presentation" identifier="EditRoutineTableViewController" id="UzZ-RB-9ft"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPV-hz-OlU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,7 +127,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USq-mk-LKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4472" y="-1173"/>
+            <point key="canvasLocation" x="5293" y="-1415"/>
         </scene>
         <!--Edit Routine Table View Controller-->
         <scene sceneID="Zfx-oh-rJN">
@@ -174,7 +175,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM9-hg-sn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5255" y="-1173"/>
+            <point key="canvasLocation" x="5293" y="-703"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="bHM-sH-dLd">
+            <objects>
+                <navigationController id="nk2-sb-T5T" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X99-fk-bE6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8yc-GO-Fis" kind="relationship" relationship="rootViewController" id="fTw-1R-VRI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOR-X7-9Up" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4141" y="-704"/>
         </scene>
         <!--Settings Tab View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -255,7 +272,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kr-xx-yfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="-1173"/>
+            <point key="canvasLocation" x="4141" y="-1416"/>
         </scene>
         <!--Icons Collection View Controller-->
         <scene sceneID="i6C-75-5zV">
@@ -290,7 +307,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g13-yP-OuO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6055" y="-1173"/>
+            <point key="canvasLocation" x="6386" y="-703"/>
         </scene>
         <!--Routines-->
         <scene sceneID="z8e-gE-erR">
@@ -331,6 +348,9 @@
             <point key="canvasLocation" x="735" y="545"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fTw-1R-VRI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="tabBarItem:acW-dT-cKf:image" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">

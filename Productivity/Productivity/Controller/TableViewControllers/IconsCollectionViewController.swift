@@ -27,8 +27,14 @@ class IconCollectionViewCell: PRBaseCollectionViewCell<UIView> {
     }
 }
 
+//MARK: EditRoutineTableViewControllerDelegate
+protocol IconsCollectionViewControllerDelegate: NSObjectProtocol {
+    func didSelectIcon(iconName: String)
+}
+
 class IconsCollectionViewController: UICollectionViewController {
-    
+    weak var delegate: IconsCollectionViewControllerDelegate?
+
     var icons:[String]?
     
     func icon(index: Int) -> UIImage? {
@@ -65,7 +71,6 @@ extension IconsCollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         if let icons = icons {
@@ -78,5 +83,12 @@ extension IconsCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: IconCollectionViewCell.classForCoder()), for: indexPath) as! IconCollectionViewCell
         cell.configureImage(image: icon(index: indexPath.row))
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = delegate, let icons = icons {
+            delegate.didSelectIcon(iconName: icons[indexPath.row])
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
