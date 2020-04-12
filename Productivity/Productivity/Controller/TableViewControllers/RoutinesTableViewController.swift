@@ -48,6 +48,12 @@ class RoutinesTableViewController: PRBaseTableViewController {
         // #warning Incomplete implementation, return the number of rows
         return routines.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
+        cell.configureText(text: "")
+        return cell
+    }
 }
 
 extension RoutinesTableViewController: PRBaseNavigationControllerDelegate {

@@ -54,6 +54,11 @@ public struct Constants {
         static let tabBarStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
     }
     
+    struct TabViewControllers {
+        static let routinesTabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RoutinesTabViewController") as! RoutinesTabViewController
+        static let settingsTabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsTabViewController") as! SettingsTabViewController
+    }
+    
     struct Notifications {
         static let nInternetAccessUnavailable = Notification.Name("kInternetAccessUnavailable")
     }

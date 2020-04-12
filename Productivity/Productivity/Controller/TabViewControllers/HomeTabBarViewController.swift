@@ -19,7 +19,7 @@ class HomeTabBarViewController: PRTabBarController {
     func setupViewControllers() {
         
         //Setup routines tab view controller
-        let routinesTabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RoutinesTabViewController") as! RoutinesTabViewController
+        let routinesTabViewController = Constants.TabViewControllers.routinesTabViewController
         routinesTabViewController.managedObjectContext = managedObjectContext
         routinesTabViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         
@@ -29,7 +29,7 @@ class HomeTabBarViewController: PRTabBarController {
         routinesTabNavigationViewController.viewControllers = [routinesTabViewController]
         
         //Setup settings tab view controller
-        let settingsTabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsTabViewController") as! SettingsTabViewController
+        let settingsTabViewController = Constants.TabViewControllers.settingsTabViewController
         settingsTabViewController.managedObjectContext = managedObjectContext
         settingsTabViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
         
