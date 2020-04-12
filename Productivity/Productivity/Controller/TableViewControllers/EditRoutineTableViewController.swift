@@ -36,7 +36,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         super.viewDidLoad()
         setNavigationBar()
         
-        let _ = Routine.insertIntoContext(moc: managedObjectContext, dictionary:["id":2])
+        let _ = Routine.insertIntoContext(moc: managedObjectContext, dictionary:["id":2,"name":"Ryan Test"])
     }
     
     func setNavigationBar() {

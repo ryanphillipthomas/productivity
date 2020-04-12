@@ -15,7 +15,7 @@ class Routine: PRManagedObject {
 
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Routine? {
-        guard let id = dictionary["id"] as? Int64
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String
             else {
                 return nil
         }
@@ -23,6 +23,7 @@ class Routine: PRManagedObject {
         let predicate = NSPredicate(format: "id == %i", id)
         let routine = Routine.findOrCreateInContext(moc: moc, matchingPredicate: predicate) { (routine) in
             routine.id = id
+            routine.name = name
         }
 
         return routine
