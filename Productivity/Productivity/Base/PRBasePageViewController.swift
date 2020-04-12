@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 open class PRBasePageViewController: UIPageViewController {
+    var managedObjectContext: NSManagedObjectContext!
 
     //MARK: View Lifecycle
     override open func viewDidLoad() {

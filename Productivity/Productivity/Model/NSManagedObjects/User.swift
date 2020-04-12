@@ -11,20 +11,10 @@ import CoreData
 
 class User: PRManagedObject {
     @NSManaged var id: Int64
-    @NSManaged var passengerId: Int64
-    
     @NSManaged var firstName: String
     @NSManaged var lastName: String
     @NSManaged var email: String
-    @NSManaged var imageUrl: String
-    @NSManaged var type: String
-    
-    @NSManaged var isPrincipal: Bool
-    @NSManaged var enabled: Bool
-    @NSManaged var isCurrentUser: Bool
-    @NSManaged var termsAndConditionsAccepted: Bool
-    @NSManaged var gdprAccepted: Bool
-    
+        
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, userDictionary:NSDictionary) -> User? {
         guard let id = userDictionary["id"] as? Int64
@@ -57,15 +47,6 @@ class User: PRManagedObject {
             moc.delete(user)
             _ = moc.saveOrRollback()
         }
-    }
-    
-    //MARK: Current User
-    public static func currentUser(moc: NSManagedObjectContext) -> User? {
-        let predicate = NSPredicate(format: "isCurrentUser = YES")
-        guard let user = User.findOrFetchInContext(moc: moc, matchingPredicate: predicate) else {
-            return nil
-        }
-        return user
     }
 }
 

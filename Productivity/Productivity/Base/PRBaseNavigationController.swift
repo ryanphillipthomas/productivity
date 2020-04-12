@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol PRBaseNavigationControllerDelegate: NSObjectProtocol {
     func didPressLeftBarButtonItem()
@@ -14,7 +15,7 @@ protocol PRBaseNavigationControllerDelegate: NSObjectProtocol {
 }
 
 class PRBaseNavigationController: UINavigationController {
-    
+    var managedObjectContext: NSManagedObjectContext!
     weak var wuDelegate: PRBaseNavigationControllerDelegate?
 
     override func viewDidLoad() {

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 open class PRBaseTableViewController: UITableViewController {
+    var managedObjectContext: NSManagedObjectContext!
 
     override open func viewDidLoad() {
         super.viewDidLoad()

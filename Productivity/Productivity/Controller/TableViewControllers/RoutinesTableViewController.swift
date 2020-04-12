@@ -9,7 +9,8 @@
 import UIKit
 
 class RoutinesTableViewController: PRBaseTableViewController {
-
+    var routines = [Routine]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,18 +31,18 @@ class RoutinesTableViewController: PRBaseTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return routines.count
     }
 }
 
 extension RoutinesTableViewController: PRBaseNavigationControllerDelegate {
     func didPressRightBarButtonItem() {
-     performSegue(withIdentifier: String(describing: CreateTableViewController.self), sender: nil)
+        performSegue(withIdentifier: String(describing: CreateTableViewController.self), sender: nil)
     }
     func didPressLeftBarButtonItem() {}
 }

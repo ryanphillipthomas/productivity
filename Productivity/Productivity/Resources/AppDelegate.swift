@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: persistentContainer.viewContext) as? User
+        user?.setValue(1, forKey: "id")
+        user?.setValue("Ryan", forKey: "firstName")
+        user?.setValue("Thomas", forKey: "lastName")
+        user?.setValue("ryanphillipthomas@mac.com", forKey: "email")
 
-        
         return true
     }
 

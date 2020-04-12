@@ -70,6 +70,8 @@
 		B8F19AF52442770800F8915F /* ExternalSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF42442770800F8915F /* ExternalSceneDelegate.swift */; };
 		B8F19AF72442815400F8915F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF62442815400F8915F /* SettingsTableViewController.swift */; };
 		B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */; };
+		B8F19AFD24428C9E00F8915F /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AFC24428C9E00F8915F /* Routine.swift */; };
+		B8F19AFF24428CC200F8915F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AFE24428CC200F8915F /* Task.swift */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -159,6 +161,8 @@
 		B8F19AF42442770800F8915F /* ExternalSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalSceneDelegate.swift; sourceTree = "<group>"; };
 		B8F19AF62442815400F8915F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
+		B8F19AFC24428C9E00F8915F /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		B8F19AFE24428CC200F8915F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 			isa = PBXGroup;
 			children = (
 				B882715024257FC2004F5718 /* User.swift */,
+				B8F19AFC24428C9E00F8915F /* Routine.swift */,
+				B8F19AFE24428CC200F8915F /* Task.swift */,
 				B882715224257FC2004F5718 /* GenericCodableManagedObject.swift */,
 			);
 			path = NSManagedObjects;
@@ -669,6 +675,7 @@
 				B87678852424602A0009EFE4 /* UIView+Extensions.swift in Sources */,
 				B87678862424602A0009EFE4 /* UIColor+Extensions.swift in Sources */,
 				B882713924246B90004F5718 /* PRBaseTextField.swift in Sources */,
+				B8F19AFF24428CC200F8915F /* Task.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
@@ -712,6 +719,7 @@
 				B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */,
 				B882714E24247216004F5718 /* CoreData.xcdatamodeld in Sources */,
 				B882714824246F7B004F5718 /* PRLoadingAnimation.swift in Sources */,
+				B8F19AFD24428C9E00F8915F /* Routine.swift in Sources */,
 				B82E5569242660B00040A04E /* TwoLabelImageView.swift in Sources */,
 				B82E55722426759B0040A04E /* CreateTableViewController.swift in Sources */,
 				B882713F24246CEE004F5718 /* PRBasePageViewController.swift in Sources */,
