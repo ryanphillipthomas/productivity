@@ -39,7 +39,7 @@ class Task: PRManagedObject {
         _ = moc.saveOrRollback()
     }
 
-    public static func delete(id: Int, moc: NSManagedObjectContext) {
+    public static func delete(id: Int64, moc: NSManagedObjectContext) {
         let predicate = NSPredicate(format: "id == %i", id)
         if let routine = Task.findOrFetchInContext(moc: moc, matchingPredicate: predicate) {
             moc.delete(routine)

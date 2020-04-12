@@ -35,8 +35,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        
-        let _ = Routine.insertIntoContext(moc: managedObjectContext, dictionary:["id":2,"name":"Ryan Test"])
     }
     
     func setNavigationBar() {
@@ -164,6 +162,7 @@ extension EditRoutineTableViewController {
 
 extension EditRoutineTableViewController: PRBaseNavigationControllerDelegate {
     func didPressRightBarButtonItem() {
+        let _ = Routine.insertIntoContext(moc: managedObjectContext, dictionary:["id":2,"name":"Ryan Test"])
         dismiss(animated: true, completion: nil)
     }
     func didPressLeftBarButtonItem() {}

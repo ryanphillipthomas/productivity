@@ -14,6 +14,7 @@ open class PRManagedObject: NSManagedObject {
 }
 
 public protocol ManagedObjectType: class {
+    static var sortedFetchRequest:NSFetchRequest<NSFetchRequestResult> {get}
     static var entityName:String {get}
     static var defaultSortDescriptors:[NSSortDescriptor] {get}
     static var defaultPredicate:NSPredicate? {get}

@@ -42,6 +42,7 @@
 		B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678762424602A0009EFE4 /* UITextField+Extensions.swift */; };
 		B87678932424602A0009EFE4 /* BELogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876787A2424602A0009EFE4 /* BELogCell.swift */; };
 		B87678942424602A0009EFE4 /* BELogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B876787B2424602A0009EFE4 /* BELogCell.xib */; };
+		B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */; };
 		B882713324246B90004F5718 /* PRXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712C24246B8F004F5718 /* PRXibView.swift */; };
 		B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */; };
 		B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */; };
@@ -133,6 +134,7 @@
 		B87678762424602A0009EFE4 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		B876787A2424602A0009EFE4 /* BELogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BELogCell.swift; sourceTree = "<group>"; };
 		B876787B2424602A0009EFE4 /* BELogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BELogCell.xib; sourceTree = "<group>"; };
+		B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		B882712C24246B8F004F5718 /* PRXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRXibView.swift; sourceTree = "<group>"; };
 		B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTableViewCell.swift; sourceTree = "<group>"; };
 		B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				B882712F24246B8F004F5718 /* PRFadeImageView.swift */,
 				B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */,
 				B882712C24246B8F004F5718 /* PRXibView.swift */,
+				B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
+				B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */,
 				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
 				B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */,
 				B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */,

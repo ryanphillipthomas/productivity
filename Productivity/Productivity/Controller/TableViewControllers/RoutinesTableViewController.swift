@@ -8,18 +8,16 @@
 
 import UIKit
 
-class RoutinesTableViewController: PRBaseTableViewController {
-    var routines = [Routine]()
+class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     
     override func viewDidLoad() {
+        super.fetchRequest = Routine.sortedFetchRequest
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBar()
-        routines = Routine.fetchInContext(context: managedObjectContext)
-        tableView.reloadData()
     }
     
     func setNavigationBar() {
@@ -38,24 +36,6 @@ class RoutinesTableViewController: PRBaseTableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return routines.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
-        let routine = routines[indexPath.row]
-        cell.configureText(text: routine.name)
-        return cell
-    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
         return cell
