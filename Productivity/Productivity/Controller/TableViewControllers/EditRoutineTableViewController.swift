@@ -60,13 +60,24 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         tableView.allowsSelection = false
     }
     
+    //NOTE: can probally move into the cell
     func setTarget(cell: EditIconColorTableViewCell) {
         if let view = cell.cellView as? IconColorButtonView {
-            view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton), for: .touchUpInside)
+            view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton(sender:)), for: .touchUpInside)
         }
     }
     
-    @objc func didSelectIconButton(sender:UIButton) {
+    func setTarget(cell: EditNameTableViewCell) {
+        if let view = cell.cellView as? SingleTextFieldNameView {
+            view.textField.addTarget(self, action: #selector(self.didUpdateNameField(sender:)), for: .editingChanged)
+        }
+    }
+    
+    @objc func didUpdateNameField(sender: UITextField) {
+        workingObject.name = sender.text
+    }
+    
+    @objc func didSelectIconButton(sender: UIButton) {
         performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
     }
     
@@ -90,7 +101,13 @@ class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
         super.init(coder: aDecoder)
     }
     
-    func configureText(text: String) {
+    func configureName(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? SingleTextFieldNameView, let name = workingObject.name {
+            view.textField.text = name
+        }
+    }
+    
+    func configurePlaceholder(text: String) {
         if let view = cellView as? SingleTextFieldNameView {
             view.textField.placeholder = text
         }
@@ -149,6 +166,7 @@ class EditHeaderFooterHeaderFooterView: PRBaseTableViewCell<UIView> {
 extension EditRoutineTableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? EditNameTableViewCell {
+            //linkely need to limit this...
             delayWithSeconds(Constants.navigationTransitionTime) {
                 cell.setTextFieldFirstResponder()
             }
@@ -165,8 +183,10 @@ extension EditRoutineTableViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+        setTarget(cell: cell)
         let option = EditOptions.allCases[indexPath.row]
-        cell.configureText(text: option.text())
+        cell.configurePlaceholder(text: option.text())
+        cell.configureName(workingObject: workingObject)
         return cell
     }
     

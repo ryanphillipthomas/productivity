@@ -64,6 +64,7 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
         let routine = fetchedResultsController.object(at: indexPath) as! Routine
         cell.configureText(text: routine.name)
+        cell.configureImage(image: UIImage(systemName: routine.iconName))
         return cell
     }
     
