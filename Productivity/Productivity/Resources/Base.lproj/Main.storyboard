@@ -19,7 +19,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWV-s8-LoJ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
-                                    <segue destination="vFL-CJ-DJt" kind="embed" id="KOV-Tu-ug7"/>
+                                    <segue destination="vFL-CJ-DJt" kind="embed" identifier="RoutinesTableViewController" id="KOV-Tu-ug7"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -169,7 +169,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYB-WF-b2T">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
-                                    <segue destination="ER5-4r-3zW" kind="embed" id="Dnq-uq-SeT"/>
+                                    <segue destination="ER5-4r-3zW" kind="embed" identifier="SettingsTableViewController" id="Dnq-uq-SeT"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -277,7 +277,6 @@
         <!--Routines-->
         <scene sceneID="z8e-gE-erR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="51i-0X-OtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="021-Ca-7He" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Routines" image="tabBarItem:acW-dT-cKf:image" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -290,13 +289,13 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="baG-wC-Lbd"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51i-0X-OtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747.82608695652175" y="-369.64285714285711"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Yfs-ro-ya0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jZk-ed-kbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fb8-ij-idT" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="tabBarItem:cPa-gy-q4n:image" id="cPa-gy-q4n"/>
                     <toolbarItems/>
@@ -309,6 +308,7 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="iV1-Ey-JAW"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jZk-ed-kbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="735" y="545"/>
         </scene>

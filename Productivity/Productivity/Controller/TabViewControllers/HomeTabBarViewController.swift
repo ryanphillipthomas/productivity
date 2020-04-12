@@ -23,6 +23,7 @@ class HomeTabBarViewController: PRTabBarController {
         routinesTabViewController.managedObjectContext = managedObjectContext
         routinesTabViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         
+        //Setup routines nav view controller
         let routinesTabNavigationViewController = PRBaseNavigationController()
         routinesTabNavigationViewController.managedObjectContext = managedObjectContext
         routinesTabNavigationViewController.viewControllers = [routinesTabViewController]
@@ -32,6 +33,7 @@ class HomeTabBarViewController: PRTabBarController {
         settingsTabViewController.managedObjectContext = managedObjectContext
         settingsTabViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
         
+        //Setup settings nav view controller
         let settingsTabNavigationViewController = PRBaseNavigationController()
         routinesTabNavigationViewController.managedObjectContext = managedObjectContext
         settingsTabNavigationViewController.viewControllers = [settingsTabViewController]

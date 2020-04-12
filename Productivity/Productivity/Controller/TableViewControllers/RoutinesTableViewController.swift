@@ -18,12 +18,22 @@ class RoutinesTableViewController: PRBaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBar()
+        routines = Routine.fetchInContext(context: managedObjectContext)
+        tableView.reloadData()
     }
     
     func setNavigationBar() {
         if let nav = self.navigationController as? PRBaseNavigationController {
             nav.wuDelegate = self
             nav.configureNavBar(title: "Routines", rightImage: UIImage(systemName: "plus"))
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == String(describing: CreateTableViewController.classForCoder()), let nav =
+            segue.destination as? PRBaseNavigationController, let createTableViewController = nav.viewControllers.first as? CreateTableViewController  {
+            nav.managedObjectContext = managedObjectContext
+            createTableViewController.managedObjectContext = managedObjectContext
         }
     }
 
