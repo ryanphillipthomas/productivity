@@ -11,8 +11,8 @@ import UIKit
 class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     
     override func viewDidLoad() {
-        super.fetchRequest = Routine.sortedFetchRequest
         super.viewDidLoad()
+        fetchAll(fetchRequest: Routine.sortedFetchRequest)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,12 +45,34 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         return 30
     }
     
+    //MARK: PRFetchedResultController Overrides
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 74
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
+        let routine = fetchedResultsController.object(at: indexPath) as! Routine
+        cell.configureText(text: routine.name)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let routine = fetchedResultsController.object(at: indexPath) as! Routine
+            Routine.delete(id: routine.id, moc: managedObjectContext)
+        default: break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        return true
     }
 }
 

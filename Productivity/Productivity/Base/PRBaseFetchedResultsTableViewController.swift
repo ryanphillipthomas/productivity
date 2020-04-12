@@ -10,17 +10,13 @@ import UIKit
 import CoreData
 
 class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetchedResultsControllerDelegate {
-    
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var modelObject: PRManagedObject!
-    var fetchRequest: NSFetchRequest<NSFetchRequestResult>!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchAll()
     }
     
-    func fetchAll() {
+    func fetchAll(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -28,14 +24,6 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         } catch let error as NSError {
             print("Unable to perform fetch: \(error.localizedDescription)")
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Table view data source
@@ -55,30 +43,27 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         return sectionData.numberOfObjects
     }
     
-    //these should be overridedn in implementation...
+    //MARK: Override in subclasses
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
-        configure(cell: cell, indexPath: indexPath)
         return cell
     }
     
-    func configure(cell: UITableViewCell, indexPath: IndexPath) {
-        let routine = fetchedResultsController.object(at: indexPath) as! Routine
-        cell.textLabel?.text = routine.name
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        return
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            let routine = fetchedResultsController.object(at: indexPath) as! Routine
-            Routine.delete(id: routine.id, moc: managedObjectContext)
-        default: break
-        }
+        return false
     }
     
     // MARK: -  FetchedResultsController Delegate
