@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5115904C-407C-4E1F-99C5-598B9E8D0979"
+            uuid = "799C6E18-9F4F-4BD4-B4E3-1938CA3BBCD1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Productivity/Resources/AppDelegate.swift"
+            filePath = "Productivity/Controller/TableViewControllers/EditRoutineTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "application(_:configurationForConnecting:options:)"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "didPressRightBarButtonItem()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

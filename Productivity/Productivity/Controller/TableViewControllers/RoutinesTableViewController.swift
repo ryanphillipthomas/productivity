@@ -62,10 +62,16 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
-        let routine = fetchedResultsController.object(at: indexPath) as! Routine
-        cell.configureText(text: routine.name)
-        cell.configureImage(image: UIImage(systemName: routine.iconName))
+        configureCell(cell, at: indexPath)
         return cell
+    }
+    
+    override func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+        if let cell = cell as? CreateTableViewCell {
+            let routine = fetchedResultsController.object(at: indexPath) as! Routine
+            cell.configureText(text: routine.name)
+            cell.configureImage(image: UIImage(systemName: routine.iconName))
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

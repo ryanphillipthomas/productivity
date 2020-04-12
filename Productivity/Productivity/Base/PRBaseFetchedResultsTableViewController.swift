@@ -54,7 +54,12 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
+        configureCell(cell, at: indexPath)
         return cell
+    }
+    
+    func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -86,11 +91,31 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
+        switch (type) {
         case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
         case .delete:
-            tableView.deleteRows(at: [newIndexPath!], with: .automatic)
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
+                configureCell(cell, at: indexPath)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
         default: break
         }
     }
