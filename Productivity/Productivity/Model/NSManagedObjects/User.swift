@@ -22,7 +22,7 @@ class User: PRManagedObject {
                 return nil
         }
         
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         let user = User.findOrCreateInContext(moc: moc, matchingPredicate: predicate) { (user) in
             user.id = id
         }
@@ -42,7 +42,7 @@ class User: PRManagedObject {
     }
     
     public static func delete(id: Int64, moc: NSManagedObjectContext) {
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         if let user = User.findOrFetchInContext(moc: moc, matchingPredicate: predicate) {
             moc.delete(user)
             _ = moc.saveOrRollback()

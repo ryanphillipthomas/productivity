@@ -64,6 +64,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     func setTarget(cell: EditIconColorTableViewCell) {
         if let view = cell.cellView as? IconColorButtonView {
             view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton(sender:)), for: .touchUpInside)
+            view.colorButton.addTarget(self, action: #selector(self.didSelectColorButton(sender:)), for: .touchUpInside)
         }
     }
     
@@ -81,10 +82,16 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         performSegue(withIdentifier: String(describing: IconsCollectionViewController.classForCoder()), sender: nil)
     }
     
+    @objc func didSelectColorButton(sender: UIButton) {
+        performSegue(withIdentifier: String(describing: ColorsCollectionViewController.classForCoder()), sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: IconsCollectionViewController.classForCoder()), let iconsCollectionViewController =
             segue.destination as? IconsCollectionViewController {
             iconsCollectionViewController.delegate = self
+        } else if segue.identifier == String(describing: ColorsCollectionViewController.classForCoder()), let colorsCollectionViewController = segue.destination as? ColorsCollectionViewController {
+            colorsCollectionViewController.delegate = self
         }
     }
 }
@@ -134,12 +141,18 @@ class EditIconColorTableViewCell: PRBaseTableViewCell<UIView> {
     func configureIconButton(workingObject: PRBaseWorkingObject) {
         if let view = cellView as? IconColorButtonView, let iconName = workingObject.iconName {
             view.iconButton.setImage(UIImage(systemName: iconName), for: .normal)
+            if let colorValue = workingObject.colorValue {
+                view.iconButton.tintColor = UIColor(hexString: colorValue)
+            }
         }
     }
     
     func configureColorButton(workingObject: PRBaseWorkingObject) {
-        if let view = cellView as? IconColorButtonView, let iconName = workingObject.iconName {
-            view.colorButton.setImage(UIImage(systemName: iconName), for: .normal)
+        if let view = cellView as? IconColorButtonView {
+            view.colorButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+            if let colorValue = workingObject.colorValue {
+                view.colorButton.tintColor = UIColor(hexString: colorValue)
+            }
         }
     }
 }
@@ -223,6 +236,13 @@ extension EditRoutineTableViewController: PRBaseNavigationControllerDelegate {
 extension EditRoutineTableViewController: IconsCollectionViewControllerDelegate {
     func didSelectIcon(iconName: String) {
         workingObject.iconName = iconName
+        tableView.reloadData()
+    }
+}
+
+extension EditRoutineTableViewController: ColorsCollectionViewControllerDelegate {
+    func didSelectColor(colorValue: String) {
+        workingObject.colorValue = colorValue
         tableView.reloadData()
     }
 }

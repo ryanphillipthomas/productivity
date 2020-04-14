@@ -126,9 +126,12 @@ class CreateTableViewCell: PRBaseTableViewCell<UIView> {
         }
     }
     
-    func configureImage(image: UIImage?) {
+    func configureImage(image: UIImage?, colorValue: UIColor?) {
         if let view = cellView as? IconImageSingleLabelDisclosureView, let image = image {
             view.imageView.image = image
+            if let colorValue = colorValue {
+                view.imageView.tintColor = colorValue
+            }
         }
     }
 }
@@ -182,9 +185,13 @@ extension CreateTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: EditRoutineTableViewController.classForCoder()), let routineTableViewController =
             segue.destination as? EditRoutineTableViewController {
+            
             if let nav = self.navigationController as? PRBaseNavigationController {
                 routineTableViewController.managedObjectContext = nav.managedObjectContext
             }
+            
+            let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
+            routineTableViewController.workingObject.id = groupId.int64Value
         }
     }
     
@@ -200,7 +207,7 @@ extension CreateTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
         let option = CreateOptions.allCases[indexPath.row]
         cell.configureText(text: option.text())
-        cell.configureImage(image: option.image())
+        cell.configureImage(image: option.image(), colorValue: nil)
         return cell
     }
     

@@ -171,11 +171,47 @@
                     <navigationItem key="navigationItem" id="Bbr-U1-C2P"/>
                     <connections>
                         <segue destination="N8W-VR-7au" kind="show" identifier="IconsCollectionViewController" id="LxQ-Ty-pTE"/>
+                        <segue destination="pz3-hb-poW" kind="show" identifier="ColorsCollectionViewController" id="61F-Mn-hNg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM9-hg-sn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5293" y="-703"/>
+        </scene>
+        <!--Colors Collection View Controller-->
+        <scene sceneID="qMx-fX-JGL">
+            <objects>
+                <collectionViewController id="pz3-hb-poW" customClass="ColorsCollectionViewController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3VU-Jb-O1O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u7C-zv-rGh">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorCollectionViewCell" id="Ak2-Mf-g0i" customClass="ColorCollectionViewCell" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pc8-JR-9v3">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="pz3-hb-poW" id="4aF-oi-xoB"/>
+                            <outlet property="delegate" destination="pz3-hb-poW" id="mdR-B4-3kn"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Hbc-RH-RZ3"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAQ-iG-JdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6497" y="-309"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="bHM-sH-dLd">
@@ -307,7 +343,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g13-yP-OuO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6386" y="-703"/>
+            <point key="canvasLocation" x="6507" y="-1010"/>
         </scene>
         <!--Routines-->
         <scene sceneID="z8e-gE-erR">

@@ -33,20 +33,20 @@ class Routine: PRManagedObject {
                 return nil
         }
 
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         let routine = Routine.findOrCreateInContext(moc: moc, matchingPredicate: predicate) { (routine) in
             routine.id = id
             routine.name = name
             routine.iconName = iconName
             routine.colorValue = colorValue
         }
-
+        
         return routine
     }
     
     //MARK: Find
     public static func find(moc: NSManagedObjectContext, id:Int64) -> Routine? {
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         return Routine.findOrFetchInContext(moc: moc, matchingPredicate: predicate)
     }
 
@@ -62,7 +62,7 @@ class Routine: PRManagedObject {
     }
 
     public static func delete(id: Int64, moc: NSManagedObjectContext) {
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         if let routine = Routine.findOrFetchInContext(moc: moc, matchingPredicate: predicate) {
             moc.delete(routine)
             _ = moc.saveOrRollback()
