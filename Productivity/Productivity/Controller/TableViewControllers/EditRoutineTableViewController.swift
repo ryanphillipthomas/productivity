@@ -37,8 +37,8 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setupWorkingObject()
+        setNavigationBar()
     }
     
     func setupWorkingObject() {
@@ -51,7 +51,11 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     func setNavigationBar() {
         if let nav = self.navigationController as? PRBaseNavigationController {
             nav.wuDelegate = self
-            nav.configureNavBar(title: "New Routine", rightButtonText: "Done")
+            if let colorValue = workingObject.colorValue {
+                nav.configureNavBar(title: "Routine", rightButtonText: "Done", buttonColorOverride:UIColor(hexString: colorValue))
+            } else {
+                nav.configureNavBar(title: "New Routine", rightButtonText: "Done")
+            }
         }
     }
     
@@ -117,6 +121,12 @@ class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
     func configurePlaceholder(text: String) {
         if let view = cellView as? SingleTextFieldNameView {
             view.textField.placeholder = text
+        }
+    }
+    
+    func configureTintColor(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? SingleTextFieldNameView, let colorValue = workingObject.colorValue {
+            view.textField.tintColor = UIColor(hexString: colorValue)
         }
     }
     
@@ -200,6 +210,7 @@ extension EditRoutineTableViewController {
         let option = EditOptions.allCases[indexPath.row]
         cell.configurePlaceholder(text: option.text())
         cell.configureName(workingObject: workingObject)
+        cell.configureTintColor(workingObject: workingObject)
         return cell
     }
     
