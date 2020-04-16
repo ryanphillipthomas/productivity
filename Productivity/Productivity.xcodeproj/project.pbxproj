@@ -46,6 +46,10 @@
 		B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */; };
 		B87C117E2444054F00305886 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = B87C117D2444054F00305886 /* colors.json */; };
 		B87C11802444057E00305886 /* ColorsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */; };
+		B87C11862447D7B200305886 /* PRProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11842447D7B200305886 /* PRProducts.swift */; };
+		B87C11872447D7B200305886 /* PRIAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11852447D7B200305886 /* PRIAPManager.swift */; };
+		B87C11892447DB0400305886 /* PRSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */; };
+		B87C118B2447DCCB00305886 /* poohWisdom.json in Resources */ = {isa = PBXBuildFile; fileRef = B87C118A2447DCCB00305886 /* poohWisdom.json */; };
 		B882713324246B90004F5718 /* PRXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712C24246B8F004F5718 /* PRXibView.swift */; };
 		B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */; };
 		B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */; };
@@ -66,6 +70,7 @@
 		B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715524257FC3004F5718 /* PRManagedObject.swift */; };
 		B882715F24257FC3004F5718 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715724257FC3004F5718 /* LoginManager.swift */; };
 		B882716224257FC3004F5718 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715A24257FC3004F5718 /* SettingsManager.swift */; };
+		B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C70C312447F01C00E94BEF /* StoreKit.framework */; };
 		B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */; };
 		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
 		B8D56B482429899500FEF929 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B472429899500FEF929 /* IconView.swift */; };
@@ -141,6 +146,10 @@
 		B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseWorkingObject.swift; sourceTree = "<group>"; };
 		B87C117D2444054F00305886 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
 		B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewController.swift; sourceTree = "<group>"; };
+		B87C11842447D7B200305886 /* PRProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRProducts.swift; sourceTree = "<group>"; };
+		B87C11852447D7B200305886 /* PRIAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRIAPManager.swift; sourceTree = "<group>"; };
+		B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRSubscriptionViewController.swift; sourceTree = "<group>"; };
+		B87C118A2447DCCB00305886 /* poohWisdom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poohWisdom.json; sourceTree = "<group>"; };
 		B882712C24246B8F004F5718 /* PRXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRXibView.swift; sourceTree = "<group>"; };
 		B882712D24246B8F004F5718 /* PRBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTableViewCell.swift; sourceTree = "<group>"; };
 		B882712E24246B8F004F5718 /* PRTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -162,6 +171,7 @@
 		B882715724257FC3004F5718 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		B882715A24257FC3004F5718 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B882716424258A1A004F5718 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8C70C312447F01C00E94BEF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewController.swift; sourceTree = "<group>"; };
 		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
 		B8D56B472429899500FEF929 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
@@ -193,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CADC3A91A189D1E89BEF3E08 /* Pods_Productivity.framework in Frameworks */,
+				B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +252,7 @@
 			children = (
 				B8F19AFB24428AE500F8915F /* TabViewControllers */,
 				B8F19AFA24428AC900F8915F /* TableViewControllers */,
+				B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -368,6 +380,15 @@
 			path = BELogCell;
 			sourceTree = "<group>";
 		};
+		B87C11812447D6E100305886 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				B87C11852447D7B200305886 /* PRIAPManager.swift */,
+				B87C11842447D7B200305886 /* PRProducts.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
 		B882714424246F2A004F5718 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D56B4924298B6200FEF929 /* icons.json */,
+				B87C118A2447DCCB00305886 /* poohWisdom.json */,
 				B87C117D2444054F00305886 /* colors.json */,
 				B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */,
 				B882714924246FC8004F5718 /* Constants.swift */,
@@ -476,6 +498,7 @@
 		B8FA79BC2421C0FB007E7706 /* Productivity */ = {
 			isa = PBXGroup;
 			children = (
+				B87C11812447D6E100305886 /* IAP */,
 				B882714424246F2A004F5718 /* Animation */,
 				B87677FE2422E8310009EFE4 /* Base */,
 				B87677F92422E2C90009EFE4 /* Model */,
@@ -509,6 +532,7 @@
 		FDB674122EC37321AD44A976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8C70C312447F01C00E94BEF /* StoreKit.framework */,
 				F60EBFAC27B074BFC7C98AD1 /* Pods_Productivity.framework */,
 			);
 			name = Frameworks;
@@ -598,6 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B87C118B2447DCCB00305886 /* poohWisdom.json in Resources */,
 				B8FA79CC2421C0FD007E7706 /* LaunchScreen.storyboard in Resources */,
 				B82E556D242663C70040A04E /* LineSingleLabelHeaderFooterView.xib in Resources */,
 				B8FA79C92421C0FD007E7706 /* Assets.xcassets in Resources */,
@@ -691,6 +716,7 @@
 				B87678852424602A0009EFE4 /* UIView+Extensions.swift in Sources */,
 				B87678862424602A0009EFE4 /* UIColor+Extensions.swift in Sources */,
 				B882713924246B90004F5718 /* PRBaseTextField.swift in Sources */,
+				B87C11892447DB0400305886 /* PRSubscriptionViewController.swift in Sources */,
 				B8F19AFF24428CC200F8915F /* Task.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
@@ -721,6 +747,7 @@
 				B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */,
 				B82E55772427BA980040A04E /* SingleTextFieldNameView.swift in Sources */,
 				B87678892424602A0009EFE4 /* String+Extension.swift in Sources */,
+				B87C11862447D7B200305886 /* PRProducts.swift in Sources */,
 				B882715B24257FC3004F5718 /* User.swift in Sources */,
 				B87678812424602A0009EFE4 /* ReachabilityManager.swift in Sources */,
 				B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */,
@@ -733,6 +760,7 @@
 				B882713724246B90004F5718 /* PRBaseCollectionViewCell.swift in Sources */,
 				B882713624246B90004F5718 /* PRFadeImageView.swift in Sources */,
 				B882713324246B90004F5718 /* PRXibView.swift in Sources */,
+				B87C11872447D7B200305886 /* PRIAPManager.swift in Sources */,
 				B882714124246CEE004F5718 /* PRTabBarController.swift in Sources */,
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,
@@ -911,15 +939,17 @@
 			baseConfigurationReference = 5C0E60D6B0E9A054C85F1537 /* Pods-Productivity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74G76BYTN3;
+				DEVELOPMENT_TEAM = FS6KJ5XME6;
 				INFOPLIST_FILE = Productivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanphillipthomas.Productivity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryanphillipthomas.checkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -930,15 +960,17 @@
 			baseConfigurationReference = 03C243687EC5B39105CAEF25 /* Pods-Productivity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74G76BYTN3;
+				DEVELOPMENT_TEAM = FS6KJ5XME6;
 				INFOPLIST_FILE = Productivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryanphillipthomas.Productivity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryanphillipthomas.checkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

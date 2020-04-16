@@ -268,6 +268,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="HpC-Lx-b8v" kind="showDetail" identifier="PRSubscriptionViewController" id="vZl-Rk-fVk"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,11 +386,76 @@
             </objects>
             <point key="canvasLocation" x="735" y="545"/>
         </scene>
+        <!--Subscription View Controller-->
+        <scene sceneID="lDa-Es-XTl">
+            <objects>
+                <viewController id="HpC-Lx-b8v" customClass="PRSubscriptionViewController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Fi-rS-51a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avataaar6" translatesAutoresizingMaskIntoConstraints="NO" id="DbZ-KZ-wUK">
+                                <rect key="frame" x="55.5" y="384" width="303" height="404"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DbZ-KZ-wUK" secondAttribute="height" multiplier="3:4" id="f9e-bM-zq2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-UN-Lmr">
+                                <rect key="frame" x="20" y="20" width="374" height="344"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-G9-AIX">
+                                <rect key="frame" x="16" y="389" width="64" height="30"/>
+                                <state key="normal" title="Purchase"/>
+                                <connections>
+                                    <action selector="purchaseSubscription:" destination="HpC-Lx-b8v" eventType="touchUpInside" id="JvV-s9-jpP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2R-qe-hZQ">
+                                <rect key="frame" x="345" y="389" width="53" height="30"/>
+                                <state key="normal" title="Restore"/>
+                                <connections>
+                                    <action selector="purchaseSubscription:" destination="HpC-Lx-b8v" eventType="touchUpInside" id="CnS-wc-a2H"/>
+                                    <action selector="restorePurchases:" destination="HpC-Lx-b8v" eventType="touchUpInside" id="QMn-Ep-Gon"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TRe-UN-Lmr" firstAttribute="top" secondItem="Ads-OL-2L6" secondAttribute="top" constant="20" id="1TY-be-4tV"/>
+                            <constraint firstItem="DbZ-KZ-wUK" firstAttribute="centerX" secondItem="Ads-OL-2L6" secondAttribute="centerX" id="43V-Cc-qMx"/>
+                            <constraint firstItem="U2R-qe-hZQ" firstAttribute="centerY" secondItem="Qda-G9-AIX" secondAttribute="centerY" id="4Oy-YD-QDN"/>
+                            <constraint firstItem="TRe-UN-Lmr" firstAttribute="leading" secondItem="Ads-OL-2L6" secondAttribute="leading" constant="20" id="8aH-H1-9rU"/>
+                            <constraint firstItem="U2R-qe-hZQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qda-G9-AIX" secondAttribute="trailing" constant="8" symbolic="YES" id="Fwg-AI-LSg"/>
+                            <constraint firstItem="Ads-OL-2L6" firstAttribute="trailing" secondItem="U2R-qe-hZQ" secondAttribute="trailing" constant="16" id="JQi-Wx-PIY"/>
+                            <constraint firstItem="Ads-OL-2L6" firstAttribute="trailing" secondItem="TRe-UN-Lmr" secondAttribute="trailing" constant="20" id="KAZ-a9-EKb"/>
+                            <constraint firstItem="Ads-OL-2L6" firstAttribute="bottom" secondItem="DbZ-KZ-wUK" secondAttribute="bottom" constant="20" id="R55-tc-ted"/>
+                            <constraint firstItem="Qda-G9-AIX" firstAttribute="leading" secondItem="Ads-OL-2L6" secondAttribute="leading" constant="16" id="UOh-bz-ppC"/>
+                            <constraint firstItem="DbZ-KZ-wUK" firstAttribute="height" secondItem="Ads-OL-2L6" secondAttribute="height" multiplier="0.5" id="dTL-Ez-wBG"/>
+                            <constraint firstItem="DbZ-KZ-wUK" firstAttribute="top" secondItem="TRe-UN-Lmr" secondAttribute="bottom" constant="20" id="deX-ht-3eP"/>
+                            <constraint firstItem="Ads-OL-2L6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qda-G9-AIX" secondAttribute="trailing" symbolic="YES" id="oWc-BZ-eAs"/>
+                            <constraint firstItem="Qda-G9-AIX" firstAttribute="centerY" secondItem="Ads-OL-2L6" secondAttribute="centerY" id="x0K-ce-oaR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ads-OL-2L6"/>
+                    </view>
+                    <connections>
+                        <outlet property="purchaseBttn" destination="Qda-G9-AIX" id="qQY-da-mq8"/>
+                        <outlet property="quoteLbl" destination="TRe-UN-Lmr" id="3PS-Op-BxB"/>
+                        <outlet property="restoreBttn" destination="U2R-qe-hZQ" id="pNm-mE-YIy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7U-fL-UkB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-304" y="737"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fTw-1R-VRI"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="avataaar6" width="233" height="267"/>
         <image name="tabBarItem:acW-dT-cKf:image" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T

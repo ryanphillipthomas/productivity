@@ -13,6 +13,15 @@ class HomeTabBarViewController: PRTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
+        setupNotifications()
+    }
+    
+    func setupNotifications() {
+        NotificationCenter.default.addObserver( self, selector: #selector(applicationWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func applicationWillEnterForeground(_ notification: NSNotification) {
+        performSegue(withIdentifier: String(describing: PRSubscriptionViewController.classForCoder()), sender: nil)
     }
     
     //MARK: Setup View Controller
