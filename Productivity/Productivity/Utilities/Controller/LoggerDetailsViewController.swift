@@ -28,7 +28,6 @@ class LoggerDetailsViewController: UIViewController {
     
     //MARK: Private
     private func getFormattedLog() -> String {
-        #warning("Need to format logs here using logNode")
         var logDetails = ""
         
         //TimeStamp

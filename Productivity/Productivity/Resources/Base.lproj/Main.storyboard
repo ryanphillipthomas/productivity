@@ -119,7 +119,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create" id="7dg-rS-bCS">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="HZW-na-uHZ"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="HZW-na-uHZ"/>
                     </navigationItem>
                     <connections>
                         <segue destination="8yc-GO-Fis" kind="show" identifier="EditRoutineTableViewController" id="y0b-25-1cY"/>
@@ -351,7 +351,7 @@
         <!--Routines-->
         <scene sceneID="z8e-gE-erR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="021-Ca-7He" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RoutinesNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="021-Ca-7He" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Routines" image="tabBarItem:acW-dT-cKf:image" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyN-JA-7yi">
@@ -370,7 +370,7 @@
         <!--Settings-->
         <scene sceneID="Yfs-ro-ya0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fb8-ij-idT" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="fb8-ij-idT" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="tabBarItem:cPa-gy-q4n:image" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wqk-MQ-KVe">
@@ -452,7 +452,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fTw-1R-VRI"/>
+        <segue reference="y0b-25-1cY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="avataaar6" width="233" height="267"/>

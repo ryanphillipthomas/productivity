@@ -77,10 +77,8 @@ open class PRBaseViewController: UIViewController {
         }
     }
     
-    //MARK: Status Bar
-    func configureStatusBarStyle(style: UIStatusBarStyle) {
-        UIApplication.shared.statusBarStyle = style
-    }
+    //MARK: Dark Mode
+    //TODO
     
     //MARK: Keyboard
     @objc func keyboardWillShow(notification: Notification) {
@@ -140,8 +138,15 @@ open class PRBaseViewController: UIViewController {
     func startLoader() {
         
         //Setup Loader
+        let keyWindow = UIApplication.shared.connectedScenes
+        .filter({$0.activationState == .foregroundActive})
+        .map({$0 as? UIWindowScene})
+        .compactMap({$0})
+        .first?.windows
+        .filter({$0.isKeyWindow}).first
+        
         wuLoading = PRLoadingAnimation()
-        UIApplication.shared.keyWindow?.addSubview(wuLoading!)
+        keyWindow?.addSubview(wuLoading!)
         wuLoading?.centerMe()
         
         if let loader = wuLoading {

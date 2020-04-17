@@ -148,8 +148,6 @@ public extension Date {
         
         return calendar.date(from: mergedComponments)
     }
-    
-    #warning("Remove once we have successfully migrated/refactored")
     /*
     //MARK: Static (Double -> Date String)
     static func asDate(input: Double) -> String {

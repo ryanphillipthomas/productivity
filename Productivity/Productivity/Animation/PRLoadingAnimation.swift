@@ -146,7 +146,15 @@ class PRLoadingAnimation: UIView {
             
             // We're adding loaders to the application window
             // don't let the loaders accumulate and stay in memory.  remove them from the app window
-            if let window = UIApplication.shared.keyWindow {
+            
+            let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
+            
+            if let window = keyWindow {
                 for subview in window.subviews {
                     if (subview.isKind(of: self.classForCoder)) {
                         subview.removeFromSuperview()
@@ -158,7 +166,6 @@ class PRLoadingAnimation: UIView {
     }
     
     func addCaption(text: String) {
-        #warning("Migrate addCaption logic from original repo")
-    }
 
+    }
 }
