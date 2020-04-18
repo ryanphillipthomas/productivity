@@ -21,7 +21,7 @@ class HomeTabBarViewController: PRTabBarController {
     }
     
     @objc func applicationWillEnterForeground(_ notification: NSNotification) {
-        performSegue(withIdentifier: String(describing: PRSubscriptionViewController.classForCoder()), sender: nil)
+        //performSegue(withIdentifier: String(describing: PRSubscriptionViewController.classForCoder()), sender: nil)
     }
     
     //MARK: Setup View Controller

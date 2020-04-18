@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IconImageSingleLabelToggleView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="uZr-ww-d3i" id="ovn-Ru-SCU"/>
+                <outlet property="innerView" destination="dIr-TA-Dj3" id="MPC-FS-8EQ"/>
+                <outlet property="label" destination="ucb-sc-5zO" id="UK2-zm-VGf"/>
+                <outlet property="toggle" destination="BSE-m0-B1q" id="3Ww-GA-8qj"/>
+                <outlet property="view" destination="uQL-ej-X8M" id="Nvn-vt-UGe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uQL-ej-X8M">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIr-TA-Dj3" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
+                    <rect key="frame" x="9" y="8" width="409" height="58"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="uZr-ww-d3i" customClass="PRFadeImageView" customModule="Productivity" customModuleProvider="target">
+                            <rect key="frame" x="10" y="0.0" width="20" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="UcC-Rz-IjI"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCloud Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucb-sc-5zO">
+                            <rect key="frame" x="39" y="18.5" width="91.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSE-m0-B1q">
+                            <rect key="frame" x="350" y="13.5" width="51" height="31"/>
+                        </switch>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="uZr-ww-d3i" secondAttribute="bottom" id="A0o-1d-CP9"/>
+                        <constraint firstItem="uZr-ww-d3i" firstAttribute="top" secondItem="dIr-TA-Dj3" secondAttribute="top" id="DZe-Vq-niP"/>
+                        <constraint firstAttribute="trailing" secondItem="BSE-m0-B1q" secondAttribute="trailing" constant="10" id="f4d-Tv-fK7"/>
+                        <constraint firstItem="BSE-m0-B1q" firstAttribute="centerY" secondItem="dIr-TA-Dj3" secondAttribute="centerY" id="fjM-sy-x8i"/>
+                        <constraint firstItem="ucb-sc-5zO" firstAttribute="leading" secondItem="uZr-ww-d3i" secondAttribute="trailing" constant="9" id="i11-oi-BkH"/>
+                        <constraint firstItem="ucb-sc-5zO" firstAttribute="centerY" secondItem="uZr-ww-d3i" secondAttribute="centerY" id="uLr-Su-Mgz"/>
+                        <constraint firstItem="uZr-ww-d3i" firstAttribute="leading" secondItem="dIr-TA-Dj3" secondAttribute="leading" constant="10" id="v5o-jA-pBN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dIr-TA-Dj3" secondAttribute="bottom" constant="8" id="MZl-W6-ClU"/>
+                <constraint firstAttribute="trailing" secondItem="dIr-TA-Dj3" secondAttribute="trailing" constant="9" id="VFy-dG-0gg"/>
+                <constraint firstItem="dIr-TA-Dj3" firstAttribute="leading" secondItem="uQL-ej-X8M" secondAttribute="leading" constant="9" id="ZxJ-MA-uRD"/>
+                <constraint firstItem="dIr-TA-Dj3" firstAttribute="top" secondItem="uQL-ej-X8M" secondAttribute="top" constant="8" id="o6k-tw-fLR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="mA2-CS-djc"/>
+            <point key="canvasLocation" x="-397.82608695652175" y="-158.37053571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar" width="20" height="22"/>
+    </resources>
+</document>

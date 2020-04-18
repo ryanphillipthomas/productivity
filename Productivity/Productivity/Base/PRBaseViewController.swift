@@ -48,6 +48,10 @@ open class PRBaseViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    var isVisible: Bool {
+        return self.isViewLoaded && (self.view.window != nil)
+    }
+    
     //MARK: Observers
     func configureObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)

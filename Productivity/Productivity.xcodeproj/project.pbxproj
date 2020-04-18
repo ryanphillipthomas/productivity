@@ -82,6 +82,8 @@
 		B8F19AFD24428C9E00F8915F /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AFC24428C9E00F8915F /* Routine.swift */; };
 		B8F19AFF24428CC200F8915F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19AFE24428CC200F8915F /* Task.swift */; };
 		B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19B002442AC0600F8915F /* HomeTabBarViewController.swift */; };
+		B8F19E05244A71830006AC16 /* IconImageSingleLabelToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */; };
+		B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -183,6 +185,8 @@
 		B8F19AFC24428C9E00F8915F /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		B8F19AFE24428CC200F8915F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B8F19B002442AC0600F8915F /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
+		B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelToggleView.swift; sourceTree = "<group>"; };
+		B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelToggleView.xib; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 		B87677FA2422E2D00009EFE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */,
+				B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */,
 				B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */,
 				B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */,
 				B82E5568242660B00040A04E /* TwoLabelImageView.swift */,
@@ -628,6 +634,7 @@
 				B8FA79C92421C0FD007E7706 /* Assets.xcassets in Resources */,
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
+				B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
@@ -724,6 +731,7 @@
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
 				B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */,
 				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
+				B8F19E05244A71830006AC16 /* IconImageSingleLabelToggleView.swift in Sources */,
 				B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */,
 				B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */,
 				B87678882424602A0009EFE4 /* UINavigationController+Extensions.swift in Sources */,
