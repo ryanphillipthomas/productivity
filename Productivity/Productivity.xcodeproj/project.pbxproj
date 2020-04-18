@@ -86,6 +86,10 @@
 		B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */; };
 		B8F19E09244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */; };
 		B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */; };
+		B8F19E0D244AACA60006AC16 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E0B244AACA60006AC16 /* DailyView.swift */; };
+		B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E0C244AACA60006AC16 /* DailyView.xib */; };
+		B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */; };
+		B8F19E12244ABB180006AC16 /* TimeOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -191,6 +195,10 @@
 		B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelToggleView.xib; sourceTree = "<group>"; };
 		B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeeklyMonthlyView.swift; sourceTree = "<group>"; };
 		B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeeklyMonthlyView.xib; sourceTree = "<group>"; };
+		B8F19E0B244AACA60006AC16 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
+		B8F19E0C244AACA60006AC16 /* DailyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyView.xib; sourceTree = "<group>"; };
+		B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
+		B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeOfDayView.xib; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +263,10 @@
 				B8D56B472429899500FEF929 /* IconView.swift */,
 				B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */,
 				B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */,
+				B8F19E0B244AACA60006AC16 /* DailyView.swift */,
+				B8F19E0C244AACA60006AC16 /* DailyView.xib */,
+				B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */,
+				B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,8 +652,10 @@
 				B8FA79C92421C0FD007E7706 /* Assets.xcassets in Resources */,
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
+				B8F19E12244ABB180006AC16 /* TimeOfDayView.xib in Resources */,
 				B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */,
 				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
+				B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
@@ -775,6 +789,7 @@
 				B882713724246B90004F5718 /* PRBaseCollectionViewCell.swift in Sources */,
 				B882713624246B90004F5718 /* PRFadeImageView.swift in Sources */,
 				B882713324246B90004F5718 /* PRXibView.swift in Sources */,
+				B8F19E0D244AACA60006AC16 /* DailyView.swift in Sources */,
 				B87C11872447D7B200305886 /* PRIAPManager.swift in Sources */,
 				B882714124246CEE004F5718 /* PRTabBarController.swift in Sources */,
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
@@ -789,6 +804,7 @@
 				B882713F24246CEE004F5718 /* PRBasePageViewController.swift in Sources */,
 				B87678932424602A0009EFE4 /* BELogCell.swift in Sources */,
 				B882715D24257FC3004F5718 /* GenericCodableManagedObject.swift in Sources */,
+				B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */,
 				B876788A2424602A0009EFE4 /* NSObject+Extensions.swift in Sources */,
 				B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */,
 				B882716224257FC3004F5718 /* SettingsManager.swift in Sources */,

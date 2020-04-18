@@ -8,24 +8,91 @@
 
 import UIKit
 
+
 //MARK: EditOptions
 public enum EditOptions: CaseIterable {
     case nameOfRoutine
-    
-    func text() -> String {
+    case frequency
+    case refinedFrequency
+    case timeOfDay
+    case reminder
+    case location
+
+    func placeHolderText() -> String {
         switch(self){
-            case .nameOfRoutine: return "Name of the routine"
+        case .nameOfRoutine: return "Name of the routine"
+        case .frequency: return ""
+        case .refinedFrequency: return ""
+        case .timeOfDay: return ""
+        case .reminder: return "Add time"
+        case .location: return "Add location"
+        }
+    }
+    
+    func image() -> UIImage? {
+        switch(self){
+            case .nameOfRoutine: return nil
+            case .frequency: return nil
+            case .refinedFrequency: return nil
+            case .timeOfDay: return nil
+            case .reminder: return UIImage(systemName: "clock.fill")
+            case .location: return UIImage(systemName: "globe")
+        }
+    }
+    
+    func cellHeight() -> CGFloat {
+        switch(self){
+        case .nameOfRoutine: return 75
+        case .frequency: return 75
+        case .refinedFrequency: return 120
+        case .timeOfDay: return 120
+        case .reminder: return 75
+        case .location: return 75
+        }
+    }
+    
+    func numberOfRows() -> Int {
+        switch(self){
+        case .nameOfRoutine: return 2
+        case .frequency: return 1
+        case .refinedFrequency: return 1
+        case .timeOfDay: return 1
+        case .reminder: return 1
+        case .location: return 1
         }
     }
 }
 
+
+
 //MARK: EditHeaderFooterOptions
 public enum EditHeaderFooterOptions: CaseIterable {
     case nameOfRoutine
-    
+    case frequency
+    case refinedFrequency
+    case timeOfDay
+    case reminder
+    case location
+
     func text() -> String {
         switch(self){
-            case .nameOfRoutine: return ""
+        case .nameOfRoutine: return ""
+        case .frequency: return "I want to repeat this habit"
+        case .refinedFrequency: return "on these days"
+        case .timeOfDay: return "I will do it"
+        case .reminder: return "Remind me at these times"
+        case .location: return "Remind me at these locations"
+        }
+    }
+    
+    func headerHeight() -> CGFloat {
+        switch(self){
+        case .nameOfRoutine: return CGFloat.leastNonzeroMagnitude
+        case .frequency: return 30
+        case .refinedFrequency: return 30
+        case .timeOfDay: return 30
+        case .reminder: return 30
+        case .location: return 30
         }
     }
 }
@@ -101,6 +168,8 @@ class EditRoutineTableViewController: PRBaseTableViewController {
 }
 
 
+//MARK: TableViewCells
+
 //MARK: EditNameTableViewCell
 class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
     override func awakeFromNib() {
@@ -132,7 +201,7 @@ class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
     
     func setTextFieldFirstResponder() {
         if let view = cellView as? SingleTextFieldNameView {
-            view.textField.becomeFirstResponder()
+//            view.textField.becomeFirstResponder()
         }
     }
 }
@@ -162,6 +231,69 @@ class EditIconColorTableViewCell: PRBaseTableViewCell<UIView> {
             view.colorButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
             if let colorValue = workingObject.colorValue {
                 view.colorButton.tintColor = UIColor(hexString: colorValue)
+            }
+        }
+    }
+}
+
+//MARK: EditIconColorTableViewCell
+class EditIconRepeatFrequencyTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = DailyWeeklyMonthlyView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+//MARK: EditIconRepeatDailyTableViewCell
+class EditIconRepeatDailyTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = DailyView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+//MARK: EditIconRepeatDailyTableViewCell
+class EditIconTimeOfDayTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = TimeOfDayView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+//MARK: EditIconDisclosureTableViewCell
+class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = IconImageSingleLabelDisclosureView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func configureText(text: String) {
+        if let view = cellView as? IconImageSingleLabelDisclosureView {
+            view.label.text = text
+        }
+    }
+    
+    func configureImage(image: UIImage?, workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? IconImageSingleLabelDisclosureView, let image = image {
+            view.imageView.image = image
+            if let colorValue = workingObject.colorValue {
+                view.imageView.tintColor = UIColor(hexString: colorValue)
             }
         }
     }
@@ -197,20 +329,37 @@ extension EditRoutineTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
-            setTarget(cell: cell)
-            cell.configureIconButton(workingObject: workingObject)
-            cell.configureColorButton(workingObject: workingObject)
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatFrequencyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatFrequencyTableViewCell
+            return cell
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatDailyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatDailyTableViewCell
+            return cell
+        } else if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconTimeOfDayTableViewCell.classForCoder()), for: indexPath) as! EditIconTimeOfDayTableViewCell
+            return cell
+        } else if indexPath.section == 4 || indexPath.section == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconDisclosureTableViewCell.classForCoder()), for: indexPath) as! EditIconDisclosureTableViewCell
+            let option = EditOptions.allCases[indexPath.section]
+            cell.configureText(text: option.placeHolderText())
+            cell.configureImage(image: option.image(), workingObject: workingObject)
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+            setTarget(cell: cell)
+            cell.configureName(workingObject: workingObject)
+            cell.configureTintColor(workingObject: workingObject)
+            let option = EditOptions.allCases[indexPath.section]
+            cell.configurePlaceholder(text: option.placeHolderText())
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
         setTarget(cell: cell)
-        let option = EditOptions.allCases[indexPath.row]
-        cell.configurePlaceholder(text: option.text())
-        cell.configureName(workingObject: workingObject)
-        cell.configureTintColor(workingObject: workingObject)
+        cell.configureIconButton(workingObject: workingObject)
+        cell.configureColorButton(workingObject: workingObject)
         return cell
     }
     
@@ -223,16 +372,22 @@ extension EditRoutineTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return EditHeaderFooterOptions.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 2
+        let option = EditOptions.allCases[section]
+        return option.numberOfRows()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        let option = EditOptions.allCases[indexPath.section]
+        return option.cellHeight()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let option = EditHeaderFooterOptions.allCases[section]
+        return option.headerHeight()
     }
 }
 

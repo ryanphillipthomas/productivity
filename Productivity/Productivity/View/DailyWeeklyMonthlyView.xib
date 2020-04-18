@@ -7,9 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyWeeklyMonthlyView" customModule="Productivity" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyWeeklyMonthlyView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="dailyButton" destination="MCt-I2-x3u" id="x8S-uU-Or2"/>
+                <outlet property="monthlyButton" destination="5c9-04-QM0" id="xOw-yB-QMk"/>
+                <outlet property="view" destination="KmO-aM-3DL" id="SMt-AV-YZk"/>
+                <outlet property="weeklyButton" destination="jPC-Qh-OgJ" id="6yM-z3-qsR"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KmO-aM-3DL">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KmO-aM-3DL" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="354" height="74"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
