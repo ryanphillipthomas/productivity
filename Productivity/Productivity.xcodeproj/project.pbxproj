@@ -84,6 +84,8 @@
 		B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19B002442AC0600F8915F /* HomeTabBarViewController.swift */; };
 		B8F19E05244A71830006AC16 /* IconImageSingleLabelToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */; };
 		B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */; };
+		B8F19E09244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */; };
+		B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -187,6 +189,8 @@
 		B8F19B002442AC0600F8915F /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
 		B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelToggleView.swift; sourceTree = "<group>"; };
 		B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelToggleView.xib; sourceTree = "<group>"; };
+		B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeeklyMonthlyView.swift; sourceTree = "<group>"; };
+		B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeeklyMonthlyView.xib; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				B82E557C242841BA0040A04E /* IconColorButtonView.swift */,
 				B8D56B452429888000FEF929 /* IconView.xib */,
 				B8D56B472429899500FEF929 /* IconView.swift */,
+				B8F19E07244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift */,
+				B8F19E08244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
 				B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */,
+				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
@@ -773,6 +780,7 @@
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,
 				B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */,
+				B8F19E09244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift in Sources */,
 				B882714E24247216004F5718 /* CoreData.xcdatamodeld in Sources */,
 				B882714824246F7B004F5718 /* PRLoadingAnimation.swift in Sources */,
 				B8F19AFD24428C9E00F8915F /* Routine.swift in Sources */,

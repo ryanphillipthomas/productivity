@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +30,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Routine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C19-tV-dcC">
-                            <rect key="frame" x="39" y="18.5" width="121" height="21"/>
+                            <rect key="frame" x="43" y="18.5" width="121" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                         <constraint firstItem="C19-tV-dcC" firstAttribute="centerY" secondItem="PvY-3n-g2x" secondAttribute="centerY" id="6uT-ka-KaO"/>
                         <constraint firstItem="Dxw-EA-Aye" firstAttribute="top" secondItem="SFe-8M-Gt9" secondAttribute="top" id="Brv-Dl-t0p"/>
                         <constraint firstItem="PvY-3n-g2x" firstAttribute="top" secondItem="SFe-8M-Gt9" secondAttribute="top" id="QfP-O1-IyI"/>
-                        <constraint firstItem="C19-tV-dcC" firstAttribute="leading" secondItem="PvY-3n-g2x" secondAttribute="trailing" constant="9" id="SNu-S6-oPd"/>
+                        <constraint firstItem="C19-tV-dcC" firstAttribute="leading" secondItem="PvY-3n-g2x" secondAttribute="trailing" constant="13" id="SNu-S6-oPd"/>
                         <constraint firstAttribute="bottom" secondItem="Dxw-EA-Aye" secondAttribute="bottom" id="UEx-ac-jMf"/>
                         <constraint firstAttribute="trailing" secondItem="Dxw-EA-Aye" secondAttribute="trailing" constant="10" id="z4w-3z-3PO"/>
                     </constraints>

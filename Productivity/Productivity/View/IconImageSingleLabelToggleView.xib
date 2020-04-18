@@ -31,7 +31,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCloud Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucb-sc-5zO">
-                            <rect key="frame" x="39" y="18.5" width="91.5" height="21"/>
+                            <rect key="frame" x="43" y="18.5" width="91.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                         <constraint firstItem="uZr-ww-d3i" firstAttribute="top" secondItem="dIr-TA-Dj3" secondAttribute="top" id="DZe-Vq-niP"/>
                         <constraint firstAttribute="trailing" secondItem="BSE-m0-B1q" secondAttribute="trailing" constant="10" id="f4d-Tv-fK7"/>
                         <constraint firstItem="BSE-m0-B1q" firstAttribute="centerY" secondItem="dIr-TA-Dj3" secondAttribute="centerY" id="fjM-sy-x8i"/>
-                        <constraint firstItem="ucb-sc-5zO" firstAttribute="leading" secondItem="uZr-ww-d3i" secondAttribute="trailing" constant="9" id="i11-oi-BkH"/>
+                        <constraint firstItem="ucb-sc-5zO" firstAttribute="leading" secondItem="uZr-ww-d3i" secondAttribute="trailing" constant="13" id="i11-oi-BkH"/>
                         <constraint firstItem="ucb-sc-5zO" firstAttribute="centerY" secondItem="uZr-ww-d3i" secondAttribute="centerY" id="uLr-Su-Mgz"/>
                         <constraint firstItem="uZr-ww-d3i" firstAttribute="leading" secondItem="dIr-TA-Dj3" secondAttribute="leading" constant="10" id="v5o-jA-pBN"/>
                     </constraints>
