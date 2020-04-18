@@ -14,6 +14,10 @@
                 <outlet property="eveningButton" destination="ONl-85-DNX" id="Foz-gO-1Na"/>
                 <outlet property="morningButton" destination="MwC-hR-ND2" id="FGo-hL-SFa"/>
                 <outlet property="view" destination="BM9-Av-Bzh" id="zvA-bE-izC"/>
+                <outletCollection property="buttons" destination="MwC-hR-ND2" collectionClass="NSMutableArray" id="xpw-iT-U6e"/>
+                <outletCollection property="buttons" destination="IsT-BS-o50" collectionClass="NSMutableArray" id="ih6-Jf-0v6"/>
+                <outletCollection property="buttons" destination="ONl-85-DNX" collectionClass="NSMutableArray" id="JDZ-DW-LBn"/>
+                <outletCollection property="buttons" destination="h0f-Jy-ywu" collectionClass="NSMutableArray" id="0ay-sV-ep5"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,13 +37,13 @@
                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="morning"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsT-BS-o50">
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsT-BS-o50">
                                     <rect key="frame" x="114.5" y="0.0" width="105" height="35.5"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="afternoon"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONl-85-DNX">
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONl-85-DNX">
                                     <rect key="frame" x="229.5" y="0.0" width="104.5" height="35.5"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +51,7 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h0f-Jy-ywu">
+                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h0f-Jy-ywu">
                             <rect key="frame" x="0.0" y="44.5" width="334" height="35.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>

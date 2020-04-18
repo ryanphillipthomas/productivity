@@ -9,6 +9,7 @@
 import UIKit
 
 class TimeOfDayView: PRXibView {
+    @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var morningButton: UIButton!
     @IBOutlet weak var afternoonButton: UIButton!
     @IBOutlet weak var eveningButton: UIButton!
@@ -26,9 +27,8 @@ class TimeOfDayView: PRXibView {
     
     //MARK: Styles
     private func setStyles() {
-        morningButton.roundCorners()
-        afternoonButton.roundCorners()
-        eveningButton.roundCorners()
-        anyTimeButton.roundCorners()
+        for button in buttons {
+            button.roundCorners()
+        }
     }
 }

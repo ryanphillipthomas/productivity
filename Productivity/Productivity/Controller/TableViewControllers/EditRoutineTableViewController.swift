@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 //MARK: EditOptions
 public enum EditOptions: CaseIterable {
     case nameOfRoutine
@@ -201,7 +200,7 @@ class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
     
     func setTextFieldFirstResponder() {
         if let view = cellView as? SingleTextFieldNameView {
-//            view.textField.becomeFirstResponder()
+            view.textField.becomeFirstResponder()
         }
     }
 }
@@ -246,6 +245,16 @@ class EditIconRepeatFrequencyTableViewCell: PRBaseTableViewCell<UIView> {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    func configureButtonColor(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? DailyWeeklyMonthlyView {
+            if let colorValue = workingObject.colorValue {
+                for button in view.buttons {
+                    button.backgroundColor = UIColor(hexString: colorValue)
+                }
+            }
+        }
+    }
 }
 
 //MARK: EditIconRepeatDailyTableViewCell
@@ -258,6 +267,16 @@ class EditIconRepeatDailyTableViewCell: PRBaseTableViewCell<UIView> {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    func configureButtonColor(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? DailyView {
+            if let colorValue = workingObject.colorValue {
+                for button in view.buttons {
+                    button.backgroundColor = UIColor(hexString: colorValue)
+                }
+            }
+        }
+    }
 }
 
 //MARK: EditIconRepeatDailyTableViewCell
@@ -269,6 +288,16 @@ class EditIconTimeOfDayTableViewCell: PRBaseTableViewCell<UIView> {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func configureButtonColor(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? TimeOfDayView {
+            if let colorValue = workingObject.colorValue {
+                for button in view.buttons {
+                    button.backgroundColor = UIColor(hexString: colorValue)
+                }
+            }
+        }
     }
 }
 
@@ -331,12 +360,15 @@ extension EditRoutineTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatFrequencyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatFrequencyTableViewCell
+            cell.configureButtonColor(workingObject: workingObject)
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatDailyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatDailyTableViewCell
+            cell.configureButtonColor(workingObject: workingObject)
             return cell
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconTimeOfDayTableViewCell.classForCoder()), for: indexPath) as! EditIconTimeOfDayTableViewCell
+            cell.configureButtonColor(workingObject: workingObject)
             return cell
         } else if indexPath.section == 4 || indexPath.section == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconDisclosureTableViewCell.classForCoder()), for: indexPath) as! EditIconDisclosureTableViewCell

@@ -18,6 +18,14 @@
                 <outlet property="tuesdayButton" destination="zyw-j3-pTN" id="MCt-cw-X74"/>
                 <outlet property="view" destination="yw6-sm-jaO" id="kqN-19-1OZ"/>
                 <outlet property="wednesdayButton" destination="UuH-qr-JN0" id="ehX-xM-Txa"/>
+                <outletCollection property="buttons" destination="UQN-9N-ctD" collectionClass="NSMutableArray" id="3bl-bf-KcI"/>
+                <outletCollection property="buttons" destination="8kH-9i-ZwJ" collectionClass="NSMutableArray" id="BlI-bI-LEM"/>
+                <outletCollection property="buttons" destination="zyw-j3-pTN" collectionClass="NSMutableArray" id="4P6-tc-s2Q"/>
+                <outletCollection property="buttons" destination="UuH-qr-JN0" collectionClass="NSMutableArray" id="RiO-8G-vvJ"/>
+                <outletCollection property="buttons" destination="cjN-Y2-QL2" collectionClass="NSMutableArray" id="4Dd-3L-CNg"/>
+                <outletCollection property="buttons" destination="q9X-SM-8vg" collectionClass="NSMutableArray" id="lQf-KF-UfP"/>
+                <outletCollection property="buttons" destination="oO6-Bc-gs9" collectionClass="NSMutableArray" id="ybT-gi-UgE"/>
+                <outletCollection property="buttons" destination="oxt-Ce-H2x" collectionClass="NSMutableArray" id="eC3-8c-d9U"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

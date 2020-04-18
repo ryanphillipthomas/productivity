@@ -9,6 +9,7 @@
 import UIKit
 
 class DailyView: PRXibView {
+    @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var sundayButton: UIButton!
     @IBOutlet weak var mondayButton: UIButton!
     @IBOutlet weak var tuesdayButton: UIButton!
@@ -30,12 +31,8 @@ class DailyView: PRXibView {
     
     //MARK: Styles
     private func setStyles() {
-        sundayButton.roundCorners()
-        mondayButton.roundCorners()
-        tuesdayButton.roundCorners()
-        wednesdayButton.roundCorners()
-        thursdayButton.roundCorners()
-        fridayButton.roundCorners()
-        saturdayButton.roundCorners()
+        for button in buttons {
+            button.roundCorners()
+        }
     }
 }

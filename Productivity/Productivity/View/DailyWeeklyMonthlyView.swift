@@ -9,6 +9,7 @@
 import UIKit
 
 class DailyWeeklyMonthlyView: PRXibView {
+    @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var dailyButton: UIButton!
     @IBOutlet weak var weeklyButton: UIButton!
     @IBOutlet weak var monthlyButton: UIButton!
@@ -25,9 +26,8 @@ class DailyWeeklyMonthlyView: PRXibView {
     
     //MARK: Styles
     private func setStyles() {
-        dailyButton.roundCorners()
-        weeklyButton.roundCorners()
-        monthlyButton.roundCorners()
-        
+        for button in buttons {
+            button.roundCorners()
+        }
     }
 }
