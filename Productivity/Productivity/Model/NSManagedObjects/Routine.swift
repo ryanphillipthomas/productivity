@@ -16,7 +16,8 @@ class Routine: PRManagedObject {
     @NSManaged var colorValue: String
     
     @NSManaged var frequency: String
-    @NSManaged var frequencyDays: [String]
+    @NSManaged var frequencyDays: [Int]
+    @NSManaged var frequencyEveryDay: Bool
     @NSManaged var timeOfDay: String
 
     //MARK: Update
@@ -27,7 +28,8 @@ class Routine: PRManagedObject {
                        "iconName": workingObject.iconName ?? "gear",
                        "colorValue": workingObject.colorValue ?? "#F80DE2",
                        "frequency": workingObject.frequency ?? "Daily",
-                       "frequencyDays": workingObject.frequencyDays ?? ["M"],
+                       "frequencyDays": workingObject.frequencyDays ?? [1],
+                       "frequencyEveryDay": workingObject.frequencyEveryDay ?? false,
                        "timeOfDay": workingObject.timeOfDay ?? "Morning" ] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
@@ -35,7 +37,7 @@ class Routine: PRManagedObject {
     
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Routine? {
-        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let frequency = dictionary["frequency"] as? String, let frequencyDays = dictionary["frequencyDays"] as? [String], let timeOfDay = dictionary["timeOfDay"] as? String
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let frequency = dictionary["frequency"] as? String, let frequencyDays = dictionary["frequencyDays"] as? [Int], let timeOfDay = dictionary["timeOfDay"] as? String, let frequencyEveryDay = dictionary["frequencyEveryDay"] as? Bool
             else {
                 return nil
         }
@@ -48,6 +50,7 @@ class Routine: PRManagedObject {
             routine.colorValue = colorValue
             routine.frequency = frequency
             routine.frequencyDays = frequencyDays
+            routine.frequencyEveryDay = frequencyEveryDay
             routine.timeOfDay = timeOfDay
         }
         

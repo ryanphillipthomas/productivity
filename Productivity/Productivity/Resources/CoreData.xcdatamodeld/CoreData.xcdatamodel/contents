@@ -4,6 +4,7 @@
         <attribute name="colorValue" optional="YES" attributeType="String"/>
         <attribute name="frequency" optional="YES" attributeType="String"/>
         <attribute name="frequencyDays" optional="YES" attributeType="Transformable"/>
+        <attribute name="frequencyEveryDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -22,7 +23,7 @@
         <attribute name="lastName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Routine" positionX="-63" positionY="63" width="128" height="148"/>
+        <element name="Routine" positionX="-63" positionY="63" width="128" height="163"/>
         <element name="Task" positionX="-54" positionY="72" width="128" height="103"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>

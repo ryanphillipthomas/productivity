@@ -160,6 +160,35 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         }
     }
     
+    func setTarget(cell: EditIconRepeatDailyTableViewCell) {
+        if let view = cell.cellView as? DailyView {
+            for button in view.buttons {
+                button.addTarget(self, action: #selector(self.didSelectDayButton(sender:)), for: .touchUpInside)
+            }
+        }
+    }
+    
+    @objc func didSelectDayButton(sender: UIButton) {
+        //Every Day Button
+        if sender.tag == 7 {
+            workingObject.frequencyEveryDay = true
+            workingObject.frequencyDays?.removeAll()
+        } else {
+            workingObject.frequencyEveryDay = false
+            if let frequencyDays = workingObject.frequencyDays, frequencyDays.contains(sender.tag) {
+                for (index, day) in frequencyDays.enumerated() {
+                    if day == sender.tag {
+                        workingObject.frequencyDays?.remove(at: index)
+                    }
+                }
+            } else {
+                workingObject.frequencyDays?.append(sender.tag)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
     @objc func didSelectTimeOfDayButton(sender: UIButton) {
         workingObject.timeOfDay = sender.titleLabel?.text
         tableView.reloadData()
@@ -300,8 +329,26 @@ class EditIconRepeatDailyTableViewCell: PRBaseTableViewCell<UIView> {
     func configureButtonColor(workingObject: PRBaseWorkingObject) {
         if let view = cellView as? DailyView {
             if let colorValue = workingObject.colorValue {
+                view.clear()
                 for button in view.buttons {
-                    button.backgroundColor = UIColor(hexString: colorValue)
+                    if let frequencyDays = workingObject.frequencyDays {
+                        for day in frequencyDays {
+                            if day == button.tag {
+                                button.backgroundColor = UIColor(hexString: colorValue)
+                                
+                                let allDayButton = view.buttons[7]
+                                allDayButton.backgroundColor = UIColor(hexString: "1F2123")
+                                break
+                            }
+                        }
+                        
+                        //Check for All Day Button
+                        if button.tag == 7 {
+                            if let frequencyEveryDay = workingObject.frequencyEveryDay, frequencyEveryDay == true {
+                                button.backgroundColor = UIColor(hexString: colorValue)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -399,6 +446,7 @@ extension EditRoutineTableViewController {
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatDailyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatDailyTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
+            setTarget(cell: cell)
             return cell
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconTimeOfDayTableViewCell.classForCoder()), for: indexPath) as! EditIconTimeOfDayTableViewCell
