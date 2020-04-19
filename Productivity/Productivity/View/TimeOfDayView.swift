@@ -31,4 +31,10 @@ class TimeOfDayView: PRXibView {
             button.roundCorners()
         }
     }
+    
+    func clear() {
+        for button in buttons {
+            button.backgroundColor = UIColor(hexString: "1F2123")
+        }
+    }
 }
