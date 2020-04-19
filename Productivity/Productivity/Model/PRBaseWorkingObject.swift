@@ -14,10 +14,8 @@ class PRBaseWorkingObject: NSObject {
     var iconName: String?
     var colorValue: String?
     var frequency: String?
-    
     var frequencyDays: [Int?]?
     var frequencyEveryDay: Bool?
-    
     var timeOfDay: String?
 
     func configureFrom(routine: Routine?) {
@@ -28,6 +26,7 @@ class PRBaseWorkingObject: NSObject {
             colorValue = routine.colorValue
             frequency = routine.frequency
             frequencyDays = routine.frequencyDays
+            frequencyEveryDay = routine.frequencyEveryDay
             timeOfDay = routine.timeOfDay
         }
     }

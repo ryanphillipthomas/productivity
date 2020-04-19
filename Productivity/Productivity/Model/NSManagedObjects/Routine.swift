@@ -27,10 +27,10 @@ class Routine: PRManagedObject {
                        "name": workingObject.name ?? "Ryan Test",
                        "iconName": workingObject.iconName ?? "gear",
                        "colorValue": workingObject.colorValue ?? "#F80DE2",
-                       "frequency": workingObject.frequency ?? "Daily",
-                       "frequencyDays": workingObject.frequencyDays ?? [1],
-                       "frequencyEveryDay": workingObject.frequencyEveryDay ?? false,
-                       "timeOfDay": workingObject.timeOfDay ?? "Morning" ] as NSDictionary
+                       "frequency": workingObject.frequency ?? "daily",
+                       "frequencyDays": workingObject.frequencyDays ?? [],
+                       "frequencyEveryDay": workingObject.frequencyEveryDay ?? true,
+                       "timeOfDay": workingObject.timeOfDay ?? "At any time" ] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
     }

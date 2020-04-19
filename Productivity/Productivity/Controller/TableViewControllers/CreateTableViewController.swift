@@ -192,6 +192,13 @@ extension CreateTableViewController {
             
             let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
             routineTableViewController.workingObject.id = groupId.int64Value
+            routineTableViewController.workingObject.name = ""
+            routineTableViewController.workingObject.iconName = "flame.fill"
+            routineTableViewController.workingObject.colorValue = "#FCB711"
+            routineTableViewController.workingObject.frequency = "daily"
+            routineTableViewController.workingObject.frequencyDays = []
+            routineTableViewController.workingObject.frequencyEveryDay = true
+            routineTableViewController.workingObject.timeOfDay = "At any time"
         }
     }
     

@@ -104,6 +104,10 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorkingObject()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setNavigationBar()
     }
     
@@ -221,8 +225,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     }
 }
 
-
-//MARK: TableViewCells
 
 //MARK: EditNameTableViewCell
 class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
