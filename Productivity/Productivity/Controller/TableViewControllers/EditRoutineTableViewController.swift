@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 //MARK: EditOptions
 public enum EditOptions: CaseIterable {
@@ -16,6 +17,7 @@ public enum EditOptions: CaseIterable {
     case timeOfDay
     case reminder
     case location
+    case tasks
 
     func placeHolderText() -> String {
         switch(self){
@@ -25,6 +27,7 @@ public enum EditOptions: CaseIterable {
         case .timeOfDay: return ""
         case .reminder: return "Add time"
         case .location: return "Add location"
+        case .tasks: return ""
         }
     }
     
@@ -36,6 +39,7 @@ public enum EditOptions: CaseIterable {
             case .timeOfDay: return nil
             case .reminder: return UIImage(systemName: "clock.fill")
             case .location: return UIImage(systemName: "globe")
+            case .tasks: return nil
         }
     }
     
@@ -47,6 +51,7 @@ public enum EditOptions: CaseIterable {
         case .timeOfDay: return 125
         case .reminder: return 75
         case .location: return 75
+        case .tasks: return 150
         }
     }
     
@@ -58,6 +63,7 @@ public enum EditOptions: CaseIterable {
         case .timeOfDay: return 1
         case .reminder: return 1
         case .location: return 1
+        case .tasks: return 1
         }
     }
 }
@@ -72,6 +78,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
     case timeOfDay
     case reminder
     case location
+    case tasks
 
     func text() -> String {
         switch(self){
@@ -81,6 +88,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
         case .timeOfDay: return "I will do it"
         case .reminder: return "Remind me at these times"
         case .location: return "Remind me at these locations"
+        case .tasks: return "Manage tasks"
         }
     }
     
@@ -92,6 +100,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
         case .timeOfDay: return 30
         case .reminder: return 30
         case .location: return 30
+        case .tasks: return 30
         }
     }
 }
@@ -409,6 +418,141 @@ class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
     }
 }
 
+//MARK: EditTasksTableViewCell
+class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var tableView: UITableView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = EditTasksView()
+    }
+    
+    func configureCell(managedObjectContext: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
+        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Routine.sortedFetchRequest, sectionNameKeyPath: nil)
+        if let view = cellView as? EditTasksView {
+            tableView = view.tableView
+            tableView.dataSource = self
+            tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: "CreateTableViewCell")
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func fetchAll(managedObjectContext: NSManagedObjectContext, fetchRequest: NSFetchRequest<NSFetchRequestResult>, sectionNameKeyPath: String?) {
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Unable to perform fetch: \(error.localizedDescription)")
+        }
+    }
+    
+    func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+        if let cell = cell as? CreateTableViewCell {
+            let routine = fetchedResultsController.object(at: indexPath) as! Routine
+            cell.configureText(text: routine.name)
+            cell.configureImage(image: UIImage(systemName: routine.iconName),
+                                colorValue: UIColor(hexString: routine.colorValue))
+        }
+    }
+}
+
+extension EditTasksTableViewCell: NSFetchedResultsControllerDelegate {
+    // MARK: -  FetchedResultsController Delegate
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default: break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
+                configureCell(cell, at: indexPath)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+        default: break
+        }
+    }
+}
+
+extension EditTasksTableViewCell: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        guard let sectionCount = fetchedResultsController.sections?.count else {
+            return 0
+        }
+        return sectionCount
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let sectionData = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionData.numberOfObjects
+    }
+    
+    //MARK: Override in subclasses
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
+        configureCell(cell, at: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        return
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        return false
+    }
+}
+
 //MARK: EditHeaderFooterHeaderFooterView
 class EditHeaderFooterHeaderFooterView: PRBaseTableViewCell<UIView> {
     override func awakeFromNib() {
@@ -460,6 +604,10 @@ extension EditRoutineTableViewController {
             let option = EditOptions.allCases[indexPath.section]
             cell.configureText(text: option.placeHolderText())
             cell.configureImage(image: option.image(), workingObject: workingObject)
+            return cell
+        } else if indexPath.section == 6 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTasksTableViewCell.classForCoder()), for: indexPath) as! EditTasksTableViewCell
+            cell.configureCell(managedObjectContext: managedObjectContext, workingObject: workingObject)
             return cell
         }
         

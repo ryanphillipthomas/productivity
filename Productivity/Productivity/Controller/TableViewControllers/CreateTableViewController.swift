@@ -116,6 +116,12 @@ class CreateTableViewCell: PRBaseTableViewCell<UIView> {
         cellView = IconImageSingleLabelDisclosureView()
     }
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = .clear
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

@@ -90,6 +90,9 @@
 		B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E0C244AACA60006AC16 /* DailyView.xib */; };
 		B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */; };
 		B8F19E12244ABB180006AC16 /* TimeOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */; };
+		B8F19E14244C8BF30006AC16 /* EditTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */; };
+		B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */; };
+		B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -199,6 +202,9 @@
 		B8F19E0C244AACA60006AC16 /* DailyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyView.xib; sourceTree = "<group>"; };
 		B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
 		B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeOfDayView.xib; sourceTree = "<group>"; };
+		B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksTableViewController.swift; sourceTree = "<group>"; };
+		B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksView.swift; sourceTree = "<group>"; };
+		B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTasksView.xib; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +273,8 @@
 				B8F19E0C244AACA60006AC16 /* DailyView.xib */,
 				B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */,
 				B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */,
+				B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */,
+				B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -485,6 +493,7 @@
 				B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */,
 				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
 				B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */,
+				B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -659,6 +668,7 @@
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
+				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
@@ -786,11 +796,13 @@
 				B876788C2424602A0009EFE4 /* UILayoutGuide+Extensions.swift in Sources */,
 				B876788F2424602A0009EFE4 /* Date+Extensions.swift in Sources */,
 				B876788B2424602A0009EFE4 /* UITableView+Extensions.swift in Sources */,
+				B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */,
 				B882713724246B90004F5718 /* PRBaseCollectionViewCell.swift in Sources */,
 				B882713624246B90004F5718 /* PRFadeImageView.swift in Sources */,
 				B882713324246B90004F5718 /* PRXibView.swift in Sources */,
 				B8F19E0D244AACA60006AC16 /* DailyView.swift in Sources */,
 				B87C11872447D7B200305886 /* PRIAPManager.swift in Sources */,
+				B8F19E14244C8BF30006AC16 /* EditTasksTableViewController.swift in Sources */,
 				B882714124246CEE004F5718 /* PRTabBarController.swift in Sources */,
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,

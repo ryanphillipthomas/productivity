@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTasksView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="innerView" destination="8jn-u4-8Im" id="8CR-4K-Jaf"/>
+                <outlet property="tableView" destination="lW3-1T-tg2" id="OPX-mM-nUA"/>
+                <outlet property="view" destination="pct-vK-Cey" id="8Kt-QW-vbM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pct-vK-Cey">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jn-u4-8Im" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
+                    <rect key="frame" x="9" y="8" width="409" height="184"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-1T-tg2">
+                            <rect key="frame" x="10" y="10" width="389" height="164"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="lW3-1T-tg2" secondAttribute="trailing" constant="10" id="8J6-25-vgk"/>
+                        <constraint firstAttribute="bottom" secondItem="lW3-1T-tg2" secondAttribute="bottom" constant="10" id="J6P-Ui-VnM"/>
+                        <constraint firstItem="lW3-1T-tg2" firstAttribute="top" secondItem="8jn-u4-8Im" secondAttribute="top" constant="10" id="ZkB-7i-geL"/>
+                        <constraint firstItem="lW3-1T-tg2" firstAttribute="leading" secondItem="8jn-u4-8Im" secondAttribute="leading" constant="10" id="beU-BX-rYl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8jn-u4-8Im" secondAttribute="bottom" constant="8" id="0u4-DK-EnJ"/>
+                <constraint firstAttribute="trailing" secondItem="8jn-u4-8Im" secondAttribute="trailing" constant="9" id="1Tp-Lo-YPp"/>
+                <constraint firstItem="8jn-u4-8Im" firstAttribute="top" secondItem="pct-vK-Cey" secondAttribute="top" constant="8" id="27n-bX-S0f"/>
+                <constraint firstItem="8jn-u4-8Im" firstAttribute="leading" secondItem="pct-vK-Cey" secondAttribute="leading" constant="9" id="Rlv-bt-Msr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="E8m-1W-wLr"/>
+            <point key="canvasLocation" x="-397.82608695652175" y="-158.37053571428569"/>
+        </view>
+    </objects>
+</document>
