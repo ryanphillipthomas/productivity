@@ -14,6 +14,10 @@ class Routine: PRManagedObject {
     @NSManaged var name: String
     @NSManaged var iconName: String
     @NSManaged var colorValue: String
+    
+    @NSManaged var frequency: String
+    @NSManaged var frequencyDays: [String]
+    @NSManaged var timeOfDay: String
 
     //MARK: Update
     public static func update(moc: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
@@ -21,14 +25,17 @@ class Routine: PRManagedObject {
         let objDict = ["id": workingObject.id ?? 1,
                        "name": workingObject.name ?? "Ryan Test",
                        "iconName": workingObject.iconName ?? "gear",
-                       "colorValue": workingObject.colorValue ?? "#F80DE2"] as NSDictionary
+                       "colorValue": workingObject.colorValue ?? "#F80DE2",
+                       "frequency": workingObject.frequency ?? "Daily",
+                       "frequencyDays": workingObject.frequencyDays ?? ["M"],
+                       "timeOfDay": workingObject.timeOfDay ?? "Morning" ] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
     }
     
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Routine? {
-        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let frequency = dictionary["frequency"] as? String, let frequencyDays = dictionary["frequencyDays"] as? [String], let timeOfDay = dictionary["timeOfDay"] as? String
             else {
                 return nil
         }
@@ -39,6 +46,9 @@ class Routine: PRManagedObject {
             routine.name = name
             routine.iconName = iconName
             routine.colorValue = colorValue
+            routine.frequency = frequency
+            routine.frequencyDays = frequencyDays
+            routine.timeOfDay = timeOfDay
         }
         
         return routine

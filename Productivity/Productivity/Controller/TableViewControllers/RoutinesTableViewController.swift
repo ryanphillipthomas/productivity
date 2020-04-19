@@ -10,9 +10,43 @@ import UIKit
 
 class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     
+    public enum TimeOfDayOptions: CaseIterable {
+        case morning
+        case afternoon
+        case evening
+        case allDay
+
+        func text() -> String {
+            switch(self){
+                case .morning: return "Morning"
+                case .afternoon: return "Afternoon"
+                case .evening: return "Evening"
+                case .allDay: return "Anytime"
+            }
+        }
+    }
+    
+    //MARK: RoutinesHeaderFooterHeaderFooterView
+    class RoutinesHeaderFooterHeaderFooterView: PRTableViewHeaderFooterView<UIView> {
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            cellView = LineSingleLabelHeaderFooterView()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
+        
+        func configureText(text: String) {
+            if let view = cellView as? LineSingleLabelHeaderFooterView {
+                view.label.text = text
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchAll(fetchRequest: Routine.sortedFetchRequest)
+        fetchAll(fetchRequest: Routine.sortedFetchRequest, sectionNameKeyPath: "timeOfDay")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,12 +72,6 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
             editRoutineTableViewController.routineID = sender as? Int64
         }
     }
-
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
-        return cell
-    }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
@@ -64,6 +92,20 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
         configureCell(cell, at: indexPath)
         return cell
+    }
+    
+    // MARK: - Table view data source
+     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
+            configureHeaderFooterView(cell, at: section)
+         return cell
+     }
+    
+    override func configureHeaderFooterView(_ view: UIView, at section: Int) {
+        if let cell = view as? CreateHeaderFooterHeaderFooterView {
+            let option = TimeOfDayOptions.allCases[section]
+            cell.configureText(text: option.text())
+        }
     }
     
     override func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {

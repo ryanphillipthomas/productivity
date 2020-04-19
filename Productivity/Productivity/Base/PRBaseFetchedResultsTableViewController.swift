@@ -16,8 +16,8 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         super.viewDidLoad()
     }
     
-    func fetchAll(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+    func fetchAll(fetchRequest: NSFetchRequest<NSFetchRequestResult>, sectionNameKeyPath: String?) {
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -52,6 +52,12 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
+        configureHeaderFooterView(cell, at: section)
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
         configureCell(cell, at: indexPath)
@@ -60,6 +66,10 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
     
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
 
+    }
+    
+    func configureHeaderFooterView(_ view: UIView, at section: Int) {
+        
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -84,8 +94,14 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         switch type {
         case .insert:
             tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+            if let view = tableView(tableView, viewForHeaderInSection: sectionIndex) {
+                configureHeaderFooterView(view, at: sectionIndex)
+            }
         case .delete:
             tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+            if let view = tableView(tableView, viewForHeaderInSection: sectionIndex) {
+                configureHeaderFooterView(view, at: sectionIndex)
+            }
         default: break
         }
     }
@@ -105,6 +121,10 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         case .update:
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) {
                 configureCell(cell, at: indexPath)
+            }
+            
+            if let indexPath = indexPath, let view = tableView(tableView, viewForHeaderInSection: indexPath.section) {
+                configureHeaderFooterView(view, at: indexPath.section)
             }
             break;
         case .move:
