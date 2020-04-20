@@ -118,8 +118,7 @@ class CreateTableViewCell: PRBaseTableViewCell<UIView> {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        backgroundColor = .clear
+        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -35,8 +35,7 @@ open class PRBaseTableViewCell<View: UIView>: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        backgroundColor = .clear
+        awakeFromNib()
     }
     
     //MARK: Reuse

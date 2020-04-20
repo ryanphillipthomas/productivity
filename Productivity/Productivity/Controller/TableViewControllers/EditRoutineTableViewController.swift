@@ -422,6 +422,7 @@ class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
 class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var tableView: UITableView!
+    var managedObjectContext: NSManagedObjectContext!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -432,9 +433,11 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
         self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Routine.sortedFetchRequest, sectionNameKeyPath: nil)
         if let view = cellView as? EditTasksView {
             tableView = view.tableView
-            tableView.dataSource = self
             tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: "CreateTableViewCell")
+            tableView.delegate = self
+            tableView.dataSource = self
         }
+        self.managedObjectContext = managedObjectContext
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -457,6 +460,25 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
             cell.configureText(text: routine.name)
             cell.configureImage(image: UIImage(systemName: routine.iconName),
                                 colorValue: UIColor(hexString: routine.colorValue))
+        }
+    }
+}
+
+extension EditTasksTableViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let routine = fetchedResultsController.object(at: indexPath) as! Routine
+            Routine.delete(id: routine.id, moc: managedObjectContext)
+        default: break
         }
     }
 }
@@ -533,23 +555,10 @@ extension EditTasksTableViewCell: UITableViewDataSource {
         return 44
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
         configureCell(cell, at: indexPath)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        return
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return false
     }
 }
 
@@ -658,7 +667,9 @@ extension EditRoutineTableViewController {
 
 extension EditRoutineTableViewController: PRBaseNavigationControllerDelegate {
     func didPressRightBarButtonItem() {
-        Routine.update(moc: managedObjectContext, workingObject: workingObject)
+        managedObjectContext.performChanges {
+            Routine.update(moc: self.managedObjectContext, workingObject: self.workingObject)
+        }
         dismiss(animated: true, completion: nil)
     }
     func didPressLeftBarButtonItem() {}
