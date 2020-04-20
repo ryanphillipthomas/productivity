@@ -72,6 +72,15 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
         
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+         if let sections = fetchedResultsController.sections {
+             let currentSection = sections[section]
+             return currentSection.name
+         }
+         
+         return nil
+     }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         return
     }
@@ -93,15 +102,9 @@ class PRBaseFetchedResultsTableViewController: PRBaseTableViewController, NSFetc
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
-            if let view = tableView(tableView, viewForHeaderInSection: sectionIndex) {
-                configureHeaderFooterView(view, at: sectionIndex)
-            }
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
         case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
-            if let view = tableView(tableView, viewForHeaderInSection: sectionIndex) {
-                configureHeaderFooterView(view, at: sectionIndex)
-            }
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
         default: break
         }
     }

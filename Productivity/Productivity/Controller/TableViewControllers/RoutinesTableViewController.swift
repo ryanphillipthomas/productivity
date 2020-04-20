@@ -98,15 +98,24 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
      override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
          let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
             configureHeaderFooterView(cell, at: section)
-         return cell
+        return cell
      }
     
     override func configureHeaderFooterView(_ view: UIView, at section: Int) {
         if let cell = view as? CreateHeaderFooterHeaderFooterView {
-            let option = TimeOfDayOptions.allCases[section]
-            cell.configureText(text: option.text())
+            let option = tableView(tableView: tableView, titleForHeaderInSection: section)
+            cell.configureText(text: option ?? "")
         }
     }
+    
+   override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+         if let sections = fetchedResultsController.sections {
+             let currentSection = sections[section]
+             return currentSection.name
+         }
+         
+         return nil
+     }
     
     override func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         if let cell = cell as? CreateTableViewCell {
