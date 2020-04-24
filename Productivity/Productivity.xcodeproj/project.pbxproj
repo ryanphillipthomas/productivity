@@ -93,6 +93,8 @@
 		B8F19E14244C8BF30006AC16 /* EditTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */; };
 		B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */; };
 		B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */; };
+		B8F19E1B245283CD0006AC16 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E19245283CD0006AC16 /* AddTaskView.swift */; };
+		B8F19E1C245283CD0006AC16 /* AddTaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E1A245283CD0006AC16 /* AddTaskView.xib */; };
 		B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */; };
 		B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */; };
 		B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA79C12421C0FB007E7706 /* RoutinesTabViewController.swift */; };
@@ -205,6 +207,8 @@
 		B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksTableViewController.swift; sourceTree = "<group>"; };
 		B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksView.swift; sourceTree = "<group>"; };
 		B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTasksView.xib; sourceTree = "<group>"; };
+		B8F19E19245283CD0006AC16 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		B8F19E1A245283CD0006AC16 /* AddTaskView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskView.xib; sourceTree = "<group>"; };
 		B8FA79BA2421C0FB007E7706 /* Productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FA79BD2421C0FB007E7706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FA79BF2421C0FB007E7706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 				B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */,
 				B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */,
 				B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */,
+				B8F19E19245283CD0006AC16 /* AddTaskView.swift */,
+				B8F19E1A245283CD0006AC16 /* AddTaskView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
 				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,
+				B8F19E1C245283CD0006AC16 /* AddTaskView.xib in Resources */,
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
@@ -823,6 +830,7 @@
 				B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */,
 				B882714024246CEE004F5718 /* PRBaseViewController.swift in Sources */,
 				B876788D2424602A0009EFE4 /* Dictionary+Extensions.swift in Sources */,
+				B8F19E1B245283CD0006AC16 /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

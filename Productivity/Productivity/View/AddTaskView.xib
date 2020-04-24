@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddTaskView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="addTaskButton" destination="AuM-G9-TAt" id="Rc0-Pp-bU9"/>
+                <outlet property="view" destination="AIu-zZ-vhW" id="bt6-hj-h1c"/>
+                <outletCollection property="buttons" destination="AuM-G9-TAt" collectionClass="NSMutableArray" id="A0Z-0K-W67"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AIu-zZ-vhW" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="86"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuM-G9-TAt">
+                    <rect key="frame" x="10" y="10" width="334" height="66"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Add Task"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="AuM-G9-TAt" secondAttribute="trailing" constant="10" id="JBm-61-5g8"/>
+                <constraint firstAttribute="top" secondItem="AuM-G9-TAt" secondAttribute="top" constant="-10" id="ds7-MT-Pkf"/>
+                <constraint firstAttribute="bottom" secondItem="AuM-G9-TAt" secondAttribute="bottom" constant="10" id="ghS-oT-Kng"/>
+                <constraint firstItem="AuM-G9-TAt" firstAttribute="leading" secondItem="AIu-zZ-vhW" secondAttribute="leading" constant="10" id="jpq-JI-m6h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-484.05797101449281" y="-218.97321428571428"/>
+        </view>
+    </objects>
+</document>

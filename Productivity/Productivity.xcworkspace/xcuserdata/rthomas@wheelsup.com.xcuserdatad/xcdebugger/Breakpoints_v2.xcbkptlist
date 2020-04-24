@@ -30,8 +30,8 @@
             filePath = "Productivity/Controller/TableViewControllers/EditRoutineTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>

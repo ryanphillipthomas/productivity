@@ -18,6 +18,7 @@ public enum EditOptions: CaseIterable {
     case reminder
     case location
     case tasks
+    case addTask
 
     func placeHolderText() -> String {
         switch(self){
@@ -28,6 +29,7 @@ public enum EditOptions: CaseIterable {
         case .reminder: return "Add time"
         case .location: return "Add location"
         case .tasks: return ""
+        case .addTask: return ""
         }
     }
     
@@ -40,10 +42,11 @@ public enum EditOptions: CaseIterable {
             case .reminder: return UIImage(systemName: "clock.fill")
             case .location: return UIImage(systemName: "globe")
             case .tasks: return nil
+            case .addTask: return nil
         }
     }
     
-    func cellHeight() -> CGFloat {
+    func cellHeight(cellItemCount: Int?) -> CGFloat {
         switch(self){
         case .nameOfRoutine: return 75
         case .frequency: return 75
@@ -51,7 +54,8 @@ public enum EditOptions: CaseIterable {
         case .timeOfDay: return 125
         case .reminder: return 75
         case .location: return 75
-        case .tasks: return 150
+        case .tasks: return CGFloat(cellItemCount ?? 0 * 20)
+        case .addTask: return 75
         }
     }
     
@@ -64,10 +68,10 @@ public enum EditOptions: CaseIterable {
         case .reminder: return 1
         case .location: return 1
         case .tasks: return 1
+        case .addTask: return 1
         }
     }
 }
-
 
 
 //MARK: EditHeaderFooterOptions
@@ -79,6 +83,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
     case reminder
     case location
     case tasks
+    case addTask
 
     func text() -> String {
         switch(self){
@@ -89,6 +94,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
         case .reminder: return "Remind me at these times"
         case .location: return "Remind me at these locations"
         case .tasks: return "Manage tasks"
+        case .addTask: return ""
         }
     }
     
@@ -101,6 +107,7 @@ public enum EditHeaderFooterOptions: CaseIterable {
         case .reminder: return 30
         case .location: return 30
         case .tasks: return 30
+        case .addTask: return CGFloat.leastNonzeroMagnitude
         }
     }
 }
@@ -418,6 +425,29 @@ class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
     }
 }
 
+//MARK: EditAddTaskTableViewCell
+class EditAddTaskTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = AddTaskView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func configureButtonColor(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? AddTaskView {
+            if let colorValue = workingObject.colorValue {
+                view.clear()
+                for button in view.buttons {
+                    button.backgroundColor = UIColor(hexString: colorValue)
+                }
+            }
+        }
+    }
+}
+
 //MARK: EditTasksTableViewCell
 class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -618,6 +648,10 @@ extension EditRoutineTableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTasksTableViewCell.classForCoder()), for: indexPath) as! EditTasksTableViewCell
             cell.configureCell(managedObjectContext: managedObjectContext, workingObject: workingObject)
             return cell
+        } else if indexPath.section == 7 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditAddTaskTableViewCell.classForCoder()), for: indexPath) as! EditAddTaskTableViewCell
+            cell.configureButtonColor(workingObject: workingObject)
+            return cell
         }
         
         if indexPath.row == 0 {
@@ -656,7 +690,7 @@ extension EditRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let option = EditOptions.allCases[indexPath.section]
-        return option.cellHeight()
+        return option.cellHeight(cellItemCount: 0)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
