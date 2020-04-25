@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="354" height="230"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-Fc-Zc0">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-Fc-Zc0">
                     <rect key="frame" x="10" y="10" width="334" height="210"/>
                 </datePicker>
             </subviews>

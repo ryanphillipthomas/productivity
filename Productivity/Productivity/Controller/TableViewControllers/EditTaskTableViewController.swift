@@ -80,7 +80,13 @@ class EditTimeLengthTableViewCell: PRBaseTableViewCell<UIView> {
                 view.timePicker.datePickerMode = .countDownTimer
                 view.timePicker.backgroundColor = UIColor(hexString: colorValue)
                 if let length = workingObject.length {
-                    view.timePicker.countDownDuration = TimeInterval(length)
+                    DispatchQueue.main.async(execute: {
+                        view.timePicker.countDownDuration = TimeInterval(length)
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {
+                        view.timePicker.countDownDuration = TimeInterval()
+                    })
                 }
             }
         }
@@ -128,6 +134,10 @@ class EditTaskTableViewController: PRBaseTableViewController {
         }
     }
     
+    @objc func didUpdateTime(sender: UIDatePicker) {
+        workingObject.length = Int64(sender.countDownDuration)
+    }
+    
     @objc func didUpdateNameField(sender: UITextField) {
         workingObject.name = sender.text
     }
@@ -166,6 +176,12 @@ class EditTaskTableViewController: PRBaseTableViewController {
             view.textField.addTarget(self, action: #selector(self.didUpdateNameField(sender:)), for: .editingChanged)
         }
     }
+    
+    func setTarget(cell: EditTimeLengthTableViewCell) {
+        if let view = cell.cellView as? TimeLengthView {
+            view.timePicker.addTarget(self, action: #selector(self.didUpdateTime(sender:)), for: .valueChanged)
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -199,6 +215,7 @@ class EditTaskTableViewController: PRBaseTableViewController {
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTimeLengthTableViewCell.classForCoder()), for: indexPath) as! EditTimeLengthTableViewCell
             cell.configureTimePicker(workingObject: workingObject)
+            setTarget(cell: cell)
             return cell
         }
         
