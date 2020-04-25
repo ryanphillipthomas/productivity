@@ -325,7 +325,6 @@
 				B88861482453DB2400EE1133 /* TableViewCells */,
 				B8F19AFB24428AE500F8915F /* TabViewControllers */,
 				B8F19AFA24428AC900F8915F /* TableViewControllers */,
-				B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -548,6 +547,7 @@
 		B8F19AFA24428AC900F8915F /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */,
 				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
 				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
 				B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */,
