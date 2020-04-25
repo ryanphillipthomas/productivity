@@ -40,7 +40,7 @@ class Task: PRManagedObject {
                 return nil
         }
 
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         let task = Task.findOrCreateInContext(moc: moc, matchingPredicate: predicate) { (task) in
             task.id = id
             task.name = name
@@ -69,7 +69,7 @@ class Task: PRManagedObject {
     }
 
     public static func delete(id: Int64, moc: NSManagedObjectContext) {
-        let predicate = NSPredicate(format: "id == %i", id)
+        let predicate = NSPredicate(format: "id == %lld", id)
         if let task = Task.findOrFetchInContext(moc: moc, matchingPredicate: predicate) {
             moc.delete(task)
             _ = moc.saveOrRollback()

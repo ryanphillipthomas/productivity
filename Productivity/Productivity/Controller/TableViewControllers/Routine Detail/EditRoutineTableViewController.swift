@@ -56,7 +56,7 @@ public enum EditOptions: CaseIterable {
         case .location: return 75
         case .tasks:
             let height = itemHeight ?? 0
-            return CGFloat(height * 100)
+            return CGFloat(height * 77)
         case .addTask: return 75
         }
     }
@@ -127,6 +127,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBar()
+        tableView.reloadData()
     }
     
     func setupWorkingObject() {
@@ -254,11 +255,15 @@ class EditRoutineTableViewController: PRBaseTableViewController {
             nav.managedObjectContext = managedObjectContext
             editTaskTableViewController.managedObjectContext = managedObjectContext
             
-            let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
-            editTaskTableViewController.workingObject.id = groupId.int64Value
-            editTaskTableViewController.workingObject.name = ""
-            editTaskTableViewController.workingObject.iconName = "flame.fill"
-            editTaskTableViewController.workingObject.colorValue = workingObject.colorValue
+            if let senderID = sender as? Int64 {
+                editTaskTableViewController.taskID = senderID
+            } else {
+                let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
+                editTaskTableViewController.workingObject.id = groupId.int64Value
+                editTaskTableViewController.workingObject.name = ""
+                editTaskTableViewController.workingObject.iconName = "flame.fill"
+                editTaskTableViewController.workingObject.colorValue = workingObject.colorValue
+            }
         }
     }
 }
@@ -470,17 +475,22 @@ class EditAddTaskTableViewCell: PRBaseTableViewCell<UIView> {
 }
 
 //MARK: EditTasksTableViewCell
+protocol EditTasksTableViewCellDelegate: NSObjectProtocol {
+    func didSelectTask(task: Task)
+}
+
 class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var tableView: UITableView!
     var managedObjectContext: NSManagedObjectContext!
+    weak var delegate: EditTasksTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cellView = EditTasksView()
     }
     
-    func configureCell(managedObjectContext: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
+    func configureCell(managedObjectContext: NSManagedObjectContext) {
         self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
         if let view = cellView as? EditTasksView {
             tableView = view.tableView
@@ -518,6 +528,10 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
 extension EditTasksTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let task = fetchedResultsController.object(at: indexPath) as! Task
+        if let delegate = delegate {
+            delegate.didSelectTask(task: task)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -528,7 +542,9 @@ extension EditTasksTableViewCell: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             let task = fetchedResultsController.object(at: indexPath) as! Task
-            Task.delete(id: task.id, moc: managedObjectContext)
+            managedObjectContext.perform {
+                Task.delete(id: task.id, moc: self.managedObjectContext)
+            }
         default: break
         }
     }
@@ -667,7 +683,8 @@ extension EditRoutineTableViewController {
             return cell
         } else if indexPath.section == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTasksTableViewCell.classForCoder()), for: indexPath) as! EditTasksTableViewCell
-            cell.configureCell(managedObjectContext: managedObjectContext, workingObject: workingObject)
+            cell.configureCell(managedObjectContext: managedObjectContext)
+            cell.delegate = self
             return cell
         } else if indexPath.section == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditAddTaskTableViewCell.classForCoder()), for: indexPath) as! EditAddTaskTableViewCell
@@ -743,5 +760,11 @@ extension EditRoutineTableViewController: ColorsCollectionViewControllerDelegate
     func didSelectColor(colorValue: String) {
         workingObject.colorValue = colorValue
         tableView.reloadData()
+    }
+}
+
+extension EditRoutineTableViewController: EditTasksTableViewCellDelegate {
+    func didSelectTask(task: Task) {
+        performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: task.id)
     }
 }
