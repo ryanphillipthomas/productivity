@@ -63,45 +63,6 @@ public enum EditTaskHeaderFooterOptions: CaseIterable {
     }
 }
 
-//MARK: EditTimeLengthTableViewCell
-class EditTimeLengthTableViewCell: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = TimeLengthView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureTimePicker(workingObject: PRBaseWorkingObject) {
-        if let view = cellView as? TimeLengthView {
-            if let colorValue = workingObject.colorValue {
-                view.timePicker.datePickerMode = .countDownTimer
-                view.timePicker.backgroundColor = UIColor(hexString: colorValue)
-                if let length = workingObject.length {
-                    DispatchQueue.main.async(execute: {
-                        view.timePicker.countDownDuration = TimeInterval(length)
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                        view.timePicker.countDownDuration = TimeInterval()
-                    })
-                }
-            }
-        }
-    }
-    
-    func configureColorButton(workingObject: PRBaseWorkingObject) {
-        if let view = cellView as? IconColorButtonView {
-            view.colorButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            if let colorValue = workingObject.colorValue {
-                view.colorButton.tintColor = UIColor(hexString: colorValue)
-            }
-        }
-    }
-}
-
 class EditTaskTableViewController: PRBaseTableViewController {
     var taskID: Int64?
     var workingObject = PRBaseWorkingObject()
