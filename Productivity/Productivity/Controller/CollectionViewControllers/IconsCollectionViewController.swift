@@ -8,25 +8,6 @@
 
 import UIKit
 
-//MARK: IconCollectionViewCell
-class IconCollectionViewCell: PRBaseCollectionViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = IconView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureImage(image: UIImage?) {
-        if let view = cellView as? IconView {
-            view.imageView.tintColor = UIColor.random
-            view.imageView.image = image
-        }
-    }
-}
-
 //MARK: EditRoutineTableViewControllerDelegate
 protocol IconsCollectionViewControllerDelegate: NSObjectProtocol {
     func didSelectIcon(iconName: String)

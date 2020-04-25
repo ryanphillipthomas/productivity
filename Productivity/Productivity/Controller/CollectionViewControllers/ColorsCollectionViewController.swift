@@ -8,25 +8,6 @@
 
 import UIKit
 
-//MARK: IconCollectionViewCell
-class ColorCollectionViewCell: PRBaseCollectionViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = IconView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureColor(color: UIColor?) {
-        if let view = cellView as? IconView {
-            view.imageView.image = UIImage(systemName: "circle.fill")
-            view.imageView.tintColor = color
-        }
-    }
-}
-
 protocol ColorsCollectionViewControllerDelegate: NSObjectProtocol {
     func didSelectColor(colorValue: String)
 }

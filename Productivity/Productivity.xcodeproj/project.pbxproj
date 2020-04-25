@@ -85,6 +85,8 @@
 		B888616424545C3000EE1133 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888616324545C3000EE1133 /* ToggleTableViewCell.swift */; };
 		B8886166245460A100EE1133 /* CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886165245460A100EE1133 /* CreateTableViewCell.swift */; };
 		B8886168245460C200EE1133 /* CreateTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */; };
+		B888616A245468D200EE1133 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886169245468D200EE1133 /* IconCollectionViewCell.swift */; };
+		B888616C2454691900EE1133 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888616B2454691900EE1133 /* ColorCollectionViewCell.swift */; };
 		B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C70C312447F01C00E94BEF /* StoreKit.framework */; };
 		B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */; };
 		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
@@ -105,7 +107,6 @@
 		B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E0C244AACA60006AC16 /* DailyView.xib */; };
 		B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */; };
 		B8F19E12244ABB180006AC16 /* TimeOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */; };
-		B8F19E14244C8BF30006AC16 /* EditTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */; };
 		B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */; };
 		B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */; };
 		B8F19E1B245283CD0006AC16 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F19E19245283CD0006AC16 /* AddTaskView.swift */; };
@@ -215,6 +216,8 @@
 		B888616324545C3000EE1133 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		B8886165245460A100EE1133 /* CreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewCell.swift; sourceTree = "<group>"; };
 		B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTemplateTableViewCell.swift; sourceTree = "<group>"; };
+		B8886169245468D200EE1133 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		B888616B2454691900EE1133 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8C70C312447F01C00E94BEF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewController.swift; sourceTree = "<group>"; };
 		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
@@ -235,7 +238,6 @@
 		B8F19E0C244AACA60006AC16 /* DailyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyView.xib; sourceTree = "<group>"; };
 		B8F19E0F244ABB180006AC16 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
 		B8F19E10244ABB180006AC16 /* TimeOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeOfDayView.xib; sourceTree = "<group>"; };
-		B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksTableViewController.swift; sourceTree = "<group>"; };
 		B8F19E15244C8E1F0006AC16 /* EditTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksView.swift; sourceTree = "<group>"; };
 		B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTasksView.xib; sourceTree = "<group>"; };
 		B8F19E19245283CD0006AC16 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,8 @@
 		B87677FB2422E2D70009EFE4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B888616E2454696900EE1133 /* CollectionViewCells */,
+				B888616D2454695200EE1133 /* CollectionViewControllers */,
 				B88861482453DB2400EE1133 /* TableViewCells */,
 				B8F19AFB24428AE500F8915F /* TabViewControllers */,
 				B8F19AFA24428AC900F8915F /* TableViewControllers */,
@@ -544,15 +548,30 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		B888616D2454695200EE1133 /* CollectionViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
+				B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */,
+			);
+			path = CollectionViewControllers;
+			sourceTree = "<group>";
+		};
+		B888616E2454696900EE1133 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B8886169245468D200EE1133 /* IconCollectionViewCell.swift */,
+				B888616B2454691900EE1133 /* ColorCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		B8F19AFA24428AC900F8915F /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				B87C11882447DB0400305886 /* PRSubscriptionViewController.swift */,
 				B82E55712426759B0040A04E /* CreateTableViewController.swift */,
-				B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */,
-				B87C117F2444057E00305886 /* ColorsCollectionViewController.swift */,
 				B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */,
-				B8F19E13244C8BF30006AC16 /* EditTasksTableViewController.swift */,
 				B8F19AF62442815400F8915F /* SettingsTableViewController.swift */,
 				B8F19AF82442820600F8915F /* RoutinesTableViewController.swift */,
 				B8F19E1E2453A48B0006AC16 /* EditTaskTableViewController.swift */,
@@ -826,8 +845,10 @@
 				B888615E24545AE800EE1133 /* TasksTableViewCell.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
+				B888616C2454691900EE1133 /* ColorCollectionViewCell.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
+				B888616A245468D200EE1133 /* IconCollectionViewCell.swift in Sources */,
 				B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */,
 				B888614D2453F64F00EE1133 /* TimeLengthView.swift in Sources */,
 				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
@@ -875,7 +896,6 @@
 				B882713324246B90004F5718 /* PRXibView.swift in Sources */,
 				B8F19E0D244AACA60006AC16 /* DailyView.swift in Sources */,
 				B87C11872447D7B200305886 /* PRIAPManager.swift in Sources */,
-				B8F19E14244C8BF30006AC16 /* EditTasksTableViewController.swift in Sources */,
 				B882714124246CEE004F5718 /* PRTabBarController.swift in Sources */,
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,
