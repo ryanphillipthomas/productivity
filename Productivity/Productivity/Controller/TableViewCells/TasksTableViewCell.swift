@@ -1,5 +1,5 @@
 //
-//  EditTasksTableViewCell.swift
+//  TasksTableViewCell.swift
 //  Productivity
 //
 //  Created by Ryan Thomas on 4/25/20.
@@ -10,30 +10,24 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol EditTasksTableViewCellDelegate: NSObjectProtocol {
+protocol TasksTableViewCellDelegate: NSObjectProtocol {
     func didSelectTask(task: Task)
 }
 
-class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
+class TasksTableViewCell: PRBaseTableViewCell<UIView> {
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var tableView: UITableView!
     var managedObjectContext: NSManagedObjectContext!
-    weak var delegate: EditTasksTableViewCellDelegate?
+    weak var delegate: TasksTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cellView = EditTasksView()
     }
     
-    func configureCell(managedObjectContext: NSManagedObjectContext) {
-        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
-        if let view = cellView as? EditTasksView {
-            tableView = view.tableView
-            tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: "CreateTableViewCell")
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
-        self.managedObjectContext = managedObjectContext
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +44,17 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
         }
     }
     
+    func configureCell(managedObjectContext: NSManagedObjectContext) {
+        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
+        if let view = cellView as? EditTasksView {
+            tableView = view.tableView
+            tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTableViewCell.self))
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+        self.managedObjectContext = managedObjectContext
+    }
+    
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         if let cell = cell as? CreateTableViewCell {
             let task = fetchedResultsController.object(at: indexPath) as! Task
@@ -60,7 +65,7 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     }
 }
 
-extension EditTasksTableViewCell: UITableViewDelegate {
+extension TasksTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let task = fetchedResultsController.object(at: indexPath) as! Task
@@ -85,7 +90,7 @@ extension EditTasksTableViewCell: UITableViewDelegate {
     }
 }
 
-extension EditTasksTableViewCell: NSFetchedResultsControllerDelegate {
+extension TasksTableViewCell: NSFetchedResultsControllerDelegate {
     // MARK: -  FetchedResultsController Delegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -136,7 +141,7 @@ extension EditTasksTableViewCell: NSFetchedResultsControllerDelegate {
     }
 }
 
-extension EditTasksTableViewCell: UITableViewDataSource {
+extension TasksTableViewCell: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         guard let sectionCount = fetchedResultsController.sections?.count else {

@@ -70,72 +70,16 @@ public enum SettingsOptions: CaseIterable {
     }
 }
 
-//MARK: SettingsDisclosureTableViewCell
-class SettingsDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = IconImageSingleLabelDisclosureView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureText(text: String) {
-        if let view = cellView as? IconImageSingleLabelDisclosureView {
-            view.label.text = text
-        }
-    }
-    
-    func configureImage(image: UIImage?, colorValue: UIColor?) {
-        if let view = cellView as? IconImageSingleLabelDisclosureView, let image = image {
-            view.imageView.image = image
-            if let colorValue = colorValue {
-                view.imageView.tintColor = colorValue
-            }
-        }
-    }
-}
-
-//MARK: SettingsTableViewCell
-class SettingsToggleTableViewCell: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = IconImageSingleLabelToggleView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureText(text: String) {
-        if let view = cellView as? IconImageSingleLabelToggleView {
-            view.label.text = text
-        }
-    }
-    
-    func configureImage(image: UIImage?, colorValue: UIColor?) {
-        if let view = cellView as? IconImageSingleLabelToggleView, let image = image {
-            view.imageView.image = image
-            if let colorValue = colorValue {
-                view.imageView.tintColor = colorValue
-            }
-        }
-    }
-    
-    func configureToggle(colorValue: UIColor?) {
-        if let view = cellView as? IconImageSingleLabelToggleView {
-            if let colorValue = colorValue {
-                view.toggle.onTintColor = colorValue
-            }
-        }
-    }
-}
-
 class SettingsTableViewController: PRBaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTableViewCells()
+    }
+    
+    func registerTableViewCells() {
+        tableView.register(DisclosureTableViewCell.self, forCellReuseIdentifier: String(describing: DisclosureTableViewCell.self))
+        tableView.register(ToggleTableViewCell.self, forCellReuseIdentifier: String(describing: ToggleTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +112,7 @@ class SettingsTableViewController: PRBaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsToggleTableViewCell.classForCoder()), for: indexPath) as! SettingsToggleTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ToggleTableViewCell.classForCoder()), for: indexPath) as! ToggleTableViewCell
             let option = SettingsOptions.allCases[indexPath.row]
             cell.configureText(text: option.text())
             cell.configureImage(image: option.image(), colorValue: option.color())
@@ -176,7 +120,7 @@ class SettingsTableViewController: PRBaseTableViewController {
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsDisclosureTableViewCell.classForCoder()), for: indexPath) as! SettingsDisclosureTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DisclosureTableViewCell.classForCoder()), for: indexPath) as! DisclosureTableViewCell
         let option = SettingsOptions.allCases[indexPath.row]
         cell.configureText(text: option.text())
         cell.configureImage(image: option.image(), colorValue: option.color())

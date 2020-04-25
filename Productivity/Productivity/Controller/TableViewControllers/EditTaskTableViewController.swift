@@ -70,6 +70,14 @@ class EditTaskTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorkingObject()
+        registerTableViewCells()
+    }
+    
+    func registerTableViewCells () {
+        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: String(describing: NameTableViewCell.self))
+        tableView.register(IconColorTableViewCell.self, forCellReuseIdentifier: String(describing: IconColorTableViewCell.self))
+        tableView.register(TimeLengthTableViewCell.self, forCellReuseIdentifier: String(describing: TimeLengthTableViewCell.self))
+        tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,20 +133,20 @@ class EditTaskTableViewController: PRBaseTableViewController {
         tableView.allowsSelection = false
     }
     
-    func setTarget(cell: EditIconColorTableViewCell) {
+    func setTarget(cell: IconColorTableViewCell) {
         if let view = cell.cellView as? IconColorButtonView {
             view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton(sender:)), for: .touchUpInside)
             view.colorButton.addTarget(self, action: #selector(self.didSelectColorButton(sender:)), for: .touchUpInside)
         }
     }
     
-    func setTarget(cell: EditNameTableViewCell) {
+    func setTarget(cell: NameTableViewCell) {
         if let view = cell.cellView as? SingleTextFieldNameView {
             view.textField.addTarget(self, action: #selector(self.didUpdateNameField(sender:)), for: .editingChanged)
         }
     }
     
-    func setTarget(cell: EditTimeLengthTableViewCell) {
+    func setTarget(cell: TimeLengthTableViewCell) {
         if let view = cell.cellView as? TimeLengthView {
             view.timePicker.addTarget(self, action: #selector(self.didUpdateTime(sender:)), for: .valueChanged)
         }
@@ -168,19 +176,19 @@ class EditTaskTableViewController: PRBaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: IconColorTableViewCell.classForCoder()), for: indexPath) as! IconColorTableViewCell
             setTarget(cell: cell)
             cell.configureIconButton(workingObject: workingObject)
             cell.configureColorButton(workingObject: workingObject)
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTimeLengthTableViewCell.classForCoder()), for: indexPath) as! EditTimeLengthTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimeLengthTableViewCell.classForCoder()), for: indexPath) as! TimeLengthTableViewCell
             cell.configureTimePicker(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NameTableViewCell.classForCoder()), for: indexPath) as! NameTableViewCell
         setTarget(cell: cell)
         cell.configureName(workingObject: workingObject)
         cell.configureTintColor(workingObject: workingObject)
@@ -190,8 +198,8 @@ class EditTaskTableViewController: PRBaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditHeaderFooterHeaderFooterView.classForCoder())) as! EditHeaderFooterHeaderFooterView
-        let option = EditHeaderFooterOptions.allCases[section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
+        let option = EditTaskHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
         return cell
     }

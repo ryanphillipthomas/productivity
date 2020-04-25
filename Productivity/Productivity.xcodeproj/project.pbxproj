@@ -72,16 +72,19 @@
 		B882716224257FC3004F5718 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715A24257FC3004F5718 /* SettingsManager.swift */; };
 		B888614D2453F64F00EE1133 /* TimeLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888614B2453F64E00EE1133 /* TimeLengthView.swift */; };
 		B888614E2453F64F00EE1133 /* TimeLengthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B888614C2453F64E00EE1133 /* TimeLengthView.xib */; };
-		B88861502454598200EE1133 /* EditNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888614F2454598200EE1133 /* EditNameTableViewCell.swift */; };
-		B88861522454598D00EE1133 /* EditIconColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88861512454598D00EE1133 /* EditIconColorTableViewCell.swift */; };
-		B88861542454599900EE1133 /* EditIconRepeatFrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88861532454599900EE1133 /* EditIconRepeatFrequencyTableViewCell.swift */; };
-		B8886156245459A500EE1133 /* EditIconRepeatDailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886155245459A500EE1133 /* EditIconRepeatDailyTableViewCell.swift */; };
-		B8886158245459B400EE1133 /* EditIconTimeOfDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886157245459B400EE1133 /* EditIconTimeOfDayTableViewCell.swift */; };
-		B888615A24545A8300EE1133 /* EditIconDisclosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615924545A8300EE1133 /* EditIconDisclosureTableViewCell.swift */; };
-		B888615C24545AA900EE1133 /* EditAddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615B24545AA900EE1133 /* EditAddTaskTableViewCell.swift */; };
-		B888615E24545AE800EE1133 /* EditTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615D24545AE800EE1133 /* EditTasksTableViewCell.swift */; };
-		B888616024545B1F00EE1133 /* EditHeaderFooterHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615F24545B1F00EE1133 /* EditHeaderFooterHeaderFooterView.swift */; };
-		B888616224545B9A00EE1133 /* EditTimeLengthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888616124545B9A00EE1133 /* EditTimeLengthTableViewCell.swift */; };
+		B88861502454598200EE1133 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888614F2454598200EE1133 /* NameTableViewCell.swift */; };
+		B88861522454598D00EE1133 /* IconColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88861512454598D00EE1133 /* IconColorTableViewCell.swift */; };
+		B88861542454599900EE1133 /* RepeatFrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88861532454599900EE1133 /* RepeatFrequencyTableViewCell.swift */; };
+		B8886156245459A500EE1133 /* RepeatDailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886155245459A500EE1133 /* RepeatDailyTableViewCell.swift */; };
+		B8886158245459B400EE1133 /* TimeOfDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886157245459B400EE1133 /* TimeOfDayTableViewCell.swift */; };
+		B888615A24545A8300EE1133 /* DisclosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615924545A8300EE1133 /* DisclosureTableViewCell.swift */; };
+		B888615C24545AA900EE1133 /* AddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615B24545AA900EE1133 /* AddTaskTableViewCell.swift */; };
+		B888615E24545AE800EE1133 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615D24545AE800EE1133 /* TasksTableViewCell.swift */; };
+		B888616024545B1F00EE1133 /* HeaderFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888615F24545B1F00EE1133 /* HeaderFooterTableViewCell.swift */; };
+		B888616224545B9A00EE1133 /* TimeLengthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888616124545B9A00EE1133 /* TimeLengthTableViewCell.swift */; };
+		B888616424545C3000EE1133 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888616324545C3000EE1133 /* ToggleTableViewCell.swift */; };
+		B8886166245460A100EE1133 /* CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886165245460A100EE1133 /* CreateTableViewCell.swift */; };
+		B8886168245460C200EE1133 /* CreateTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */; };
 		B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C70C312447F01C00E94BEF /* StoreKit.framework */; };
 		B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */; };
 		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
@@ -199,16 +202,19 @@
 		B882716424258A1A004F5718 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B888614B2453F64E00EE1133 /* TimeLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLengthView.swift; sourceTree = "<group>"; };
 		B888614C2453F64E00EE1133 /* TimeLengthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLengthView.xib; sourceTree = "<group>"; };
-		B888614F2454598200EE1133 /* EditNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameTableViewCell.swift; sourceTree = "<group>"; };
-		B88861512454598D00EE1133 /* EditIconColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconColorTableViewCell.swift; sourceTree = "<group>"; };
-		B88861532454599900EE1133 /* EditIconRepeatFrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconRepeatFrequencyTableViewCell.swift; sourceTree = "<group>"; };
-		B8886155245459A500EE1133 /* EditIconRepeatDailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconRepeatDailyTableViewCell.swift; sourceTree = "<group>"; };
-		B8886157245459B400EE1133 /* EditIconTimeOfDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconTimeOfDayTableViewCell.swift; sourceTree = "<group>"; };
-		B888615924545A8300EE1133 /* EditIconDisclosureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconDisclosureTableViewCell.swift; sourceTree = "<group>"; };
-		B888615B24545AA900EE1133 /* EditAddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddTaskTableViewCell.swift; sourceTree = "<group>"; };
-		B888615D24545AE800EE1133 /* EditTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksTableViewCell.swift; sourceTree = "<group>"; };
-		B888615F24545B1F00EE1133 /* EditHeaderFooterHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHeaderFooterHeaderFooterView.swift; sourceTree = "<group>"; };
-		B888616124545B9A00EE1133 /* EditTimeLengthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimeLengthTableViewCell.swift; sourceTree = "<group>"; };
+		B888614F2454598200EE1133 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		B88861512454598D00EE1133 /* IconColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconColorTableViewCell.swift; sourceTree = "<group>"; };
+		B88861532454599900EE1133 /* RepeatFrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequencyTableViewCell.swift; sourceTree = "<group>"; };
+		B8886155245459A500EE1133 /* RepeatDailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatDailyTableViewCell.swift; sourceTree = "<group>"; };
+		B8886157245459B400EE1133 /* TimeOfDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayTableViewCell.swift; sourceTree = "<group>"; };
+		B888615924545A8300EE1133 /* DisclosureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureTableViewCell.swift; sourceTree = "<group>"; };
+		B888615B24545AA900EE1133 /* AddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewCell.swift; sourceTree = "<group>"; };
+		B888615D24545AE800EE1133 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		B888615F24545B1F00EE1133 /* HeaderFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooterTableViewCell.swift; sourceTree = "<group>"; };
+		B888616124545B9A00EE1133 /* TimeLengthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLengthTableViewCell.swift; sourceTree = "<group>"; };
+		B888616324545C3000EE1133 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
+		B8886165245460A100EE1133 /* CreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewCell.swift; sourceTree = "<group>"; };
+		B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		B8C70C312447F01C00E94BEF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewController.swift; sourceTree = "<group>"; };
 		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
@@ -522,16 +528,19 @@
 		B88861482453DB2400EE1133 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				B888614F2454598200EE1133 /* EditNameTableViewCell.swift */,
-				B88861512454598D00EE1133 /* EditIconColorTableViewCell.swift */,
-				B88861532454599900EE1133 /* EditIconRepeatFrequencyTableViewCell.swift */,
-				B8886155245459A500EE1133 /* EditIconRepeatDailyTableViewCell.swift */,
-				B8886157245459B400EE1133 /* EditIconTimeOfDayTableViewCell.swift */,
-				B888615924545A8300EE1133 /* EditIconDisclosureTableViewCell.swift */,
-				B888615B24545AA900EE1133 /* EditAddTaskTableViewCell.swift */,
-				B888615D24545AE800EE1133 /* EditTasksTableViewCell.swift */,
-				B888615F24545B1F00EE1133 /* EditHeaderFooterHeaderFooterView.swift */,
-				B888616124545B9A00EE1133 /* EditTimeLengthTableViewCell.swift */,
+				B888614F2454598200EE1133 /* NameTableViewCell.swift */,
+				B88861512454598D00EE1133 /* IconColorTableViewCell.swift */,
+				B88861532454599900EE1133 /* RepeatFrequencyTableViewCell.swift */,
+				B8886155245459A500EE1133 /* RepeatDailyTableViewCell.swift */,
+				B8886157245459B400EE1133 /* TimeOfDayTableViewCell.swift */,
+				B888615924545A8300EE1133 /* DisclosureTableViewCell.swift */,
+				B888615B24545AA900EE1133 /* AddTaskTableViewCell.swift */,
+				B888615D24545AE800EE1133 /* TasksTableViewCell.swift */,
+				B888615F24545B1F00EE1133 /* HeaderFooterTableViewCell.swift */,
+				B888616124545B9A00EE1133 /* TimeLengthTableViewCell.swift */,
+				B888616324545C3000EE1133 /* ToggleTableViewCell.swift */,
+				B8886165245460A100EE1133 /* CreateTableViewCell.swift */,
+				B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -809,11 +818,12 @@
 				B87678852424602A0009EFE4 /* UIView+Extensions.swift in Sources */,
 				B87678862424602A0009EFE4 /* UIColor+Extensions.swift in Sources */,
 				B882713924246B90004F5718 /* PRBaseTextField.swift in Sources */,
-				B888616024545B1F00EE1133 /* EditHeaderFooterHeaderFooterView.swift in Sources */,
-				B88861542454599900EE1133 /* EditIconRepeatFrequencyTableViewCell.swift in Sources */,
+				B888616024545B1F00EE1133 /* HeaderFooterTableViewCell.swift in Sources */,
+				B888616424545C3000EE1133 /* ToggleTableViewCell.swift in Sources */,
+				B88861542454599900EE1133 /* RepeatFrequencyTableViewCell.swift in Sources */,
 				B87C11892447DB0400305886 /* PRSubscriptionViewController.swift in Sources */,
 				B8F19AFF24428CC200F8915F /* Task.swift in Sources */,
-				B888615E24545AE800EE1133 /* EditTasksTableViewCell.swift in Sources */,
+				B888615E24545AE800EE1133 /* TasksTableViewCell.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
@@ -838,9 +848,9 @@
 				B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */,
 				B8F19AF72442815400F8915F /* SettingsTableViewController.swift in Sources */,
 				B882714224246CEE004F5718 /* PRBaseNavigationController.swift in Sources */,
-				B888615A24545A8300EE1133 /* EditIconDisclosureTableViewCell.swift in Sources */,
+				B888615A24545A8300EE1133 /* DisclosureTableViewCell.swift in Sources */,
 				B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */,
-				B88861522454598D00EE1133 /* EditIconColorTableViewCell.swift in Sources */,
+				B88861522454598D00EE1133 /* IconColorTableViewCell.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
@@ -858,6 +868,7 @@
 				B876788C2424602A0009EFE4 /* UILayoutGuide+Extensions.swift in Sources */,
 				B876788F2424602A0009EFE4 /* Date+Extensions.swift in Sources */,
 				B876788B2424602A0009EFE4 /* UITableView+Extensions.swift in Sources */,
+				B8886168245460C200EE1133 /* CreateTemplateTableViewCell.swift in Sources */,
 				B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */,
 				B882713724246B90004F5718 /* PRBaseCollectionViewCell.swift in Sources */,
 				B882713624246B90004F5718 /* PRFadeImageView.swift in Sources */,
@@ -868,18 +879,19 @@
 				B882714124246CEE004F5718 /* PRTabBarController.swift in Sources */,
 				B882713524246B90004F5718 /* PRTableViewHeaderFooterView.swift in Sources */,
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,
-				B8886158245459B400EE1133 /* EditIconTimeOfDayTableViewCell.swift in Sources */,
+				B8886158245459B400EE1133 /* TimeOfDayTableViewCell.swift in Sources */,
 				B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */,
-				B888616224545B9A00EE1133 /* EditTimeLengthTableViewCell.swift in Sources */,
+				B888616224545B9A00EE1133 /* TimeLengthTableViewCell.swift in Sources */,
 				B8F19E09244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift in Sources */,
+				B8886166245460A100EE1133 /* CreateTableViewCell.swift in Sources */,
 				B882714E24247216004F5718 /* CoreData.xcdatamodeld in Sources */,
 				B882714824246F7B004F5718 /* PRLoadingAnimation.swift in Sources */,
-				B888615C24545AA900EE1133 /* EditAddTaskTableViewCell.swift in Sources */,
+				B888615C24545AA900EE1133 /* AddTaskTableViewCell.swift in Sources */,
 				B8F19AFD24428C9E00F8915F /* Routine.swift in Sources */,
 				B82E5569242660B00040A04E /* TwoLabelImageView.swift in Sources */,
-				B88861502454598200EE1133 /* EditNameTableViewCell.swift in Sources */,
+				B88861502454598200EE1133 /* NameTableViewCell.swift in Sources */,
 				B82E55722426759B0040A04E /* CreateTableViewController.swift in Sources */,
-				B8886156245459A500EE1133 /* EditIconRepeatDailyTableViewCell.swift in Sources */,
+				B8886156245459A500EE1133 /* RepeatDailyTableViewCell.swift in Sources */,
 				B882713F24246CEE004F5718 /* PRBasePageViewController.swift in Sources */,
 				B87678932424602A0009EFE4 /* BELogCell.swift in Sources */,
 				B882715D24257FC3004F5718 /* GenericCodableManagedObject.swift in Sources */,

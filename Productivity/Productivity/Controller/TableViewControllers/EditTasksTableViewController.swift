@@ -12,7 +12,13 @@ class EditTasksTableViewController: PRBaseFetchedResultsTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTableViewCells()
         fetchAll(fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
+    }
+    
+    func registerTableViewCells() {
+        tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTableViewCell.self))
+        tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,7 +33,7 @@ class EditTasksTableViewController: PRBaseFetchedResultsTableViewController {
     
     // MARK: - Table view data source
      override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
+         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
             configureHeaderFooterView(cell, at: section)
          return cell
      }

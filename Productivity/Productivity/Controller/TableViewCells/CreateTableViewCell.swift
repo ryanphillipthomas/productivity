@@ -1,5 +1,5 @@
 //
-//  EditIconDisclosureTableViewCell.swift
+//  CreateTableViewCell.swift
 //  Productivity
 //
 //  Created by Ryan Thomas on 4/25/20.
@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
-class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
+class CreateTableViewCell: PRBaseTableViewCell<UIView> {
     override func awakeFromNib() {
         super.awakeFromNib()
         cellView = IconImageSingleLabelDisclosureView()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,11 +30,11 @@ class EditIconDisclosureTableViewCell: PRBaseTableViewCell<UIView> {
         }
     }
     
-    func configureImage(image: UIImage?, workingObject: PRBaseWorkingObject) {
+    func configureImage(image: UIImage?, colorValue: UIColor?) {
         if let view = cellView as? IconImageSingleLabelDisclosureView, let image = image {
             view.imageView.image = image
-            if let colorValue = workingObject.colorValue {
-                view.imageView.tintColor = UIColor(hexString: colorValue)
+            if let colorValue = colorValue {
+                view.imageView.tintColor = colorValue
             }
         }
     }

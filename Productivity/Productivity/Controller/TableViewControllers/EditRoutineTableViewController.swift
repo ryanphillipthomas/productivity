@@ -122,6 +122,19 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorkingObject()
+        registerTableViewCells()
+    }
+    
+    func registerTableViewCells () {
+        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: String(describing: NameTableViewCell.self))
+        tableView.register(IconColorTableViewCell.self, forCellReuseIdentifier: String(describing: IconColorTableViewCell.self))
+        tableView.register(RepeatDailyTableViewCell.self, forCellReuseIdentifier: String(describing: RepeatDailyTableViewCell.self))
+        tableView.register(RepeatFrequencyTableViewCell.self, forCellReuseIdentifier: String(describing: RepeatFrequencyTableViewCell.self))
+        tableView.register(TimeOfDayTableViewCell.self, forCellReuseIdentifier: String(describing: TimeOfDayTableViewCell.self))
+        tableView.register(DisclosureTableViewCell.self, forCellReuseIdentifier: String(describing: DisclosureTableViewCell.self))
+        tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: String(describing: TasksTableViewCell.self))
+        tableView.register(AddTaskTableViewCell.self, forCellReuseIdentifier: String(describing: AddTaskTableViewCell.self))
+        tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,26 +167,26 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     }
     
     //NOTE: can probally move into the cell
-    func setTarget(cell: EditAddTaskTableViewCell) {
+    func setTarget(cell: AddTaskTableViewCell) {
         if let view = cell.cellView as? AddTaskView {
             view.addTaskButton.addTarget(self, action: #selector(self.didSelectAddTask(sender:)), for: .touchUpInside)
         }
     }
     
-    func setTarget(cell: EditIconColorTableViewCell) {
+    func setTarget(cell: IconColorTableViewCell) {
         if let view = cell.cellView as? IconColorButtonView {
             view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton(sender:)), for: .touchUpInside)
             view.colorButton.addTarget(self, action: #selector(self.didSelectColorButton(sender:)), for: .touchUpInside)
         }
     }
     
-    func setTarget(cell: EditNameTableViewCell) {
+    func setTarget(cell: NameTableViewCell) {
         if let view = cell.cellView as? SingleTextFieldNameView {
             view.textField.addTarget(self, action: #selector(self.didUpdateNameField(sender:)), for: .editingChanged)
         }
     }
     
-    func setTarget(cell: EditIconRepeatFrequencyTableViewCell) {
+    func setTarget(cell: RepeatFrequencyTableViewCell) {
         if let view = cell.cellView as? DailyWeeklyMonthlyView {
             for button in view.buttons {
                 button.addTarget(self, action: #selector(self.didSelectFrequencyButton(sender:)), for: .touchUpInside)
@@ -181,7 +194,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         }
     }
     
-    func setTarget(cell: EditIconTimeOfDayTableViewCell) {
+    func setTarget(cell: TimeOfDayTableViewCell) {
         if let view = cell.cellView as? TimeOfDayView {
             for button in view.buttons {
                 button.addTarget(self, action: #selector(self.didSelectTimeOfDayButton(sender:)), for: .touchUpInside)
@@ -189,7 +202,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         }
     }
     
-    func setTarget(cell: EditIconRepeatDailyTableViewCell) {
+    func setTarget(cell: RepeatDailyTableViewCell) {
         if let view = cell.cellView as? DailyView {
             for button in view.buttons {
                 button.addTarget(self, action: #selector(self.didSelectDayButton(sender:)), for: .touchUpInside)
@@ -282,40 +295,40 @@ extension EditRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatFrequencyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatFrequencyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepeatFrequencyTableViewCell.classForCoder()), for: indexPath) as! RepeatFrequencyTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconRepeatDailyTableViewCell.classForCoder()), for: indexPath) as! EditIconRepeatDailyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepeatDailyTableViewCell.classForCoder()), for: indexPath) as! RepeatDailyTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
         } else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconTimeOfDayTableViewCell.classForCoder()), for: indexPath) as! EditIconTimeOfDayTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimeOfDayTableViewCell.classForCoder()), for: indexPath) as! TimeOfDayTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
         } else if indexPath.section == 4 || indexPath.section == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconDisclosureTableViewCell.classForCoder()), for: indexPath) as! EditIconDisclosureTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DisclosureTableViewCell.classForCoder()), for: indexPath) as! DisclosureTableViewCell
             let option = EditOptions.allCases[indexPath.section]
             cell.configureText(text: option.placeHolderText())
             cell.configureImage(image: option.image(), workingObject: workingObject)
             return cell
         } else if indexPath.section == 6 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTasksTableViewCell.classForCoder()), for: indexPath) as! EditTasksTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.classForCoder()), for: indexPath) as! TasksTableViewCell
             cell.configureCell(managedObjectContext: managedObjectContext)
             cell.delegate = self
             return cell
         } else if indexPath.section == 7 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditAddTaskTableViewCell.classForCoder()), for: indexPath) as! EditAddTaskTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.classForCoder()), for: indexPath) as! AddTaskTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
         }
         
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NameTableViewCell.classForCoder()), for: indexPath) as! NameTableViewCell
             setTarget(cell: cell)
             cell.configureName(workingObject: workingObject)
             cell.configureTintColor(workingObject: workingObject)
@@ -324,7 +337,7 @@ extension EditRoutineTableViewController {
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: IconColorTableViewCell.classForCoder()), for: indexPath) as! IconColorTableViewCell
         setTarget(cell: cell)
         cell.configureIconButton(workingObject: workingObject)
         cell.configureColorButton(workingObject: workingObject)
@@ -332,7 +345,7 @@ extension EditRoutineTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditHeaderFooterHeaderFooterView.classForCoder())) as! EditHeaderFooterHeaderFooterView
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
         let option = EditHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
         return cell
@@ -384,7 +397,7 @@ extension EditRoutineTableViewController: ColorsCollectionViewControllerDelegate
     }
 }
 
-extension EditRoutineTableViewController: EditTasksTableViewCellDelegate {
+extension EditRoutineTableViewController: TasksTableViewCellDelegate {
     func didSelectTask(task: Task) {
         performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: task.id)
     }

@@ -1,6 +1,5 @@
 //
-//  EditAddTaskTableViewCell.swift
-//  Productivity
+//  TimeOfDayTableViewCell.swift
 //
 //  Created by Ryan Thomas on 4/25/20.
 //  Copyright © 2020 Ryan Thomas. All rights reserved.
@@ -9,10 +8,15 @@
 import Foundation
 import UIKit
 
-class EditAddTaskTableViewCell: PRBaseTableViewCell<UIView> {
+class TimeOfDayTableViewCell: PRBaseTableViewCell<UIView> {
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellView = AddTaskView()
+        cellView = TimeOfDayView()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,11 +24,13 @@ class EditAddTaskTableViewCell: PRBaseTableViewCell<UIView> {
     }
     
     func configureButtonColor(workingObject: PRBaseWorkingObject) {
-        if let view = cellView as? AddTaskView {
+        if let view = cellView as? TimeOfDayView {
             if let colorValue = workingObject.colorValue {
                 view.clear()
                 for button in view.buttons {
-                    button.backgroundColor = UIColor(hexString: colorValue)
+                    if (button.titleLabel?.text == workingObject.timeOfDay) {
+                        button.backgroundColor = UIColor(hexString: colorValue)
+                    }
                 }
             }
         }

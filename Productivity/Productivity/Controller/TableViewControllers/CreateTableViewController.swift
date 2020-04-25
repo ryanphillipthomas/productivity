@@ -94,6 +94,13 @@ class CreateTableViewController: PRBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        registerTableViewCells()
+    }
+    
+    func registerTableViewCells () {
+        tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTableViewCell.self))
+        tableView.register(CreateTemplateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTemplateTableViewCell.self))
+        tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,81 +112,6 @@ class CreateTableViewController: PRBaseTableViewController {
         if let nav = self.navigationController as? PRBaseNavigationController {
             nav.wuDelegate = self
             nav.configureNavBar(title: "Create", leftImage: UIImage(systemName: "xmark"))
-        }
-    }
-}
-
-//MARK: CreateTableViewCell
-class CreateTableViewCell: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = IconImageSingleLabelDisclosureView()
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        awakeFromNib()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureText(text: String) {
-        if let view = cellView as? IconImageSingleLabelDisclosureView {
-            view.label.text = text
-        }
-    }
-    
-    func configureImage(image: UIImage?, colorValue: UIColor?) {
-        if let view = cellView as? IconImageSingleLabelDisclosureView, let image = image {
-            view.imageView.image = image
-            if let colorValue = colorValue {
-                view.imageView.tintColor = colorValue
-            }
-        }
-    }
-}
-
-//MARK: CreateTemplateTableViewCell
-class CreateTemplateTableViewCell: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = TwoLabelImageView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureText(text: String, subText: String) {
-        if let view = cellView as? TwoLabelImageView {
-            view.label.text = text
-            view.subLabel.text = subText
-        }
-    }
-    
-    func configureImage(image: UIImage?) {
-        if let view = cellView as? TwoLabelImageView, let image = image {
-            view.imageView.image = image
-        }
-    }
-}
-
-//MARK: CreateHeaderFooterHeaderFooterView
-class CreateHeaderFooterHeaderFooterView: PRBaseTableViewCell<UIView> {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        cellView = LineSingleLabelHeaderFooterView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func configureText(text: String) {
-        if let view = cellView as? LineSingleLabelHeaderFooterView {
-            view.label.text = text
         }
     }
 }
@@ -224,7 +156,7 @@ extension CreateTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateHeaderFooterHeaderFooterView.classForCoder())) as! CreateHeaderFooterHeaderFooterView
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
         let option = CreateHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
         return cell

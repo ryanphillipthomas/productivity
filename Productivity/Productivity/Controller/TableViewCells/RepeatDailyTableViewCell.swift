@@ -1,5 +1,5 @@
 //
-//  EditIconRepeatDailyTableViewCell.swift
+//  RepeatDailyTableViewCell.swift
 //  Productivity
 //
 //  Created by Ryan Thomas on 4/25/20.
@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
-class EditIconRepeatDailyTableViewCell: PRBaseTableViewCell<UIView> {
+class RepeatDailyTableViewCell: PRBaseTableViewCell<UIView> {
     override func awakeFromNib() {
         super.awakeFromNib()
         cellView = DailyView()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
