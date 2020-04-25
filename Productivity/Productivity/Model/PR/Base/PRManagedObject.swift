@@ -22,8 +22,7 @@ public protocol ManagedObjectType: class {
 
 extension ManagedObjectType {
     public static var defaultSortDescriptors:[NSSortDescriptor] {
-        let sectionSortDescriptor = NSSortDescriptor(key: "timeOfDay", ascending: true)
-        return [sectionSortDescriptor]
+        return []
     }
     
     public static var defaultPredicate: NSPredicate? {

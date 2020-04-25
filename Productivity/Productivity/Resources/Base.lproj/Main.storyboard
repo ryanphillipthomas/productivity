@@ -220,11 +220,61 @@
                     <connections>
                         <segue destination="N8W-VR-7au" kind="show" identifier="IconsCollectionViewController" id="LxQ-Ty-pTE"/>
                         <segue destination="pz3-hb-poW" kind="show" identifier="ColorsCollectionViewController" id="61F-Mn-hNg"/>
+                        <segue destination="plF-Ye-lwi" kind="presentation" identifier="EditTaskTableViewController" id="sqU-Gz-Q1Z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM9-hg-sn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5293" y="-703"/>
+        </scene>
+        <!--Edit Task Table View Controller-->
+        <scene sceneID="B6z-IP-h3r">
+            <objects>
+                <tableViewController id="k9L-Sm-frw" customClass="EditTaskTableViewController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V5B-cw-ycD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditIconColorTableViewCell" id="q07-DK-3dh" customClass="EditIconColorTableViewCell" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q07-DK-3dh" id="vBH-Le-N59">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditNameTableViewCell" id="gcX-t3-JW3" customClass="EditNameTableViewCell" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gcX-t3-JW3" id="Ejz-zR-ga4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditHeaderFooterHeaderFooterView" id="fUJ-Rv-uu2" customClass="EditHeaderFooterHeaderFooterView" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fUJ-Rv-uu2" id="2MM-JU-9Zk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="k9L-Sm-frw" id="Lh6-kZ-CpB"/>
+                            <outlet property="delegate" destination="k9L-Sm-frw" id="XxO-hX-rAY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="3nv-qo-X1n"/>
+                    <connections>
+                        <segue destination="N8W-VR-7au" kind="show" identifier="IconsCollectionViewController" id="vB1-wD-m7f"/>
+                        <segue destination="pz3-hb-poW" kind="show" identifier="ColorsCollectionViewController" id="hvy-Xd-5sG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muX-8c-ceZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6252" y="15"/>
         </scene>
         <!--Colors Collection View Controller-->
         <scene sceneID="qMx-fX-JGL">
@@ -259,7 +309,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAQ-iG-JdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6497" y="-309"/>
+            <point key="canvasLocation" x="7922" y="-169"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="bHM-sH-dLd">
@@ -412,7 +462,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g13-yP-OuO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6507" y="-1010"/>
+            <point key="canvasLocation" x="7923" y="-1088"/>
         </scene>
         <!--Routines-->
         <scene sceneID="z8e-gE-erR">
@@ -516,8 +566,28 @@
             </objects>
             <point key="canvasLocation" x="4243" y="391"/>
         </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="VPh-T1-p6O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="plF-Ye-lwi" customClass="PRBaseNavigationController" customModule="Productivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TA0-aA-iwg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k9L-Sm-frw" kind="relationship" relationship="rootViewController" id="c5o-dr-h6L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9f-UA-jOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5293" y="15"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="vB1-wD-m7f"/>
+        <segue reference="hvy-Xd-5sG"/>
         <segue reference="y0b-25-1cY"/>
     </inferredMetricsTieBreakers>
     <resources>

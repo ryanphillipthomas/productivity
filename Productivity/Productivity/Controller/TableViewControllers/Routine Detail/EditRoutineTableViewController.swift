@@ -46,7 +46,7 @@ public enum EditOptions: CaseIterable {
         }
     }
     
-    func cellHeight(cellItemCount: Int?) -> CGFloat {
+    func cellHeight(itemHeight:Int?) -> CGFloat {
         switch(self){
         case .nameOfRoutine: return 75
         case .frequency: return 75
@@ -54,7 +54,9 @@ public enum EditOptions: CaseIterable {
         case .timeOfDay: return 125
         case .reminder: return 75
         case .location: return 75
-        case .tasks: return CGFloat(cellItemCount ?? 0 * 20)
+        case .tasks:
+            let height = itemHeight ?? 0
+            return CGFloat(height * 100)
         case .addTask: return 75
         }
     }
@@ -151,6 +153,12 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     }
     
     //NOTE: can probally move into the cell
+    func setTarget(cell: EditAddTaskTableViewCell) {
+        if let view = cell.cellView as? AddTaskView {
+            view.addTaskButton.addTarget(self, action: #selector(self.didSelectAddTask(sender:)), for: .touchUpInside)
+        }
+    }
+    
     func setTarget(cell: EditIconColorTableViewCell) {
         if let view = cell.cellView as? IconColorButtonView {
             view.iconButton.addTarget(self, action: #selector(self.didSelectIconButton(sender:)), for: .touchUpInside)
@@ -231,16 +239,29 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         performSegue(withIdentifier: String(describing: ColorsCollectionViewController.classForCoder()), sender: nil)
     }
     
+    @objc func didSelectAddTask(sender: UIButton) {
+        performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: IconsCollectionViewController.classForCoder()), let iconsCollectionViewController =
             segue.destination as? IconsCollectionViewController {
             iconsCollectionViewController.delegate = self
         } else if segue.identifier == String(describing: ColorsCollectionViewController.classForCoder()), let colorsCollectionViewController = segue.destination as? ColorsCollectionViewController {
             colorsCollectionViewController.delegate = self
+        } else if segue.identifier == String(describing: EditTaskTableViewController.classForCoder()), let nav =
+            segue.destination as? PRBaseNavigationController, let editTaskTableViewController = nav.viewControllers.first as? EditTaskTableViewController  {
+            nav.managedObjectContext = managedObjectContext
+            editTaskTableViewController.managedObjectContext = managedObjectContext
+            
+            let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
+            editTaskTableViewController.workingObject.id = groupId.int64Value
+            editTaskTableViewController.workingObject.name = ""
+            editTaskTableViewController.workingObject.iconName = "flame.fill"
+            editTaskTableViewController.workingObject.colorValue = workingObject.colorValue
         }
     }
 }
-
 
 //MARK: EditNameTableViewCell
 class EditNameTableViewCell: PRBaseTableViewCell<UIView> {
@@ -460,7 +481,7 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     }
     
     func configureCell(managedObjectContext: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
-        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Routine.sortedFetchRequest, sectionNameKeyPath: nil)
+        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
         if let view = cellView as? EditTasksView {
             tableView = view.tableView
             tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: "CreateTableViewCell")
@@ -486,10 +507,10 @@ class EditTasksTableViewCell: PRBaseTableViewCell<UIView> {
     
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         if let cell = cell as? CreateTableViewCell {
-            let routine = fetchedResultsController.object(at: indexPath) as! Routine
-            cell.configureText(text: routine.name)
-            cell.configureImage(image: UIImage(systemName: routine.iconName),
-                                colorValue: UIColor(hexString: routine.colorValue))
+            let task = fetchedResultsController.object(at: indexPath) as! Task
+            cell.configureText(text: task.name)
+            cell.configureImage(image: UIImage(systemName: task.iconName),
+                                colorValue: UIColor(hexString: task.colorValue))
         }
     }
 }
@@ -506,8 +527,8 @@ extension EditTasksTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            let routine = fetchedResultsController.object(at: indexPath) as! Routine
-            Routine.delete(id: routine.id, moc: managedObjectContext)
+            let task = fetchedResultsController.object(at: indexPath) as! Task
+            Task.delete(id: task.id, moc: managedObjectContext)
         default: break
         }
     }
@@ -651,6 +672,7 @@ extension EditRoutineTableViewController {
         } else if indexPath.section == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditAddTaskTableViewCell.classForCoder()), for: indexPath) as! EditAddTaskTableViewCell
             cell.configureButtonColor(workingObject: workingObject)
+            setTarget(cell: cell)
             return cell
         }
         
@@ -690,7 +712,8 @@ extension EditRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let option = EditOptions.allCases[indexPath.section]
-        return option.cellHeight(cellItemCount: 0)
+        let routinesCount = Task.countInContext(context: managedObjectContext)
+        return option.cellHeight(itemHeight: routinesCount)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

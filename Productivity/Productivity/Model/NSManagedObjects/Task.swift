@@ -14,6 +14,8 @@ class Task: PRManagedObject {
     @NSManaged var name: String
     @NSManaged var iconName: String
     @NSManaged var colorValue: String
+    @NSManaged var order: Int64
+    @NSManaged var length: Int64
 
     //MARK: Update
     public static func update(moc: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
@@ -24,6 +26,11 @@ class Task: PRManagedObject {
                        "colorValue": workingObject.colorValue ?? "#F80DE2"] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
+    }
+    
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        let sectionSortDescriptor = NSSortDescriptor(key: "order", ascending: true)
+        return [sectionSortDescriptor]
     }
 
     //MARK: Insert
@@ -42,6 +49,12 @@ class Task: PRManagedObject {
         }
 
         return task
+    }
+    
+    //MARK: Find
+    public static func find(moc: NSManagedObjectContext, id:Int64) -> Task? {
+        let predicate = NSPredicate(format: "id == %lld", id)
+        return Task.findOrFetchInContext(moc: moc, matchingPredicate: predicate)
     }
 
     //MARK: Delete

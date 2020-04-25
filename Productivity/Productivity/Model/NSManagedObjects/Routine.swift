@@ -19,6 +19,8 @@ class Routine: PRManagedObject {
     @NSManaged var frequencyDays: [Int]
     @NSManaged var frequencyEveryDay: Bool
     @NSManaged var timeOfDay: String
+    
+    @NSManaged var length: Int64
 
     //MARK: Update
     public static func update(moc: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
@@ -33,6 +35,11 @@ class Routine: PRManagedObject {
                        "timeOfDay": workingObject.timeOfDay ?? "At any time" ] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
+    }
+    
+    public static var defaultSortDescriptors: [NSSortDescriptor] {
+        let sectionSortDescriptor = NSSortDescriptor(key: "timeOfDay", ascending: true)
+        return [sectionSortDescriptor]
     }
     
     //MARK: Insert
