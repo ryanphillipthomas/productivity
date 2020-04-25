@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeLengthView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="timePicker" destination="PVw-Fc-Zc0" id="jLG-dS-b2O"/>
+                <outlet property="view" destination="NAA-Xd-uGv" id="aV3-3A-WQr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NAA-Xd-uGv" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="230"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-Fc-Zc0">
+                    <rect key="frame" x="10" y="10" width="334" height="210"/>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="PVw-Fc-Zc0" firstAttribute="leading" secondItem="gTs-Tn-A06" secondAttribute="leading" constant="10" id="BHb-fI-rMH"/>
+                <constraint firstItem="gTs-Tn-A06" firstAttribute="trailing" secondItem="PVw-Fc-Zc0" secondAttribute="trailing" constant="10" id="UPs-Si-A7J"/>
+                <constraint firstItem="PVw-Fc-Zc0" firstAttribute="top" secondItem="NAA-Xd-uGv" secondAttribute="topMargin" constant="10" id="dLW-gC-xUK"/>
+                <constraint firstAttribute="bottomMargin" secondItem="PVw-Fc-Zc0" secondAttribute="bottom" constant="10" id="dqe-7C-Mor"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="gTs-Tn-A06"/>
+            <point key="canvasLocation" x="-484.05797101449281" y="-267.1875"/>
+        </view>
+    </objects>
+</document>

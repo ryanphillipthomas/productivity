@@ -70,6 +70,8 @@
 		B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715524257FC3004F5718 /* PRManagedObject.swift */; };
 		B882715F24257FC3004F5718 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715724257FC3004F5718 /* LoginManager.swift */; };
 		B882716224257FC3004F5718 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882715A24257FC3004F5718 /* SettingsManager.swift */; };
+		B888614D2453F64F00EE1133 /* TimeLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888614B2453F64E00EE1133 /* TimeLengthView.swift */; };
+		B888614E2453F64F00EE1133 /* TimeLengthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B888614C2453F64E00EE1133 /* TimeLengthView.xib */; };
 		B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C70C312447F01C00E94BEF /* StoreKit.framework */; };
 		B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */; };
 		B8D56B462429888000FEF929 /* IconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D56B452429888000FEF929 /* IconView.xib */; };
@@ -185,6 +187,8 @@
 		B882715724257FC3004F5718 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		B882715A24257FC3004F5718 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B882716424258A1A004F5718 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B888614B2453F64E00EE1133 /* TimeLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLengthView.swift; sourceTree = "<group>"; };
+		B888614C2453F64E00EE1133 /* TimeLengthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLengthView.xib; sourceTree = "<group>"; };
 		B8C70C312447F01C00E94BEF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B8D56B432429884000FEF929 /* IconsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewController.swift; sourceTree = "<group>"; };
 		B8D56B452429888000FEF929 /* IconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconView.xib; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				B8F19E16244C8E1F0006AC16 /* EditTasksView.xib */,
 				B8F19E19245283CD0006AC16 /* AddTaskView.swift */,
 				B8F19E1A245283CD0006AC16 /* AddTaskView.xib */,
+				B888614B2453F64E00EE1133 /* TimeLengthView.swift */,
+				B888614C2453F64E00EE1133 /* TimeLengthView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
 				B8F19E12244ABB180006AC16 /* TimeOfDayView.xib in Resources */,
+				B888614E2453F64F00EE1133 /* TimeLengthView.xib in Resources */,
 				B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */,
 				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
 				B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */,
@@ -795,6 +802,7 @@
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
 				B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */,
+				B888614D2453F64F00EE1133 /* TimeLengthView.swift in Sources */,
 				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
 				B8F19E05244A71830006AC16 /* IconImageSingleLabelToggleView.swift in Sources */,
 				B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */,

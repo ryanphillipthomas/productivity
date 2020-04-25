@@ -18,6 +18,7 @@ class PRBaseWorkingObject: NSObject {
     var frequencyEveryDay: Bool?
     var timeOfDay: String?
     var length: Int64?
+    var order: Int64?
 
     func configureFrom(routine: Routine?) {
         if let routine = routine {
@@ -40,6 +41,7 @@ class PRBaseWorkingObject: NSObject {
             iconName = task.iconName
             colorValue = task.colorValue
             length = task.length
+            order = task.order
         }
     }
 }

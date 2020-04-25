@@ -252,8 +252,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditHeaderFooterHeaderFooterView" id="fUJ-Rv-uu2" customClass="EditHeaderFooterHeaderFooterView" customModule="Productivity" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditTimeLengthTableViewCell" id="eLE-rE-Z4R" customClass="EditTimeLengthTableViewCell" customModule="Productivity" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eLE-rE-Z4R" id="Twb-M6-B38">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditHeaderFooterHeaderFooterView" id="fUJ-Rv-uu2" customClass="EditHeaderFooterHeaderFooterView" customModule="Productivity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="158.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fUJ-Rv-uu2" id="2MM-JU-9Zk">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

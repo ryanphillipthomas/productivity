@@ -23,7 +23,9 @@ class Task: PRManagedObject {
         let objDict = ["id": workingObject.id ?? 1,
                        "name": workingObject.name ?? "Ryan Test",
                        "iconName": workingObject.iconName ?? "gear",
-                       "colorValue": workingObject.colorValue ?? "#F80DE2"] as NSDictionary
+                       "colorValue": workingObject.colorValue ?? "#F80DE2",
+                       "length": workingObject.length ?? 60,
+                       "order": workingObject.order ?? 0] as NSDictionary
         
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
     }
@@ -35,7 +37,7 @@ class Task: PRManagedObject {
 
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Task? {
-        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let order = dictionary["order"] as? Int64, let length = dictionary["length"] as? Int64
             else {
                 return nil
         }
@@ -46,6 +48,8 @@ class Task: PRManagedObject {
             task.name = name
             task.iconName = iconName
             task.colorValue = colorValue
+            task.order = order
+            task.length = length
         }
 
         return task

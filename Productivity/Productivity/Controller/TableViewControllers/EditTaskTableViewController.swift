@@ -11,28 +11,33 @@ import UIKit
 //MARK: EditTaskOptions
 public enum EditTaskOptions: CaseIterable {
     case nameOfTask
+    case length
 
     func placeHolderText() -> String {
         switch(self){
         case .nameOfTask: return "Name of the task"
+        case .length: return ""
         }
     }
     
     func image() -> UIImage? {
         switch(self){
             case .nameOfTask: return nil
+            case .length: return nil
         }
     }
     
     func cellHeight() -> CGFloat {
         switch(self){
         case .nameOfTask: return 75
+        case .length: return 120
         }
     }
     
     func numberOfRows() -> Int {
         switch(self){
         case .nameOfTask: return 2
+        case .length: return 1
         }
     }
 }
@@ -41,16 +46,52 @@ public enum EditTaskOptions: CaseIterable {
 //MARK: EditTaskHeaderFooterOptions
 public enum EditTaskHeaderFooterOptions: CaseIterable {
     case nameOfTask
+    case length
 
     func text() -> String {
         switch(self){
         case .nameOfTask: return ""
+        case .length: return ""
         }
     }
     
     func headerHeight() -> CGFloat {
         switch(self){
         case .nameOfTask: return CGFloat.leastNonzeroMagnitude
+        case .length: return CGFloat.leastNonzeroMagnitude
+        }
+    }
+}
+
+//MARK: EditTimeLengthTableViewCell
+class EditTimeLengthTableViewCell: PRBaseTableViewCell<UIView> {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cellView = TimeLengthView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func configureTimePicker(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? TimeLengthView {
+            if let colorValue = workingObject.colorValue {
+                view.timePicker.datePickerMode = .countDownTimer
+                view.timePicker.backgroundColor = UIColor(hexString: colorValue)
+                if let length = workingObject.length {
+                    view.timePicker.countDownDuration = TimeInterval(length)
+                }
+            }
+        }
+    }
+    
+    func configureColorButton(workingObject: PRBaseWorkingObject) {
+        if let view = cellView as? IconColorButtonView {
+            view.colorButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+            if let colorValue = workingObject.colorValue {
+                view.colorButton.tintColor = UIColor(hexString: colorValue)
+            }
         }
     }
 }
@@ -149,21 +190,24 @@ class EditTaskTableViewController: PRBaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
             setTarget(cell: cell)
-            cell.configureName(workingObject: workingObject)
-            cell.configureTintColor(workingObject: workingObject)
-            let option = EditTaskOptions.allCases[indexPath.section]
-            cell.configurePlaceholder(text: option.placeHolderText())
+            cell.configureIconButton(workingObject: workingObject)
+            cell.configureColorButton(workingObject: workingObject)
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditTimeLengthTableViewCell.classForCoder()), for: indexPath) as! EditTimeLengthTableViewCell
+            cell.configureTimePicker(workingObject: workingObject)
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditIconColorTableViewCell.classForCoder()), for: indexPath) as! EditIconColorTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditNameTableViewCell.classForCoder()), for: indexPath) as! EditNameTableViewCell
         setTarget(cell: cell)
-        cell.configureIconButton(workingObject: workingObject)
-        cell.configureColorButton(workingObject: workingObject)
+        cell.configureName(workingObject: workingObject)
+        cell.configureTintColor(workingObject: workingObject)
+        let option = EditTaskOptions.allCases[indexPath.section]
+        cell.configurePlaceholder(text: option.placeHolderText())
         return cell
     }
     
