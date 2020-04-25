@@ -125,6 +125,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         registerTableViewCells()
     }
     
+    //MARK: RegisterTableViewCells
     func registerTableViewCells () {
         tableView.register(NameTableViewCell.self, forCellReuseIdentifier: String(describing: NameTableViewCell.self))
         tableView.register(IconColorTableViewCell.self, forCellReuseIdentifier: String(describing: IconColorTableViewCell.self))
@@ -166,6 +167,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         tableView.allowsSelection = false
     }
     
+    //MARK: Targets
     //NOTE: can probally move into the cell
     func setTarget(cell: AddTaskTableViewCell) {
         if let view = cell.cellView as? AddTaskView {

@@ -16,7 +16,6 @@ class TimeOfDayTableViewCell: PRBaseTableViewCell<UIView> {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        awakeFromNib()
     }
     
     required init?(coder aDecoder: NSCoder) {
