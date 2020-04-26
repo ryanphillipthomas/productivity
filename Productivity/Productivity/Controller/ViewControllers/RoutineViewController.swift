@@ -156,9 +156,14 @@ class RoutineViewController: PRBaseViewController {
         if taskTimeLeft <= 0 {
             taskTimer?.invalidate()
             taskTimer = nil
-            
-            nextTask()
-            resumeTask()
+                        
+            //has remaining tasks
+            if let tasks = tasks {
+                if taskCounter + 1 < tasks.count {
+                    nextTask()
+                    resumeTask()
+                }
+            }
         }
     }
 }
