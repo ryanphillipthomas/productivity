@@ -46,6 +46,13 @@
 		B87678942424602A0009EFE4 /* BELogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B876787B2424602A0009EFE4 /* BELogCell.xib */; };
 		B87858922454F36B008F0F01 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */; };
 		B87858952454F51F008F0F01 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858942454F51F008F0F01 /* RoutineViewController.swift */; };
+		B87858992455E8D2008F0F01 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858982455E8D2008F0F01 /* AudioManager.swift */; };
+		B878589B2455EA7E008F0F01 /* white_noise.wav in Resources */ = {isa = PBXBuildFile; fileRef = B878589A2455EA7E008F0F01 /* white_noise.wav */; };
+		B878589E2455EDDE008F0F01 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B878589C2455EDA7008F0F01 /* AVFoundation.framework */; };
+		B87858A02455F664008F0F01 /* space.wav in Resources */ = {isa = PBXBuildFile; fileRef = B878589F2455F664008F0F01 /* space.wav */; };
+		B87858A22455F6BE008F0F01 /* complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = B87858A12455F6BE008F0F01 /* complete.wav */; };
+		B87858A42455F976008F0F01 /* chime.wav in Resources */ = {isa = PBXBuildFile; fileRef = B87858A32455F976008F0F01 /* chime.wav */; };
+		B87858A72455FD64008F0F01 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87858A62455FD64008F0F01 /* AudioToolbox.framework */; };
 		B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */; };
 		B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */; };
 		B87C117E2444054F00305886 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = B87C117D2444054F00305886 /* colors.json */; };
@@ -180,6 +187,14 @@
 		B876787B2424602A0009EFE4 /* BELogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BELogCell.xib; sourceTree = "<group>"; };
 		B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		B87858942454F51F008F0F01 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		B87858982455E8D2008F0F01 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		B878589A2455EA7E008F0F01 /* white_noise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = white_noise.wav; sourceTree = "<group>"; };
+		B878589C2455EDA7008F0F01 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B878589F2455F664008F0F01 /* space.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = space.wav; path = ../../../../../../../Downloads/space.wav; sourceTree = "<group>"; };
+		B87858A12455F6BE008F0F01 /* complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = complete.wav; path = ../../../../../../../Downloads/complete.wav; sourceTree = "<group>"; };
+		B87858A32455F976008F0F01 /* chime.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chime.wav; path = ../../../../../../../Downloads/chime.wav; sourceTree = "<group>"; };
+		B87858A52455FD64008F0F01 /* Productivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Productivity.entitlements; sourceTree = "<group>"; };
+		B87858A62455FD64008F0F01 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseWorkingObject.swift; sourceTree = "<group>"; };
 		B87C117D2444054F00305886 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -272,6 +287,8 @@
 			files = (
 				CADC3A91A189D1E89BEF3E08 /* Pods_Productivity.framework in Frameworks */,
 				B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */,
+				B878589E2455EDDE008F0F01 /* AVFoundation.framework in Frameworks */,
+				B87858A72455FD64008F0F01 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +560,11 @@
 			children = (
 				B882715724257FC3004F5718 /* LoginManager.swift */,
 				B882715A24257FC3004F5718 /* SettingsManager.swift */,
+				B87858982455E8D2008F0F01 /* AudioManager.swift */,
+				B878589F2455F664008F0F01 /* space.wav */,
+				B87858A12455F6BE008F0F01 /* complete.wav */,
+				B87858A32455F976008F0F01 /* chime.wav */,
+				B878589A2455EA7E008F0F01 /* white_noise.wav */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -632,6 +654,7 @@
 		B8FA79BC2421C0FB007E7706 /* Productivity */ = {
 			isa = PBXGroup;
 			children = (
+				B87858A52455FD64008F0F01 /* Productivity.entitlements */,
 				B87C11812447D6E100305886 /* IAP */,
 				B882714424246F2A004F5718 /* Animation */,
 				B87677FE2422E8310009EFE4 /* Base */,
@@ -666,6 +689,8 @@
 		FDB674122EC37321AD44A976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B87858A62455FD64008F0F01 /* AudioToolbox.framework */,
+				B878589C2455EDA7008F0F01 /* AVFoundation.framework */,
 				B8C70C312447F01C00E94BEF /* StoreKit.framework */,
 				F60EBFAC27B074BFC7C98AD1 /* Pods_Productivity.framework */,
 			);
@@ -756,9 +781,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B87858A42455F976008F0F01 /* chime.wav in Resources */,
 				B87C118B2447DCCB00305886 /* poohWisdom.json in Resources */,
 				B8FA79CC2421C0FD007E7706 /* LaunchScreen.storyboard in Resources */,
 				B82E556D242663C70040A04E /* LineSingleLabelHeaderFooterView.xib in Resources */,
+				B878589B2455EA7E008F0F01 /* white_noise.wav in Resources */,
 				B8FA79C92421C0FD007E7706 /* Assets.xcassets in Resources */,
 				B82E556B242660C00040A04E /* TwoLabelImageView.xib in Resources */,
 				B8D56B462429888000FEF929 /* IconView.xib in Resources */,
@@ -768,7 +795,9 @@
 				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
 				B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
+				B87858A02455F664008F0F01 /* space.wav in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
+				B87858A22455F6BE008F0F01 /* complete.wav in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
 				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,
 				B8F19E1C245283CD0006AC16 /* AddTaskView.xib in Resources */,
@@ -942,6 +971,7 @@
 				B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */,
 				B876788A2424602A0009EFE4 /* NSObject+Extensions.swift in Sources */,
 				B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */,
+				B87858992455E8D2008F0F01 /* AudioManager.swift in Sources */,
 				B882716224257FC3004F5718 /* SettingsManager.swift in Sources */,
 				B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */,
 				B882714024246CEE004F5718 /* PRBaseViewController.swift in Sources */,
@@ -1107,6 +1137,7 @@
 			baseConfigurationReference = 5C0E60D6B0E9A054C85F1537 /* Pods-Productivity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Productivity/Productivity.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FS6KJ5XME6;
@@ -1128,6 +1159,7 @@
 			baseConfigurationReference = 03C243687EC5B39105CAEF25 /* Pods-Productivity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Productivity/Productivity.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FS6KJ5XME6;

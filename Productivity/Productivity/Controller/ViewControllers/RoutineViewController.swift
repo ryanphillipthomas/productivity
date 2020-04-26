@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVKit
 
 class RoutineViewController: PRBaseViewController {
     @IBOutlet var buttons: [UIButton]!
@@ -15,10 +16,14 @@ class RoutineViewController: PRBaseViewController {
     @IBOutlet weak var resetPrevButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    @IBOutlet weak var buttonsStackView: UIStackView!
+
     @IBOutlet weak var currentRoutineNumberLabel: UILabel!
     @IBOutlet weak var currentRoutineNameLabel: UILabel!
     @IBOutlet weak var taskTimeLeftLabel: UILabel!
+    
+    let routerPickerView = AVRoutePickerView()
+    let detector = AVRouteDetector()
 
     var routineID: Int64?
     var workingObject = PRBaseWorkingObject()
@@ -35,9 +40,8 @@ class RoutineViewController: PRBaseViewController {
         super.viewDidLoad()
         setupRoutine()
         setupTasks()
-        runTimer(shouldReset: true)
+        runTimer(shouldReset: true, shouldRun: false)
         setupStyles()
-        
         updateUI()
     }
     
@@ -49,13 +53,14 @@ class RoutineViewController: PRBaseViewController {
     }
     
     //MARK: Setup Timer
-    func runTimer(shouldReset:Bool) {
+    func runTimer(shouldReset:Bool, shouldRun:Bool) {
         if let tasks = tasks {
             if shouldReset {
                 taskTimer?.invalidate()
                 taskTimer = nil
                 taskTimeLeft = Int(tasks[taskCounter].length)
-            } else {
+            }
+            if shouldRun {
                 taskTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
             }
         }
@@ -77,6 +82,7 @@ class RoutineViewController: PRBaseViewController {
     func updateUI() {
         updateLabels()
         updateButtons()
+        updateAirplayButton()
     }
     
     private func updateLabels() {
@@ -118,21 +124,41 @@ class RoutineViewController: PRBaseViewController {
         resetTask()
     }
     
+    private func updateAirplayButton() {
+        if let routine = routine, let tasks = tasks {
+            if !buttonsStackView.arrangedSubviews.contains(routerPickerView) {
+                buttonsStackView.insertArrangedSubview(routerPickerView, at: 1)
+            }
+            
+            let currentTask = tasks[taskCounter]
+            routerPickerView.delegate = self
+            routerPickerView.prioritizesVideoDevices = true
+            routerPickerView.activeTintColor = UIColor(hexString: currentTask.colorValue)
+            routerPickerView.tintColor = UIColor.darkGray
+            routerPickerView.backgroundColor = UIColor(hexString: "1F2123")
+            routerPickerView.roundCorners()
+        }
+    }
+    
     private func nextTask() {
         guard let tasks = tasks, tasks.count > taskCounter + 1  else { return }
         taskCounter = taskCounter + 1
         updateUI()
+        runTimer(shouldReset: true, shouldRun: !isPaused)
+        AudioManager.shared().play(AudioManager.shared().chime)
     }
     
     private func prevTask() {
         guard let _ = tasks, taskCounter >= 1  else { return }
         taskCounter = taskCounter - 1
         updateUI()
+        runTimer(shouldReset: true, shouldRun: !isPaused)
+        AudioManager.shared().play(AudioManager.shared().chime)
     }
     
     private func resumeTask() {
         isPaused = false
-        runTimer(shouldReset: false)
+        runTimer(shouldReset: false, shouldRun: true)
         playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
     
@@ -144,8 +170,8 @@ class RoutineViewController: PRBaseViewController {
     
     private func resetTask() {
         updateLabels()
-        runTimer(shouldReset: true)
-        pauseTask()
+        runTimer(shouldReset: true, shouldRun: !isPaused)
+        AudioManager.shared().play(AudioManager.shared().chime)
     }
     
     @objc func onTimerFires()
@@ -163,7 +189,18 @@ class RoutineViewController: PRBaseViewController {
                     nextTask()
                     resumeTask()
                 }
+            } else {
+                //end of routine
+                AudioManager.shared().play(AudioManager.shared().complete)
             }
         }
+    }
+}
+
+extension RoutineViewController: AVRoutePickerViewDelegate {
+    func routePickerViewDidEndPresentingRoutes(_ routePickerView: AVRoutePickerView) {
+    }
+    
+    func routePickerViewWillBeginPresentingRoutes(_ routePickerView: AVRoutePickerView) {
     }
 }

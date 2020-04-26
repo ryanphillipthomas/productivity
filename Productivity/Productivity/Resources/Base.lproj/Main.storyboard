@@ -541,6 +541,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CAG-Yz-2tx"/>
                     <connections>
+                        <outlet property="buttonsStackView" destination="rUP-h7-xtR" id="z8S-KD-wp9"/>
                         <outlet property="currentRoutineNameLabel" destination="3ch-Ut-hgm" id="8n9-ru-3a5"/>
                         <outlet property="currentRoutineNumberLabel" destination="VHc-kd-NuT" id="C3B-Fh-2Eb"/>
                         <outlet property="nextButton" destination="cdd-2J-S3q" id="P0g-On-z5G"/>
