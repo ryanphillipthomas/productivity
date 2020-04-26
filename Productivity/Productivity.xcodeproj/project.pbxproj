@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B801544A2454F19B000055C4 /* IconImageSingleLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80154482454F19B000055C4 /* IconImageSingleLabelButtonView.swift */; };
+		B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */; };
 		B82E556624265FD70040A04E /* IconImageSingleLabelDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */; };
 		B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */; };
 		B82E5569242660B00040A04E /* TwoLabelImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E5568242660B00040A04E /* TwoLabelImageView.swift */; };
@@ -42,6 +44,8 @@
 		B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678762424602A0009EFE4 /* UITextField+Extensions.swift */; };
 		B87678932424602A0009EFE4 /* BELogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876787A2424602A0009EFE4 /* BELogCell.swift */; };
 		B87678942424602A0009EFE4 /* BELogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B876787B2424602A0009EFE4 /* BELogCell.xib */; };
+		B87858922454F36B008F0F01 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */; };
+		B87858952454F51F008F0F01 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858942454F51F008F0F01 /* RoutineViewController.swift */; };
 		B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */; };
 		B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */; };
 		B87C117E2444054F00305886 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = B87C117D2444054F00305886 /* colors.json */; };
@@ -136,6 +140,8 @@
 /* Begin PBXFileReference section */
 		03C243687EC5B39105CAEF25 /* Pods-Productivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity.release.xcconfig"; path = "Target Support Files/Pods-Productivity/Pods-Productivity.release.xcconfig"; sourceTree = "<group>"; };
 		5C0E60D6B0E9A054C85F1537 /* Pods-Productivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity.debug.xcconfig"; path = "Target Support Files/Pods-Productivity/Pods-Productivity.debug.xcconfig"; sourceTree = "<group>"; };
+		B80154482454F19B000055C4 /* IconImageSingleLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelButtonView.swift; sourceTree = "<group>"; };
+		B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelButtonView.xib; sourceTree = "<group>"; };
 		B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelDisclosureView.swift; sourceTree = "<group>"; };
 		B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconImageSingleLabelDisclosureView.xib; sourceTree = "<group>"; };
 		B82E5568242660B00040A04E /* TwoLabelImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLabelImageView.swift; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 		B87678762424602A0009EFE4 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		B876787A2424602A0009EFE4 /* BELogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BELogCell.swift; sourceTree = "<group>"; };
 		B876787B2424602A0009EFE4 /* BELogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BELogCell.xib; sourceTree = "<group>"; };
+		B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		B87858942454F51F008F0F01 /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseWorkingObject.swift; sourceTree = "<group>"; };
 		B87C117D2444054F00305886 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -291,6 +299,8 @@
 		B87677FA2422E2D00009EFE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B80154482454F19B000055C4 /* IconImageSingleLabelButtonView.swift */,
+				B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */,
 				B8F19E03244A71830006AC16 /* IconImageSingleLabelToggleView.swift */,
 				B8F19E04244A71830006AC16 /* IconImageSingleLabelToggleView.xib */,
 				B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */,
@@ -324,6 +334,7 @@
 		B87677FB2422E2D70009EFE4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B87858932454F4F9008F0F01 /* ViewControllers */,
 				B888616E2454696900EE1133 /* CollectionViewCells */,
 				B888616D2454695200EE1133 /* CollectionViewControllers */,
 				B88861482453DB2400EE1133 /* TableViewCells */,
@@ -456,6 +467,14 @@
 			path = BELogCell;
 			sourceTree = "<group>";
 		};
+		B87858932454F4F9008F0F01 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B87858942454F51F008F0F01 /* RoutineViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B87C11812447D6E100305886 /* IAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +563,7 @@
 				B888616324545C3000EE1133 /* ToggleTableViewCell.swift */,
 				B8886165245460A100EE1133 /* CreateTableViewCell.swift */,
 				B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */,
+				B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -757,6 +777,7 @@
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
 				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
+				B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */,
 				B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,6 +873,7 @@
 				B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */,
 				B888614D2453F64F00EE1133 /* TimeLengthView.swift in Sources */,
 				B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */,
+				B801544A2454F19B000055C4 /* IconImageSingleLabelButtonView.swift in Sources */,
 				B8F19E05244A71830006AC16 /* IconImageSingleLabelToggleView.swift in Sources */,
 				B8F19B012442AC0600F8915F /* HomeTabBarViewController.swift in Sources */,
 				B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */,
@@ -872,6 +894,7 @@
 				B888615A24545A8300EE1133 /* DisclosureTableViewCell.swift in Sources */,
 				B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */,
 				B88861522454598D00EE1133 /* IconColorTableViewCell.swift in Sources */,
+				B87858952454F51F008F0F01 /* RoutineViewController.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
@@ -887,6 +910,7 @@
 				B8F19AF52442770800F8915F /* ExternalSceneDelegate.swift in Sources */,
 				B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */,
 				B876788C2424602A0009EFE4 /* UILayoutGuide+Extensions.swift in Sources */,
+				B87858922454F36B008F0F01 /* RoutineTableViewCell.swift in Sources */,
 				B876788F2424602A0009EFE4 /* Date+Extensions.swift in Sources */,
 				B876788B2424602A0009EFE4 /* UITableView+Extensions.swift in Sources */,
 				B8886168245460C200EE1133 /* CreateTemplateTableViewCell.swift in Sources */,

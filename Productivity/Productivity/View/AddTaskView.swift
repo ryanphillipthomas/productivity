@@ -10,6 +10,7 @@ import UIKit
 
 class AddTaskView: PRXibView {
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet weak var editTaskButton: UIButton!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var innerView: PRBaseView!
 

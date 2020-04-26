@@ -8,9 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddTaskView" customModule="Productivity" customModuleProvider="target">
             <connections>
-                <outlet property="addTaskButton" destination="AuM-G9-TAt" id="Rc0-Pp-bU9"/>
+                <outlet property="addTaskButton" destination="pXq-jE-LiG" id="bgk-cv-ASk"/>
+                <outlet property="editTaskButton" destination="AuM-G9-TAt" id="Tfd-uh-oFY"/>
                 <outlet property="view" destination="AIu-zZ-vhW" id="bt6-hj-h1c"/>
                 <outletCollection property="buttons" destination="AuM-G9-TAt" collectionClass="NSMutableArray" id="A0Z-0K-W67"/>
+                <outletCollection property="buttons" destination="pXq-jE-LiG" collectionClass="NSMutableArray" id="9fz-Q5-GgF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,19 +20,30 @@
             <rect key="frame" x="0.0" y="0.0" width="354" height="86"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuM-G9-TAt">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4cf-c9-kGe">
                     <rect key="frame" x="10" y="10" width="334" height="66"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Add Task"/>
-                </button>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuM-G9-TAt" userLabel="Edit Task">
+                            <rect key="frame" x="0.0" y="0.0" width="162" height="66"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Edit Tasks"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXq-jE-LiG">
+                            <rect key="frame" x="172" y="0.0" width="162" height="66"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="New Task"/>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AuM-G9-TAt" secondAttribute="trailing" constant="10" id="JBm-61-5g8"/>
-                <constraint firstAttribute="top" secondItem="AuM-G9-TAt" secondAttribute="top" constant="-10" id="ds7-MT-Pkf"/>
-                <constraint firstAttribute="bottom" secondItem="AuM-G9-TAt" secondAttribute="bottom" constant="10" id="ghS-oT-Kng"/>
-                <constraint firstItem="AuM-G9-TAt" firstAttribute="leading" secondItem="AIu-zZ-vhW" secondAttribute="leading" constant="10" id="jpq-JI-m6h"/>
+                <constraint firstItem="4cf-c9-kGe" firstAttribute="top" secondItem="AIu-zZ-vhW" secondAttribute="top" constant="10" id="Koy-2g-gNy"/>
+                <constraint firstAttribute="trailing" secondItem="4cf-c9-kGe" secondAttribute="trailing" constant="10" id="jqU-2y-U1w"/>
+                <constraint firstItem="4cf-c9-kGe" firstAttribute="leading" secondItem="AIu-zZ-vhW" secondAttribute="leading" constant="10" id="vP3-q5-iZ8"/>
+                <constraint firstAttribute="bottom" secondItem="4cf-c9-kGe" secondAttribute="bottom" constant="10" id="yrD-g3-o50"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-484.05797101449281" y="-218.97321428571428"/>

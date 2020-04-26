@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    
+    static var jsonColors:[String]?
+
     static var random: UIColor {
         return UIColor(red: .random(in: 0...1),
                        green: .random(in: 0...1),
@@ -39,5 +40,35 @@ public extension UIColor {
             (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+    }
+    
+    class func jsonColor(index: Int) -> UIColor {
+        if let colors = jsonColors {
+            return UIColor(hexString: colors[index])
+        }
+        return UIColor.red
+    }
+    
+    class func configureJsonColors() {
+        if let path = Bundle.main.path(forResource: "colors", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Array<String> {
+                    jsonColors = jsonResult
+                }
+            } catch {
+                print("Error parsing json")
+            }
+        }
+    }
+    
+    class func getRandomJsonColor() -> UIColor {
+        configureJsonColors()
+        if let jsonColors = jsonColors {
+            let randomNumber = arc4random_uniform(UInt32(jsonColors.count))
+            return jsonColor(index: Int(randomNumber))
+        }
+        return UIColor.red
     }
 }

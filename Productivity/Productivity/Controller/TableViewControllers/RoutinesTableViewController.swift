@@ -53,6 +53,7 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     func registerTableViewCells() {
         tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTableViewCell.self))
         tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
+        tableView.register(RoutineTableViewCell.self, forCellReuseIdentifier: String(describing: RoutineTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +68,16 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         }
     }
     
+    func setTarget(cell: RoutineTableViewCell) {
+        if let view = cell.cellView as? IconImageSingleLabelButtonView {
+            view.button.addTarget(self, action: #selector(self.didSelectRunRoutine(sender:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc func didSelectRunRoutine(sender: UIButton) {
+        performSegue(withIdentifier: String(describing: RoutineViewController.self), sender: sender.tag)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: CreateTableViewController.classForCoder()), let nav =
             segue.destination as? PRBaseNavigationController, let createTableViewController = nav.viewControllers.first as? CreateTableViewController  {
@@ -76,6 +87,10 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         segue.destination as? PRBaseNavigationController, let editRoutineTableViewController = nav.viewControllers.first as? EditRoutineTableViewController {
             editRoutineTableViewController.managedObjectContext = managedObjectContext
             editRoutineTableViewController.routineID = sender as? Int64
+        } else if segue.identifier == String(describing: RoutineViewController.classForCoder()), let nav =
+        segue.destination as? PRBaseNavigationController, let routineViewController = nav.viewControllers.first as? RoutineViewController {
+            routineViewController.managedObjectContext = managedObjectContext
+            routineViewController.routineID = sender as? Int64
         }
     }
     
@@ -95,8 +110,9 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CreateTableViewCell.classForCoder()), for: indexPath) as! CreateTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RoutineTableViewCell.classForCoder()), for: indexPath) as! RoutineTableViewCell
         configureCell(cell, at: indexPath)
+        setTarget(cell: cell)
         return cell
     }
     
@@ -124,11 +140,12 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
      }
     
     override func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
-        if let cell = cell as? CreateTableViewCell {
+        if let cell = cell as? RoutineTableViewCell {
             let routine = fetchedResultsController.object(at: indexPath) as! Routine
             cell.configureText(text: routine.name)
             cell.configureImage(image: UIImage(systemName: routine.iconName),
                                 colorValue: UIColor(hexString: routine.colorValue))
+            cell.configureRoutineID(routineID: routine.id)
         }
     }
     

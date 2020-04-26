@@ -21,7 +21,7 @@ class IconCollectionViewCell: PRBaseCollectionViewCell<UIView> {
     
     func configureImage(image: UIImage?) {
         if let view = cellView as? IconView {
-            view.imageView.tintColor = UIColor.random
+            view.imageView.tintColor = UIColor.getRandomJsonColor()
             view.imageView.image = image
         }
     }

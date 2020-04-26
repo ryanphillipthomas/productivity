@@ -23,12 +23,18 @@ class AddTaskTableViewCell: PRBaseTableViewCell<UIView> {
         super.init(coder: aDecoder)
     }
     
-    func configureButtonColor(workingObject: PRBaseWorkingObject) {
+    func configureButtonColor(workingObject: PRBaseWorkingObject, isSelected: Bool) {
         if let view = cellView as? AddTaskView {
             if let colorValue = workingObject.colorValue {
                 view.clear()
                 for button in view.buttons {
-                    button.backgroundColor = UIColor(hexString: colorValue)
+                    if button == view.editTaskButton {
+                        if isSelected {
+                            button.backgroundColor = UIColor(hexString: colorValue)
+                        }
+                    } else {
+                        button.backgroundColor = UIColor(hexString: colorValue)
+                    }
                 }
             }
         }

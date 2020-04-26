@@ -125,4 +125,38 @@ public extension String {
         
         return timeString
     }
+
+    func hasMinutes(interval: TimeInterval) -> Bool {
+        let minutes = Int(interval) / 60 % 60
+        
+        if minutes > 0 {
+            return true
+        }
+        return false
+    }
+    
+    func hasHours(interval: TimeInterval) -> Bool {
+        let hours = Int(interval) / 3600
+        
+        if hours > 0 {
+            return true
+        }
+        return false
+    }
+    
+    func timeString(second: TimeInterval) -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        
+        if hasMinutes(interval: second) && hasHours(interval: second) {
+            formatter.allowedUnits = [.hour, .minute, .second]
+        } else if hasMinutes(interval: second) {
+            formatter.allowedUnits = [.minute, .second]
+        } else {
+            formatter.allowedUnits = [.second]
+        }
+        
+        return formatter.string(from: second)
+    }
 }

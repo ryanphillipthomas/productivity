@@ -60,6 +60,9 @@ class TasksTableViewCell: PRBaseTableViewCell<UIView> {
             cell.configureText(text: task.name)
             cell.configureImage(image: UIImage(systemName: task.iconName),
                                 colorValue: UIColor(hexString: task.colorValue))
+            if let cellView = cell.cellView as? IconImageSingleLabelDisclosureView {
+                cellView.disclourseImageView.isHidden = tableView.isEditing
+            }
         }
     }
 }
@@ -71,6 +74,32 @@ extension TasksTableViewCell: UITableViewDelegate {
         if let delegate = delegate {
             delegate.didSelectTask(task: task)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var objects = self.fetchedResultsController.fetchedObjects!
+
+        let object = objects[sourceIndexPath.row]
+        objects.remove(at: sourceIndexPath.row)
+        objects.insert(object, at: destinationIndexPath.row)
+
+        for (index, object) in objects.enumerated() {
+            let task = object as! Task
+            managedObjectContext.perform {
+            task.order = Int64(index)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+            var row = 0
+            if sourceIndexPath.section < proposedDestinationIndexPath.section {
+                row = self.tableView(tableView, numberOfRowsInSection: sourceIndexPath.section) - 1
+            }
+            return IndexPath(row: row, section: sourceIndexPath.section)
+        }
+        return proposedDestinationIndexPath
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -127,13 +156,7 @@ extension TasksTableViewCell: NSFetchedResultsControllerDelegate {
             }
             break;
         case .move:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-
-            if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }
+            tableView.reloadData()
             break;
         default: break
         }
@@ -141,6 +164,14 @@ extension TasksTableViewCell: NSFetchedResultsControllerDelegate {
 }
 
 extension TasksTableViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return tableView.isEditing ? .none : .delete
+    }
+
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         guard let sectionCount = fetchedResultsController.sections?.count else {

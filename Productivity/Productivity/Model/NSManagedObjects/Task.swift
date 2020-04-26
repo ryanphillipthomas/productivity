@@ -55,6 +55,13 @@ class Task: PRManagedObject {
         return task
     }
     
+    //All
+    public static func fetchInContext(context: NSManagedObjectContext) -> [Task] {
+        let request = sortedFetchRequest
+        guard let result = try! context.fetch(request) as? [Task] else { fatalError("Fetched objects have wrong type") }
+        return result
+    }
+    
     //MARK: Find
     public static func find(moc: NSManagedObjectContext, id:Int64) -> Task? {
         let predicate = NSPredicate(format: "id == %lld", id)

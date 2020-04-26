@@ -201,6 +201,11 @@ class EditTaskTableViewController: PRBaseTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
         let option = EditTaskHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
+        
+        if section == 0 || section == 1 {
+            return UIView()
+        }
+        
         return cell
     }
 }

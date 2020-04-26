@@ -118,7 +118,8 @@ public enum EditHeaderFooterOptions: CaseIterable {
 class EditRoutineTableViewController: PRBaseTableViewController {
     var routineID: Int64?
     var workingObject = PRBaseWorkingObject()
-    
+    var isEditingTasks = false
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorkingObject()
@@ -141,7 +142,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBar()
-        tableView.reloadData()
     }
     
     func setupWorkingObject() {
@@ -172,6 +172,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     func setTarget(cell: AddTaskTableViewCell) {
         if let view = cell.cellView as? AddTaskView {
             view.addTaskButton.addTarget(self, action: #selector(self.didSelectAddTask(sender:)), for: .touchUpInside)
+            view.editTaskButton.addTarget(self, action: #selector(self.didSelectEditTasks(sender:)), for: .touchUpInside)
         }
     }
     
@@ -230,17 +231,17 @@ class EditRoutineTableViewController: PRBaseTableViewController {
             }
         }
         
-        tableView.reloadData()
+        tableView.reloadSections([2], with: .fade)
     }
     
     @objc func didSelectTimeOfDayButton(sender: UIButton) {
         workingObject.timeOfDay = sender.titleLabel?.text
-        tableView.reloadData()
+        tableView.reloadSections([3], with: .fade)
     }
     
     @objc func didSelectFrequencyButton(sender: UIButton) {
         workingObject.frequency = sender.titleLabel?.text
-        tableView.reloadData()
+        tableView.reloadSections([1], with: .fade)
     }
     
     @objc func didUpdateNameField(sender: UITextField) {
@@ -257,6 +258,11 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     
     @objc func didSelectAddTask(sender: UIButton) {
         performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: nil)
+    }
+    
+    @objc func didSelectEditTasks(sender: UIButton) {
+        isEditingTasks = !isEditingTasks
+        tableView.reloadSections([6, 7], with: .none)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -320,11 +326,12 @@ extension EditRoutineTableViewController {
         } else if indexPath.section == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.classForCoder()), for: indexPath) as! TasksTableViewCell
             cell.configureCell(managedObjectContext: managedObjectContext)
+            cell.tableView.isEditing = isEditingTasks
             cell.delegate = self
             return cell
         } else if indexPath.section == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.classForCoder()), for: indexPath) as! AddTaskTableViewCell
-            cell.configureButtonColor(workingObject: workingObject)
+            cell.configureButtonColor(workingObject: workingObject, isSelected: isEditingTasks)
             setTarget(cell: cell)
             return cell
         }
@@ -350,6 +357,11 @@ extension EditRoutineTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
         let option = EditHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
+        
+        if section == 0 || section == 7 {
+            return UIView()
+        }
+        
         return cell
     }
     
@@ -388,14 +400,14 @@ extension EditRoutineTableViewController: PRBaseNavigationControllerDelegate {
 extension EditRoutineTableViewController: IconsCollectionViewControllerDelegate {
     func didSelectIcon(iconName: String) {
         workingObject.iconName = iconName
-        tableView.reloadData()
+        tableView.reloadSections([0], with: .fade)
     }
 }
 
 extension EditRoutineTableViewController: ColorsCollectionViewControllerDelegate {
     func didSelectColor(colorValue: String) {
         workingObject.colorValue = colorValue
-        tableView.reloadData()
+        tableView.reloadSections([0], with: .fade)
     }
 }
 
