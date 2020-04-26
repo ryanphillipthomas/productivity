@@ -16,6 +16,8 @@ class AudioManager: NSObject {
     private var managedObjectContext: NSManagedObjectContext!
     var playerLooper: AVPlayerLooper!
     var player: AVQueuePlayer!
+    let synthesizer = AVSpeechSynthesizer()
+    let langStr = Locale.current.languageCode
 
     //MARK: Private
     override private init() {}
@@ -47,6 +49,25 @@ class AudioManager: NSObject {
         let path = Bundle.main.path(forResource: "complete", ofType:"wav")!
         let url = URL(fileURLWithPath: path)
         return url
+    }
+    
+    func say(_ text: String, sub: String?) {
+        let array = ["Next is", "Ready for", "Time for", "Next up", "Now do", "Great, next is"]
+        let randomWord = array.randomElement()!
+        var string = ""
+        
+        if let sub = sub {
+            string = sub
+        } else {
+            string = randomWord
+        }
+        
+        let utterance = AVSpeechUtterance(string: "\(string) :\(text)")
+
+        utterance.voice = AVSpeechSynthesisVoice(language: langStr)
+        
+        synthesizer.stopSpeaking(at: .immediate)
+        synthesizer.speak(utterance)
     }
     
     func play(_ url: URL) {

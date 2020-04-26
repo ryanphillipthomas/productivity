@@ -30,6 +30,45 @@ open class PRBaseViewController: UIViewController {
         configureObservers()
     }
     
+    @objc func testFeedback(_ i: Int) {
+        switch i {
+        case 1:
+            let generator = UINotificationFeedbackGenerator()
+            generator.prepare()
+            generator.notificationOccurred(.error)
+
+        case 2:
+            let generator = UINotificationFeedbackGenerator()
+            generator.prepare()
+            generator.notificationOccurred(.success)
+
+        case 3:
+            let generator = UINotificationFeedbackGenerator()
+            generator.prepare()
+            generator.notificationOccurred(.warning)
+
+        case 4:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.prepare()
+            generator.impactOccurred()
+
+        case 5:
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.prepare()
+            generator.impactOccurred()
+
+        case 6:
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.prepare()
+            generator.impactOccurred()
+
+        default:
+            let generator = UISelectionFeedbackGenerator()
+            generator.prepare()
+            generator.selectionChanged()
+        }
+    }
+    
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }

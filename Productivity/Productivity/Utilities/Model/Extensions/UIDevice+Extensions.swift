@@ -9,8 +9,13 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 public extension UIDevice {
+    
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
     
     static let modelName: String = {
         var systemInfo = utsname()
@@ -81,5 +86,5 @@ public extension UIDevice {
         
         return mapToDevice(identifier: identifier)
     }()
-    
+
 }

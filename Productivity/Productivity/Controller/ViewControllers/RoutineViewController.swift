@@ -145,33 +145,62 @@ class RoutineViewController: PRBaseViewController {
         taskCounter = taskCounter + 1
         updateUI()
         runTimer(shouldReset: true, shouldRun: !isPaused)
-        AudioManager.shared().play(AudioManager.shared().chime)
+        
+        let currentTask = tasks[taskCounter]
+        var text: String?
+        if taskCounter + 1 == tasks.count {
+            text = "Last is"
+        }
+        
+        AudioManager.shared().say(currentTask.name, sub: text)
+        self.testFeedback(6)
     }
     
     private func prevTask() {
-        guard let _ = tasks, taskCounter >= 1  else { return }
+        guard let tasks = tasks, taskCounter >= 1  else { return }
         taskCounter = taskCounter - 1
         updateUI()
         runTimer(shouldReset: true, shouldRun: !isPaused)
-        AudioManager.shared().play(AudioManager.shared().chime)
+        
+        let currentTask = tasks[taskCounter]
+        var text: String?
+        if taskCounter == 0 {
+            text = "First is"
+        }
+        
+        AudioManager.shared().say(currentTask.name, sub: text)
+        self.testFeedback(6)
     }
     
     private func resumeTask() {
+        guard let tasks = tasks else { return }
         isPaused = false
         runTimer(shouldReset: false, shouldRun: true)
         playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        
+        let currentTask = tasks[taskCounter]
+        var text: String?
+        if taskCounter == 0 {
+            text = "First is"
+        } else if taskCounter + 1 == tasks.count {
+             text = "Last is"
+         }
+        
+        AudioManager.shared().say(currentTask.name, sub: text)
+        self.testFeedback(6)
     }
     
     private func pauseTask() {
         isPaused = true
         taskTimer?.invalidate()
         playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        self.testFeedback(6)
     }
     
     private func resetTask() {
         updateLabels()
         runTimer(shouldReset: true, shouldRun: !isPaused)
-        AudioManager.shared().play(AudioManager.shared().chime)
+        self.testFeedback(6)
     }
     
     @objc func onTimerFires()
@@ -183,11 +212,12 @@ class RoutineViewController: PRBaseViewController {
             taskTimer?.invalidate()
             taskTimer = nil
                         
-            //has remaining tasks
+            //has remaining tasks, do next
             if let tasks = tasks {
                 if taskCounter + 1 < tasks.count {
                     nextTask()
                     resumeTask()
+                    UIDevice.vibrate()
                 }
             } else {
                 //end of routine
