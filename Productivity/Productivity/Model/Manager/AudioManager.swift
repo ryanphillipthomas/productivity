@@ -14,6 +14,7 @@ class AudioManager: NSObject {
 
     static let manager = AudioManager()
     private var managedObjectContext: NSManagedObjectContext!
+    var audioPlayer: AVAudioPlayer?
     var playerLooper: AVPlayerLooper!
     var player: AVQueuePlayer!
     let synthesizer = AVSpeechSynthesizer()
@@ -24,6 +25,12 @@ class AudioManager: NSObject {
     
     //MARK: Public
     public class func shared() -> AudioManager {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+          try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+          print(error)
+        }
         return manager
     }
     
@@ -63,11 +70,22 @@ class AudioManager: NSObject {
         }
         
         let utterance = AVSpeechUtterance(string: "\(string) :\(text)")
-
         utterance.voice = AVSpeechSynthesisVoice(language: langStr)
-        
         synthesizer.stopSpeaking(at: .immediate)
         synthesizer.speak(utterance)
+    }
+    
+    func playAudioPlayer(_ url: URL) {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let audioPlayer = audioPlayer else { return }
+
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+
+        } catch let error as NSError {
+            print(error.description)
+        }
     }
     
     func play(_ url: URL) {
@@ -94,6 +112,12 @@ class AudioManager: NSObject {
         let audioMix = AVMutableAudioMix()
         audioMix.inputParameters = [inputParams]
         playerItem.audioMix = audioMix
+    
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
+        } catch {
+            print("Failed to set audio session route sharing policy: \(error)")
+        }
 
         player = AVQueuePlayer(playerItem: playerItem)
         playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)

@@ -62,6 +62,7 @@ class RoutineViewController: PRBaseViewController {
             }
             if shouldRun {
                 taskTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
+                AudioManager.shared().play(AudioManager.shared().space, Double(taskTimeLeft))
             }
         }
     }
@@ -151,8 +152,9 @@ class RoutineViewController: PRBaseViewController {
         if taskCounter + 1 == tasks.count {
             text = "Last is"
         }
-        
-        AudioManager.shared().say(currentTask.name, sub: text)
+
+       AudioManager.shared().say(currentTask.name, sub: text)
+        AudioManager.shared().playAudioPlayer(AudioManager.shared().chime)
         self.testFeedback(6)
     }
     
@@ -167,8 +169,9 @@ class RoutineViewController: PRBaseViewController {
         if taskCounter == 0 {
             text = "First is"
         }
-        
+
         AudioManager.shared().say(currentTask.name, sub: text)
+        AudioManager.shared().playAudioPlayer(AudioManager.shared().chime)
         self.testFeedback(6)
     }
     
@@ -185,7 +188,6 @@ class RoutineViewController: PRBaseViewController {
         } else if taskCounter + 1 == tasks.count {
              text = "Last is"
          }
-        
         AudioManager.shared().say(currentTask.name, sub: text)
         self.testFeedback(6)
     }
@@ -194,6 +196,7 @@ class RoutineViewController: PRBaseViewController {
         isPaused = true
         taskTimer?.invalidate()
         playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        AudioManager.shared().player.pause()
         self.testFeedback(6)
     }
     
