@@ -30,40 +30,30 @@ class RoutineViewController: PRBaseViewController {
     var routine: Routine?
     var tasks: [Task]?
     var taskCounter = 0
-    
-    var taskTimer: Timer?
     var taskTimeLeft = 0
     
     var isPaused = true
+    var timeObserverToken: Any?
+    var itemContext = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRoutine()
         setupTasks()
-        runTimer(shouldReset: true, shouldRun: false)
         setupStyles()
         updateUI()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        AudioManager.shared().pause()
+        removePeriodicTimeObserver()
     }
     
     //MARK: Styles
     private func setupStyles() {
         for button in buttons {
             button.roundCorners()
-        }
-    }
-    
-    //MARK: Setup Timer
-    func runTimer(shouldReset:Bool, shouldRun:Bool) {
-        if let tasks = tasks {
-            if shouldReset {
-                taskTimer?.invalidate()
-                taskTimer = nil
-                taskTimeLeft = Int(tasks[taskCounter].length)
-            }
-            if shouldRun {
-                taskTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
-                AudioManager.shared().play(AudioManager.shared().space, Double(taskTimeLeft))
-            }
         }
     }
     
@@ -76,7 +66,16 @@ class RoutineViewController: PRBaseViewController {
     
     //MARK: Setup Tasks
     func setupTasks() {
-        tasks = Task.fetchInContext(context: managedObjectContext)
+        AudioManager.shared().setupTasks()
+        
+        let trimmedItems = AudioManager.shared().trimmedItems()
+        for item in trimmedItems {
+            // Register as an observer of the player item's status property
+            item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &itemContext)
+        }
+        
+        AudioManager.shared().setupItems(items: AudioManager.shared().routineList(trimmedItems: trimmedItems))
+        addPeriodicTimeObserver()
     }
     
     //MARK: Update UX
@@ -87,10 +86,11 @@ class RoutineViewController: PRBaseViewController {
     }
     
     private func updateLabels() {
-        if let routine = routine, let tasks = tasks {
+        if  let tasks = tasks, tasks.count > 0 {
             currentRoutineNumberLabel.text = "\(taskCounter + 1) of \(tasks.count)"
             currentRoutineNameLabel.text = tasks[taskCounter].name
             taskTimeLeft = Int(tasks[taskCounter].length)
+            
             taskTimeLeftLabel.text = String().timeString(second: TimeInterval(taskTimeLeft))
             
             let currentTask = tasks[taskCounter]
@@ -101,7 +101,7 @@ class RoutineViewController: PRBaseViewController {
     }
     
     private func updateButtons() {
-        if let routine = routine, let tasks = tasks {
+        if let tasks = tasks, tasks.count > 0 {
             for button in buttons {
                 let currentTask = tasks[taskCounter]
                 button.tintColor = UIColor(hexString: currentTask.colorValue)
@@ -126,7 +126,7 @@ class RoutineViewController: PRBaseViewController {
     }
     
     private func updateAirplayButton() {
-        if let routine = routine, let tasks = tasks {
+        if let tasks = tasks, tasks.count > 0 {
             if !buttonsStackView.arrangedSubviews.contains(routerPickerView) {
                 buttonsStackView.insertArrangedSubview(routerPickerView, at: 1)
             }
@@ -142,91 +142,145 @@ class RoutineViewController: PRBaseViewController {
     }
     
     private func nextTask() {
-        guard let tasks = tasks, tasks.count > taskCounter + 1  else { return }
         taskCounter = taskCounter + 1
         updateUI()
-        runTimer(shouldReset: true, shouldRun: !isPaused)
-        
-        let currentTask = tasks[taskCounter]
-        var text: String?
-        if taskCounter + 1 == tasks.count {
-            text = "Last is"
-        }
-
-       AudioManager.shared().say(currentTask.name, sub: text)
-        AudioManager.shared().playAudioPlayer(AudioManager.shared().chime)
+        AudioManager.shared().playNext()
         self.testFeedback(6)
     }
     
     private func prevTask() {
-        guard let tasks = tasks, taskCounter >= 1  else { return }
         taskCounter = taskCounter - 1
         updateUI()
-        runTimer(shouldReset: true, shouldRun: !isPaused)
-        
-        let currentTask = tasks[taskCounter]
-        var text: String?
-        if taskCounter == 0 {
-            text = "First is"
-        }
-
-        AudioManager.shared().say(currentTask.name, sub: text)
-        AudioManager.shared().playAudioPlayer(AudioManager.shared().chime)
+        AudioManager.shared().play()
         self.testFeedback(6)
     }
     
     private func resumeTask() {
-        guard let tasks = tasks else { return }
         isPaused = false
-        runTimer(shouldReset: false, shouldRun: true)
         playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-        
-        let currentTask = tasks[taskCounter]
-        var text: String?
-        if taskCounter == 0 {
-            text = "First is"
-        } else if taskCounter + 1 == tasks.count {
-             text = "Last is"
-         }
-        AudioManager.shared().say(currentTask.name, sub: text)
+        AudioManager.shared().play()
         self.testFeedback(6)
     }
     
     private func pauseTask() {
         isPaused = true
-        taskTimer?.invalidate()
         playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        AudioManager.shared().player.pause()
+        AudioManager.shared().pause()
         self.testFeedback(6)
     }
     
     private func resetTask() {
         updateLabels()
-        runTimer(shouldReset: true, shouldRun: !isPaused)
         self.testFeedback(6)
     }
     
-    @objc func onTimerFires()
-    {
-        taskTimeLeft -= 1
-        taskTimeLeftLabel.text = String().timeString(second: TimeInterval(taskTimeLeft))
-
-        if taskTimeLeft <= 0 {
-            taskTimer?.invalidate()
-            taskTimer = nil
-                        
-            //has remaining tasks, do next
-            if let tasks = tasks {
-                if taskCounter + 1 < tasks.count {
-                    nextTask()
-                    resumeTask()
-                    UIDevice.vibrate()
+    //Add Time Observer for Time Countdown UX
+    func addPeriodicTimeObserver() {
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
+        timeObserverToken = AudioManager.shared().playerQueue.addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
+            if let routineViewController = self {
+                if let tasks = routineViewController.tasks, tasks.count > 0 {
+                    let currentTask = tasks[routineViewController.taskCounter]
+                    routineViewController.taskTimeLeft = Int(Double(currentTask.length) - time.seconds)
+                    routineViewController.taskTimeLeftLabel.text = String().timeString(second: TimeInterval(routineViewController.taskTimeLeft))
                 }
-            } else {
-                //end of routine
-                AudioManager.shared().play(AudioManager.shared().complete)
             }
         }
+    }
+
+    //Remove Time Observer for Time Countdown UX
+    func removePeriodicTimeObserver() {
+        if let timeObserverToken = timeObserverToken {
+            AudioManager.shared().playerQueue.removeTimeObserver(timeObserverToken)
+            self.timeObserverToken = nil
+        }
+    }
+    
+    // Player Status Observers
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
+
+        // Only handle observations for the playerItemContext
+        guard context == &itemContext else {
+            super.observeValue(forKeyPath: keyPath,
+                               of: object,
+                               change: change,
+                               context: context)
+            return
+        }
+
+        if keyPath == #keyPath(AVPlayerItem.status) {
+            let status: AVPlayerItem.Status
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
+            } else {
+                status = .unknown
+            }
+
+            // Switch over status value
+            switch status {
+            case .readyToPlay:
+                //Player is running an active task, grab the current one in the que based on the routine and tell UX to display it.
+                updateUI()
+                break
+                // Player item is ready to play.
+            case .failed:
+                break
+                // Player item failed. See error.
+            case .unknown:
+                break
+                // Player item is not yet ready.
+            @unknown default:
+                break
+            }
+        }
+    }
+    
+    //Get Current Item URL
+    func getCurrentItemURL() -> URL? {
+        let asset = AudioManager.shared().playerQueue.currentItem?.asset
+        if asset == nil {
+            return nil
+        }
+        if let urlAsset = asset as? AVURLAsset {
+            return urlAsset.url
+        }
+        return nil
+    }
+    
+    //Get Next Item URL
+    func getNextItemURL() -> URL? {
+        var asset: AVAsset?
+        
+        if let currentItem = AudioManager.shared().playerQueue.currentItem {
+            if let index = AudioManager.shared().playerQueue.items().firstIndex(of: currentItem) {
+                let nextIndex = AudioManager.shared().playerQueue.items().index(after: index)
+                asset = AudioManager.shared().playerQueue.items()[nextIndex].asset
+            }
+        }
+        
+        if asset == nil {
+            return nil
+        }
+        if let urlAsset = asset as? AVURLAsset {
+            return urlAsset.url
+        }
+        return nil
+    }
+    
+    func currentTask() -> Task? {
+        if let nextItemURL = getNextItemURL() {
+            let fileNameWithExtension = nextItemURL.deletingPathExtension()
+            let fileName = fileNameWithExtension.lastPathComponent
+            if let id = Int64(fileName) {
+                let task = Task.find(moc: managedObjectContext, id: id)
+                return task
+            }
+        }
+        return nil
     }
 }
 
@@ -237,3 +291,4 @@ extension RoutineViewController: AVRoutePickerViewDelegate {
     func routePickerViewWillBeginPresentingRoutes(_ routePickerView: AVRoutePickerView) {
     }
 }
+

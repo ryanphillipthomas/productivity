@@ -2,146 +2,178 @@
 //  AudioManager.swift
 //  Productivity
 //
-//  Created by Ryan Thomas on 4/26/20.
+//  Created by Ryan Thomas on 5/1/20.
 //  Copyright © 2020 Ryan Thomas. All rights reserved.
 //
 
-import UIKit
-import CoreData
+import Foundation
 import AVFoundation
+import CoreData
+import UIKit
 
 class AudioManager: NSObject {
-
     static let manager = AudioManager()
-    private var managedObjectContext: NSManagedObjectContext!
-    var audioPlayer: AVAudioPlayer?
+    var playerQueue: AVQueuePlayer!
     var playerLooper: AVPlayerLooper!
-    var player: AVQueuePlayer!
-    let synthesizer = AVSpeechSynthesizer()
-    let langStr = Locale.current.languageCode
+    var trimmedTaskUrls = [URL]()
+    var tasks: [Task]?
 
     //MARK: Private
     override private init() {}
     
     //MARK: Public
     public class func shared() -> AudioManager {
+        return manager
+    }
+    
+    func trimmedItems() -> [AVPlayerItem] {
+        var items = [AVPlayerItem]()
+        for url in trimmedTaskUrls {
+            let task = AVPlayerItem(url: url)
+            items.append(task)
+        }
+        return items
+    }
+    
+    func spokenItems() -> [AVPlayerItem] {
+        var items = [AVPlayerItem]()
+        if let urls = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "routine.bundle") {
+            for (_, url) in urls.enumerated() {
+                let asset = AVAsset(url: url)
+                let nextUpTrackItem = AVPlayerItem(asset: asset)
+                items.append(nextUpTrackItem)
+            }
+        }
+        return items
+    }
+    
+    func routineList(trimmedItems:[AVPlayerItem]) -> [AVPlayerItem] {
+        var items = [AVPlayerItem]()
+        for (index, trimmedItem) in trimmedItems.enumerated() {
+            
+            let chimeItem = AVPlayerItem(url: AudioManager_Old.shared().chime)
+            items.append(chimeItem)
+            
+            let nextItem = spokenItems()[index]
+            items.append(nextItem)
+            
+            items.append(trimmedItem)
+        }
+        return items
+    }
+    
+    var tick: URL {
+        let path = Bundle.main.path(forResource: "tick", ofType:"wav")!
+        let url = URL(fileURLWithPath: path)
+        return url
+    }
+    
+    var silence: URL {
+        let path = Bundle.main.path(forResource: "1-hour-and-20-minutes-of-silence", ofType:"mp3")!
+        let url = URL(fileURLWithPath: path)
+        return url
+    }
+    
+    func setupItems(items: [AVPlayerItem]) {
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback)
+          try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
           try AVAudioSession.sharedInstance().setActive(true)
         } catch {
           print(error)
         }
-        return manager
+
+        playerQueue = AVQueuePlayer(items: items)
     }
     
-    var whiteNoise: URL {
-        let path = Bundle.main.path(forResource: "white_noise", ofType:"wav")!
-        let url = URL(fileURLWithPath: path)
-        return url
+    func playNext() {
+        playerQueue.advanceToNextItem()
     }
     
-    var space: URL {
-        let path = Bundle.main.path(forResource: "space", ofType:"wav")!
-        let url = URL(fileURLWithPath: path)
-        return url
+    func play() {
+        playerQueue.play()
     }
     
-    var chime: URL {
-        let path = Bundle.main.path(forResource: "chime", ofType:"wav")!
-        let url = URL(fileURLWithPath: path)
-        return url
+    func pause() {
+        playerQueue.pause()
     }
     
-    var complete: URL {
-        let path = Bundle.main.path(forResource: "complete", ofType:"wav")!
-        let url = URL(fileURLWithPath: path)
-        return url
-    }
-    
-    func say(_ text: String, sub: String?) {
-        let array = ["Next is", "Ready for", "Time for", "Next up", "Now do", "Great, next is"]
-        let randomWord = array.randomElement()!
-        var string = ""
-        
-        if let sub = sub {
-            string = sub
-        } else {
-            string = randomWord
-        }
-        
-        let utterance = AVSpeechUtterance(string: "\(string) :\(text)")
-        utterance.voice = AVSpeechSynthesisVoice(language: langStr)
-        synthesizer.stopSpeaking(at: .immediate)
-        synthesizer.speak(utterance)
-    }
-    
-    func playAudioPlayer(_ url: URL) {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            guard let audioPlayer = audioPlayer else { return }
-
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-
-        } catch let error as NSError {
-            print(error.description)
-        }
-    }
-    
-    func play(_ url: URL) {
-        let asset = AVAsset(url: url)
-        let playerItem = AVPlayerItem(asset: asset)
-        player = AVQueuePlayer(playerItem: playerItem)
-        player.play()
-    }
-    
-    func play(_ url: URL, _ maxDuration: Double) {
-        
-        let asset = AVAsset(url: url)
-        let playerItem = AVPlayerItem(asset: asset)
-
-        let assetDuration = CMTimeGetSeconds(asset.duration)
-
-        let introRange = CMTimeRangeMake(start: CMTimeMakeWithSeconds(0, preferredTimescale: 1), duration: CMTimeMakeWithSeconds(1, preferredTimescale: 1))
-        let endingSecond = CMTimeRangeMake(start: CMTimeMakeWithSeconds(assetDuration - 1, preferredTimescale: 1), duration: CMTimeMakeWithSeconds(1, preferredTimescale: 1))
-
-        let inputParams = AVMutableAudioMixInputParameters(track: asset.tracks.first! as AVAssetTrack)
-        inputParams.setVolumeRamp(fromStartVolume: 0, toEndVolume: 1, timeRange: introRange)
-        inputParams.setVolumeRamp(fromStartVolume: 1, toEndVolume: 0, timeRange: endingSecond)
-
-        let audioMix = AVMutableAudioMix()
-        audioMix.inputParameters = [inputParams]
-        playerItem.audioMix = audioMix
-    
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
-        } catch {
-            print("Failed to set audio session route sharing policy: \(error)")
-        }
-
-        player = AVQueuePlayer(playerItem: playerItem)
-        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
-        player.play()
-
-        let maxLoops = floor(maxDuration / assetDuration)
-        let lastLoopDuration = maxDuration - (assetDuration * maxLoops)
-        let boundaryTime = CMTimeMakeWithSeconds(lastLoopDuration, preferredTimescale: 1)
-        let boundaryTimeValue = NSValue(time: boundaryTime)
-
-        player.addBoundaryTimeObserver(forTimes: [boundaryTimeValue], queue: DispatchQueue.main) { [weak self] in
-            if self?.playerLooper.loopCount == Int(maxLoops) {
-                self?.player.pause()
+    func setupTasks() {
+        //Setup will create all trimmed audio files from the tasks in the context.
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let managedObjectContext = delegate.persistentContainer.viewContext
+        tasks = Task.fetchInContext(context: managedObjectContext)
+        if let tasks = tasks, tasks.count > 0 {
+            for task in tasks {
+                AudioManager.shared().trim(task: "\(task.id)", desiredLength: task.length)
             }
         }
     }
     
-    func pause() {
-        self.player.pause()
+    func trim(task: String, desiredLength: Int64) {
+        if let asset = AVAsset(url: silence) as? AVAsset {
+            exportAsset(asset, fileName: "\(task).m4a", desiredLength: desiredLength)
+        }
     }
+    
+    func exportAsset(_ asset: AVAsset, fileName: String, desiredLength: Int64) {
+        print("\(#function)")
         
-    func setupWithManagedObjectContext(moc:NSManagedObjectContext) {
-        managedObjectContext = moc
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let trimmedSoundFileURL = documentsDirectory.appendingPathComponent(fileName)
+        print("saving to \(trimmedSoundFileURL.absoluteString)")
+        
+        if FileManager.default.fileExists(atPath: trimmedSoundFileURL.absoluteString) {
+            print("sound exists, removing \(trimmedSoundFileURL.absoluteString)")
+            do {
+                if try trimmedSoundFileURL.checkResourceIsReachable() {
+                    print("is reachable")
+                }
+                
+                try FileManager.default.removeItem(atPath: trimmedSoundFileURL.absoluteString)
+            } catch {
+                print("could not remove \(trimmedSoundFileURL)")
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        print("creating export session for \(asset)")
+        
+        if let exporter = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A) {
+            exporter.outputFileType = AVFileType.m4a
+            exporter.outputURL = trimmedSoundFileURL
+            trimmedTaskUrls.append(trimmedSoundFileURL)
+            
+            let duration = CMTimeGetSeconds(asset.duration)
+            if Int64(duration) < desiredLength {
+                print("sound is not long enough")
+                return
+            }
+            // e.g. the first 5 seconds
+            let startTime = CMTimeMake(value: 0, timescale: 1)
+            let stopTime = CMTimeMake(value: desiredLength, timescale: 1)
+            exporter.timeRange = CMTimeRangeFromTimeToTime(start: startTime, end: stopTime)
+            
+            // do it
+            exporter.exportAsynchronously(completionHandler: {
+                print("export complete \(exporter.status)")
+                
+                switch exporter.status {
+                case  AVAssetExportSessionStatus.failed:
+                    
+                    if let e = exporter.error {
+                        print("export failed \(e)")
+                    }
+                    
+                case AVAssetExportSessionStatus.cancelled:
+                    print("export cancelled \(String(describing: exporter.error))")
+                default:
+                    print("export complete")
+                }
+            })
+        } else {
+            print("cannot create AVAssetExportSession for asset \(asset)")
+        }
+        
     }
-    
-    
 }
