@@ -34,7 +34,7 @@ struct ConfigModel {
         guard ConfigModel.shared == nil else { fatalError("ConfigModel must be a singleton") }
         
         self.nowPlayableBehavior = nowPlayableBehavior
-        self.allowsExternalPlayback = nowPlayableBehavior.defaultAllowsExternalPlayback
+        self.allowsExternalPlayback = false
         self.assets = defaultAssets
         self.commandCollections = defaultCommandCollections
         
