@@ -18,27 +18,44 @@ class AudioManager: NSObject {
     var trimmedTaskUrls = [URL]()
     
     var tasks: [Task]?
-    var currentTask: Task?
-    
-    var itemContext = 0
+    var timeObserverToken: Any?
 
     //MARK: Private
-    override private init() {}
+    override private init() {
+        do {
+          try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
+          try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+          print(error)
+        }
+    }
     
     //MARK: Public
     public class func shared() -> AudioManager {
         return manager
     }
     
-    func trimmedItems() -> [AVPlayerItem] {
-        var items = [AVPlayerItem]()
-        for url in trimmedTaskUrls {
-            // Register as an observer of the player item's status property
-            let task = AVPlayerItem(url: url)
-            task.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &itemContext)
-            items.append(task)
+    //MARK: Get Current Task
+    var currentTask: Task? {
+        var currentTask: Task?
+        if let item = AudioManager.shared().playerQueue.currentItem {
+            //Get the TaskIDString of the current item
+            var taskIDString: String = ""
+            for i in item.externalMetadata {
+                if i.identifier == .commonIdentifierAssetIdentifier {
+                    taskIDString = i.value as! String
+                }
+            }
+            
+            //Fetch the Task by TaskID
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let managedObjectContext = delegate.persistentContainer.viewContext
+            if let taskID = Int64(taskIDString){
+                currentTask = Task.find(moc: managedObjectContext, id: taskID)
+            }
         }
-        return items
+        
+        return currentTask
     }
     
     func spokenItems() -> [AVPlayerItem] {
@@ -53,36 +70,84 @@ class AudioManager: NSObject {
         return items
     }
     
-    func routineList() -> [AVPlayerItem] {
+    func setupPlayerItems() {
+        //Dev todo, can probally work twards getting this to be conditional and only needed when tasks change
+        //Setup will create all trimmed audio files from the tasks in the context.
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let managedObjectContext = delegate.persistentContainer.viewContext
+        tasks = Task.fetchInContext(context: managedObjectContext)
+        
+        if let tasks = tasks, tasks.count > 0 {
+            var items = [AVPlayerItem]()
+            for task in tasks {
+                
+                //chime audio
+                let chimePath = Bundle.main.path(forResource: task.chimeSoundFileName, ofType:nil)!
+                let chimeURL = URL(fileURLWithPath: chimePath)
+                let chimeAsset = AVAsset(url: chimeURL)
+                let chimePlayerItem = AVPlayerItem(asset: chimeAsset)
+                configureItemMetadata(item: chimePlayerItem, taskID: String(task.id))
+                items.append(chimePlayerItem)
+                
+                //has routine bundele
+                if let routineBundlePath = Bundle.main.path(forResource: "routine", ofType: "bundle"),
+                    let bundle = Bundle(path: routineBundlePath),
+                    let announcePath = bundle.path(forResource: task.announceSoundFileName, ofType:nil) {
+                    
+                    //announce audio
+                    let announceURL = URL(fileURLWithPath: announcePath)
+                    let announceAsset = AVAsset(url: announceURL)
+                    let announcePlayerItem = AVPlayerItem(asset: announceAsset)
+                    configureItemMetadata(item: announcePlayerItem, taskID: String(task.id))
+                    items.append(announcePlayerItem)
+                    print(announcePath)
+                } else {
+                    print("not found")
+                }
+
+                //music audio
+                let musicPath = Bundle.main.path(forResource: task.musicSoundFileName, ofType:nil)!
+                let musicURL = URL(fileURLWithPath: musicPath)
+                let musicAsset = AVAsset(url: musicURL)
+                let musicPlayerItem = AVPlayerItem(asset: musicAsset)
+                configureItemMetadata(item: musicPlayerItem, taskID: String(task.id))
+                items.append(musicPlayerItem)
+
+            }
+            
+            playerQueue = AVQueuePlayer(items: items)
+        }
+    }
+    
+    //Associate AVPlayerItem to Task ID by using the commonIdentifierTitle
+    func configureItemMetadata(item: AVPlayerItem, taskID: String) {
+        let metadata = AVMutableMetadataItem()
+        metadata.identifier = .commonIdentifierAssetIdentifier
+        metadata.value = taskID as (NSCopying & NSObjectProtocol)?
+        item.externalMetadata.append(metadata)
+    }
+    
+    func routineItems() -> [AVPlayerItem] {
         var items = [AVPlayerItem]()
-        for (index, trimmedItem) in trimmedItems().enumerated() {
+        for (index, url) in trimmedTaskUrls.enumerated() {
+
+            //test tagging
+            let fileNameWithExtension = url.deletingPathExtension()
+            let fileName = fileNameWithExtension.lastPathComponent
             
             let chimeItem = AVPlayerItem(url: AudioManager_Old.shared().chime)
+            configureItemMetadata(item: chimeItem, taskID: fileName)
             items.append(chimeItem)
             
             let nextItem = spokenItems()[index]
+            configureItemMetadata(item: nextItem, taskID: fileName)
             items.append(nextItem)
             
+            let trimmedItem = AVPlayerItem(url: url)
+            configureItemMetadata(item: trimmedItem, taskID: fileName)
             items.append(trimmedItem)
         }
         return items
-    }
-    
-    var silence: URL {
-        let path = Bundle.main.path(forResource: "1-hour-and-20-minutes-of-silence", ofType:"mp3")!
-        let url = URL(fileURLWithPath: path)
-        return url
-    }
-    
-    func setupItems(items: [AVPlayerItem]) {
-        do {
-          try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
-          try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-          print(error)
-        }
-
-        playerQueue = AVQueuePlayer(items: items)
     }
     
     func playNext() {
@@ -97,25 +162,20 @@ class AudioManager: NSObject {
         playerQueue.pause()
     }
     
-    func setupTasks() {
-        //Dev todo, can probally work twards getting this to be conditional and only needed when tasks change
-        //Setup will create all trimmed audio files from the tasks in the context.
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        let managedObjectContext = delegate.persistentContainer.viewContext
-        tasks = Task.fetchInContext(context: managedObjectContext)
-        if let tasks = tasks, tasks.count > 0 {
-            for task in tasks {
-                AudioManager.shared().trim(task: "\(task.id)", desiredLength: task.length)
-            }
-        }
-    }
+    
+    
+    
+    ////bring back //                AudioManager.shared().trim(task: "\(task.id)", desiredLength: task.length)
+
     
     func trim(task: String, desiredLength: Int64) {
-        let asset = AVAsset(url: silence)
-        exportAsset(asset, fileName: "\(task).m4a", desiredLength: desiredLength)
+      //  let asset = AVAsset(url: silence)
+        //exportAsset(asset, fileName: "\(task).m4a", desiredLength: desiredLength)
     }
     
     func exportAsset(_ asset: AVAsset, fileName: String, desiredLength: Int64) {
+        //needs fix, this function is failing to clear already wrttien files, cases duplicates.
+        
         print("\(#function)")
         
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -175,96 +235,5 @@ class AudioManager: NSObject {
             print("cannot create AVAssetExportSession for asset \(asset)")
         }
         
-    }
-    
-    
-    
-    //Store Current Task Playing...
-    
-    // Player Status Observers
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-
-        // Only handle observations for the playerItemContext
-        guard context == &itemContext else {
-            super.observeValue(forKeyPath: keyPath,
-                               of: object,
-                               change: change,
-                               context: context)
-            return
-        }
-
-        if keyPath == #keyPath(AVPlayerItem.status) {
-            let status: AVPlayerItem.Status
-            if let statusNumber = change?[.newKey] as? NSNumber {
-                status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
-            } else {
-                status = .unknown
-            }
-
-            // Switch over status value
-            switch status {
-            case .readyToPlay:
-                //Player is running an active task, grab the current one in the que based on the routine and tell UX to display it.
-                updateTask()
-                break
-                // Player item is ready to play.
-            case .failed:
-                break
-                // Player item failed. See error.
-            case .unknown:
-                break
-                // Player item is not yet ready.
-            @unknown default:
-                break
-            }
-        }
-    }
-        
-    //Get Current Item URL
-    func getCurrentItemURL() -> URL? {
-        let asset = AudioManager.shared().playerQueue.currentItem?.asset
-        if asset == nil {
-            return nil
-        }
-        if let urlAsset = asset as? AVURLAsset {
-            return urlAsset.url
-        }
-        return nil
-    }
-    
-    //Get Next Item URL
-    func getNextItemURL() -> URL? {
-        var asset: AVAsset?
-        
-        if let currentItem = AudioManager.shared().playerQueue.currentItem {
-            if let index = AudioManager.shared().playerQueue.items().firstIndex(of: currentItem) {
-                let nextIndex = AudioManager.shared().playerQueue.items().index(after: index)
-                asset = AudioManager.shared().playerQueue.items()[nextIndex].asset
-            }
-        }
-        
-        if asset == nil {
-            return nil
-        }
-        if let urlAsset = asset as? AVURLAsset {
-            return urlAsset.url
-        }
-        return nil
-    }
-    
-    //Update the current task
-    func updateTask() {
-        if let nextItemURL = getNextItemURL() {
-            let fileNameWithExtension = nextItemURL.deletingPathExtension()
-            let fileName = fileNameWithExtension.lastPathComponent
-            if let id = Int64(fileName) {
-                let delegate = UIApplication.shared.delegate as! AppDelegate
-                let managedObjectContext = delegate.persistentContainer.viewContext
-                currentTask = Task.find(moc: managedObjectContext, id: id)
-            }
-        }
     }
 }

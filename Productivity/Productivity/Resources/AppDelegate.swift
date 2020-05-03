@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         user?.setValue("Ryan", forKey: "firstName")
         user?.setValue("Thomas", forKey: "lastName")
         user?.setValue("ryanphillipthomas@mac.com", forKey: "email")
+        
+        ConfigModel.shared = ConfigModel(nowPlayableBehavior: IOSNowPlayableBehavior())
 
         return true
     }

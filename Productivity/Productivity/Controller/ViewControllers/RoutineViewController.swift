@@ -11,6 +11,7 @@ import CoreData
 import AVKit
 
 class RoutineViewController: PRBaseViewController {
+    //MARK: Properties
     @IBOutlet var buttons: [UIButton]!
     
     @IBOutlet weak var resetPrevButton: UIButton!
@@ -29,13 +30,22 @@ class RoutineViewController: PRBaseViewController {
     var isPaused = true
     var timeObserverToken: Any?
     var time: CMTime?
-
+    
+    // The asset player controlling playback.
+    var assetPlayer: AssetPlayer!
+    
+    // The player view.
+    @IBOutlet weak var assetPlayerView: AssetPlayerView!
+    
+    //MARK:View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTasks()
+        optIn(nil)
         setupStyles()
         updateUI()
     }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -43,7 +53,9 @@ class RoutineViewController: PRBaseViewController {
         removeTaskObserver()
     }
     
-    //MARK: Styles
+    //MARK: Setup
+    
+    //Setup Styles
     private func setupStyles() {
         for button in buttons {
             button.roundCorners()
@@ -55,20 +67,53 @@ class RoutineViewController: PRBaseViewController {
         routerPickerView.backgroundColor = UIColor(hexString: "1F2123")
     }
     
-    //MARK: Setup Tasks
+    // MARK: Actions
+    
+    // Action method: opt into now-playability for the app.
+    func optIn(_ sender: Any?) {
+        
+        guard assetPlayer == nil else { return }
+        
+        // Create the asset player, if possible.
+        
+        do {
+            assetPlayer = try AssetPlayer()
+            assetPlayerView.player = assetPlayer.player
+        }
+            
+            // Otherwise, display an error.
+            
+        catch {
+            let viewController = UIAlertController(title: "Player could not be created.", message: error.localizedDescription, preferredStyle: .alert)
+            present(viewController, animated: true)
+        }
+    }
+    
+    // Action method: opt out of now-playability.
+    func optOut(_ sender: Any?) {
+        
+        guard assetPlayer != nil else { return }
+        
+        assetPlayer.optOut()
+        assetPlayer = nil
+    }
+    
+    
+    //Setup Tasks
     func setupTasks() {
-        AudioManager.shared().setupTasks()
-        AudioManager.shared().setupItems(items: AudioManager.shared().routineList())
+        AudioManager.shared().setupPlayerItems()
         addTaskObserver()
     }
     
-    //MARK: Update UX
+    //MARK: Update
+    
+    //Update UI
     func updateUI() {
         updateLabels()
         updateButtons()
     }
     
-    //MARK: Update Labels
+    //Update Labels
     private func updateLabels() {
         if let currentTask = AudioManager.shared().currentTask {
             let totalTasks = Task.countInContext(context: managedObjectContext)
@@ -85,7 +130,7 @@ class RoutineViewController: PRBaseViewController {
         }
     }
     
-    //MARK: Update Buttons
+    //Update Buttons
     private func updateButtons() {
         //Add Aiplay if its missing
         if !buttonsStackView.arrangedSubviews.contains(routerPickerView) {
@@ -102,33 +147,15 @@ class RoutineViewController: PRBaseViewController {
         }
     }
     
-    //MARK: Select Play
+    //MARK: Actions
+    
+    //Select Play
     @IBAction func didSelectPlayButton() {
         if isPaused {
             resumeTask()
         } else {
             pauseTask()
         }
-    }
-    
-    //MARK: Select Next
-    @IBAction func didSelectNextButton() {
-        nextTask()
-    }
-
-    //MARK: Select Restart
-    @IBAction func didSelectRestartButton() {
-        resetTask()
-    }
-    
-    private func nextTask() {
-        AudioManager.shared().playNext()
-        self.testFeedback(6)
-    }
-    
-    private func prevTask() {
-        AudioManager.shared().play()
-        self.testFeedback(6)
     }
     
     private func resumeTask() {
@@ -145,10 +172,33 @@ class RoutineViewController: PRBaseViewController {
         self.testFeedback(6)
     }
     
+    //Select Next
+    @IBAction func didSelectNextButton() {
+        nextTask()
+    }
+    
+    private func nextTask() {
+        AudioManager.shared().playNext()
+        self.testFeedback(2)
+    }
+
+    //Select Restart
+    @IBAction func didSelectRestartButton() {
+        resetTask()
+    }
+    
     private func resetTask() {
         updateLabels()
-        self.testFeedback(6)
+        self.testFeedback(1)
     }
+    
+    //Select Previous
+    private func prevTask() {
+        AudioManager.shared().play()
+        self.testFeedback(3)
+    }
+    
+    //MARK: Task Observers
     
     //Add Observer For Updating Task UI
     func addTaskObserver() {
