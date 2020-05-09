@@ -58,24 +58,6 @@
 		B87858C1245CAF04008F0F01 /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = B87858C0245CAF04008F0F01 /* tick.wav */; };
 		B87858C3245CCF68008F0F01 /* 1-hour-and-20-minutes-of-silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87858C2245CCF68008F0F01 /* 1-hour-and-20-minutes-of-silence.mp3 */; };
 		B87858C5245E2C85008F0F01 /* 1-minute-of-silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B87858C4245E2C85008F0F01 /* 1-minute-of-silence.mp3 */; };
-		B87858F2245E5D18008F0F01 /* ConfigAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858D5245E5D18008F0F01 /* ConfigAsset.swift */; };
-		B87858F3245E5D18008F0F01 /* ConfigCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858D6245E5D18008F0F01 /* ConfigCommand.swift */; };
-		B87858F4245E5D18008F0F01 /* ConfigCommandCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858D7245E5D18008F0F01 /* ConfigCommandCollection.swift */; };
-		B87858F5245E5D18008F0F01 /* ConfigPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858D8245E5D18008F0F01 /* ConfigPath.swift */; };
-		B87858F6245E5D18008F0F01 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858D9245E5D18008F0F01 /* ConfigModel.swift */; };
-		B87858F7245E5D18008F0F01 /* NowPlayableMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858DB245E5D18008F0F01 /* NowPlayableMetadata.swift */; };
-		B87858F8245E5D18008F0F01 /* NowPlayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858DC245E5D18008F0F01 /* NowPlayable.swift */; };
-		B87858F9245E5D18008F0F01 /* NowPlayableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858DD245E5D18008F0F01 /* NowPlayableError.swift */; };
-		B87858FA245E5D18008F0F01 /* NowPlayableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858DE245E5D18008F0F01 /* NowPlayableCommand.swift */; };
-		B87858FB245E5D18008F0F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87858E0245E5D18008F0F01 /* Assets.xcassets */; };
-		B87858FC245E5D18008F0F01 /* Song 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B87858E1245E5D18008F0F01 /* Song 1.m4a */; };
-		B87858FD245E5D18008F0F01 /* Song 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B87858E2245E5D18008F0F01 /* Song 2.m4a */; };
-		B87858FE245E5D18008F0F01 /* Song 3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B87858E3245E5D18008F0F01 /* Song 3.m4a */; };
-		B8785900245E5D18008F0F01 /* AssetPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858E6245E5D18008F0F01 /* AssetPlayer.swift */; };
-		B8785901245E5D18008F0F01 /* EnabledItemCellViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858E8245E5D18008F0F01 /* EnabledItemCellViewDelegate.swift */; };
-		B8785902245E5D18008F0F01 /* CommandCellViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858E9245E5D18008F0F01 /* CommandCellViewDelegate.swift */; };
-		B8785903245E5D18008F0F01 /* AssetPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858EA245E5D18008F0F01 /* AssetPlayerView.swift */; };
-		B8785904245E5D18008F0F01 /* IOSNowPlayableBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87858EC245E5D18008F0F01 /* IOSNowPlayableBehavior.swift */; };
 		B87C117A2443315000305886 /* PRBaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */; };
 		B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */; };
 		B87C117E2444054F00305886 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = B87C117D2444054F00305886 /* colors.json */; };
@@ -223,24 +205,6 @@
 		B87858C0245CAF04008F0F01 /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		B87858C2245CCF68008F0F01 /* 1-hour-and-20-minutes-of-silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1-hour-and-20-minutes-of-silence.mp3"; sourceTree = "<group>"; };
 		B87858C4245E2C85008F0F01 /* 1-minute-of-silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1-minute-of-silence.mp3"; sourceTree = "<group>"; };
-		B87858D5245E5D18008F0F01 /* ConfigAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigAsset.swift; sourceTree = "<group>"; };
-		B87858D6245E5D18008F0F01 /* ConfigCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigCommand.swift; sourceTree = "<group>"; };
-		B87858D7245E5D18008F0F01 /* ConfigCommandCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigCommandCollection.swift; sourceTree = "<group>"; };
-		B87858D8245E5D18008F0F01 /* ConfigPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigPath.swift; sourceTree = "<group>"; };
-		B87858D9245E5D18008F0F01 /* ConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
-		B87858DB245E5D18008F0F01 /* NowPlayableMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayableMetadata.swift; sourceTree = "<group>"; };
-		B87858DC245E5D18008F0F01 /* NowPlayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayable.swift; sourceTree = "<group>"; };
-		B87858DD245E5D18008F0F01 /* NowPlayableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayableError.swift; sourceTree = "<group>"; };
-		B87858DE245E5D18008F0F01 /* NowPlayableCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayableCommand.swift; sourceTree = "<group>"; };
-		B87858E0245E5D18008F0F01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B87858E1245E5D18008F0F01 /* Song 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Song 1.m4a"; sourceTree = "<group>"; };
-		B87858E2245E5D18008F0F01 /* Song 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Song 2.m4a"; sourceTree = "<group>"; };
-		B87858E3245E5D18008F0F01 /* Song 3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Song 3.m4a"; sourceTree = "<group>"; };
-		B87858E6245E5D18008F0F01 /* AssetPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetPlayer.swift; sourceTree = "<group>"; };
-		B87858E8245E5D18008F0F01 /* EnabledItemCellViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnabledItemCellViewDelegate.swift; sourceTree = "<group>"; };
-		B87858E9245E5D18008F0F01 /* CommandCellViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCellViewDelegate.swift; sourceTree = "<group>"; };
-		B87858EA245E5D18008F0F01 /* AssetPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetPlayerView.swift; sourceTree = "<group>"; };
-		B87858EC245E5D18008F0F01 /* IOSNowPlayableBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSNowPlayableBehavior.swift; sourceTree = "<group>"; };
 		B87C11792443315000305886 /* PRBaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		B87C117B24435DD900305886 /* PRBaseWorkingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRBaseWorkingObject.swift; sourceTree = "<group>"; };
 		B87C117D2444054F00305886 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -538,87 +502,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		B87858C6245E5CA8008F0F01 /* Now Playable */ = {
-			isa = PBXGroup;
-			children = (
-				B87858EB245E5D18008F0F01 /* NowPlayable */,
-				B87858D3245E5D18008F0F01 /* Shared */,
-			);
-			path = "Now Playable";
-			sourceTree = "<group>";
-		};
-		B87858D3245E5D18008F0F01 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				B87858D4245E5D18008F0F01 /* Configuration */,
-				B87858DA245E5D18008F0F01 /* NowPlayable */,
-				B87858DF245E5D18008F0F01 /* Resources */,
-				B87858E5245E5D18008F0F01 /* Player */,
-				B87858E7245E5D18008F0F01 /* Utility */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		B87858D4245E5D18008F0F01 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				B87858D5245E5D18008F0F01 /* ConfigAsset.swift */,
-				B87858D6245E5D18008F0F01 /* ConfigCommand.swift */,
-				B87858D7245E5D18008F0F01 /* ConfigCommandCollection.swift */,
-				B87858D8245E5D18008F0F01 /* ConfigPath.swift */,
-				B87858D9245E5D18008F0F01 /* ConfigModel.swift */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		B87858DA245E5D18008F0F01 /* NowPlayable */ = {
-			isa = PBXGroup;
-			children = (
-				B87858DB245E5D18008F0F01 /* NowPlayableMetadata.swift */,
-				B87858DC245E5D18008F0F01 /* NowPlayable.swift */,
-				B87858DD245E5D18008F0F01 /* NowPlayableError.swift */,
-				B87858DE245E5D18008F0F01 /* NowPlayableCommand.swift */,
-			);
-			path = NowPlayable;
-			sourceTree = "<group>";
-		};
-		B87858DF245E5D18008F0F01 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B87858E0245E5D18008F0F01 /* Assets.xcassets */,
-				B87858E1245E5D18008F0F01 /* Song 1.m4a */,
-				B87858E2245E5D18008F0F01 /* Song 2.m4a */,
-				B87858E3245E5D18008F0F01 /* Song 3.m4a */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		B87858E5245E5D18008F0F01 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				B87858E6245E5D18008F0F01 /* AssetPlayer.swift */,
-			);
-			path = Player;
-			sourceTree = "<group>";
-		};
-		B87858E7245E5D18008F0F01 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				B87858E8245E5D18008F0F01 /* EnabledItemCellViewDelegate.swift */,
-				B87858E9245E5D18008F0F01 /* CommandCellViewDelegate.swift */,
-				B87858EA245E5D18008F0F01 /* AssetPlayerView.swift */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		B87858EB245E5D18008F0F01 /* NowPlayable */ = {
-			isa = PBXGroup;
-			children = (
-				B87858EC245E5D18008F0F01 /* IOSNowPlayableBehavior.swift */,
-			);
-			path = NowPlayable;
-			sourceTree = "<group>";
-		};
 		B87C11812447D6E100305886 /* IAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,7 +669,6 @@
 		B8FA79BC2421C0FB007E7706 /* Productivity */ = {
 			isa = PBXGroup;
 			children = (
-				B87858C6245E5CA8008F0F01 /* Now Playable */,
 				B87858A52455FD64008F0F01 /* Productivity.entitlements */,
 				B87C11812447D6E100305886 /* IAP */,
 				B882714424246F2A004F5718 /* Animation */,
@@ -928,26 +810,22 @@
 				B8F19E06244A71830006AC16 /* IconImageSingleLabelToggleView.xib in Resources */,
 				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
 				B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */,
-				B87858FE245E5D18008F0F01 /* Song 3.m4a in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87858C1245CAF04008F0F01 /* tick.wav in Resources */,
 				B87858B9245C97A0008F0F01 /* routine.bundle in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
-				B87858FD245E5D18008F0F01 /* Song 2.m4a in Resources */,
 				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,
 				B8F19E1C245283CD0006AC16 /* AddTaskView.xib in Resources */,
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B87858BC245C9918008F0F01 /* space.wav in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
-				B87858FC245E5D18008F0F01 /* Song 1.m4a in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
 				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
 				B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */,
 				B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */,
 				B87858C5245E2C85008F0F01 /* 1-minute-of-silence.mp3 in Resources */,
-				B87858FB245E5D18008F0F01 /* Assets.xcassets in Resources */,
 				B87858BF245C9BDE008F0F01 /* chime.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1029,18 +907,14 @@
 				B87678862424602A0009EFE4 /* UIColor+Extensions.swift in Sources */,
 				B882713924246B90004F5718 /* PRBaseTextField.swift in Sources */,
 				B888616024545B1F00EE1133 /* HeaderFooterTableViewCell.swift in Sources */,
-				B8785901245E5D18008F0F01 /* EnabledItemCellViewDelegate.swift in Sources */,
-				B8785900245E5D18008F0F01 /* AssetPlayer.swift in Sources */,
 				B888616424545C3000EE1133 /* ToggleTableViewCell.swift in Sources */,
 				B88861542454599900EE1133 /* RepeatFrequencyTableViewCell.swift in Sources */,
 				B87C11892447DB0400305886 /* PRSubscriptionViewController.swift in Sources */,
 				B8F19AFF24428CC200F8915F /* Task.swift in Sources */,
 				B888615E24545AE800EE1133 /* TasksTableViewCell.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
-				B87858F2245E5D18008F0F01 /* ConfigAsset.swift in Sources */,
 				B882713824246B90004F5718 /* PRBaseView.swift in Sources */,
 				B888616C2454691900EE1133 /* ColorCollectionViewCell.swift in Sources */,
-				B87858F3245E5D18008F0F01 /* ConfigCommand.swift in Sources */,
 				B882715F24257FC3004F5718 /* LoginManager.swift in Sources */,
 				B87678832424602A0009EFE4 /* LogManager.swift in Sources */,
 				B888616A245468D200EE1133 /* IconCollectionViewCell.swift in Sources */,
@@ -1054,8 +928,6 @@
 				B87678882424602A0009EFE4 /* UINavigationController+Extensions.swift in Sources */,
 				B882714324246CEE004F5718 /* PRBaseTableViewController.swift in Sources */,
 				B87678842424602A0009EFE4 /* UIViewController+Extensions.swift in Sources */,
-				B8785904245E5D18008F0F01 /* IOSNowPlayableBehavior.swift in Sources */,
-				B87858F9245E5D18008F0F01 /* NowPlayableError.swift in Sources */,
 				B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */,
 				B8D56B482429899500FEF929 /* IconView.swift in Sources */,
 				B8FA79C42421C0FB007E7706 /* SettingsTabViewController.swift in Sources */,
@@ -1066,13 +938,11 @@
 				B87678912424602A0009EFE4 /* UICollectionView+Extensions.swift in Sources */,
 				B8FA79C22421C0FB007E7706 /* RoutinesTabViewController.swift in Sources */,
 				B8F19AF72442815400F8915F /* SettingsTableViewController.swift in Sources */,
-				B87858F4245E5D18008F0F01 /* ConfigCommandCollection.swift in Sources */,
 				B882714224246CEE004F5718 /* PRBaseNavigationController.swift in Sources */,
 				B888615A24545A8300EE1133 /* DisclosureTableViewCell.swift in Sources */,
 				B8D56B442429884000FEF929 /* IconsCollectionViewController.swift in Sources */,
 				B88861522454598D00EE1133 /* IconColorTableViewCell.swift in Sources */,
 				B87858952454F51F008F0F01 /* RoutineViewController.swift in Sources */,
-				B87858F6245E5D18008F0F01 /* ConfigModel.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
@@ -1082,7 +952,6 @@
 				B87C11862447D7B200305886 /* PRProducts.swift in Sources */,
 				B882715B24257FC3004F5718 /* User.swift in Sources */,
 				B87678812424602A0009EFE4 /* ReachabilityManager.swift in Sources */,
-				B8785902245E5D18008F0F01 /* CommandCellViewDelegate.swift in Sources */,
 				B8F19E1F2453A48B0006AC16 /* EditTaskTableViewController.swift in Sources */,
 				B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */,
 				B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */,
@@ -1093,7 +962,6 @@
 				B876788F2424602A0009EFE4 /* Date+Extensions.swift in Sources */,
 				B876788B2424602A0009EFE4 /* UITableView+Extensions.swift in Sources */,
 				B8886168245460C200EE1133 /* CreateTemplateTableViewCell.swift in Sources */,
-				B87858F8245E5D18008F0F01 /* NowPlayable.swift in Sources */,
 				B8F19E17244C8E1F0006AC16 /* EditTasksView.swift in Sources */,
 				B882713724246B90004F5718 /* PRBaseCollectionViewCell.swift in Sources */,
 				B882713624246B90004F5718 /* PRFadeImageView.swift in Sources */,
@@ -1105,13 +973,10 @@
 				B87678872424602A0009EFE4 /* UIDevice+Extensions.swift in Sources */,
 				B8886158245459B400EE1133 /* TimeOfDayTableViewCell.swift in Sources */,
 				B8FA79C02421C0FB007E7706 /* SceneDelegate.swift in Sources */,
-				B87858F5245E5D18008F0F01 /* ConfigPath.swift in Sources */,
 				B87858A9245C915C008F0F01 /* AudioManager.swift in Sources */,
 				B888616224545B9A00EE1133 /* TimeLengthTableViewCell.swift in Sources */,
 				B8F19E09244AA9C20006AC16 /* DailyWeeklyMonthlyView.swift in Sources */,
 				B8886166245460A100EE1133 /* CreateTableViewCell.swift in Sources */,
-				B87858FA245E5D18008F0F01 /* NowPlayableCommand.swift in Sources */,
-				B8785903245E5D18008F0F01 /* AssetPlayerView.swift in Sources */,
 				B882714E24247216004F5718 /* CoreData.xcdatamodeld in Sources */,
 				B882714824246F7B004F5718 /* PRLoadingAnimation.swift in Sources */,
 				B888615C24545AA900EE1133 /* AddTaskTableViewCell.swift in Sources */,
@@ -1126,7 +991,6 @@
 				B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */,
 				B876788A2424602A0009EFE4 /* NSObject+Extensions.swift in Sources */,
 				B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */,
-				B87858F7245E5D18008F0F01 /* NowPlayableMetadata.swift in Sources */,
 				B87858992455E8D2008F0F01 /* AudioManager_Old.swift in Sources */,
 				B882716224257FC3004F5718 /* SettingsManager.swift in Sources */,
 				B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */,

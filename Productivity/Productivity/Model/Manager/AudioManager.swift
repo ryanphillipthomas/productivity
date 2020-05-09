@@ -13,7 +13,7 @@ import UIKit
 
 class AudioManager: NSObject {
     static let manager = AudioManager()
-    var playerQueue: AVQueuePlayer!
+    var playerQueue: AVQueuePlayer?
     var playerLooper: AVPlayerLooper!
     var trimmedTaskUrls = [URL]()
     
@@ -38,7 +38,7 @@ class AudioManager: NSObject {
     //MARK: Get Current Task
     var currentTask: Task? {
         var currentTask: Task?
-        if let item = AudioManager.shared().playerQueue.currentItem {
+        if let que = AudioManager.shared().playerQueue, let item = que.currentItem {
             //Get the TaskIDString of the current item
             var taskIDString: String = ""
             for i in item.externalMetadata {
@@ -151,15 +151,21 @@ class AudioManager: NSObject {
     }
     
     func playNext() {
-        playerQueue.advanceToNextItem()
+        if let que = AudioManager.shared().playerQueue {
+            que.advanceToNextItem()
+        }
     }
     
     func play() {
-        playerQueue.play()
+        if let que = AudioManager.shared().playerQueue {
+            que.play()
+        }
     }
     
     func pause() {
-        playerQueue.pause()
+        if let que = AudioManager.shared().playerQueue {
+        que.pause()
+        }
     }
     
     

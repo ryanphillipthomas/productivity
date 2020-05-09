@@ -431,15 +431,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebo-XW-0DU" customClass="AssetPlayerView" customModule="NowPlayable_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="271.5" width="414" height="233"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="5e2-uY-eQD"/>
-                                    <constraint firstAttribute="height" constant="233" id="m5a-Za-Fvm"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="v4Z-Y6-sSd"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiq-lb-FAA" userLabel="Title View" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
                                 <rect key="frame" x="20" y="76" width="374" height="70"/>
                                 <subviews>
@@ -536,7 +527,6 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ebo-XW-0DU" firstAttribute="centerY" secondItem="SOJ-YD-rv3" secondAttribute="centerY" id="ACB-NM-tpH"/>
                             <constraint firstItem="tiq-lb-FAA" firstAttribute="leading" secondItem="SOJ-YD-rv3" secondAttribute="leading" constant="20" id="Kew-z1-ayu"/>
                             <constraint firstItem="ZYX-o5-C67" firstAttribute="leading" secondItem="SOJ-YD-rv3" secondAttribute="leading" constant="20" id="LUp-zr-YM6"/>
                             <constraint firstItem="ZYX-o5-C67" firstAttribute="centerY" secondItem="SOJ-YD-rv3" secondAttribute="centerY" id="NjY-xN-zmF"/>
@@ -545,14 +535,12 @@
                             <constraint firstItem="SOJ-YD-rv3" firstAttribute="trailing" secondItem="tiq-lb-FAA" secondAttribute="trailing" constant="20" id="Vn3-eF-NDW"/>
                             <constraint firstItem="SOJ-YD-rv3" firstAttribute="trailing" secondItem="fQJ-7R-ptN" secondAttribute="trailing" constant="20" id="YSO-Ul-Z65"/>
                             <constraint firstItem="tiq-lb-FAA" firstAttribute="top" secondItem="SOJ-YD-rv3" secondAttribute="top" constant="20" id="mJf-p0-yck"/>
-                            <constraint firstItem="ebo-XW-0DU" firstAttribute="centerX" secondItem="SOJ-YD-rv3" secondAttribute="centerX" id="n08-E5-Zg8"/>
                             <constraint firstItem="SOJ-YD-rv3" firstAttribute="trailing" secondItem="ZYX-o5-C67" secondAttribute="trailing" constant="20" id="ybQ-mx-6cp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SOJ-YD-rv3"/>
                     </view>
                     <navigationItem key="navigationItem" id="CAG-Yz-2tx"/>
                     <connections>
-                        <outlet property="assetPlayerView" destination="ebo-XW-0DU" id="HLU-s8-6xR"/>
                         <outlet property="buttonsStackView" destination="rUP-h7-xtR" id="z8S-KD-wp9"/>
                         <outlet property="currentRoutineNameLabel" destination="3ch-Ut-hgm" id="8n9-ru-3a5"/>
                         <outlet property="currentRoutineNumberLabel" destination="VHc-kd-NuT" id="C3B-Fh-2Eb"/>
