@@ -161,6 +161,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AQPlayer/AQPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NSLogger/NSLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"
@@ -170,6 +171,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AQPlayer/AQPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NSLogger/NSLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"

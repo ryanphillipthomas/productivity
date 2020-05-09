@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '10.0'
+platform :ios, '13.2'
 use_frameworks!
 
 # ignore all warnings from all pods
@@ -19,6 +19,7 @@ def shared_pods
     pod 'Fabric'
     pod 'Firebase/Core', '4.3.0'
     pod 'NSLogger/Swift'
+    pod 'AQPlayer'
 end
 
 
