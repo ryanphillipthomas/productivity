@@ -40,7 +40,7 @@ PODS:
   - SkeletonView (1.8.2)
 
 DEPENDENCIES:
-  - AQPlayer
+  - AQPlayer (from `https://github.com/ryanphillipthomas/AQPlayer-master`)
   - Crashlytics
   - Fabric
   - Firebase/Core (= 4.3.0)
@@ -53,7 +53,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - AQPlayer
     - Crashlytics
     - Fabric
     - Firebase
@@ -69,17 +68,22 @@ SPEC REPOS:
     - SkeletonView
 
 EXTERNAL SOURCES:
+  AQPlayer:
+    :git: https://github.com/ryanphillipthomas/AQPlayer-master
   ParallaxHeader:
     :commit: a75c875ac61c32edb00e5d14bb6828679c0e617a
     :git: https://github.com/ryanphillipthomas/ParallaxHeader
 
 CHECKOUT OPTIONS:
+  AQPlayer:
+    :commit: 899b8142632a877d8639fe7988147d06a06e1ca3
+    :git: https://github.com/ryanphillipthomas/AQPlayer-master
   ParallaxHeader:
     :commit: a75c875ac61c32edb00e5d14bb6828679c0e617a
     :git: https://github.com/ryanphillipthomas/ParallaxHeader
 
 SPEC CHECKSUMS:
-  AQPlayer: 47f14141b99ba55a5fecf3aec477b88f7069e5fa
+  AQPlayer: 0acb8c3b0cc688ca949c946b39e8b7d978d5f248
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
@@ -95,6 +99,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
 
-PODFILE CHECKSUM: a7c03f99c14d00886f4e5f811c0c58209ce385f8
+PODFILE CHECKSUM: 9d01bbe90a3e0c8439a4ca3ce354e27fb1f5ffac
 
 COCOAPODS: 1.8.4

@@ -58,10 +58,14 @@ public final class AQPlayerManager: NSObject {
         return currentTime.seconds / duration.seconds
     }
     
+    /// Check for headphones, used to handle audio route change
+    private var headphonesConnected: Bool = false
+    
     public override init() {
         super.init()
         
         self.setupRemoteControl()
+        self.setupNotifications()
     }
     
     deinit {
@@ -81,6 +85,7 @@ public final class AQPlayerManager: NSObject {
         self.clean()
         self.status = .loading
         
+
         guard items.count > 0 else {
             return
         }
@@ -106,8 +111,10 @@ public final class AQPlayerManager: NSObject {
             toDrop = items.count - 1
         }
         
+        
         // init the AQQueuePlayer
         qPlayer = AQQueuePlayer(items: Array(qPlayerItems.dropFirst(toDrop)))
+        qPlayer?.allowsExternalPlayback = false
         
         let keysToObserve = ["currentItem","rate"]
         for key in keysToObserve {
@@ -213,6 +220,9 @@ public final class AQPlayerManager: NSObject {
         
     }
     
+    
+    
+    
     fileprivate func updateNowPlaying(time: TimeInterval? = nil) {
         guard self.duration > 0.0 else {
             return
@@ -227,12 +237,33 @@ public final class AQPlayerManager: NSObject {
             return
         }
         
+        
         // init metadata
         nowPlayingInfo?[MPMediaItemPropertyTitle] = item.itemInfo.title
+        nowPlayingInfo?[MPMediaItemPropertyArtist] = item.itemInfo.artist
+        nowPlayingInfo?[MPMediaItemPropertyAlbumArtist] = item.itemInfo.albumArtist
         nowPlayingInfo?[MPMediaItemPropertyAlbumTitle] = item.itemInfo.albumTitle
+        nowPlayingInfo?[MPMediaItemPropertyGenre] = "genre"
+        nowPlayingInfo?[MPMediaItemPropertyComposer] = "composer"
+        nowPlayingInfo?[MPMediaItemPropertyAlbumTrackNumber] = item.itemInfo.albumTrackNumber
+        nowPlayingInfo?[MPMediaItemPropertyAlbumTrackCount] = item.itemInfo.albumTrackCount
+        nowPlayingInfo?[MPNowPlayingInfoPropertyMediaType] = item.itemInfo.mediaType.rawValue
+        nowPlayingInfo?[MPNowPlayingInfoPropertyIsLiveStream] = false
+        nowPlayingInfo?[MPMediaItemPropertyPersistentID] = String(item.itemInfo.id)
+        nowPlayingInfo?[MPMediaItemPropertyDiscCount] = item.itemInfo.albumTrackCount
+        nowPlayingInfo?[MPMediaItemPropertyDiscNumber] = item.itemInfo.albumTrackNumber
+        nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackQueueIndex] = item.itemInfo.albumTrackNumber
+        nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackQueueCount] = item.itemInfo.albumTrackCount
+        nowPlayingInfo?[MPNowPlayingInfoPropertyChapterNumber] = item.itemInfo.albumTrackNumber
+        nowPlayingInfo?[MPNowPlayingInfoPropertyChapterCount] = item.itemInfo.albumTrackCount
+
+
+
         nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = (time == nil) ? self.qPlayer?.currentTime().seconds ?? 0 : time
         nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = self.duration
         nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = self.qPlayer?.rate ?? 0
+        
+        
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
@@ -553,6 +584,63 @@ extension AQPlayerManager {
             strongSelf.updateNowPlaying()
         })
     }
+    
+    // MARK: - Notifications
+    
+    func setupNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
+    }
+    
+    // MARK: - Responding to Route Changes
+    
+    private func checkHeadphonesConnection(outputs: [AVAudioSessionPortDescription]) {
+        for output in outputs where output.portType == .headphones {
+            headphonesConnected = true
+            break
+        }
+        headphonesConnected = false
+    }
+    
+    
+    @objc private func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else { return }
+        
+        switch reason {
+        case .newDeviceAvailable:
+            checkHeadphonesConnection(outputs: AVAudioSession.sharedInstance().currentRoute.outputs)
+        case .oldDeviceUnavailable:
+            guard let previousRoute = userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription else { return }
+            checkHeadphonesConnection(outputs: previousRoute.outputs);
+            DispatchQueue.main.async { self.headphonesConnected ? () : self.pause() }
+        default: break
+        }
+    }
+    
+    
+    // MARK: - Responding to Interruptions
+    
+    @objc private func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+        
+        switch type {
+        case .began:
+            DispatchQueue.main.async { self.pause() }
+        case .ended:
+            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { break }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            DispatchQueue.main.async { options.contains(.shouldResume) ? self.play() : self.pause() }
+        @unknown default:
+            break
+        }
+    }
 }
 
 public enum AQRemoteControlMode {
@@ -566,5 +654,5 @@ final class Defaults {
     static let preferredTimescale: CMTimeScale = 1000
     static let skipIntervalInSeconds: TimeInterval = 15.0
     static let playbackRates: [Float] = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
-    static let commandCenterMode = AQRemoteControlMode.skip
+    static let commandCenterMode = AQRemoteControlMode.nextprev
 }
