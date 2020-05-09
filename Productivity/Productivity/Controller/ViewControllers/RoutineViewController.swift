@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AVKit
+import AQPlayer
 
 class RoutineViewController: PRBaseViewController {
     
@@ -27,6 +28,10 @@ class RoutineViewController: PRBaseViewController {
     let routerPickerView = AVRoutePickerView()
     var routineID: Int64?
     let detector = AVRouteDetector()
+    
+    let playerManager = AQPlayerManager.shared
+    var playeritems: [AQPlayerItemInfo] = []
+    var parts: [[String]] = [[""]]
 
     var isPaused = true
     var time: CMTime?
@@ -60,7 +65,21 @@ class RoutineViewController: PRBaseViewController {
     
     //Setup Tasks
     func setupTasks() {
-        
+        // task title , audio file, task description
+       parts = [["Feed Pets","song_1.m4a", "5 min", "Give Kitty and Oliver, dry chicken 2 scoops."],
+                     ["Coffee","song_2.m4a", "4 min", "Have a fresh cup of coffee"],
+                     ["Read","song_3.m4a", "14 min",  "No news, social or email!"],
+                     ["Bathroom","song_1.m4a", "7 min", "Grab something good to read!"],
+                     ["Meditate","song_2.m4a", "7 min", "Use the Calm app and Meditate"],
+                     ["Journal","song_3.m4a", "8 min", "Use the DayOne app and Journal"],
+                     ["Workout","song_1.m4a", "15 min", "Use the Seven app and Workout"]]
+
+        for i in 0..<parts.count {
+            if let url = Bundle.main.url(forResource: "\(parts[i][1])", withExtension: nil) {
+                let item = AQPlayerItemInfo(id: i, url: url, title: "\(parts[i][0])", albumTitle: "\(parts[i][3])", coverImage: UIImage(named: "album"), startAt: 0, mediaType: .audio, artist: "\(parts[i][2])", albumTrackNumber:"\(i+1)", albumTrackCount:"\(parts.count)")
+                playeritems.append(item)
+            }
+        }
     }
     
     //MARK: Update

@@ -21,6 +21,9 @@
 		B82E55792427BB810040A04E /* EditRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */; };
 		B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E557A24283E860040A04E /* IconColorButtonView.xib */; };
 		B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E557C242841BA0040A04E /* IconColorButtonView.swift */; };
+		B832E3EF2466F3A300EDF0E7 /* song_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B832E3EC2466F3A200EDF0E7 /* song_2.m4a */; };
+		B832E3F02466F3A300EDF0E7 /* song_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B832E3ED2466F3A200EDF0E7 /* song_3.m4a */; };
+		B832E3F12466F3A300EDF0E7 /* song_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B832E3EE2466F3A300EDF0E7 /* song_1.m4a */; };
 		B876787C2424602A0009EFE4 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B876785B2424602A0009EFE4 /* Log.storyboard */; };
 		B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */; };
 		B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678602424602A0009EFE4 /* LoggerViewController.swift */; };
@@ -166,6 +169,9 @@
 		B82E55782427BB810040A04E /* EditRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineTableViewController.swift; sourceTree = "<group>"; };
 		B82E557A24283E860040A04E /* IconColorButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconColorButtonView.xib; sourceTree = "<group>"; };
 		B82E557C242841BA0040A04E /* IconColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconColorButtonView.swift; sourceTree = "<group>"; };
+		B832E3EC2466F3A200EDF0E7 /* song_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = song_2.m4a; sourceTree = "<group>"; };
+		B832E3ED2466F3A200EDF0E7 /* song_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = song_3.m4a; sourceTree = "<group>"; };
+		B832E3EE2466F3A300EDF0E7 /* song_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = song_1.m4a; sourceTree = "<group>"; };
 		B876785B2424602A0009EFE4 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		B876785C2424602A0009EFE4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -578,6 +584,9 @@
 				B87858BE245C9BDE008F0F01 /* chime.wav */,
 				B87858BA245C9918008F0F01 /* space.wav */,
 				B87858C0245CAF04008F0F01 /* tick.wav */,
+				B832E3EE2466F3A300EDF0E7 /* song_1.m4a */,
+				B832E3EC2466F3A200EDF0E7 /* song_2.m4a */,
+				B832E3ED2466F3A200EDF0E7 /* song_3.m4a */,
 				B87858B8245C979F008F0F01 /* routine.bundle */,
 				B87858A8245C915C008F0F01 /* AudioManager.swift */,
 			);
@@ -798,6 +807,8 @@
 			files = (
 				B87C118B2447DCCB00305886 /* poohWisdom.json in Resources */,
 				B8FA79CC2421C0FD007E7706 /* LaunchScreen.storyboard in Resources */,
+				B832E3EF2466F3A300EDF0E7 /* song_2.m4a in Resources */,
+				B832E3F12466F3A300EDF0E7 /* song_1.m4a in Resources */,
 				B87858BD245C9918008F0F01 /* complete.wav in Resources */,
 				B82E556D242663C70040A04E /* LineSingleLabelHeaderFooterView.xib in Resources */,
 				B878589B2455EA7E008F0F01 /* white_noise.wav in Resources */,
@@ -820,6 +831,7 @@
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B87858BC245C9918008F0F01 /* space.wav in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
+				B832E3F02466F3A300EDF0E7 /* song_3.m4a in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
 				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
