@@ -19,7 +19,10 @@ def shared_pods
     pod 'Fabric'
     pod 'Firebase/Core', '4.3.0'
     pod 'NSLogger/Swift'
-    pod 'AQPlayer'
+    pod 'AQPlayer', :git => 'https://github.com/ryanphillipthomas/AQPlayer-master', :inhibit_warnings => true
+
+
+    
 end
 
 
