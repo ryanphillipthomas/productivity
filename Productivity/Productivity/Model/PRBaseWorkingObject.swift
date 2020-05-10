@@ -19,10 +19,10 @@ class PRBaseWorkingObject: NSObject {
     var timeOfDay: String?
     var length: Int64?
     var order: Int64?
-    var chimeSoundFileName: String?
-    var announceSoundFileName: String?
-    var musicSoundFileName: String?
-    var musicSoundTemplateFileName: String?
+    var chimeSoundFileURL: String?
+    var announceSoundFileURL: String?
+    var musicSoundFileURL: String?
+    var musicSoundTemplateFileURL: String?
     var itemDescription: String?
     var imageName: String?
 
@@ -49,10 +49,10 @@ class PRBaseWorkingObject: NSObject {
             colorValue = task.colorValue
             length = task.length
             order = task.order
-            chimeSoundFileName = task.chimeSoundFileName
-            announceSoundFileName = task.announceSoundFileName
-            musicSoundFileName = task.musicSoundFileName
-            musicSoundTemplateFileName = task.musicSoundTemplateFileName
+            chimeSoundFileURL = task.chimeSoundFileURL
+            announceSoundFileURL = task.announceSoundFileURL
+            musicSoundFileURL = task.musicSoundFileURL
+            musicSoundTemplateFileURL = task.musicSoundTemplateFileURL
             imageName = task.imageName
             itemDescription = task.itemDescription
         }

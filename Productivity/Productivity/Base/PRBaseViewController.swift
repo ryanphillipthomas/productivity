@@ -30,7 +30,7 @@ open class PRBaseViewController: UIViewController {
         configureObservers()
     }
     
-    @objc func testFeedback(_ i: Int) {
+    @objc func generateButtonFeedback(_ i: Int) {
         switch i {
         case 1:
             let generator = UINotificationFeedbackGenerator()

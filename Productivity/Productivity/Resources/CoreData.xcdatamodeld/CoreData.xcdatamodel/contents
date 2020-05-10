@@ -12,16 +12,16 @@
         <attribute name="timeOfDay" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
-        <attribute name="announceSoundFileName" optional="YES" attributeType="String"/>
-        <attribute name="chimeSoundFileName" optional="YES" attributeType="String"/>
+        <attribute name="announceSoundFileURL" optional="YES" attributeType="String"/>
+        <attribute name="chimeSoundFileURL" optional="YES" attributeType="String"/>
         <attribute name="colorValue" optional="YES" attributeType="String"/>
         <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="itemDescription" optional="YES" attributeType="String"/>
         <attribute name="length" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="musicSoundFileName" optional="YES" attributeType="String"/>
-        <attribute name="musicSoundTemplateFileName" optional="YES" attributeType="String"/>
+        <attribute name="musicSoundFileURL" optional="YES" attributeType="String"/>
+        <attribute name="musicSoundTemplateFileURL" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>

@@ -65,18 +65,61 @@ class RoutineViewController: PRBaseViewController {
         let tasks = Task.fetchInContext(context: managedObjectContext)
         for i in 0..<tasks.count {
             let task = tasks[i]
-            if let url = Bundle.main.url(forResource: task.musicSoundFileName, withExtension: nil) {
-                let item = AQPlayerItemInfo(id: Int(task.id),
-                                            url: url,
-                                            title: task.name,
-                                            albumTitle: task.itemDescription,
-                                            coverImage: UIImage(named: task.imageName),
-                                            startAt: 0,
-                                            mediaType: .audio,
-                                            artist: "5 min",
-                                            albumTrackNumber:"\(i+1)",
-                                            albumTrackCount:"\(tasks.count)")
-                playeritems.append(item)
+                //Chime Sound
+            let chime = AQPlayerItemInfo(id: Int(task.id),
+                                        url: URL(string: task.chimeSoundFileURL)!,
+                                        title: task.name,
+                                        albumTitle: task.itemDescription,
+                                        coverImage: UIImage(named: task.imageName),
+                                        startAt: 0,
+                                        mediaType: .audio,
+                                        artist: "5 min",
+                                        albumTrackNumber:"\(i+1)",
+                                        albumTrackCount:"\(tasks.count)")
+            playeritems.append(chime)
+            
+            //Announcement
+            let announcement = AQPlayerItemInfo(id: Int(task.id),
+                                        url: URL(string: task.announceSoundFileURL)!,
+                                        title: task.name,
+                                        albumTitle: task.itemDescription,
+                                        coverImage: UIImage(named: task.imageName),
+                                        startAt: 0,
+                                        mediaType: .audio,
+                                        artist: "5 min",
+                                        albumTrackNumber:"\(i+1)",
+                                        albumTrackCount:"\(tasks.count)")
+            playeritems.append(announcement)
+            
+            //Sound File
+            let sound = AQPlayerItemInfo(id: Int(task.id),
+                                        url: URL(string: task.musicSoundFileURL)!,
+                                        title: task.name,
+                                        albumTitle: task.itemDescription,
+                                        coverImage: UIImage(named: task.imageName),
+                                        startAt: 0,
+                                        mediaType: .audio,
+                                        artist: "5 min",
+                                        albumTrackNumber:"\(i+1)",
+                                        albumTrackCount:"\(tasks.count)")
+            playeritems.append(sound)
+            
+            if i == tasks.count-1 {
+                
+                //Complete File
+                if let url = Bundle.main.url(forResource: "complete.wav", withExtension: nil) {
+                    let item = AQPlayerItemInfo(id: Int(task.id),
+                                                url: url,
+                                                title: task.name,
+                                                albumTitle: task.itemDescription,
+                                                coverImage: UIImage(named: task.imageName),
+                                                startAt: 0,
+                                                mediaType: .audio,
+                                                artist: "5 min",
+                                                albumTrackNumber:"\(i+1)",
+                                                albumTrackCount:"\(tasks.count)")
+                    playeritems.append(item)
+                }
             }
         }
         
@@ -109,7 +152,9 @@ class RoutineViewController: PRBaseViewController {
     //Update Labels
     private func updateLabels() {
         if let currentTask = currentTask {
+            currentRoutineNumberLabel.text = "\(currentTask.order + 1) of \(Task.countInContext(context: managedObjectContext))"
             currentRoutineNameLabel.text = currentTask.name
+            taskTimeLeftLabel.text = String().timeString(second: (playerManager.duration - playerManager.currentTime))
             currentRoutineNumberLabel.textColor = UIColor(hexString: currentTask.colorValue)
             currentRoutineNameLabel.textColor = UIColor(hexString: currentTask.colorValue)
             taskTimeLeftLabel.textColor = UIColor(hexString: currentTask.colorValue)
@@ -139,11 +184,13 @@ class RoutineViewController: PRBaseViewController {
     @IBAction func didSelectPlayButton() {
         let status = playerManager.playOrPause()
         setPlayPauseButtonImage(status)
+        generateButtonFeedback(6)
     }
     
     //Select Next
     @IBAction func didSelectNextButton() {
         playerManager.next()
+        generateButtonFeedback(2)
     }
 
     //Select Restart
@@ -155,6 +202,7 @@ class RoutineViewController: PRBaseViewController {
             taskTimeLeftLabel.text = String().timeString(second: (playerManager.duration - playerManager.currentTime))
             playerManager.pause()
         }
+        generateButtonFeedback(1)
     }
     
     // MARK: helpers
@@ -176,11 +224,10 @@ class RoutineViewController: PRBaseViewController {
 
 extension RoutineViewController: AQPlayerDelegate {
     func aQPlayerManager(_ playerManager: AQPlayerManager, progressDidUpdate percentage: Double) {
-        self.taskTimeLeftLabel.text = String().timeString(second: (playerManager.duration - playerManager.currentTime))
+        updateUI()
     }
     
     func aQPlayerManager(_ playerManager: AQPlayerManager, itemDidChange itemIndex: Int) {
-        currentRoutineNumberLabel.text = "\(itemIndex + 1) of \(playeritems.count)"
         nextButton.isEnabled = itemIndex < self.playeritems.count - 1
         updateUI()
     }

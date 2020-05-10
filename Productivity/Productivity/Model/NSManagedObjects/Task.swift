@@ -20,27 +20,31 @@ class Task: PRManagedObject {
     @NSManaged var length: Int64
     
     //Sound File vars
-    @NSManaged var chimeSoundFileName: String
-    @NSManaged var announceSoundFileName: String
-    @NSManaged var musicSoundFileName: String
-    @NSManaged var musicSoundTemplateFileName: String
+    @NSManaged var chimeSoundFileURL: String
+    @NSManaged var announceSoundFileURL: String
+    @NSManaged var musicSoundFileURL: String
+    @NSManaged var musicSoundTemplateFileURL: String
 
     //MARK: Update
     public static func update(moc: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
         //dev clean this up....
+        let chimeSoundFileURL = Bundle.main.url(forResource: "chime.wav", withExtension: nil)!.absoluteString
+        let announceSoundFileURL = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
+        let musicSoundFileURL = Bundle.main.url(forResource: "1-minute-of-silence.mp3", withExtension: nil)!.absoluteString
+        let musicSoundTemplateFileURL = Bundle.main.url(forResource: "1-hour-and-20-minutes-of-silence.mp3", withExtension: nil)!.absoluteString
+        
         let objDict = ["id": workingObject.id ?? 1,
                        "name": workingObject.name ?? "Ryan Test",
                        "iconName": workingObject.iconName ?? "gear",
                        "colorValue": workingObject.colorValue ?? "#F80DE2",
                        "length": workingObject.length ?? 60,
-                       "chimeSoundFileName": workingObject.chimeSoundFileName ?? "chime.wav",
-                       "announceSoundFileName": workingObject.announceSoundFileName ?? "bathroom.wav",
-                       "musicSoundFileName": workingObject.musicSoundFileName ?? "1-minute-of-silence.mp3",
-                       "musicSoundTemplateFileName": workingObject.musicSoundTemplateFileName ?? "1-hour-and-20-minutes-of-silence.mp3",
+                       "chimeSoundFileURL": workingObject.chimeSoundFileURL ?? chimeSoundFileURL,
+                       "announceSoundFileURL": workingObject.announceSoundFileURL ?? announceSoundFileURL,
+                       "musicSoundFileURL": workingObject.musicSoundFileURL ?? musicSoundFileURL,
+                       "musicSoundTemplateFileURL": workingObject.musicSoundTemplateFileURL ?? musicSoundTemplateFileURL,
                        "itemDescription": workingObject.itemDescription ?? "Feed the cats 2 scoops of dry chicken.",
                        "imageName": workingObject.imageName ?? "album",
                        "order": workingObject.order ?? 0] as NSDictionary
-        
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
     }
     
@@ -51,7 +55,7 @@ class Task: PRManagedObject {
 
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Task? {
-        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let order = dictionary["order"] as? Int64, let length = dictionary["length"] as? Int64, let chimeSoundFileName = dictionary["chimeSoundFileName"] as? String, let announceSoundFileName = dictionary["announceSoundFileName"] as? String, let musicSoundFileName = dictionary["musicSoundFileName"] as? String, let musicSoundTemplateFileName = dictionary["musicSoundTemplateFileName"] as? String, let itemDescription = dictionary["itemDescription"] as? String, let imageName = dictionary["imageName"] as? String
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let order = dictionary["order"] as? Int64, let length = dictionary["length"] as? Int64, let chimeSoundFileURL = dictionary["chimeSoundFileURL"] as? String, let announceSoundFileURL = dictionary["announceSoundFileURL"] as? String, let musicSoundFileURL = dictionary["musicSoundFileURL"] as? String, let musicSoundTemplateFileURL = dictionary["musicSoundTemplateFileURL"] as? String, let itemDescription = dictionary["itemDescription"] as? String, let imageName = dictionary["imageName"] as? String
             else {
                 return nil
         }
@@ -64,10 +68,10 @@ class Task: PRManagedObject {
             task.colorValue = colorValue
             task.order = order
             task.length = length
-            task.chimeSoundFileName = chimeSoundFileName
-            task.announceSoundFileName = announceSoundFileName
-            task.musicSoundFileName = musicSoundFileName
-            task.musicSoundTemplateFileName = musicSoundTemplateFileName
+            task.chimeSoundFileURL = chimeSoundFileURL
+            task.announceSoundFileURL = announceSoundFileURL
+            task.musicSoundFileURL = musicSoundFileURL
+            task.musicSoundTemplateFileURL = musicSoundTemplateFileURL
             task.itemDescription = itemDescription
             task.imageName = imageName
         }
