@@ -23,6 +23,9 @@ class PRBaseWorkingObject: NSObject {
     var announceSoundFileName: String?
     var musicSoundFileName: String?
     var musicSoundTemplateFileName: String?
+    var itemDescription: String?
+    var imageName: String?
+
 
     func configureFrom(routine: Routine?) {
         if let routine = routine {
@@ -50,6 +53,8 @@ class PRBaseWorkingObject: NSObject {
             announceSoundFileName = task.announceSoundFileName
             musicSoundFileName = task.musicSoundFileName
             musicSoundTemplateFileName = task.musicSoundTemplateFileName
+            imageName = task.imageName
+            itemDescription = task.itemDescription
         }
     }
 }

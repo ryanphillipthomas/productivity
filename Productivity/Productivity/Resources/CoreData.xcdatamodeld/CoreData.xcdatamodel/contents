@@ -17,6 +17,8 @@
         <attribute name="colorValue" optional="YES" attributeType="String"/>
         <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String"/>
         <attribute name="length" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="musicSoundFileName" optional="YES" attributeType="String"/>
         <attribute name="musicSoundTemplateFileName" optional="YES" attributeType="String"/>
@@ -31,7 +33,7 @@
     </entity>
     <elements>
         <element name="Routine" positionX="-63" positionY="63" width="128" height="178"/>
-        <element name="Task" positionX="-54" positionY="72" width="128" height="28"/>
+        <element name="Task" positionX="-54" positionY="72" width="128" height="223"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
