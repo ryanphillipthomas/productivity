@@ -103,24 +103,6 @@ class RoutineViewController: PRBaseViewController {
                                         albumTrackNumber:"\(i+1)",
                                         albumTrackCount:"\(tasks.count)")
             playeritems.append(sound)
-            
-            if i == tasks.count-1 {
-                
-                //Complete File
-                if let url = Bundle.main.url(forResource: "complete.wav", withExtension: nil) {
-                    let item = AQPlayerItemInfo(id: Int(task.id),
-                                                url: url,
-                                                title: task.name,
-                                                albumTitle: task.itemDescription,
-                                                coverImage: UIImage(named: task.imageName),
-                                                startAt: 0,
-                                                mediaType: .audio,
-                                                artist: "5 min",
-                                                albumTrackNumber:"\(i+1)",
-                                                albumTrackCount:"\(tasks.count)")
-                    playeritems.append(item)
-                }
-            }
         }
         
         playerManager.delegate = self

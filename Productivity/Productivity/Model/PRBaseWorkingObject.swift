@@ -26,7 +26,6 @@ class PRBaseWorkingObject: NSObject {
     var itemDescription: String?
     var imageName: String?
 
-
     func configureFrom(routine: Routine?) {
         if let routine = routine {
             id = routine.id

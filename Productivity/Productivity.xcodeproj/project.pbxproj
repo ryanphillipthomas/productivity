@@ -31,6 +31,13 @@
 		B832E4012468645100EDF0E7 /* meditate.wav in Resources */ = {isa = PBXBuildFile; fileRef = B832E3FA2468645100EDF0E7 /* meditate.wav */; };
 		B832E4022468645100EDF0E7 /* workout.wav in Resources */ = {isa = PBXBuildFile; fileRef = B832E3FB2468645100EDF0E7 /* workout.wav */; };
 		B832E4032468645100EDF0E7 /* pets.wav in Resources */ = {isa = PBXBuildFile; fileRef = B832E3FC2468645100EDF0E7 /* pets.wav */; };
+		B832E4062468731600EDF0E7 /* OptionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832E4042468731600EDF0E7 /* OptionSelectionView.swift */; };
+		B832E4072468731600EDF0E7 /* OptionSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B832E4052468731600EDF0E7 /* OptionSelectionView.xib */; };
+		B832E4092468746A00EDF0E7 /* OptionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832E4082468746A00EDF0E7 /* OptionSelectionTableViewCell.swift */; };
+		B832E40C24688A8F00EDF0E7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832E40A24688A8F00EDF0E7 /* TextView.swift */; };
+		B832E40D24688A8F00EDF0E7 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B832E40B24688A8F00EDF0E7 /* TextView.xib */; };
+		B832E40F24688BD800EDF0E7 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832E40E24688BD800EDF0E7 /* DescriptionTableViewCell.swift */; };
+		B832E4112468985200EDF0E7 /* chime_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B832E4102468985100EDF0E7 /* chime_2.wav */; };
 		B876787C2424602A0009EFE4 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B876785B2424602A0009EFE4 /* Log.storyboard */; };
 		B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */; };
 		B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678602424602A0009EFE4 /* LoggerViewController.swift */; };
@@ -182,6 +189,13 @@
 		B832E3FA2468645100EDF0E7 /* meditate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meditate.wav; sourceTree = "<group>"; };
 		B832E3FB2468645100EDF0E7 /* workout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = workout.wav; sourceTree = "<group>"; };
 		B832E3FC2468645100EDF0E7 /* pets.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pets.wav; sourceTree = "<group>"; };
+		B832E4042468731600EDF0E7 /* OptionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSelectionView.swift; sourceTree = "<group>"; };
+		B832E4052468731600EDF0E7 /* OptionSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionSelectionView.xib; sourceTree = "<group>"; };
+		B832E4082468746A00EDF0E7 /* OptionSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		B832E40A24688A8F00EDF0E7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		B832E40B24688A8F00EDF0E7 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
+		B832E40E24688BD800EDF0E7 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		B832E4102468985100EDF0E7 /* chime_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chime_2.wav; sourceTree = "<group>"; };
 		B876785B2424602A0009EFE4 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		B876785C2424602A0009EFE4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +364,8 @@
 				B82E556E242670820040A04E /* LineSingleLabelHeaderFooterView.swift */,
 				B82E55742427B9010040A04E /* SingleTextFieldNameView.xib */,
 				B82E55762427BA980040A04E /* SingleTextFieldNameView.swift */,
+				B832E40A24688A8F00EDF0E7 /* TextView.swift */,
+				B832E40B24688A8F00EDF0E7 /* TextView.xib */,
 				B82E557A24283E860040A04E /* IconColorButtonView.xib */,
 				B82E557C242841BA0040A04E /* IconColorButtonView.swift */,
 				B8D56B452429888000FEF929 /* IconView.xib */,
@@ -366,6 +382,8 @@
 				B8F19E1A245283CD0006AC16 /* AddTaskView.xib */,
 				B888614B2453F64E00EE1133 /* TimeLengthView.swift */,
 				B888614C2453F64E00EE1133 /* TimeLengthView.xib */,
+				B832E4042468731600EDF0E7 /* OptionSelectionView.swift */,
+				B832E4052468731600EDF0E7 /* OptionSelectionView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -593,6 +611,7 @@
 				B882715A24257FC3004F5718 /* SettingsManager.swift */,
 				B87858BB245C9918008F0F01 /* complete.wav */,
 				B87858BE245C9BDE008F0F01 /* chime.wav */,
+				B832E4102468985100EDF0E7 /* chime_2.wav */,
 				B87858BA245C9918008F0F01 /* space.wav */,
 				B832E3EE2466F3A300EDF0E7 /* song_1.m4a */,
 				B832E3EC2466F3A200EDF0E7 /* song_2.m4a */,
@@ -606,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				B888614F2454598200EE1133 /* NameTableViewCell.swift */,
+				B832E40E24688BD800EDF0E7 /* DescriptionTableViewCell.swift */,
 				B88861512454598D00EE1133 /* IconColorTableViewCell.swift */,
 				B88861532454599900EE1133 /* RepeatFrequencyTableViewCell.swift */,
 				B8886155245459A500EE1133 /* RepeatDailyTableViewCell.swift */,
@@ -615,6 +635,7 @@
 				B888615D24545AE800EE1133 /* TasksTableViewCell.swift */,
 				B888615F24545B1F00EE1133 /* HeaderFooterTableViewCell.swift */,
 				B888616124545B9A00EE1133 /* TimeLengthTableViewCell.swift */,
+				B832E4082468746A00EDF0E7 /* OptionSelectionTableViewCell.swift */,
 				B888616324545C3000EE1133 /* ToggleTableViewCell.swift */,
 				B8886165245460A100EE1133 /* CreateTableViewCell.swift */,
 				B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */,
@@ -838,6 +859,7 @@
 				B87C117E2444054F00305886 /* colors.json in Resources */,
 				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,
 				B8F19E1C245283CD0006AC16 /* AddTaskView.xib in Resources */,
+				B832E4112468985200EDF0E7 /* chime_2.wav in Resources */,
 				B8D56B4A24298B6200FEF929 /* icons.json in Resources */,
 				B87858BC245C9918008F0F01 /* space.wav in Resources */,
 				B876787C2424602A0009EFE4 /* Log.storyboard in Resources */,
@@ -846,10 +868,12 @@
 				B832E4022468645100EDF0E7 /* workout.wav in Resources */,
 				B832E3F02466F3A300EDF0E7 /* song_3.m4a in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
+				B832E4072468731600EDF0E7 /* OptionSelectionView.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
 				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
 				B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */,
 				B82E557B24283E860040A04E /* IconColorButtonView.xib in Resources */,
+				B832E40D24688A8F00EDF0E7 /* TextView.xib in Resources */,
 				B87858C5245E2C85008F0F01 /* 1-minute-of-silence.mp3 in Resources */,
 				B87858BF245C9BDE008F0F01 /* chime.wav in Resources */,
 			);
@@ -931,10 +955,13 @@
 				B87678852424602A0009EFE4 /* UIView+Extensions.swift in Sources */,
 				B87678862424602A0009EFE4 /* UIColor+Extensions.swift in Sources */,
 				B882713924246B90004F5718 /* PRBaseTextField.swift in Sources */,
+				B832E4092468746A00EDF0E7 /* OptionSelectionTableViewCell.swift in Sources */,
 				B888616024545B1F00EE1133 /* HeaderFooterTableViewCell.swift in Sources */,
+				B832E4062468731600EDF0E7 /* OptionSelectionView.swift in Sources */,
 				B888616424545C3000EE1133 /* ToggleTableViewCell.swift in Sources */,
 				B88861542454599900EE1133 /* RepeatFrequencyTableViewCell.swift in Sources */,
 				B87C11892447DB0400305886 /* PRSubscriptionViewController.swift in Sources */,
+				B832E40C24688A8F00EDF0E7 /* TextView.swift in Sources */,
 				B8F19AFF24428CC200F8915F /* Task.swift in Sources */,
 				B888615E24545AE800EE1133 /* TasksTableViewCell.swift in Sources */,
 				B876788E2424602A0009EFE4 /* UILabel+Extensions.swift in Sources */,
@@ -981,6 +1008,7 @@
 				B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */,
 				B8FA79BE2421C0FB007E7706 /* AppDelegate.swift in Sources */,
 				B8F19AF52442770800F8915F /* ExternalSceneDelegate.swift in Sources */,
+				B832E40F24688BD800EDF0E7 /* DescriptionTableViewCell.swift in Sources */,
 				B882713424246B90004F5718 /* PRBaseTableViewCell.swift in Sources */,
 				B876788C2424602A0009EFE4 /* UILayoutGuide+Extensions.swift in Sources */,
 				B87858922454F36B008F0F01 /* RoutineTableViewCell.swift in Sources */,

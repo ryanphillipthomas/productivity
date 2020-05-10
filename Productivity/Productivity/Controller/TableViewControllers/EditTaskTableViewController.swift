@@ -12,11 +12,13 @@ import UIKit
 public enum EditTaskOptions: CaseIterable {
     case nameOfTask
     case length
+    case sound
 
     func placeHolderText() -> String {
         switch(self){
         case .nameOfTask: return "Name of the task"
         case .length: return ""
+        case .sound: return "Sound Effects"
         }
     }
     
@@ -24,6 +26,7 @@ public enum EditTaskOptions: CaseIterable {
         switch(self){
             case .nameOfTask: return nil
             case .length: return nil
+            case .sound: return nil
         }
     }
     
@@ -31,13 +34,15 @@ public enum EditTaskOptions: CaseIterable {
         switch(self){
         case .nameOfTask: return 75
         case .length: return 120
+        case .sound: return 120
         }
     }
     
     func numberOfRows() -> Int {
         switch(self){
-        case .nameOfTask: return 2
+        case .nameOfTask: return 3
         case .length: return 1
+        case .sound: return 3
         }
     }
 }
@@ -47,23 +52,26 @@ public enum EditTaskOptions: CaseIterable {
 public enum EditTaskHeaderFooterOptions: CaseIterable {
     case nameOfTask
     case length
+    case sound
 
     func text() -> String {
         switch(self){
-        case .nameOfTask: return ""
-        case .length: return ""
+        case .nameOfTask: return "Name & Description"
+        case .length: return "Length"
+        case .sound: return "Sounds"
         }
     }
     
     func headerHeight() -> CGFloat {
         switch(self){
-        case .nameOfTask: return CGFloat.leastNonzeroMagnitude
-        case .length: return CGFloat.leastNonzeroMagnitude
+        case .nameOfTask: return 30
+        case .length: return 30
+        case .sound: return 30
         }
     }
 }
 
-class EditTaskTableViewController: PRBaseTableViewController {
+class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionViewDelegate {
     var taskID: Int64?
     var workingObject = PRBaseWorkingObject()
     
@@ -78,6 +86,8 @@ class EditTaskTableViewController: PRBaseTableViewController {
         tableView.register(IconColorTableViewCell.self, forCellReuseIdentifier: String(describing: IconColorTableViewCell.self))
         tableView.register(TimeLengthTableViewCell.self, forCellReuseIdentifier: String(describing: TimeLengthTableViewCell.self))
         tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
+        tableView.register(OptionSelectionTableViewCell.self, forCellReuseIdentifier: String(describing: OptionSelectionTableViewCell.self))
+        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: String(describing: DescriptionTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,11 +191,33 @@ class EditTaskTableViewController: PRBaseTableViewController {
             cell.configureIconButton(workingObject: workingObject)
             cell.configureColorButton(workingObject: workingObject)
             return cell
+        } else if indexPath.section == 0 && indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DescriptionTableViewCell.classForCoder()), for: indexPath) as! DescriptionTableViewCell
+            cell.configureDescription(workingObject: workingObject)
+            cell.configureTintColor(workingObject: workingObject)
+            return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimeLengthTableViewCell.classForCoder()), for: indexPath) as! TimeLengthTableViewCell
             cell.configureTimePicker(workingObject: workingObject)
             setTarget(cell: cell)
             return cell
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
+                cell.configurePicker(workingObject: workingObject, pickerSelection: .chimes)
+                cell.delegate = self
+                return cell
+            } else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
+                cell.configurePicker(workingObject: workingObject, pickerSelection: .announcers)
+                cell.delegate = self
+                return cell
+            } else if indexPath.row == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
+                cell.configurePicker(workingObject: workingObject, pickerSelection: .music)
+                cell.delegate = self
+                return cell
+            }
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NameTableViewCell.classForCoder()), for: indexPath) as! NameTableViewCell
@@ -201,11 +233,6 @@ class EditTaskTableViewController: PRBaseTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HeaderFooterTableViewCell.classForCoder())) as! HeaderFooterTableViewCell
         let option = EditTaskHeaderFooterOptions.allCases[section]
         cell.configureText(text: option.text())
-        
-        if section == 0 || section == 1 {
-            return UIView()
-        }
-        
         return cell
     }
 }
@@ -230,6 +257,14 @@ extension EditTaskTableViewController: IconsCollectionViewControllerDelegate {
 extension EditTaskTableViewController: ColorsCollectionViewControllerDelegate {
     func didSelectColor(colorValue: String) {
         workingObject.colorValue = colorValue
+        tableView.reloadData()
+    }
+}
+
+extension EditTaskTableViewController: OptionSelectionTableViewCellDelegate {
+    func didSelect(data: String) {
+        ///
+        workingObject.chimeSoundFileURL = data
         tableView.reloadData()
     }
 }

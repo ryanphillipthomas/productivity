@@ -40,13 +40,4 @@ class TimeLengthTableViewCell: PRBaseTableViewCell<UIView> {
             }
         }
     }
-    
-    func configureColorButton(workingObject: PRBaseWorkingObject) {
-        if let view = cellView as? IconColorButtonView {
-            view.colorButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            if let colorValue = workingObject.colorValue {
-                view.colorButton.tintColor = UIColor(hexString: colorValue)
-            }
-        }
-    }
 }

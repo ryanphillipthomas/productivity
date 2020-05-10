@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextView" customModule="Productivity" customModuleProvider="target">
+            <connections>
+                <outlet property="innerView" destination="amm-jU-gZa" id="r3l-xO-FrP"/>
+                <outlet property="textView" destination="gfY-vN-lIM" id="9yL-6w-szI"/>
+                <outlet property="view" destination="TfE-TV-hD5" id="nsZ-ns-w4H"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TfE-TV-hD5">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="177"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amm-jU-gZa" customClass="PRBaseView" customModule="Productivity" customModuleProvider="target">
+                    <rect key="frame" x="9" y="8" width="409" height="161"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gfY-vN-lIM">
+                            <rect key="frame" x="10" y="10" width="389" height="141"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gfY-vN-lIM" secondAttribute="trailing" constant="10" id="CKX-zg-qCo"/>
+                        <constraint firstItem="gfY-vN-lIM" firstAttribute="leading" secondItem="amm-jU-gZa" secondAttribute="leading" constant="10" id="Ibg-5Z-ydf"/>
+                        <constraint firstItem="gfY-vN-lIM" firstAttribute="top" secondItem="amm-jU-gZa" secondAttribute="top" constant="10" id="aA7-9R-NNz"/>
+                        <constraint firstAttribute="bottom" secondItem="gfY-vN-lIM" secondAttribute="bottom" constant="10" id="d70-Gh-opL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="amm-jU-gZa" firstAttribute="leading" secondItem="TfE-TV-hD5" secondAttribute="leading" constant="9" id="9Cm-Uv-T5d"/>
+                <constraint firstItem="amm-jU-gZa" firstAttribute="top" secondItem="TfE-TV-hD5" secondAttribute="top" constant="8" id="eom-fE-fyn"/>
+                <constraint firstAttribute="bottom" secondItem="amm-jU-gZa" secondAttribute="bottom" constant="8" id="tcO-7T-c0f"/>
+                <constraint firstAttribute="trailing" secondItem="amm-jU-gZa" secondAttribute="trailing" constant="9" id="z6H-9S-K5f"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="buc-SI-96k"/>
+            <point key="canvasLocation" x="-397.82608695652175" y="-124.21875"/>
+        </view>
+    </objects>
+</document>

@@ -28,20 +28,22 @@ class Task: PRManagedObject {
     //MARK: Update
     public static func update(moc: NSManagedObjectContext, workingObject: PRBaseWorkingObject) {
         //dev clean this up....
-        let chimeSoundFileURL = Bundle.main.url(forResource: "chime.wav", withExtension: nil)!.absoluteString
-        let announceSoundFileURL = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
-        let musicSoundFileURL = Bundle.main.url(forResource: "1-minute-of-silence.mp3", withExtension: nil)!.absoluteString
-        let musicSoundTemplateFileURL = Bundle.main.url(forResource: "1-hour-and-20-minutes-of-silence.mp3", withExtension: nil)!.absoluteString
         
+        //Move These Somewhere Else...
+        let chimeSoundFileString = Bundle.main.url(forResource: "chime.wav", withExtension: nil)!.absoluteString
+        let announceSoundFileString = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
+        let musicSoundFileString = Bundle.main.url(forResource: "1-minute-of-silence.mp3", withExtension: nil)!.absoluteString
+        let musicSoundTemplateFileString = Bundle.main.url(forResource: "1-hour-and-20-minutes-of-silence.mp3", withExtension: nil)!.absoluteString
+
         let objDict = ["id": workingObject.id ?? 1,
                        "name": workingObject.name ?? "Ryan Test",
                        "iconName": workingObject.iconName ?? "gear",
                        "colorValue": workingObject.colorValue ?? "#F80DE2",
                        "length": workingObject.length ?? 60,
-                       "chimeSoundFileURL": workingObject.chimeSoundFileURL ?? chimeSoundFileURL,
-                       "announceSoundFileURL": workingObject.announceSoundFileURL ?? announceSoundFileURL,
-                       "musicSoundFileURL": workingObject.musicSoundFileURL ?? musicSoundFileURL,
-                       "musicSoundTemplateFileURL": workingObject.musicSoundTemplateFileURL ?? musicSoundTemplateFileURL,
+                       "chimeSoundFileURL": workingObject.chimeSoundFileURL ?? chimeSoundFileString,
+                       "announceSoundFileURL": workingObject.announceSoundFileURL ?? announceSoundFileString,
+                       "musicSoundFileURL": workingObject.musicSoundFileURL ?? musicSoundFileString,
+                       "musicSoundTemplateFileURL": workingObject.musicSoundTemplateFileURL ?? musicSoundTemplateFileString,
                        "itemDescription": workingObject.itemDescription ?? "Feed the cats 2 scoops of dry chicken.",
                        "imageName": workingObject.imageName ?? "album",
                        "order": workingObject.order ?? 0] as NSDictionary
