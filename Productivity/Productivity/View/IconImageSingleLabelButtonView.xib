@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" constant="50" id="naf-wZ-VPn"/>
                             </constraints>
                             <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" image="play.fill" catalog="system"/>
+                            <state key="normal" image="play.rectangle.fill" catalog="system"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCloud Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuL-Sd-kDt">
                             <rect key="frame" x="43" y="18.5" width="91.5" height="21"/>
@@ -73,6 +73,6 @@
     </objects>
     <resources>
         <image name="calendar" width="20" height="22"/>
-        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>

@@ -30,10 +30,10 @@ class Task: PRManagedObject {
         //dev clean this up....
         
         //Move These Somewhere Else...
-        let chimeSoundFileString = Bundle.main.url(forResource: "chime.wav", withExtension: nil)!.absoluteString
-        let announceSoundFileString = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
-        let musicSoundFileString = Bundle.main.url(forResource: "1-minute-of-silence.mp3", withExtension: nil)!.absoluteString
-        let musicSoundTemplateFileString = Bundle.main.url(forResource: "1-hour-and-20-minutes-of-silence.mp3", withExtension: nil)!.absoluteString
+        let chimeSoundFileString = "chime.wav"
+        let announceSoundFileString = "bathroom.wav"
+        let musicSoundFileString = "1-minute-of-silence.mp3"
+        let musicSoundTemplateFileString = "1-hour-and-20-minutes-of-silence.mp3"
 
         let objDict = ["id": workingObject.id ?? 1,
                        "name": workingObject.name ?? "Ryan Test",

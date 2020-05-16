@@ -110,11 +110,11 @@ public final class AQPlayerManager: NSObject {
         if startFrom >= items.count {
             toDrop = items.count - 1
         }
-        
-        
+                
         // init the AQQueuePlayer
         qPlayer = AQQueuePlayer(items: Array(qPlayerItems.dropFirst(toDrop)))
         qPlayer?.allowsExternalPlayback = false
+        
         
         let keysToObserve = ["currentItem","rate"]
         for key in keysToObserve {

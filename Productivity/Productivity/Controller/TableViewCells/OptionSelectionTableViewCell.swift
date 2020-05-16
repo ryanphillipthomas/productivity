@@ -11,7 +11,7 @@ import UIKit
 
 //MARK: OptionSelectionTableViewCellDelegate
 protocol OptionSelectionTableViewCellDelegate: NSObjectProtocol {
-    func didSelect(data: String)
+    func didSelect(data: String, pickerSelection: OptionSelection)
 }
 
 class OptionSelectionTableViewCell: PRBaseTableViewCell<UIView> {
@@ -42,9 +42,9 @@ class OptionSelectionTableViewCell: PRBaseTableViewCell<UIView> {
 }
 
 extension OptionSelectionTableViewCell: OptionSelectionViewDelegate {
-    func didSelect(data: String) {
+    func didSelect(data: String, pickerSelection: OptionSelection) {
         if let delegate = delegate {
-            delegate.didSelect(data: data)
-        }
+             delegate.didSelect(data: data, pickerSelection: pickerSelection)
+         }
     }
 }

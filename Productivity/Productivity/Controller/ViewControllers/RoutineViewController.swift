@@ -66,8 +66,9 @@ class RoutineViewController: PRBaseViewController {
         for i in 0..<tasks.count {
             let task = tasks[i]
                 //Chime Sound
+            let chime_url = Bundle.main.url(forResource: task.chimeSoundFileURL, withExtension: nil)
             let chime = AQPlayerItemInfo(id: Int(task.id),
-                                        url: URL(string: task.chimeSoundFileURL)!,
+                                        url: chime_url,
                                         title: task.name,
                                         albumTitle: task.itemDescription,
                                         coverImage: UIImage(named: task.imageName),
@@ -79,8 +80,9 @@ class RoutineViewController: PRBaseViewController {
             playeritems.append(chime)
             
             //Announcement
+            let announcement_url = Bundle.main.url(forResource: task.announceSoundFileURL, withExtension: nil)!
             let announcement = AQPlayerItemInfo(id: Int(task.id),
-                                        url: URL(string: task.announceSoundFileURL)!,
+                                        url: announcement_url,
                                         title: task.name,
                                         albumTitle: task.itemDescription,
                                         coverImage: UIImage(named: task.imageName),
@@ -92,8 +94,9 @@ class RoutineViewController: PRBaseViewController {
             playeritems.append(announcement)
             
             //Sound File
+            let sound_url = Bundle.main.url(forResource: task.musicSoundFileURL, withExtension: nil)!
             let sound = AQPlayerItemInfo(id: Int(task.id),
-                                        url: URL(string: task.musicSoundFileURL)!,
+                                        url: sound_url,
                                         title: task.name,
                                         albumTitle: task.itemDescription,
                                         coverImage: UIImage(named: task.imageName),
@@ -104,7 +107,6 @@ class RoutineViewController: PRBaseViewController {
                                         albumTrackCount:"\(tasks.count)")
             playeritems.append(sound)
         }
-        
         playerManager.delegate = self
         playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: false)
         playerManager.setCommandCenterMode(mode: .nextprev)
@@ -191,7 +193,7 @@ class RoutineViewController: PRBaseViewController {
     fileprivate func setPlayPauseButtonImage(_ status: AQPlayerStatus) {
         switch status {
         case .loading, .none:
-            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
         case .readyToPlay, .paused:
             playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             

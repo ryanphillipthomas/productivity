@@ -215,6 +215,7 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
             } else if indexPath.row == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
                 cell.configurePicker(workingObject: workingObject, pickerSelection: .music)
+                
                 cell.delegate = self
                 return cell
             }
@@ -262,9 +263,16 @@ extension EditTaskTableViewController: ColorsCollectionViewControllerDelegate {
 }
 
 extension EditTaskTableViewController: OptionSelectionTableViewCellDelegate {
-    func didSelect(data: String) {
-        ///
-        workingObject.chimeSoundFileURL = data
+    func didSelect(data: String, pickerSelection: OptionSelection) {
+        switch pickerSelection {
+        case .chimes:
+            workingObject.chimeSoundFileURL = data
+        case .announcers:
+            workingObject.announceSoundFileURL = data
+        case .music:
+            workingObject.musicSoundFileURL = data
+        }
+        
         tableView.reloadData()
     }
 }

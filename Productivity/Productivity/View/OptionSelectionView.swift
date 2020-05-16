@@ -12,21 +12,21 @@
 import UIKit
 
 //Move These Somewhere Else...
-let chimeSoundFileString = Bundle.main.url(forResource: "chime.wav", withExtension: nil)!.absoluteString
-let chime_2_SoundFileString = Bundle.main.url(forResource: "chime_2.wav", withExtension: nil)!.absoluteString
+let chimeSoundFileString = "chime.wav"
+let chime_2_SoundFileString = "chime_2.wav"
 
-let announceSoundFileString = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
-let musicSoundFileString = Bundle.main.url(forResource: "1-minute-of-silence.mp3", withExtension: nil)!.absoluteString
-let spaceSoundFileString = Bundle.main.url(forResource: "space.wav", withExtension: nil)!.absoluteString
-let musicSoundTemplateFileString = Bundle.main.url(forResource: "1-hour-and-20-minutes-of-silence.mp3", withExtension: nil)!.absoluteString
+let announceSoundFileString = "bathroom.wav"
+let musicSoundFileString = "1-minute-of-silence.mp3"
+let spaceSoundFileString = "space.wav"
+let musicSoundTemplateFileString = "1-hour-and-20-minutes-of-silence.mp3"
 
-let bathroomSoundFileString = Bundle.main.url(forResource: "bathroom.wav", withExtension: nil)!.absoluteString
-let coffeeSoundFileString = Bundle.main.url(forResource: "coffee.wav", withExtension: nil)!.absoluteString
-let journalSoundFileString = Bundle.main.url(forResource: "journal.wav", withExtension: nil)!.absoluteString
-let meditateSoundFileString = Bundle.main.url(forResource: "meditate.wav", withExtension: nil)!.absoluteString
-let petsSoundFileString = Bundle.main.url(forResource: "pets.wav", withExtension: nil)!.absoluteString
-let readSoundFileString = Bundle.main.url(forResource: "read.wav", withExtension: nil)!.absoluteString
-let workoutSoundFileString = Bundle.main.url(forResource: "workout.wav", withExtension: nil)!.absoluteString
+let bathroomSoundFileString = "bathroom.wav"
+let coffeeSoundFileString = "coffee.wav"
+let journalSoundFileString = "journal.wav"
+let meditateSoundFileString = "meditate.wav"
+let petsSoundFileString = "pets.wav"
+let readSoundFileString = "read.wav"
+let workoutSoundFileString = "workout.wav"
 
 //MARK: EditOptions
 public enum OptionSelection: CaseIterable {
@@ -41,17 +41,26 @@ public enum OptionSelection: CaseIterable {
         case .music: return [musicSoundFileString, spaceSoundFileString]
         }
     }
+    
+    func rawValue() -> Int {
+        switch(self){
+        case .chimes: return 0
+        case .announcers: return 1
+        case .music: return 2
+        }
+    }
 }
 
 //MARK: OptionSelectionViewDelegate
 protocol OptionSelectionViewDelegate: NSObjectProtocol {
-    func didSelect(data: String)
+    func didSelect(data: String, pickerSelection: OptionSelection)
 }
 
 class OptionSelectionView: PRXibView {
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
     weak var delegate: OptionSelectionViewDelegate?
+    var pickerDataType: Int!
     
     //MARK: Init
     override init(frame: CGRect) {
@@ -78,8 +87,30 @@ class OptionSelectionView: PRXibView {
     }
     
     func setupData(workingObject: PRBaseWorkingObject, pickerSelection: OptionSelection) {
+        
+        //setup data
         let data = OptionSelection.pickerDataOptions(pickerSelection)()
         pickerData = data
+        pickerDataType = pickerSelection.rawValue()
+        
+        var url: String?
+        switch pickerSelection {
+        case .chimes:
+            url = workingObject.chimeSoundFileURL
+        case .announcers:
+            url = workingObject.announceSoundFileURL
+        case .music:
+            url = workingObject.musicSoundFileURL
+        }
+        
+        //default selection
+        if let url = url {
+            if let index = data.firstIndex(of: url) {
+                DispatchQueue.main.async {
+                    self.picker.selectRow(index, inComponent: 0, animated: false)
+                }
+            }
+        }
     }
 }
 
@@ -87,7 +118,7 @@ extension OptionSelectionView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let delegate = delegate {
             let data = pickerData[row]
-            delegate.didSelect(data: data)
+            delegate.didSelect(data: data, pickerSelection: OptionSelection.allCases[pickerDataType])
         }
     }
     
