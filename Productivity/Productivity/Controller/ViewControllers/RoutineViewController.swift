@@ -26,7 +26,7 @@ class RoutineViewController: PRBaseViewController {
     @IBOutlet weak var taskTimeLeftLabel: UILabel!
     
     let routerPickerView = AVRoutePickerView()
-    var routineID: Int64?
+    var routineID: Int64!
     let detector = AVRouteDetector()
     
     let playerManager = AQPlayerManager.shared
@@ -35,6 +35,7 @@ class RoutineViewController: PRBaseViewController {
     //MARK:View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRoutine()
         setupTasks()
         setupStyles()
         updateUI()
@@ -62,7 +63,7 @@ class RoutineViewController: PRBaseViewController {
     //Setup Tasks
     func setupTasks() {
         // task title , audio file, task description
-        let tasks = Task.fetchInContext(context: managedObjectContext)
+        let tasks = Task.fetchInContextForRoutine(context: managedObjectContext, routineID: routineID)
         for i in 0..<tasks.count {
             let task = tasks[i]
                 //Chime Sound
@@ -136,7 +137,27 @@ class RoutineViewController: PRBaseViewController {
         playerManager.setPlayerPolicy(policy: .default)
         playerManager.setCommandCenterMode(mode: .nextprev)
         playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: true)
-
+    }
+    
+    func setupRoutine() {
+        setupIntentsForSiri()
+    }
+    
+    private func setupIntentsForSiri() {
+       let actionIdentifier = "com.ryanphillipthomas.runRoutine"
+       let activity = NSUserActivity(activityType: actionIdentifier)
+        if let routine = currentRoutine {
+            let title = "Run \(routine.name)"
+            activity.title = title
+            activity.userInfo = ["id": routine.id]
+            activity.suggestedInvocationPhrase = title
+            activity.isEligibleForSearch = true
+            activity.isEligibleForPrediction = true
+            activity.persistentIdentifier = String(routine.id)
+        }
+        
+       view.userActivity = activity
+       activity.becomeCurrent()
     }
     
     //MARK: Update
@@ -160,10 +181,23 @@ class RoutineViewController: PRBaseViewController {
         return currentTask
     }
     
+    //MARK: Get Current Routine
+    var currentRoutine: Routine? {
+        var currentRoutine: Routine?
+        if let routineID = routineID {
+            //Fetch the Task by TaskID
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let managedObjectContext = delegate.persistentContainer.viewContext
+            currentRoutine = Routine.find(moc: managedObjectContext, id: Int64(routineID))
+        }
+        
+        return currentRoutine
+    }
+    
     //Update Labels
     private func updateLabels() {
         if let currentTask = currentTask {
-            currentRoutineNumberLabel.text = "\(currentTask.order + 1) of \(Task.countInContext(context: managedObjectContext))"
+            currentRoutineNumberLabel.text = "\(currentTask.order + 1) of \(Task.countInContextForRoutineID(routineID, context: managedObjectContext))"
             currentRoutineNameLabel.text = currentTask.name
             taskTimeLeftLabel.text = String().timeString(second: (playerManager.duration - playerManager.currentTime))
             currentRoutineNumberLabel.textColor = UIColor(hexString: currentTask.colorValue)

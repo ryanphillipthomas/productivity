@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class Task: PRManagedObject {
+    @NSManaged var routineId: Int64 //consider relationship here...
     @NSManaged var id: Int64
     @NSManaged var name: String
     @NSManaged var itemDescription: String
@@ -46,7 +47,9 @@ class Task: PRManagedObject {
                        "musicSoundTemplateFileURL": workingObject.musicSoundTemplateFileURL ?? musicSoundTemplateFileString,
                        "itemDescription": workingObject.itemDescription ?? "Feed the cats 2 scoops of dry chicken.",
                        "imageName": workingObject.imageName ?? "album",
-                       "order": workingObject.order ?? 0] as NSDictionary
+                       "order": workingObject.order ?? 0,
+                       "routineId" : workingObject.routineId ?? 1] as NSDictionary
+        
         let _ = insertIntoContext(moc:moc, dictionary: objDict)
     }
     
@@ -57,7 +60,7 @@ class Task: PRManagedObject {
 
     //MARK: Insert
     public static func insertIntoContext(moc: NSManagedObjectContext, dictionary:NSDictionary) -> Task? {
-        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let order = dictionary["order"] as? Int64, let length = dictionary["length"] as? Int64, let chimeSoundFileURL = dictionary["chimeSoundFileURL"] as? String, let announceSoundFileURL = dictionary["announceSoundFileURL"] as? String, let musicSoundFileURL = dictionary["musicSoundFileURL"] as? String, let musicSoundTemplateFileURL = dictionary["musicSoundTemplateFileURL"] as? String, let itemDescription = dictionary["itemDescription"] as? String, let imageName = dictionary["imageName"] as? String
+        guard let id = dictionary["id"] as? Int64, let name = dictionary["name"] as? String, let iconName = dictionary["iconName"] as? String, let colorValue = dictionary["colorValue"] as? String, let order = dictionary["order"] as? Int64, let length = dictionary["length"] as? Int64, let chimeSoundFileURL = dictionary["chimeSoundFileURL"] as? String, let announceSoundFileURL = dictionary["announceSoundFileURL"] as? String, let musicSoundFileURL = dictionary["musicSoundFileURL"] as? String, let musicSoundTemplateFileURL = dictionary["musicSoundTemplateFileURL"] as? String, let itemDescription = dictionary["itemDescription"] as? String, let imageName = dictionary["imageName"] as? String, let routineId = dictionary["routineId"] as? Int64
             else {
                 return nil
         }
@@ -76,9 +79,17 @@ class Task: PRManagedObject {
             task.musicSoundTemplateFileURL = musicSoundTemplateFileURL
             task.itemDescription = itemDescription
             task.imageName = imageName
+            task.routineId = routineId
         }
 
         return task
+    }
+    
+    //All
+    public static func fetchInContextForRoutine(context: NSManagedObjectContext, routineID:Int64) -> [Task] {
+        let request = sortedRoutineFetchRequest(routineID)
+        guard let result = try! context.fetch(request) as? [Task] else { fatalError("Fetched objects have wrong type") }
+        return result
     }
     
     //All

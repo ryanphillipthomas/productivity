@@ -54,7 +54,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if #available(iOS 12.0, *) {
+            if userActivity.activityType == "com.ryanphillipthomas.runRoutine" {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "runRoutine"), object: nil, userInfo: userActivity.userInfo)
+            }
+        }
+    }
 }
 

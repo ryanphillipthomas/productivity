@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B801544A2454F19B000055C4 /* IconImageSingleLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80154482454F19B000055C4 /* IconImageSingleLabelButtonView.swift */; };
 		B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */; };
+		B81602B924704CAE00C80BE6 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602B824704CAE00C80BE6 /* Intents.framework */; };
+		B81602BB24704CB400C80BE6 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602BA24704CB400C80BE6 /* IntentsUI.framework */; };
 		B82E556624265FD70040A04E /* IconImageSingleLabelDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */; };
 		B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */; };
 		B82E5569242660B00040A04E /* TwoLabelImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E5568242660B00040A04E /* TwoLabelImageView.swift */; };
@@ -167,6 +169,8 @@
 		5C0E60D6B0E9A054C85F1537 /* Pods-Productivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity.debug.xcconfig"; path = "Target Support Files/Pods-Productivity/Pods-Productivity.debug.xcconfig"; sourceTree = "<group>"; };
 		B80154482454F19B000055C4 /* IconImageSingleLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelButtonView.swift; sourceTree = "<group>"; };
 		B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelButtonView.xib; sourceTree = "<group>"; };
+		B81602B824704CAE00C80BE6 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		B81602BA24704CB400C80BE6 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelDisclosureView.swift; sourceTree = "<group>"; };
 		B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconImageSingleLabelDisclosureView.xib; sourceTree = "<group>"; };
 		B82E5568242660B00040A04E /* TwoLabelImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLabelImageView.swift; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CADC3A91A189D1E89BEF3E08 /* Pods_Productivity.framework in Frameworks */,
+				B81602B924704CAE00C80BE6 /* Intents.framework in Frameworks */,
+				B81602BB24704CB400C80BE6 /* IntentsUI.framework in Frameworks */,
 				B8C70C322447F01C00E94BEF /* StoreKit.framework in Frameworks */,
 				B878589E2455EDDE008F0F01 /* AVFoundation.framework in Frameworks */,
 				B87858A72455FD64008F0F01 /* AudioToolbox.framework in Frameworks */,
@@ -743,6 +749,8 @@
 		FDB674122EC37321AD44A976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B81602BA24704CB400C80BE6 /* IntentsUI.framework */,
+				B81602B824704CAE00C80BE6 /* Intents.framework */,
 				B87858A62455FD64008F0F01 /* AudioToolbox.framework */,
 				B878589C2455EDA7008F0F01 /* AVFoundation.framework */,
 				B8C70C312447F01C00E94BEF /* StoreKit.framework */,

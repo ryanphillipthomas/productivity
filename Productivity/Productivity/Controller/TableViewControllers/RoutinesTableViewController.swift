@@ -48,6 +48,19 @@ class RoutinesTableViewController: PRBaseFetchedResultsTableViewController {
         super.viewDidLoad()
         registerTableViewCells()
         fetchAll(fetchRequest: Routine.sortedFetchRequest, sectionNameKeyPath: "timeOfDay")
+        NotificationCenter.default.addObserver(self, selector: #selector(displayNotifications(notification:)), name: NSNotification.Name.init(rawValue: "runRoutine"), object: nil)
+    }
+    
+    @objc func displayNotifications(notification: NSNotification) {
+        
+        
+        let button = UIButton()
+        
+        if let userInfo = notification.userInfo {
+            button.tag = userInfo["id"] as! Int
+        }
+        
+        didSelectRunRoutine(sender: button)
     }
     
     func registerTableViewCells() {

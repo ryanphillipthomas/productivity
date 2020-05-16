@@ -43,8 +43,8 @@ class TasksTableViewCell: PRBaseTableViewCell<UIView> {
         }
     }
     
-    func configureCell(managedObjectContext: NSManagedObjectContext) {
-        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedFetchRequest, sectionNameKeyPath: nil)
+    func configureCell(managedObjectContext: NSManagedObjectContext, routineID: Int64) {
+        self.fetchAll(managedObjectContext: managedObjectContext, fetchRequest: Task.sortedRoutineFetchRequest(routineID), sectionNameKeyPath: nil)
         if let view = cellView as? EditTasksView {
             tableView = view.tableView
             tableView.register(CreateTableViewCell.self, forCellReuseIdentifier: String(describing: CreateTableViewCell.self))

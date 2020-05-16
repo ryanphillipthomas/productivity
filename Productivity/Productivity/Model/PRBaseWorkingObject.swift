@@ -9,6 +9,9 @@
 import Foundation
 
 class PRBaseWorkingObject: NSObject {
+    var routineId: Int64?
+    var taskId: Int64?
+    
     var id: Int64?
     var name: String?
     var iconName: String?
@@ -37,6 +40,7 @@ class PRBaseWorkingObject: NSObject {
             frequencyEveryDay = routine.frequencyEveryDay
             timeOfDay = routine.timeOfDay
             length = routine.length
+            routineId = routine.id
         }
     }
     
@@ -54,6 +58,7 @@ class PRBaseWorkingObject: NSObject {
             musicSoundTemplateFileURL = task.musicSoundTemplateFileURL
             imageName = task.imageName
             itemDescription = task.itemDescription
+            routineId = task.routineId
         }
     }
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import IntentsUI
+
 
 //MARK: EditOptions
 public enum EditOptions: CaseIterable {
@@ -124,6 +126,35 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         super.viewDidLoad()
         setupWorkingObject()
         registerTableViewCells()
+        setupIntentsForSiri()
+    }
+    
+    func setupIntentsForSiri() {
+       let actionIdentifier = "com.ryanphillipthomas.runRoutine"
+       let activity = NSUserActivity(activityType: actionIdentifier)
+        if let name = workingObject.name, let id = workingObject.id {
+            let title = "Run \(name)"
+            activity.title = title
+            activity.userInfo = ["id": id]
+            activity.suggestedInvocationPhrase = title
+            activity.isEligibleForSearch = true
+            activity.isEligibleForPrediction = true
+            activity.isEligibleForHandoff = true
+            activity.persistentIdentifier = String(id)
+        }
+        
+       view.userActivity = activity
+       activity.becomeCurrent()
+    }
+    
+    func displaySiriShortcutPopup() {
+        if #available(iOS 12.0, *) {
+            guard let userActivity = view.userActivity else { return }
+            let shortcut = INShortcut(userActivity: userActivity)
+            let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     //MARK: RegisterTableViewCells
@@ -237,6 +268,7 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     @objc func didSelectTimeOfDayButton(sender: UIButton) {
         workingObject.timeOfDay = sender.titleLabel?.text
         tableView.reloadSections([3], with: .fade)
+        displaySiriShortcutPopup()
     }
     
     @objc func didSelectFrequencyButton(sender: UIButton) {
@@ -278,14 +310,16 @@ class EditRoutineTableViewController: PRBaseTableViewController {
             
             if let senderID = sender as? Int64 {
                 editTaskTableViewController.taskID = senderID
+                editTaskTableViewController.workingObject.routineId = workingObject.id
             } else {
                 let groupId = NSNumber(value: Date().millisecondsSince1970 as Int64)
                 editTaskTableViewController.workingObject.id = groupId.int64Value
                 editTaskTableViewController.workingObject.name = ""
                 editTaskTableViewController.workingObject.iconName = "flame.fill"
                 editTaskTableViewController.workingObject.colorValue = workingObject.colorValue
+                editTaskTableViewController.workingObject.routineId = workingObject.id
                 
-                let routinesCount = Task.countInContext(context: managedObjectContext)
+                let routinesCount = Task.countInContextForRoutineID(routineID ?? 0, context: managedObjectContext)
                 editTaskTableViewController.workingObject.order = Int64(routinesCount)
             }
         }
@@ -328,7 +362,7 @@ extension EditRoutineTableViewController {
             return cell
         } else if indexPath.section == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.classForCoder()), for: indexPath) as! TasksTableViewCell
-            cell.configureCell(managedObjectContext: managedObjectContext)
+            cell.configureCell(managedObjectContext: managedObjectContext, routineID: workingObject.id ?? 0)
             cell.tableView.isEditing = isEditingTasks
             cell.delegate = self
             return cell
@@ -380,7 +414,7 @@ extension EditRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let option = EditOptions.allCases[indexPath.section]
-        let routinesCount = Task.countInContext(context: managedObjectContext)
+        let routinesCount = Task.countInContextForRoutineID(routineID ?? 0, context: managedObjectContext)
         return option.cellHeight(itemHeight: routinesCount)
     }
     
@@ -418,4 +452,16 @@ extension EditRoutineTableViewController: TasksTableViewCellDelegate {
     func didSelectTask(task: Task) {
         performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: task.id)
     }
+}
+
+extension EditRoutineTableViewController: INUIAddVoiceShortcutViewControllerDelegate {
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        //
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        //
+    }
+    
+    
 }

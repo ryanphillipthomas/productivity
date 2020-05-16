@@ -34,6 +34,14 @@ extension ManagedObjectType {
         request.sortDescriptors = defaultSortDescriptors
         return request
     }
+    
+    public static func sortedRoutineFetchRequest(_ routineID: Int64) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let predicate = NSPredicate(format: "routineId == %lld", routineID)
+        request.predicate = predicate
+        request.sortDescriptors = defaultSortDescriptors
+        return request
+    }
 }
 
 extension ManagedObjectType where Self: PRManagedObject {
@@ -70,6 +78,17 @@ extension ManagedObjectType where Self: PRManagedObject {
     
     public static func countInContext(context: NSManagedObjectContext, configurationBlock: (NSFetchRequest<NSFetchRequestResult>) -> () = { _ in }) -> Int {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        configurationBlock(request)
+        
+        let result = try! context.count(for: request)
+        
+        return result
+    }
+    
+    public static func countInContextForRoutineID(_ routineID: Int64, context: NSManagedObjectContext, configurationBlock: (NSFetchRequest<NSFetchRequestResult>) -> () = { _ in }) -> Int {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let predicate = NSPredicate(format: "routineId == %lld", routineID)
+        request.predicate = predicate
         configurationBlock(request)
         
         let result = try! context.count(for: request)
