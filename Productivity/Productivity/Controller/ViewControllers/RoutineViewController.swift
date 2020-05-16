@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import AVKit
 import AQPlayer
+import IntentsUI
 
 class RoutineViewController: PRBaseViewController {
     
@@ -160,6 +161,16 @@ class RoutineViewController: PRBaseViewController {
        activity.becomeCurrent()
     }
     
+    func displaySiriShortcutPopup() {
+        if #available(iOS 12.0, *) {
+            guard let userActivity = view.userActivity else { return }
+            let shortcut = INShortcut(userActivity: userActivity)
+            let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: Update
     
     //Update UI
@@ -276,6 +287,13 @@ extension RoutineViewController: AQPlayerDelegate {
     
     func aQPlayerManager(_ playerManager: AQPlayerManager, itemDidChange itemIndex: Int) {
         nextButton.isEnabled = itemIndex < self.playeritems.count - 1
+        
+        if itemIndex == playeritems.count - 1 {
+            delayWithSeconds(5) {
+                self.displaySiriShortcutPopup()
+            }
+        }
+        
         updateUI()
     }
     
@@ -285,5 +303,15 @@ extension RoutineViewController: AQPlayerDelegate {
     
     func getCoverImage(_ player: AQPlayerManager, _ callBack: @escaping (UIImage?) -> Void) {
         //update
+    }
+}
+
+extension RoutineViewController: INUIAddVoiceShortcutViewControllerDelegate {
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        dismiss(animated: true, completion: nil)
     }
 }

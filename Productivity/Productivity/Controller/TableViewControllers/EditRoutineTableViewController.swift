@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreData
-import IntentsUI
-
 
 //MARK: EditOptions
 public enum EditOptions: CaseIterable {
@@ -126,35 +124,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
         super.viewDidLoad()
         setupWorkingObject()
         registerTableViewCells()
-        setupIntentsForSiri()
-    }
-    
-    func setupIntentsForSiri() {
-       let actionIdentifier = "com.ryanphillipthomas.runRoutine"
-       let activity = NSUserActivity(activityType: actionIdentifier)
-        if let name = workingObject.name, let id = workingObject.id {
-            let title = "Run \(name)"
-            activity.title = title
-            activity.userInfo = ["id": id]
-            activity.suggestedInvocationPhrase = title
-            activity.isEligibleForSearch = true
-            activity.isEligibleForPrediction = true
-            activity.isEligibleForHandoff = true
-            activity.persistentIdentifier = String(id)
-        }
-        
-       view.userActivity = activity
-       activity.becomeCurrent()
-    }
-    
-    func displaySiriShortcutPopup() {
-        if #available(iOS 12.0, *) {
-            guard let userActivity = view.userActivity else { return }
-            let shortcut = INShortcut(userActivity: userActivity)
-            let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
-            vc.delegate = self
-            present(vc, animated: true, completion: nil)
-        }
     }
     
     //MARK: RegisterTableViewCells
@@ -268,7 +237,6 @@ class EditRoutineTableViewController: PRBaseTableViewController {
     @objc func didSelectTimeOfDayButton(sender: UIButton) {
         workingObject.timeOfDay = sender.titleLabel?.text
         tableView.reloadSections([3], with: .fade)
-        displaySiriShortcutPopup()
     }
     
     @objc func didSelectFrequencyButton(sender: UIButton) {
@@ -452,16 +420,4 @@ extension EditRoutineTableViewController: TasksTableViewCellDelegate {
     func didSelectTask(task: Task) {
         performSegue(withIdentifier: String(describing: EditTaskTableViewController.classForCoder()), sender: task.id)
     }
-}
-
-extension EditRoutineTableViewController: INUIAddVoiceShortcutViewControllerDelegate {
-    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
-        //
-    }
-    
-    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
-        //
-    }
-    
-    
 }
