@@ -106,6 +106,23 @@ class RoutineViewController: PRBaseViewController {
                                         albumTrackNumber:"\(i+1)",
                                         albumTrackCount:"\(tasks.count)")
             playeritems.append(sound)
+            
+            
+            if i == tasks.count - 1 {
+                //Complete File
+                let complete_url = Bundle.main.url(forResource: "complete.wav", withExtension: nil)!
+                let sound = AQPlayerItemInfo(id: Int(task.id),
+                                            url: complete_url,
+                                            title: task.name,
+                                            albumTitle: task.itemDescription,
+                                            coverImage: UIImage(named: task.imageName),
+                                            startAt: 0,
+                                            mediaType: .audio,
+                                            artist: "5 min",
+                                            albumTrackNumber:"\(i+1)",
+                                            albumTrackCount:"\(tasks.count)")
+                playeritems.append(sound)
+            }
         }
         playerManager.delegate = self
         playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: false)
@@ -193,15 +210,17 @@ class RoutineViewController: PRBaseViewController {
     fileprivate func setPlayPauseButtonImage(_ status: AQPlayerStatus) {
         switch status {
         case .loading, .none:
-            playPauseButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playPauseButton.isEnabled = false
         case .readyToPlay, .paused:
             playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            
+            playPauseButton.isEnabled = true
         case .playing:
             playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            
+            playPauseButton.isEnabled = true
         case .failed:
             playPauseButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+            playPauseButton.isEnabled = false
         }
     }
 }
