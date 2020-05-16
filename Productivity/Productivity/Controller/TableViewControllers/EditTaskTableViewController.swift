@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import AVFoundation
 
 //MARK: EditTaskOptions
 public enum EditTaskOptions: CaseIterable {
@@ -115,6 +117,16 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     
     @objc func didUpdateTime(sender: UIDatePicker) {
         workingObject.length = Int64(sender.countDownDuration)
+        
+        let sound_url = Bundle.main.url(forResource: workingObject.musicSoundFileURL, withExtension: nil)!
+        let asset = AVAsset(url:sound_url)
+        
+        if let id = workingObject.id {
+            let fileName = "\(id).m4a"
+            AudioManager.shared().exportAsset(asset, fileName: fileName, desiredLength: Int64(sender.countDownDuration)) { (success) in
+                 //we did it
+             }
+        }
     }
     
     @objc func didUpdateNameField(sender: UITextField) {

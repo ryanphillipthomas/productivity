@@ -20,7 +20,10 @@ public final class AQPlayerManager: NSObject {
     fileprivate var qPlayerItems: [AQPlayerItem] = []
     fileprivate var timer: Timer?
     fileprivate var isSessionSetup = false
-    
+    var qPlayerCategoryOptions: AVAudioSession.CategoryOptions = []
+    var qPlayerActiveOptions : AVAudioSession.SetActiveOptions = []
+    var qPlayerPolicy : AVAudioSession.RouteSharingPolicy = .longForm
+
     public var playerStatus: AQPlayerStatus {
         return self.status
     }
@@ -110,11 +113,11 @@ public final class AQPlayerManager: NSObject {
         if startFrom >= items.count {
             toDrop = items.count - 1
         }
-                
+        
+        
         // init the AQQueuePlayer
         qPlayer = AQQueuePlayer(items: Array(qPlayerItems.dropFirst(toDrop)))
         qPlayer?.allowsExternalPlayback = false
-        
         
         let keysToObserve = ["currentItem","rate"]
         for key in keysToObserve {
@@ -178,6 +181,18 @@ public final class AQPlayerManager: NSObject {
        
     }
     
+    public func setPlayerCategoryOptions(options: AVAudioSession.CategoryOptions) {
+            qPlayerCategoryOptions = options
+    }
+    
+    public func setPlayerActiveOptions(options: AVAudioSession.SetActiveOptions) {
+        qPlayerActiveOptions = options
+    }
+    
+    public func setPlayerPolicy(policy: AVAudioSession.RouteSharingPolicy) {
+        qPlayerPolicy = policy
+    }
+    
     public func setCommandCenterMode(mode: AQRemoteControlMode) {
             commandCenter.skipBackwardCommand.isEnabled = mode == .skip
             commandCenter.skipForwardCommand.isEnabled = mode == .skip
@@ -193,8 +208,8 @@ public final class AQPlayerManager: NSObject {
     fileprivate func setupAudioSession() {
         // activate audio session
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default , policy: .longForm, options: [])
-            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default , policy: qPlayerPolicy, options: qPlayerCategoryOptions)
+            try AVAudioSession.sharedInstance().setActive(true, options: qPlayerActiveOptions)
             UIApplication.shared.beginReceivingRemoteControlEvents()
             isSessionSetup = true
         } catch {

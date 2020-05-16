@@ -76,7 +76,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AQPlayer:
-    :commit: 899b8142632a877d8639fe7988147d06a06e1ca3
+    :commit: 8dccd0408f6b59642c85595a9fde2c66ab57b05b
     :git: https://github.com/ryanphillipthomas/AQPlayer-master
   ParallaxHeader:
     :commit: a75c875ac61c32edb00e5d14bb6828679c0e617a

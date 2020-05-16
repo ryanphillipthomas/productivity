@@ -94,7 +94,11 @@ class RoutineViewController: PRBaseViewController {
             playeritems.append(announcement)
             
             //Sound File
-            let sound_url = Bundle.main.url(forResource: task.musicSoundFileURL, withExtension: nil)!
+            
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileName = "\(task.id).m4a"
+            let sound_url = documentsDirectory.appendingPathComponent(fileName)
+            
             let sound = AQPlayerItemInfo(id: Int(task.id),
                                         url: sound_url,
                                         title: task.name,
@@ -125,8 +129,14 @@ class RoutineViewController: PRBaseViewController {
             }
         }
         playerManager.delegate = self
-        playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: false)
+      
+// Uncomment to allow for mixing with other audio
+        playerManager.setPlayerCategoryOptions(options: [.mixWithOthers, .duckOthers])
+        playerManager.setPlayerActiveOptions(options: [])
+        playerManager.setPlayerPolicy(policy: .default)
         playerManager.setCommandCenterMode(mode: .nextprev)
+        playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: true)
+
     }
     
     //MARK: Update

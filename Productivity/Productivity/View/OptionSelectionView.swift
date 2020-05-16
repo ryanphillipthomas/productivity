@@ -38,7 +38,7 @@ public enum OptionSelection: CaseIterable {
         switch(self){
         case .chimes: return [chimeSoundFileString, chime_2_SoundFileString]
         case .announcers: return [bathroomSoundFileString, coffeeSoundFileString, journalSoundFileString, meditateSoundFileString, petsSoundFileString, readSoundFileString, workoutSoundFileString]
-        case .music: return [musicSoundFileString, spaceSoundFileString]
+        case .music: return [musicSoundTemplateFileString, spaceSoundFileString, musicSoundFileString]
         }
     }
     
