@@ -284,6 +284,9 @@ class EditRoutineTableViewController: PRBaseTableViewController {
                 editTaskTableViewController.workingObject.name = ""
                 editTaskTableViewController.workingObject.iconName = "flame.fill"
                 editTaskTableViewController.workingObject.colorValue = workingObject.colorValue
+                
+                let routinesCount = Task.countInContext(context: managedObjectContext)
+                editTaskTableViewController.workingObject.order = Int64(routinesCount)
             }
         }
     }

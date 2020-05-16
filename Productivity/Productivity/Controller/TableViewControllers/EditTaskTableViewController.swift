@@ -74,7 +74,7 @@ public enum EditTaskHeaderFooterOptions: CaseIterable {
 class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionViewDelegate {
     var taskID: Int64?
     var workingObject = PRBaseWorkingObject()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWorkingObject()
