@@ -11,6 +11,10 @@
 		B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */; };
 		B81602B924704CAE00C80BE6 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602B824704CAE00C80BE6 /* Intents.framework */; };
 		B81602BB24704CB400C80BE6 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602BA24704CB400C80BE6 /* IntentsUI.framework */; };
+		B81602BD2470E36D00C80BE6 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */; };
+		B81602BF2470F13300C80BE6 /* AddRecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602BE2470F13300C80BE6 /* AddRecordingTableViewCell.swift */; };
+		B81602C22470F40400C80BE6 /* AddRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602C02470F40400C80BE6 /* AddRecorderView.swift */; };
+		B81602C32470F40400C80BE6 /* AddRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81602C12470F40400C80BE6 /* AddRecorderView.xib */; };
 		B82E556624265FD70040A04E /* IconImageSingleLabelDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */; };
 		B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */; };
 		B82E5569242660B00040A04E /* TwoLabelImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E5568242660B00040A04E /* TwoLabelImageView.swift */; };
@@ -171,6 +175,10 @@
 		B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelButtonView.xib; sourceTree = "<group>"; };
 		B81602B824704CAE00C80BE6 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		B81602BA24704CB400C80BE6 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AKAudioRecorder.swift; path = "../../../../../../../Downloads/Audio-Recorder-master/Example/AKAudioRecorder/AKAudioRecorder.swift"; sourceTree = "<group>"; };
+		B81602BE2470F13300C80BE6 /* AddRecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordingTableViewCell.swift; sourceTree = "<group>"; };
+		B81602C02470F40400C80BE6 /* AddRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecorderView.swift; sourceTree = "<group>"; };
+		B81602C12470F40400C80BE6 /* AddRecorderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecorderView.xib; sourceTree = "<group>"; };
 		B82E556424265FD60040A04E /* IconImageSingleLabelDisclosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconImageSingleLabelDisclosureView.swift; sourceTree = "<group>"; };
 		B82E556524265FD70040A04E /* IconImageSingleLabelDisclosureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconImageSingleLabelDisclosureView.xib; sourceTree = "<group>"; };
 		B82E5568242660B00040A04E /* TwoLabelImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLabelImageView.swift; sourceTree = "<group>"; };
@@ -390,6 +398,8 @@
 				B888614C2453F64E00EE1133 /* TimeLengthView.xib */,
 				B832E4042468731600EDF0E7 /* OptionSelectionView.swift */,
 				B832E4052468731600EDF0E7 /* OptionSelectionView.xib */,
+				B81602C02470F40400C80BE6 /* AddRecorderView.swift */,
+				B81602C12470F40400C80BE6 /* AddRecorderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,6 +632,7 @@
 				B832E3EE2466F3A300EDF0E7 /* song_1.m4a */,
 				B832E3EC2466F3A200EDF0E7 /* song_2.m4a */,
 				B832E3ED2466F3A200EDF0E7 /* song_3.m4a */,
+				B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */,
 				B87858A8245C915C008F0F01 /* AudioManager.swift */,
 			);
 			path = Manager;
@@ -646,6 +657,7 @@
 				B8886165245460A100EE1133 /* CreateTableViewCell.swift */,
 				B8886167245460C200EE1133 /* CreateTemplateTableViewCell.swift */,
 				B87858912454F36B008F0F01 /* RoutineTableViewCell.swift */,
+				B81602BE2470F13300C80BE6 /* AddRecordingTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -877,6 +889,7 @@
 				B832E3F02466F3A300EDF0E7 /* song_3.m4a in Resources */,
 				B87678942424602A0009EFE4 /* BELogCell.xib in Resources */,
 				B832E4072468731600EDF0E7 /* OptionSelectionView.xib in Resources */,
+				B81602C32470F40400C80BE6 /* AddRecorderView.xib in Resources */,
 				B82E556724265FD70040A04E /* IconImageSingleLabelDisclosureView.xib in Resources */,
 				B82E55752427B9010040A04E /* SingleTextFieldNameView.xib in Resources */,
 				B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */,
@@ -990,6 +1003,7 @@
 				B87678842424602A0009EFE4 /* UIViewController+Extensions.swift in Sources */,
 				B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */,
 				B8D56B482429899500FEF929 /* IconView.swift in Sources */,
+				B81602BD2470E36D00C80BE6 /* AKAudioRecorder.swift in Sources */,
 				B8FA79C42421C0FB007E7706 /* SettingsTabViewController.swift in Sources */,
 				B87C11802444057E00305886 /* ColorsCollectionViewController.swift in Sources */,
 				B82E556F242670820040A04E /* LineSingleLabelHeaderFooterView.swift in Sources */,
@@ -1004,6 +1018,7 @@
 				B88861522454598D00EE1133 /* IconColorTableViewCell.swift in Sources */,
 				B87858952454F51F008F0F01 /* RoutineViewController.swift in Sources */,
 				B882714A24246FC8004F5718 /* Constants.swift in Sources */,
+				B81602BF2470F13300C80BE6 /* AddRecordingTableViewCell.swift in Sources */,
 				B87678822424602A0009EFE4 /* NotificationManager.swift in Sources */,
 				B8F19AF92442820600F8915F /* RoutinesTableViewController.swift in Sources */,
 				B87C117C24435DD900305886 /* PRBaseWorkingObject.swift in Sources */,
@@ -1052,6 +1067,7 @@
 				B8F19E11244ABB180006AC16 /* TimeOfDayView.swift in Sources */,
 				B876788A2424602A0009EFE4 /* NSObject+Extensions.swift in Sources */,
 				B82E557D242841BA0040A04E /* IconColorButtonView.swift in Sources */,
+				B81602C22470F40400C80BE6 /* AddRecorderView.swift in Sources */,
 				B882716224257FC3004F5718 /* SettingsManager.swift in Sources */,
 				B87678922424602A0009EFE4 /* UITextField+Extensions.swift in Sources */,
 				B882714024246CEE004F5718 /* PRBaseViewController.swift in Sources */,

@@ -15,12 +15,14 @@ public enum EditTaskOptions: CaseIterable {
     case nameOfTask
     case length
     case sound
+    case record
 
     func placeHolderText() -> String {
         switch(self){
         case .nameOfTask: return "Name of the task"
         case .length: return ""
         case .sound: return "Sound Effects"
+        case .record: return "Record"
         }
     }
     
@@ -29,6 +31,7 @@ public enum EditTaskOptions: CaseIterable {
             case .nameOfTask: return nil
             case .length: return nil
             case .sound: return nil
+            case .record: return nil
         }
     }
     
@@ -37,6 +40,7 @@ public enum EditTaskOptions: CaseIterable {
         case .nameOfTask: return 75
         case .length: return 120
         case .sound: return 120
+        case .record: return 75
         }
     }
     
@@ -45,6 +49,7 @@ public enum EditTaskOptions: CaseIterable {
         case .nameOfTask: return 3
         case .length: return 1
         case .sound: return 3
+        case .record: return 1
         }
     }
 }
@@ -55,12 +60,14 @@ public enum EditTaskHeaderFooterOptions: CaseIterable {
     case nameOfTask
     case length
     case sound
+    case record
 
     func text() -> String {
         switch(self){
         case .nameOfTask: return "Name & Description"
         case .length: return "Length"
         case .sound: return "Sounds"
+        case .record: return "Recordings"
         }
     }
     
@@ -69,6 +76,7 @@ public enum EditTaskHeaderFooterOptions: CaseIterable {
         case .nameOfTask: return 30
         case .length: return 30
         case .sound: return 30
+        case .record: return 30
         }
     }
 }
@@ -77,6 +85,7 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     var taskID: Int64?
     var routineID: Int64?
     var workingObject = PRBaseWorkingObject()
+    var recorder = AKAudioRecorder.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +100,7 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
         tableView.register(HeaderFooterTableViewCell.self, forCellReuseIdentifier: String(describing: HeaderFooterTableViewCell.self))
         tableView.register(OptionSelectionTableViewCell.self, forCellReuseIdentifier: String(describing: OptionSelectionTableViewCell.self))
         tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: String(describing: DescriptionTableViewCell.self))
+        tableView.register(AddRecordingTableViewCell.self, forCellReuseIdentifier: String(describing: AddRecordingTableViewCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,6 +152,23 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
         performSegue(withIdentifier: String(describing: ColorsCollectionViewController.classForCoder()), sender: nil)
     }
     
+    @objc func didSelectAddRecording(sender: UIButton) {
+        if recorder.isRecording{
+            recorder.stopRecording()
+            if let name = recorder.getRecordings.last {
+                workingObject.announceSoundFileURL = "\(name).m4a"
+            }
+        } else{
+            recorder.record()
+        }
+    }
+    
+    @objc func didSelectEditRecording(sender: UIButton) {
+        if let name = recorder.getRecordings.last {
+            recorder.play(name: name)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: IconsCollectionViewController.classForCoder()), let iconsCollectionViewController =
             segue.destination as? IconsCollectionViewController {
@@ -154,6 +181,14 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     override func setTableView() {
         super.setTableView()
         tableView.allowsSelection = false
+    }
+    
+    //NOTE: can probally move into the cell
+    func setTarget(cell: AddRecordingTableViewCell) {
+        if let view = cell.cellView as? AddRecorderView {
+            view.addRecordingButton.addTarget(self, action: #selector(self.didSelectAddRecording(sender:)), for: .touchUpInside)
+            view.editRecordingButton.addTarget(self, action: #selector(self.didSelectEditRecording(sender:)), for: .touchUpInside)
+        }
     }
     
     func setTarget(cell: IconColorTableViewCell) {
@@ -232,6 +267,11 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
                 cell.delegate = self
                 return cell
             }
+        } else if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddRecordingTableViewCell.classForCoder()), for: indexPath) as! AddRecordingTableViewCell
+            cell.configureButtonColor(workingObject: workingObject, isSelected: false)
+            setTarget(cell: cell)
+            return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NameTableViewCell.classForCoder()), for: indexPath) as! NameTableViewCell

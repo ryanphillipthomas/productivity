@@ -82,7 +82,8 @@ class RoutineViewController: PRBaseViewController {
             playeritems.append(chime)
             
             //Announcement
-            let announcement_url = Bundle.main.url(forResource: task.announceSoundFileURL, withExtension: nil)!
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let announcement_url = documentsDirectory.appendingPathComponent(task.announceSoundFileURL)
             let announcement = AQPlayerItemInfo(id: Int(task.id),
                                         url: announcement_url,
                                         title: task.name,
@@ -97,7 +98,6 @@ class RoutineViewController: PRBaseViewController {
             
             //Sound File
             
-            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileName = "\(task.id).m4a"
             let sound_url = documentsDirectory.appendingPathComponent(fileName)
             
