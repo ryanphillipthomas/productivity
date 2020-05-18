@@ -9,11 +9,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddRecorderView" customModule="Productivity" customModuleProvider="target">
             <connections>
-                <outlet property="addRecordingButton" destination="9xn-Ii-MbE" id="SSE-v6-ovW"/>
-                <outlet property="editRecordingButton" destination="i3w-FJ-gmO" id="jTb-S4-HnX"/>
+                <outlet property="deleteRecordingButton" destination="i3w-FJ-gmO" id="45C-Hq-aSU"/>
+                <outlet property="playRecordingButton" destination="CLd-Ry-iLV" id="KHo-fC-orc"/>
+                <outlet property="startStopRecordingButton" destination="9xn-Ii-MbE" id="I5S-Uh-DFu"/>
                 <outlet property="view" destination="gN4-tp-JIf" id="Bun-h9-Hn7"/>
-                <outletCollection property="buttons" destination="i3w-FJ-gmO" collectionClass="NSMutableArray" id="BvV-17-gkz"/>
-                <outletCollection property="buttons" destination="9xn-Ii-MbE" collectionClass="NSMutableArray" id="c6g-le-fUu"/>
+                <outletCollection property="buttons" destination="i3w-FJ-gmO" collectionClass="NSMutableArray" id="pB0-RT-yIA"/>
+                <outletCollection property="buttons" destination="CLd-Ry-iLV" collectionClass="NSMutableArray" id="AtL-jg-egR"/>
+                <outletCollection property="buttons" destination="9xn-Ii-MbE" collectionClass="NSMutableArray" id="TJ0-px-L0x"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,17 +26,23 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hPj-Rm-HqB">
                     <rect key="frame" x="10" y="10" width="334" height="66"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3w-FJ-gmO" userLabel="Edit Task">
-                            <rect key="frame" x="0.0" y="0.0" width="162" height="66"/>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3w-FJ-gmO" userLabel="Delete Recording">
+                            <rect key="frame" x="0.0" y="0.0" width="104.5" height="66"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Edit Recording"/>
+                            <state key="normal" image="trash.fill" catalog="system"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xn-Ii-MbE">
-                            <rect key="frame" x="172" y="0.0" width="162" height="66"/>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLd-Ry-iLV" userLabel="Play Recording">
+                            <rect key="frame" x="114.5" y="0.0" width="105" height="66"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="New Recording"/>
+                            <state key="normal" image="playpause.fill" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xn-Ii-MbE" userLabel="Start Stop Recording">
+                            <rect key="frame" x="229.5" y="0.0" width="104.5" height="66"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="largecircle.fill.circle" catalog="system"/>
                         </button>
                     </subviews>
                 </stackView>
@@ -51,4 +59,9 @@
             <point key="canvasLocation" x="-484.05797101449281" y="-218.97321428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="largecircle.fill.circle" catalog="system" width="128" height="121"/>
+        <image name="playpause.fill" catalog="system" width="128" height="73"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+    </resources>
 </document>

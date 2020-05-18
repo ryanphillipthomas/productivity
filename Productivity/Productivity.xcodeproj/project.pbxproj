@@ -44,6 +44,7 @@
 		B832E40D24688A8F00EDF0E7 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B832E40B24688A8F00EDF0E7 /* TextView.xib */; };
 		B832E40F24688BD800EDF0E7 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832E40E24688BD800EDF0E7 /* DescriptionTableViewCell.swift */; };
 		B832E4112468985200EDF0E7 /* chime_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B832E4102468985100EDF0E7 /* chime_2.wav */; };
+		B85884FF247191C90024D47C /* ambience.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B85884FE2471911E0024D47C /* ambience.mp4 */; };
 		B876787C2424602A0009EFE4 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B876785B2424602A0009EFE4 /* Log.storyboard */; };
 		B876787E2424602A0009EFE4 /* LoggerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */; };
 		B876787F2424602A0009EFE4 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87678602424602A0009EFE4 /* LoggerViewController.swift */; };
@@ -208,6 +209,7 @@
 		B832E40B24688A8F00EDF0E7 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		B832E40E24688BD800EDF0E7 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		B832E4102468985100EDF0E7 /* chime_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chime_2.wav; sourceTree = "<group>"; };
+		B85884FE2471911E0024D47C /* ambience.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ambience.mp4; sourceTree = "<group>"; };
 		B876785B2424602A0009EFE4 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		B876785C2424602A0009EFE4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B876785F2424602A0009EFE4 /* LoggerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				B832E3F62468645100EDF0E7 /* bathroom.wav */,
+				B85884FE2471911E0024D47C /* ambience.mp4 */,
 				B832E3F92468645100EDF0E7 /* coffee.wav */,
 				B832E3F72468645100EDF0E7 /* journal.wav */,
 				B832E3FA2468645100EDF0E7 /* meditate.wav */,
@@ -875,6 +878,7 @@
 				B8F19E0A244AA9C20006AC16 /* DailyWeeklyMonthlyView.xib in Resources */,
 				B8F19E0E244AACA60006AC16 /* DailyView.xib in Resources */,
 				B8FA79C72421C0FB007E7706 /* Main.storyboard in Resources */,
+				B85884FF247191C90024D47C /* ambience.mp4 in Resources */,
 				B8F19AF12442752B00F8915F /* External.storyboard in Resources */,
 				B87C117E2444054F00305886 /* colors.json in Resources */,
 				B8F19E18244C8E1F0006AC16 /* EditTasksView.xib in Resources */,

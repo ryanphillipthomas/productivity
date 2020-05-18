@@ -10,9 +10,9 @@ import UIKit
 
 class AddRecorderView: PRXibView {
     @IBOutlet var buttons: [UIButton]!
-    @IBOutlet weak var editRecordingButton: UIButton!
-    @IBOutlet weak var addRecordingButton: UIButton!
-    @IBOutlet weak var innerView: PRBaseView!
+    @IBOutlet weak var deleteRecordingButton: UIButton!
+    @IBOutlet weak var playRecordingButton: UIButton!
+    @IBOutlet weak var startStopRecordingButton: UIButton!
 
     //MARK: Init
     override init(frame: CGRect) {

@@ -14,15 +14,15 @@ import AVFoundation
 public enum EditTaskOptions: CaseIterable {
     case nameOfTask
     case length
-    case sound
     case record
+    case sound
 
     func placeHolderText() -> String {
         switch(self){
         case .nameOfTask: return "Name of the task"
         case .length: return ""
-        case .sound: return "Sound Effects"
         case .record: return "Record"
+        case .sound: return "Sound Effects"
         }
     }
     
@@ -30,8 +30,8 @@ public enum EditTaskOptions: CaseIterable {
         switch(self){
             case .nameOfTask: return nil
             case .length: return nil
-            case .sound: return nil
             case .record: return nil
+            case .sound: return nil
         }
     }
     
@@ -39,8 +39,8 @@ public enum EditTaskOptions: CaseIterable {
         switch(self){
         case .nameOfTask: return 75
         case .length: return 120
-        case .sound: return 120
         case .record: return 75
+        case .sound: return 120
         }
     }
     
@@ -48,8 +48,8 @@ public enum EditTaskOptions: CaseIterable {
         switch(self){
         case .nameOfTask: return 3
         case .length: return 1
-        case .sound: return 3
         case .record: return 1
+        case .sound: return 2
         }
     }
 }
@@ -59,15 +59,15 @@ public enum EditTaskOptions: CaseIterable {
 public enum EditTaskHeaderFooterOptions: CaseIterable {
     case nameOfTask
     case length
-    case sound
     case record
+    case sound
 
     func text() -> String {
         switch(self){
         case .nameOfTask: return "Name & Description"
         case .length: return "Length"
-        case .sound: return "Sounds"
-        case .record: return "Recordings"
+        case .record: return "Announcement"
+        case .sound: return "Optional Sounds"
         }
     }
     
@@ -75,8 +75,8 @@ public enum EditTaskHeaderFooterOptions: CaseIterable {
         switch(self){
         case .nameOfTask: return 30
         case .length: return 30
-        case .sound: return 30
         case .record: return 30
+        case .sound: return 30
         }
     }
 }
@@ -128,16 +128,6 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     
     @objc func didUpdateTime(sender: UIDatePicker) {
         workingObject.length = Int64(sender.countDownDuration)
-        
-        let sound_url = Bundle.main.url(forResource: workingObject.musicSoundFileURL, withExtension: nil)!
-        let asset = AVAsset(url:sound_url)
-        
-        if let id = workingObject.id {
-            let fileName = "\(id).m4a"
-            AudioManager.shared().exportAsset(asset, fileName: fileName, desiredLength: Int64(sender.countDownDuration)) { (success) in
-                 //we did it
-             }
-        }
     }
     
     @objc func didUpdateNameField(sender: UITextField) {
@@ -152,20 +142,32 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
         performSegue(withIdentifier: String(describing: ColorsCollectionViewController.classForCoder()), sender: nil)
     }
     
-    @objc func didSelectAddRecording(sender: UIButton) {
-        if recorder.isRecording{
+    @objc func didSelectStartStopRecording(sender: UIButton) {
+        if recorder.isRecording {
+            sender.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
             recorder.stopRecording()
             if let name = recorder.getRecordings.last {
                 workingObject.announceSoundFileURL = "\(name).m4a"
             }
-        } else{
+        } else {
+            sender.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
             recorder.record()
         }
     }
     
-    @objc func didSelectEditRecording(sender: UIButton) {
-        if let name = recorder.getRecordings.last {
-            recorder.play(name: name)
+    @objc func didSelectPlayRecording(sender: UIButton) {
+        if recorder.isPlaying {
+            recorder.stopPlaying()
+        } else {
+            if let name = workingObject.announceSoundFileURL, let file = name.components(separatedBy: ".").first {
+                recorder.play(name: file)
+            }
+        }
+    }
+    
+    @objc func didSelectDeleteRecording(sender: UIButton) {
+        if let name = workingObject.announceSoundFileURL, let file = name.components(separatedBy: ".").first {
+            recorder.deleteRecording(name: file)
         }
     }
     
@@ -186,8 +188,9 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     //NOTE: can probally move into the cell
     func setTarget(cell: AddRecordingTableViewCell) {
         if let view = cell.cellView as? AddRecorderView {
-            view.addRecordingButton.addTarget(self, action: #selector(self.didSelectAddRecording(sender:)), for: .touchUpInside)
-            view.editRecordingButton.addTarget(self, action: #selector(self.didSelectEditRecording(sender:)), for: .touchUpInside)
+            view.startStopRecordingButton.addTarget(self, action: #selector(self.didSelectStartStopRecording(sender:)), for: .touchUpInside)
+            view.deleteRecordingButton.addTarget(self, action: #selector(self.didSelectDeleteRecording(sender:)), for: .touchUpInside)
+            view.playRecordingButton.addTarget(self, action: #selector(self.didSelectPlayRecording(sender:)), for: .touchUpInside)
         }
     }
     
@@ -250,6 +253,11 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
             setTarget(cell: cell)
             return cell
         } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddRecordingTableViewCell.classForCoder()), for: indexPath) as! AddRecordingTableViewCell
+            cell.configureButtonColor(workingObject: workingObject, isSelected: false)
+            setTarget(cell: cell)
+            return cell
+        } else if indexPath.section == 3 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
                 cell.configurePicker(workingObject: workingObject, pickerSelection: .chimes)
@@ -257,21 +265,11 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
                 return cell
             } else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
-                cell.configurePicker(workingObject: workingObject, pickerSelection: .announcers)
-                cell.delegate = self
-                return cell
-            } else if indexPath.row == 2 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OptionSelectionTableViewCell.classForCoder()), for: indexPath) as! OptionSelectionTableViewCell
                 cell.configurePicker(workingObject: workingObject, pickerSelection: .music)
                 
                 cell.delegate = self
                 return cell
             }
-        } else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddRecordingTableViewCell.classForCoder()), for: indexPath) as! AddRecordingTableViewCell
-            cell.configureButtonColor(workingObject: workingObject, isSelected: false)
-            setTarget(cell: cell)
-            return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NameTableViewCell.classForCoder()), for: indexPath) as! NameTableViewCell
@@ -293,10 +291,24 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
 
 extension EditTaskTableViewController: PRBaseNavigationControllerDelegate {
     func didPressRightBarButtonItem() {
+        navigationItem.rightBarButtonItem?.isEnabled = false
         managedObjectContext.performChanges {
             Task.update(moc: self.managedObjectContext, workingObject: self.workingObject)
         }
-        dismiss(animated: true, completion: nil)
+        
+        let sound_url = Bundle.main.url(forResource: workingObject.musicSoundFileURL, withExtension: nil)!
+        let asset = AVAsset(url:sound_url)
+        
+        if let id = workingObject.id, let length = workingObject.length {
+            let fileName = "\(id).m4a"
+            AudioManager.shared().exportAsset(asset, fileName: fileName, desiredLength: Int64(length)) { (success) in
+                 //we did it
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+             }
+        }
+        
     }
     func didPressLeftBarButtonItem() {}
 }

@@ -28,13 +28,7 @@ class AddRecordingTableViewCell: PRBaseTableViewCell<UIView> {
             if let colorValue = workingObject.colorValue {
                 view.clear()
                 for button in view.buttons {
-                    if button == view.editRecordingButton {
-                        if isSelected {
-                            button.backgroundColor = UIColor(hexString: colorValue)
-                        }
-                    } else {
-                        button.backgroundColor = UIColor(hexString: colorValue)
-                    }
+                    button.tintColor = UIColor(hexString: colorValue)
                 }
             }
         }

@@ -11,12 +11,50 @@ import CoreData
 
 open class PRBaseTableViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
+    var wuLoading: PRLoadingAnimation?
 
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.configureAccessibilityIdentifiers()
         setTableView()
     }
+    
+    override open func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopLoader()                    //If we are leaving a view, we should never have a loader still active
+    }
+    
+    //MARK: Loader Animation
+       func startLoader() {
+           
+           //Setup Loader
+           let keyWindow = UIApplication.shared.connectedScenes
+           .filter({$0.activationState == .foregroundActive})
+           .map({$0 as? UIWindowScene})
+           .compactMap({$0})
+           .first?.windows
+           .filter({$0.isKeyWindow}).first
+           
+           wuLoading = PRLoadingAnimation()
+           keyWindow?.addSubview(wuLoading!)
+           wuLoading?.centerMe()
+           
+           if let loader = wuLoading {
+               view.isUserInteractionEnabled = false
+               DispatchQueue.main.async {
+                   loader.fadeIn()
+               }
+           }
+       }
+       
+       func stopLoader() {
+           if let loader = wuLoading {
+               view.isUserInteractionEnabled = true
+               DispatchQueue.main.async {
+                   loader.fadeOut()
+               }
+           }
+       }
     
     func setTableView() {
         tableView.contentInset.top = 20

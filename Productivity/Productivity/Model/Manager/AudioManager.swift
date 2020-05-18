@@ -58,6 +58,9 @@ class AudioManager: NSObject {
                } catch {
                    print("could not remove \(trimmedSoundFileURL)")
                    print(error.localizedDescription)
+                    if let completionBlock = completionBlock {
+                     completionBlock(false)
+                    }
                }
                
            }
@@ -71,6 +74,9 @@ class AudioManager: NSObject {
                let duration = CMTimeGetSeconds(asset.duration)
                if Int64(duration) < desiredLength {
                    print("sound is not long enough")
+                    if let completionBlock = completionBlock {
+                     completionBlock(false)
+                    }
                    return
                }
                // e.g. the first 5 seconds
@@ -87,16 +93,28 @@ class AudioManager: NSObject {
                        
                        if let e = exporter.error {
                            print("export failed \(e)")
+                        if let completionBlock = completionBlock {
+                         completionBlock(false)
+                        }
                        }
                        
                    case AVAssetExportSessionStatus.cancelled:
                        print("export cancelled \(String(describing: exporter.error))")
+                    if let completionBlock = completionBlock {
+                     completionBlock(false)
+                    }
                    default:
                        print("export complete")
+                    if let completionBlock = completionBlock {
+                     completionBlock(true)
+                    }
                    }
                })
            } else {
                print("cannot create AVAssetExportSession for asset \(asset)")
+            if let completionBlock = completionBlock {
+             completionBlock(false)
+            }
            }
            
        }

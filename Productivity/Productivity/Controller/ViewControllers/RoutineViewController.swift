@@ -133,9 +133,11 @@ class RoutineViewController: PRBaseViewController {
         playerManager.delegate = self
       
 // Uncomment to allow for mixing with other audio
-        playerManager.setPlayerCategoryOptions(options: [.mixWithOthers, .duckOthers])
-        playerManager.setPlayerActiveOptions(options: [])
-        playerManager.setPlayerPolicy(policy: .default)
+//        playerManager.setPlayerCategoryOptions(options: [.mixWithOthers, .duckOthers])
+//        playerManager.setPlayerActiveOptions(options: [])
+//        playerManager.setPlayerPolicy(policy: .default)
+        
+        
         playerManager.setCommandCenterMode(mode: .nextprev)
         playerManager.setup(with: playeritems, startFrom: 0, playAfterSetup: true)
     }

@@ -17,6 +17,7 @@ let chime_2_SoundFileString = "chime_2.wav"
 
 let announceSoundFileString = "bathroom.wav"
 let musicSoundFileString = "1-minute-of-silence.mp3"
+let ambienceSoundFileString = "ambience.mp4"
 let spaceSoundFileString = "space.wav"
 let musicSoundTemplateFileString = "1-hour-and-20-minutes-of-silence.mp3"
 
@@ -38,7 +39,7 @@ public enum OptionSelection: CaseIterable {
         switch(self){
         case .chimes: return [chimeSoundFileString, chime_2_SoundFileString]
         case .announcers: return [bathroomSoundFileString, coffeeSoundFileString, journalSoundFileString, meditateSoundFileString, petsSoundFileString, readSoundFileString, workoutSoundFileString]
-        case .music: return [musicSoundTemplateFileString]
+        case .music: return [musicSoundTemplateFileString, ambienceSoundFileString]
         }
     }
     
