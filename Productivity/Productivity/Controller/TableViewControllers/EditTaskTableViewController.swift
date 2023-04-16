@@ -85,7 +85,7 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     var taskID: Int64?
     var routineID: Int64?
     var workingObject = PRBaseWorkingObject()
-    var recorder = AKAudioRecorder.shared
+    var recorder = "" //AKAudioRecorder.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,31 +143,31 @@ class EditTaskTableViewController: PRBaseTableViewController, OptionSelectionVie
     }
     
     @objc func didSelectStartStopRecording(sender: UIButton) {
-        if recorder.isRecording {
-            sender.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
-            recorder.stopRecording()
-            if let name = recorder.getRecordings.last {
-                workingObject.announceSoundFileURL = "\(name).m4a"
-            }
-        } else {
-            sender.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
-            recorder.record()
-        }
+//        if recorder.isRecording {
+//            sender.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
+//            recorder.stopRecording()
+//            if let name = recorder.getRecordings.last {
+//                workingObject.announceSoundFileURL = "\(name).m4a"
+//            }
+//        } else {
+//            sender.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+//            recorder.record()
+//        }
     }
     
     @objc func didSelectPlayRecording(sender: UIButton) {
-        if recorder.isPlaying {
-            recorder.stopPlaying()
-        } else {
-            if let name = workingObject.announceSoundFileURL, let file = name.components(separatedBy: ".").first {
-                recorder.play(name: file)
-            }
-        }
+//        if recorder.isPlaying {
+//            recorder.stopPlaying()
+//        } else {
+//            if let name = workingObject.announceSoundFileURL, let file = name.components(separatedBy: ".").first {
+//                recorder.play(name: file)
+//            }
+//        }
     }
     
     @objc func didSelectDeleteRecording(sender: UIButton) {
         if let name = workingObject.announceSoundFileURL, let file = name.components(separatedBy: ".").first {
-            recorder.deleteRecording(name: file)
+//            recorder.deleteRecording(name: file)
         }
     }
     

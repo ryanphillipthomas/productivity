@@ -89,7 +89,7 @@ class AudioManager: NSObject {
                    print("export complete \(exporter.status)")
                    
                    switch exporter.status {
-                   case  AVAssetExportSessionStatus.failed:
+                   case  AVAssetExportSession.Status.failed:
                        
                        if let e = exporter.error {
                            print("export failed \(e)")
@@ -98,7 +98,7 @@ class AudioManager: NSObject {
                         }
                        }
                        
-                   case AVAssetExportSessionStatus.cancelled:
+                   case AVAssetExportSession.Status.cancelled:
                        print("export cancelled \(String(describing: exporter.error))")
                     if let completionBlock = completionBlock {
                      completionBlock(false)

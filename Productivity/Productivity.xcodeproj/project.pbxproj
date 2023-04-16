@@ -11,7 +11,6 @@
 		B801544B2454F19B000055C4 /* IconImageSingleLabelButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */; };
 		B81602B924704CAE00C80BE6 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602B824704CAE00C80BE6 /* Intents.framework */; };
 		B81602BB24704CB400C80BE6 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81602BA24704CB400C80BE6 /* IntentsUI.framework */; };
-		B81602BD2470E36D00C80BE6 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */; };
 		B81602BF2470F13300C80BE6 /* AddRecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602BE2470F13300C80BE6 /* AddRecordingTableViewCell.swift */; };
 		B81602C22470F40400C80BE6 /* AddRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81602C02470F40400C80BE6 /* AddRecorderView.swift */; };
 		B81602C32470F40400C80BE6 /* AddRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81602C12470F40400C80BE6 /* AddRecorderView.xib */; };
@@ -176,7 +175,6 @@
 		B80154492454F19B000055C4 /* IconImageSingleLabelButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconImageSingleLabelButtonView.xib; sourceTree = "<group>"; };
 		B81602B824704CAE00C80BE6 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		B81602BA24704CB400C80BE6 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AKAudioRecorder.swift; path = "../../../../../../../Downloads/Audio-Recorder-master/Example/AKAudioRecorder/AKAudioRecorder.swift"; sourceTree = "<group>"; };
 		B81602BE2470F13300C80BE6 /* AddRecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordingTableViewCell.swift; sourceTree = "<group>"; };
 		B81602C02470F40400C80BE6 /* AddRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecorderView.swift; sourceTree = "<group>"; };
 		B81602C12470F40400C80BE6 /* AddRecorderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecorderView.xib; sourceTree = "<group>"; };
@@ -635,7 +633,6 @@
 				B832E3EE2466F3A300EDF0E7 /* song_1.m4a */,
 				B832E3EC2466F3A200EDF0E7 /* song_2.m4a */,
 				B832E3ED2466F3A200EDF0E7 /* song_3.m4a */,
-				B81602BC2470E36D00C80BE6 /* AKAudioRecorder.swift */,
 				B87858A8245C915C008F0F01 /* AudioManager.swift */,
 			);
 			path = Manager;
@@ -1007,7 +1004,6 @@
 				B87678842424602A0009EFE4 /* UIViewController+Extensions.swift in Sources */,
 				B882715E24257FC3004F5718 /* PRManagedObject.swift in Sources */,
 				B8D56B482429899500FEF929 /* IconView.swift in Sources */,
-				B81602BD2470E36D00C80BE6 /* AKAudioRecorder.swift in Sources */,
 				B8FA79C42421C0FB007E7706 /* SettingsTabViewController.swift in Sources */,
 				B87C11802444057E00305886 /* ColorsCollectionViewController.swift in Sources */,
 				B82E556F242670820040A04E /* LineSingleLabelHeaderFooterView.swift in Sources */,
